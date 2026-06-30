@@ -27,6 +27,33 @@
 #   status: current
 # === END DOCS ===
 
+# === CAPABILITIES ===
+# id: metapat_theorem_validation
+#   summary: provides deterministic theorem validation helper functions
+#   exposes: metapat.validation.boundary_earns_its_keep, metapat.validation.tensor_precedes_time
+#   inputs: source_state, target_state, boundary_state, outcome, tensor_state
+#   outputs: bool
+#   boundaries: auth:none, storage:none, network:none, user_data:none
+# === END CAPABILITIES ===
+
+# === OWNERS ===
+# id: metapat_validation_owner
+#   owner: The Interdependency
+#   steward: Erin Spencer
+#   review_required_for: public_api, tests, canon
+#   escalation: hmmm
+# === END OWNERS ===
+
+# === BOUNDARIES ===
+# id: metapat_validation_boundaries
+#   summary: pure helper functions with no external effects
+#   auth_boundary: none
+#   storage_boundary: none
+#   network_boundary: none
+#   user_data_boundary: none
+#   admin_only: false
+# === END BOUNDARIES ===
+
 # === CONTRACTS ===
 # id: boundary_change_changes_outcome
 #   given: source and target are fixed while boundary state changes
