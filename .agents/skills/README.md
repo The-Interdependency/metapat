@@ -19,16 +19,21 @@ This repo currently installs lightweight repo-local skill entries for the skills
 Installed local skill entries:
 
 - `msdmd/`
-- `llms-build/`
 - `meta-module-build/`
 - `doc-build/`
 - `cap-build/`
 - `deps-build/`
 - `owner-build/`
-- `test-build/`
 - `risk-boundary-build/`
 - `meta/`
-- `the-interdependency/`
 - `skill-build/`
+
+Pending local skill entries:
+
+- `llms-build/`
+- `test-build/`
+- `the-interdependency/`
+
+The pending entries remain available from upstream `skill-lib`. METAPAT still has source `LLMS`, committed `llms.txt`, `CONTRACTS` blocks, and executable tests.
 
 hmmm: exact propagation source commit SHA for a future full verbatim skill-lib sync.
