@@ -54,6 +54,20 @@
 #   admin_only: false
 # === END BOUNDARIES ===
 
+# === CONTRACTS ===
+# id: metapat_root_spine_exact
+#   given: canon definitions are imported
+#   then: root spine contains the current five load-bearing root lines in order
+#   class: canon
+#   call: tests.test_contracts.test_root_spine_contains_current_axioms
+#
+# id: metapat_time_not_registration
+#   given: canon definitions are inspected
+#   then: time and registration remain separate definitions
+#   class: canon
+#   call: tests.test_contracts.test_time_and_registration_are_separated
+# === END CONTRACTS ===
+
 ROOT_SPINE: tuple[str, ...] = (
     "Legible difference is distinction.",
     "Distinction defines boundaries.",
