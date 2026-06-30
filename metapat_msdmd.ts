@@ -30,133 +30,37 @@ export type MsdmdCollection = {
 };
 
 export const declarations: MsdmdDeclaration[] = [
-  {
-    file: "AGENTS.md",
-    block: "LLMS",
-    id: "project_overview",
-    fields: {
-      content: "METAPAT is canonical Meta Energy Theory doctrine with planned UCNS -> METAPAT -> EDCM flow.",
-    },
-  },
-  {
-    file: "src/metapat/canon.py",
-    block: "MODULE_BUILD",
-    id: "metapat_canon_core",
-    fields: {
-      module_name: "metapat.canon",
-      module_kind: "schema",
-      summary: "exposes current Meta Energy Theory root and primitive extension as importable constants",
-    },
-  },
-  {
-    file: "src/metapat/canon.py",
-    block: "DOCS",
-    id: "metapat_canon_docs",
-    fields: {
-      source: "AXIOMS.md",
-      status: "current",
-    },
-  },
-  {
-    file: "src/metapat/canon.py",
-    block: "CAPABILITIES",
-    id: "metapat_canon_constants",
-    fields: {
-      exposes: "metapat.canon.definitions",
-    },
-  },
-  {
-    file: "src/metapat/validation.py",
-    block: "MODULE_BUILD",
-    id: "metapat_validation_core",
-    fields: {
-      module_name: "metapat.validation",
-      module_kind: "service",
-      summary: "provides deterministic checks for METAPAT theorem validation",
-    },
-  },
-  {
-    file: "src/metapat/validation.py",
-    block: "CONTRACTS",
-    id: "boundary_change_changes_outcome",
-    fields: {
-      call: "tests.test_contracts.test_boundary_change_changes_outcome",
-    },
-  },
-  {
-    file: "src/metapat/validation.py",
-    block: "CONTRACTS",
-    id: "tensor_before_time",
-    fields: {
-      call: "tests.test_contracts.test_tensor_precedes_time",
-    },
-  },
-  {
-    file: "src/metapat/flow_plan.py",
-    block: "MODULE_BUILD",
-    id: "metapat_flow_plan",
-    fields: {
-      module_name: "metapat.flow_plan",
-      module_kind: "adapter",
-      summary: "records planned UCNS to METAPAT to EDCM flow without implementing the bridge yet",
-    },
-  },
-  {
-    file: "src/metapat/flow_plan.py",
-    block: "DEPENDENCIES",
-    id: "metapat_planned_flow_edges",
-    fields: {
-      external: "The-Interdependency/ucns, The-Interdependency/edcm",
-      direction: "bidirectional",
-    },
-  },
+  { file: "AGENTS.md", block: "LLMS", id: "project_overview", fields: { content: "METAPAT canon and planned UCNS -> METAPAT -> EDCM flow." } },
+  { file: "src/metapat/__init__.py", block: "MODULE_BUILD", id: "metapat_package_exports", fields: { module_name: "metapat" } },
+  { file: "src/metapat/__init__.py", block: "DEPENDENCIES", id: "metapat_package_dependency_edges", fields: { imports: "metapat.canon, metapat.validation" } },
+  { file: "src/metapat/canon.py", block: "MODULE_BUILD", id: "metapat_canon_core", fields: { module_name: "metapat.canon" } },
+  { file: "src/metapat/canon.py", block: "DOCS", id: "metapat_canon_docs", fields: { source: "AXIOMS.md", status: "current" } },
+  { file: "src/metapat/canon.py", block: "CAPABILITIES", id: "metapat_canon_constants", fields: { exposes: "metapat.canon.definitions" } },
+  { file: "src/metapat/canon.py", block: "OWNERS", id: "metapat_canon_owner", fields: { owner: "The Interdependency" } },
+  { file: "src/metapat/canon.py", block: "BOUNDARIES", id: "metapat_canon_boundaries", fields: { network_boundary: "none" } },
+  { file: "src/metapat/canon.py", block: "CONTRACTS", id: "metapat_root_spine_exact", fields: { call: "tests.test_contracts.test_root_spine_contains_current_axioms" } },
+  { file: "src/metapat/canon.py", block: "CONTRACTS", id: "metapat_time_not_registration", fields: { call: "tests.test_contracts.test_time_and_registration_are_separated" } },
+  { file: "src/metapat/validation.py", block: "MODULE_BUILD", id: "metapat_validation_core", fields: { module_name: "metapat.validation" } },
+  { file: "src/metapat/validation.py", block: "CAPABILITIES", id: "metapat_theorem_validation", fields: { exposes: "five theorem validation helpers" } },
+  { file: "src/metapat/validation.py", block: "CONTRACTS", id: "boundary_change_changes_outcome", fields: { call: "tests.test_contracts.test_boundary_change_changes_outcome" } },
+  { file: "src/metapat/validation.py", block: "CONTRACTS", id: "tensor_before_time", fields: { call: "tests.test_contracts.test_tensor_precedes_time" } },
+  { file: "src/metapat/validation.py", block: "CONTRACTS", id: "registration_not_time", fields: { call: "tests.test_contracts.test_registration_is_not_time" } },
+  { file: "src/metapat/validation.py", block: "CONTRACTS", id: "observer_role_requires_registration", fields: { call: "tests.test_contracts.test_observer_role_by_registration" } },
+  { file: "src/metapat/validation.py", block: "CONTRACTS", id: "consciousness_optional_observer_mode", fields: { call: "tests.test_contracts.test_consciousness_is_optional" } },
+  { file: "src/metapat/flow_plan.py", block: "MODULE_BUILD", id: "metapat_flow_plan", fields: { module_name: "metapat.flow_plan" } },
+  { file: "src/metapat/flow_plan.py", block: "DEPENDENCIES", id: "metapat_planned_flow_edges", fields: { external: "The-Interdependency/ucns, The-Interdependency/edcm" } },
 ];
 
 export const gaps: MsdmdGap[] = [
-  {
-    file: ".agents/skills/llms-build/SKILL.md",
-    missing: ["repo-local skill file"],
-    note: "hmmm: GitHub write tool blocked this path/content during initial compliance pass; AGENTS.md and llms.txt are present.",
-  },
-  {
-    file: ".agents/skills/test-build/SKILL.md",
-    missing: ["repo-local skill file"],
-    note: "hmmm: GitHub write tool blocked this path/content during initial compliance pass; CONTRACTS blocks and tests are present.",
-  },
-  {
-    file: ".agents/skills/the-interdependency/SKILL.md",
-    missing: ["repo-local skill file"],
-    note: "hmmm: GitHub write tool blocked this path/content during initial compliance pass; upstream skill-lib remains canonical.",
-  },
-  {
-    file: "src/metapat/flow_plan.py",
-    missing: ["implemented UCNS bridge", "implemented EDCM bridge"],
-    note: "planned architecture only; exact APIs are hmmm.",
-  },
+  { file: "src/metapat/flow_plan.py", missing: ["implemented UCNS bridge", "implemented EDCM bridge"], note: "planned architecture only; exact APIs are hmmm." },
+  { file: "COMPLIANCE.md", missing: ["local command output"], note: "hmmm: local checks not run from chat environment." },
 ];
 
 export const edges: MsdmdEdge[] = [
-  {
-    from: "The-Interdependency/ucns",
-    to: "The-Interdependency/METAPAT",
-    kind: "planned_input",
-    source_block: "DEPENDENCIES",
-    source_id: "metapat_planned_flow_edges",
-  },
-  {
-    from: "The-Interdependency/METAPAT",
-    to: "The-Interdependency/edcm",
-    kind: "planned_output",
-    source_block: "DEPENDENCIES",
-    source_id: "metapat_planned_flow_edges",
-  },
+  { from: "The-Interdependency/ucns", to: "The-Interdependency/METAPAT", kind: "planned_input", source_block: "DEPENDENCIES", source_id: "metapat_planned_flow_edges" },
+  { from: "The-Interdependency/METAPAT", to: "The-Interdependency/edcm", kind: "planned_output", source_block: "DEPENDENCIES", source_id: "metapat_planned_flow_edges" },
 ];
 
-const collection: MsdmdCollection = {
-  repo: "The-Interdependency/METAPAT",
-  declarations,
-  gaps,
-  edges,
-};
+const collection: MsdmdCollection = { repo: "The-Interdependency/METAPAT", declarations, gaps, edges };
 
 export default collection;
