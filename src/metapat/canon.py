@@ -36,6 +36,24 @@
 #   boundaries: auth:none, storage:none, network:none, user_data:none
 # === END CAPABILITIES ===
 
+# === OWNERS ===
+# id: metapat_canon_owner
+#   owner: The Interdependency
+#   steward: Erin Spencer
+#   review_required_for: public_api, docs, canon
+#   escalation: hmmm
+# === END OWNERS ===
+
+# === BOUNDARIES ===
+# id: metapat_canon_boundaries
+#   summary: static doctrine constants with no external effects
+#   auth_boundary: none
+#   storage_boundary: none
+#   network_boundary: none
+#   user_data_boundary: none
+#   admin_only: false
+# === END BOUNDARIES ===
+
 ROOT_SPINE: tuple[str, ...] = (
     "Legible difference is distinction.",
     "Distinction defines boundaries.",
