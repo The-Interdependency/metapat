@@ -37,6 +37,7 @@ Time is sequential tensor alteration.
 - [`POSTULATES.md`](POSTULATES.md) — allowed working claims that organize application without changing root.
 - [`THEOREMS.md`](THEOREMS.md) — derived statements and proof sketches.
 - [`THEORIES.md`](THEORIES.md) — organized derivation families for applying the root without changing it.
+- [`UCNS_IMPLEMENTATION.md`](UCNS_IMPLEMENTATION.md) — METAPAT-native UCNS bridge scope and limits.
 - [`GLOSSARY.md`](GLOSSARY.md) — current term meanings and status.
 - [`DOMAIN_RESTRAINT.md`](DOMAIN_RESTRAINT.md) — rule for importing tools from domains without domain capture.
 - [`examples/`](examples/) — canonical examples used to test whether the ontology stays stable.
@@ -62,12 +63,12 @@ UCNS -> METAPAT -> EDCM
 Current status:
 
 ```text
-UCNS side: hmmm, planned but not implemented.
+UCNS side: implemented as METAPAT-native bridge; hmmm, external The-Interdependency/ucns adapter unresolved.
 EDCM side: hmmm, planned but not implemented.
 Exact bridge APIs: hmmm.
 ```
 
-The flow plan is declared in [`src/metapat/flow_plan.py`](src/metapat/flow_plan.py). It records the intended architectural edge without pretending implementation exists.
+The flow plan is declared in [`src/metapat/flow_plan.py`](src/metapat/flow_plan.py). The METAPAT-native UCNS bridge is implemented in [`src/metapat/ucns.py`](src/metapat/ucns.py), documented in [`UCNS_IMPLEMENTATION.md`](UCNS_IMPLEMENTATION.md), and covered by [`tests/test_ucns_bridge.py`](tests/test_ucns_bridge.py).
 
 ## Repository rule
 
