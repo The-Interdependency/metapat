@@ -1,6 +1,6 @@
 # METAPAT
 
-**Meta Energy Theory — Axioms, Postulates, and Theorems**
+**Meta Energy Theory — Axioms, Postulates, Theorems, and Theories**
 
 METAPAT is the canonical source for Meta Energy Theory as a substrate-independent ontology of energy-state relation and transformation.
 
@@ -36,6 +36,7 @@ Time is sequential tensor alteration.
 - [`AXIOMS.md`](AXIOMS.md) — invariant root and primitive extension.
 - [`POSTULATES.md`](POSTULATES.md) — allowed working claims that organize application without changing root.
 - [`THEOREMS.md`](THEOREMS.md) — derived statements and proof sketches.
+- [`THEORIES.md`](THEORIES.md) — organized derivation families for applying the root without changing it.
 - [`GLOSSARY.md`](GLOSSARY.md) — current term meanings and status.
 - [`DOMAIN_RESTRAINT.md`](DOMAIN_RESTRAINT.md) — rule for importing tools from domains without domain capture.
 - [`examples/`](examples/) — canonical examples used to test whether the ontology stays stable.
