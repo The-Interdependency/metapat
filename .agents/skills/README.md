@@ -31,4 +31,4 @@ Installed local skill entries:
 - `the-interdependency/`
 - `skill-build/`
 
-hmmm: exact propagation source commit SHA for a future full verbatim skill-lib sync.
+Source commit: `The-Interdependency/skill-lib` @ `d0f6209` (verbatim sync).
