@@ -1,13 +1,13 @@
-"""Executable contract tests for METAPAT.
+"""Executable canon contract tests for the installed METAPAT surface.
 
-These tests are deliberately small. They protect the current Chapter Zero spine
-without pretending to formalize the full ontology.
+These tests protect encoded definitions and deterministic helper behavior. They
+do not empirically validate or formally prove Meta Energy Theory.
 """
 
 import unittest
 
-from src.metapat.canon import TIME_DEFINITION, definitions, root_spine
-from src.metapat.validation import (
+from metapat import TIME_DEFINITION, definitions, root_spine
+from metapat.validation import (
     boundary_earns_its_keep,
     consciousness_is_optional,
     observer_role_by_registration,
