@@ -2,64 +2,110 @@
 
 ## Current state
 
-METAPAT is doctrine-first and msdmd-scaffolded.
+METAPAT is the canonical semantic authority for Meta Energy Theory. It now exposes:
 
-It exposes:
+- exact root canon constants and deterministic canon identity;
+- immutable versioned `MetapatModuleEnvelope` records;
+- deterministic canon contract checks with explicit non-validation boundaries;
+- an optional adapter that constructs actual `ucns.UCNSObject` geometry;
+- package, wheel, base, and actual-UCNS integration gates.
 
-- root canon constants in `src/metapat/canon.py`;
-- theorem validation helpers in `src/metapat/validation.py`;
-- planned flow status in `src/metapat/flow_plan.py`.
+## Architecture
 
-## Planned architecture flow
+Authority:
 
 ```text
-UCNS -> METAPAT -> EDCM
+METAPAT canon
+    |
+    +-- constrains terms, interpretation, allowed derivations, and claim status
+    v
+UCNS adapters and EDCM consumers
 ```
 
-## Phase 0: Canon stability
+Runtime:
 
-- Preserve Chapter Zero.
+```text
+source evidence -> EDCM parsing -> actual UCNS representation -> EDCM readouts
+                                     ^
+                                     |
+                          METAPAT-derived semantic constraints
+```
+
+Proof status does not transfer from UCNS into METAPAT ontology or EDCM measurement validity.
+
+## Phase 0 — Canon stability
+
+Status: implemented and continuously required.
+
+- Preserve Chapter Zero and exact root strings.
 - Keep root/tool/domain separation.
-- Keep tests small and theorem-focused.
-- Keep unresolved bridge details marked `hmmm`.
+- Bind consumer artifacts to `CANON_VERSION` and `canon_digest()`.
+- Keep unresolved details marked `hmmm`.
+- Classify public claims in `docs/claims-ledger.md`.
 
-## Phase 1: UCNS side
+## Phase 1 — Semantic module envelope
 
-Purpose: receive UCNS-shaped representation without letting UCNS own METAPAT root.
+Status: implemented.
 
-Initial questions:
+- `MetapatModuleEnvelope` is immutable and versioned.
+- Exact source references and statements survive serialization.
+- Constraints, permitted interpretations, unresolved constraints, canon identity, and provenance digest remain distinct.
+- Canon or constraint rotation changes provenance identity.
+- No measured EDCM values are present.
 
-- Which UCNS object shape should represent simplex?
-- Which UCNS object shape should represent tensor?
-- How should boundary-simplex state be represented?
-- What conversion preserves legible difference without importing UCNS as ontology?
+## Phase 2 — Actual UCNS geometry adapter
 
-Status: hmmm.
+Status: implemented for ordered statement-count geometry.
 
-## Phase 2: METAPAT module derivation
+- Base METAPAT remains importable without UCNS.
+- Adapter calls without UCNS raise a clear dependency error.
+- Adaptation constructs actual `ucns.UCNSObject` instances.
+- Stable hash and UCNS serialization version are recorded.
+- METAPAT statements remain external provenance; UCNS payloads remain unit.
+- METAPAT contains no local normalization, product, factorization, star/disk-flip, or theorem-status algebra.
 
-Purpose: derive explicit METAPAT modules from UCNS-shaped input.
+Remaining:
 
-Initial module classes:
+- hmmm: ratify whether any semantic statement may map into UCNS payloads or tags.
+- hmmm: consume an official versioned UCNS bridge record if UCNS standardizes one.
 
-- simplex module;
-- boundary-simplex module;
-- tensor module;
-- relation module;
-- gradient-dynamics module;
-- registration module;
-- time module.
+## Phase 3 — EDCM semantic consumer
 
-Status: hmmm.
+Status: downstream implementation required.
 
-## Phase 3: EDCM side
+EDCM must:
 
-Purpose: emit METAPAT-derived modules to EDCM for measurement and application.
+- accept the exact versioned envelope;
+- retain canon digest, source refs, constraints, permitted interpretations, unresolved `hmmm`, and provenance digest;
+- keep semantic labels separate from metric values;
+- preserve UCNS geometry identity, EDCM policy identity, and METAPAT canon identity as separate provenance components;
+- create a new epoch when canon or policy identity changes;
+- fail closed on malformed schema or provenance.
 
-Initial questions:
+## Phase 4 — Shared stack fixture
 
-- Which EDCM interface receives module outputs?
-- Which outputs are measurement primitives and which are narrative labels?
-- How does EDCM preserve METAPAT root distinction without flattening into EDCM terms?
+Status: hmmm / next cross-repository gate.
 
-Status: hmmm.
+The deterministic fixture must prove:
+
+1. METAPAT root canon remains stable;
+2. the envelope round-trips without loss;
+3. an actual UCNS object is constructed;
+4. stable hash and source references survive adaptation;
+5. EDCM consumes constraints without making them metric values;
+6. theorem status does not transfer;
+7. `hmmm` fields survive the complete path;
+8. canon or policy rotation produces a distinct epoch identity.
+
+## Phase 5 — Metadata and drift completion
+
+Status: partial.
+
+- Reconcile remaining repo-level msdmd declarations and generated `llms.txt`.
+- Run repo-local skill-lib drift checks.
+- Add canon-file byte integrity and generated metadata gates.
+- Keep open PRs that modify `.agents/skills/` separate from canon/runtime changes.
+
+## hmmm
+
+The application-specific meaning of future simplex, boundary-simplex, tensor, relation, gradient, registration, time, and question modules must be declared per module. Naming a module kind does not supply a measured state or an empirical result.
