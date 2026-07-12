@@ -1,21 +1,22 @@
-"""Tests for the METAPAT-native UCNS bridge."""
+"""Contracts for the optional adapter to the actual UCNS package."""
 
-from fractions import Fraction
-import unittest
+from __future__ import annotations
 
-from src.metapat.canon import ENERGY_THEORY_QUESTION, PRIMITIVE_EXTENSION, ROOT_SPINE
-from src.metapat.ucns import (
+from types import ModuleType
+
+import pytest
+
+import metapat
+import metapat.ucns as adapter_module
+from metapat import (
     ADDRESSABLE_GONOL_VERTICES,
     GONOL_VERTEX_COUNT,
     SPACE_ANCHOR_VERTEX,
-    chapter_zero_ucns,
+    UCNSAdapterError,
+    UCNSDependencyError,
+    adapt_envelope_to_ucns,
     compose,
-    energy_question_ucns,
-    make_ucns_object,
-    minimal_gonal_order,
-    minimal_gonol_order,
-    primitive_extension_ucns,
-    root_spine_ucns,
+    root_spine_module_envelope,
 )
 
 
@@ -25,105 +26,87 @@ def test_gonol_space_anchor_constants() -> None:
     assert ADDRESSABLE_GONOL_VERTICES == 156
 
 
-def test_minimal_gonal_order_normalizes_origin() -> None:
-    positions = (Fraction(3, 7), Fraction(4, 7), Fraction(5, 7))
-    assert minimal_gonal_order(positions) == 7
-    assert minimal_gonol_order(positions) == 7
+def test_metapat_exports_no_local_ucns_algebra() -> None:
+    assert not hasattr(metapat, "UCNSObject")
+    assert not hasattr(metapat, "AnchorPayload")
+    assert not hasattr(adapter_module, "minimal_gonal_order")
+    assert not hasattr(adapter_module, "make_ucns_object")
 
 
-def test_root_spine_ucns_has_five_anchors() -> None:
-    obj = root_spine_ucns()
-    assert obj.label == "metapat.root_spine"
+def test_direct_missing_ucns_raises_clear_dependency_error(monkeypatch) -> None:
+    def missing(name: str):
+        raise ModuleNotFoundError("No module named 'ucns'", name="ucns")
+
+    monkeypatch.setattr(adapter_module.importlib, "import_module", missing)
+    with pytest.raises(UCNSDependencyError, match="optional UCNS integration"):
+        adapter_module.require_ucns()
+
+
+def test_transitive_import_failure_is_not_hidden(monkeypatch) -> None:
+    def broken(name: str):
+        raise ModuleNotFoundError("No module named 'ucns_helper'", name="ucns_helper")
+
+    monkeypatch.setattr(adapter_module.importlib, "import_module", broken)
+    with pytest.raises(ModuleNotFoundError, match="ucns_helper"):
+        adapter_module.require_ucns()
+
+
+def test_importable_malformed_ucns_fails_adapter_validation(monkeypatch) -> None:
+    malformed = ModuleType("ucns")
+    malformed.UCNSObject = object
+    monkeypatch.setattr(adapter_module.importlib, "import_module", lambda name: malformed)
+    with pytest.raises(UCNSAdapterError, match="multiply"):
+        adapter_module.require_ucns()
+
+
+def test_root_spine_adapts_to_actual_ucns_object() -> None:
+    ucns = pytest.importorskip("ucns")
+    adaptation = adapt_envelope_to_ucns(root_spine_module_envelope())
+    obj = adaptation.ucns_object
+
+    assert isinstance(obj, ucns.UCNSObject)
     assert obj.n_min == 5
-    assert obj.n_dec == 5
-    assert obj.length == 5
-    assert obj.faces_pos == (0, 0, 0, 0, 0)
-    assert obj.tags == ROOT_SPINE
+    assert len(obj.A_plus) == 5
+    assert tuple(obj.F_plus) == (0, 0, 0, 0, 0)
+    assert all(payload is None for _, payload in obj.A_plus)
+    assert adaptation.record.ucns_object_hash == ucns.stable_hash(obj)
+    assert adaptation.record.ucns_serialization_version == ucns.CANONICAL_SERIALIZATION_VERSION
 
 
-def test_primitive_extension_ucns_has_four_anchors() -> None:
-    obj = primitive_extension_ucns()
-    assert obj.label == "metapat.primitive_extension"
-    assert obj.n_min == 4
-    assert obj.length == 4
-    assert obj.tags == PRIMITIVE_EXTENSION
+def test_adaptation_preserves_semantic_provenance() -> None:
+    pytest.importorskip("ucns")
+    envelope = root_spine_module_envelope()
+    record = adapt_envelope_to_ucns(envelope).record
+
+    assert record.canon_version == envelope.canon_version
+    assert record.canon_digest == envelope.canon_digest
+    assert record.envelope_provenance_digest == envelope.provenance_digest
+    assert record.source_statement_refs == envelope.source_statement_refs
+    assert record.source_statements == envelope.source_statements
+    assert record.unresolved_constraints == envelope.unresolved_constraints
+    assert record.semantic_mapping == "external-provenance"
 
 
-def test_energy_question_ucns_is_single_anchor() -> None:
-    obj = energy_question_ucns()
-    assert obj.label == "metapat.energy_question"
-    assert obj.n_min == 1
-    assert obj.length == 1
-    assert obj.tags == (ENERGY_THEORY_QUESTION,)
+def test_adaptation_does_not_transfer_theorem_status() -> None:
+    pytest.importorskip("ucns")
+    record = adapt_envelope_to_ucns(root_spine_module_envelope()).record
+    assert record.theorem_status_transfer is False
+    assert record.metapat_validity_claim is False
 
 
-def test_chapter_zero_ucns_carries_recursive_payloads() -> None:
-    obj = chapter_zero_ucns()
-    assert obj.label == "metapat.chapter_zero"
-    assert obj.n_min == 3
-    assert obj.length == 3
-    assert obj.tags == ("root_spine", "primitive_extension", "energy_question")
-    assert obj.has_recursive_payloads()
-    assert obj.anchors_pos[0].payload.label == "metapat.root_spine"
-    assert obj.anchors_pos[1].payload.label == "metapat.primitive_extension"
-    assert obj.anchors_pos[2].payload.label == "metapat.energy_question"
+def test_face_bits_fail_closed() -> None:
+    pytest.importorskip("ucns")
+    envelope = root_spine_module_envelope()
+    with pytest.raises(ValueError, match="length"):
+        adapt_envelope_to_ucns(envelope, face_bits=(0,))
+    with pytest.raises(ValueError, match="integer face bits"):
+        adapt_envelope_to_ucns(envelope, face_bits=(0, 0, 2, 0, 0))
 
 
-def test_compose_multiplies_length_and_xors_faces() -> None:
-    left = make_ucns_object(
-        (Fraction(0), Fraction(1, 2)),
-        face_bits=(0, 1),
-        tags=("left_a", "left_b"),
-        label="left",
-    )
-    right = make_ucns_object(
-        (Fraction(0), Fraction(1, 2)),
-        face_bits=(1, 0),
-        tags=("right_a", "right_b"),
-        label="right",
-    )
-    product = compose(left, right, label="product")
-    assert product.label == "product"
-    assert product.length == 4
-    assert product.n_min == 2
-    assert product.faces_pos == (1, 0, 0, 1)
-    assert product.positions == (Fraction(0), Fraction(1, 2), Fraction(1, 2), Fraction(0))
-
-
-def test_to_canonical_args_maps_turns_to_half_turn_angles() -> None:
-    obj = make_ucns_object((Fraction(0), Fraction(1, 2)), label="bridge")
-    args = obj.to_canonical_args()
-    assert args["n_dec"] == 2
-    assert args["n_min"] == 2
-    assert args["A_plus"] == ((Fraction(0), None), (Fraction(1), None))
-    assert args["F_plus"] == (0, 0)
-
-
-class MetapatUCNSBridgeTests(unittest.TestCase):
-    def test_00_gonol_space_anchor_constants(self) -> None:
-        test_gonol_space_anchor_constants()
-
-    def test_01_minimal_gonal_order_normalizes_origin(self) -> None:
-        test_minimal_gonal_order_normalizes_origin()
-
-    def test_02_root_spine_ucns_has_five_anchors(self) -> None:
-        test_root_spine_ucns_has_five_anchors()
-
-    def test_03_primitive_extension_ucns_has_four_anchors(self) -> None:
-        test_primitive_extension_ucns_has_four_anchors()
-
-    def test_04_energy_question_ucns_is_single_anchor(self) -> None:
-        test_energy_question_ucns_is_single_anchor()
-
-    def test_05_chapter_zero_ucns_carries_recursive_payloads(self) -> None:
-        test_chapter_zero_ucns_carries_recursive_payloads()
-
-    def test_06_compose_multiplies_length_and_xors_faces(self) -> None:
-        test_compose_multiplies_length_and_xors_faces()
-
-    def test_07_to_canonical_args_maps_turns_to_half_turn_angles(self) -> None:
-        test_to_canonical_args_maps_turns_to_half_turn_angles()
-
-
-if __name__ == "__main__":
-    unittest.main()
+def test_compose_delegates_to_actual_ucns() -> None:
+    ucns = pytest.importorskip("ucns")
+    left = adapt_envelope_to_ucns(root_spine_module_envelope()).ucns_object
+    right = adapt_envelope_to_ucns(root_spine_module_envelope()).ucns_object
+    result = compose(left, right)
+    assert isinstance(result, ucns.UCNSObject)
+    assert result == ucns.multiply(left, right)
