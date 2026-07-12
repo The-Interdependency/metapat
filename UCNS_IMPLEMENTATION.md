@@ -1,8 +1,8 @@
-# UCNS Implementation
+# Actual UCNS adapter
 
-METAPAT now contains a narrow, internal UCNS-shaped bridge.
+METAPAT does not implement UCNS algebra.
 
-This bridge lives at:
+The optional adapter lives at:
 
 ```text
 src/metapat/ucns.py
@@ -16,28 +16,91 @@ tests/test_ucns_bridge.py
 
 ## Scope
 
-This is a METAPAT-native implementation layer.
+The adapter converts a versioned immutable `MetapatModuleEnvelope` into actual geometry from the canonical `ucns` package.
 
-It does not replace the external `The-Interdependency/ucns` algebra.
+Base METAPAT remains importable without UCNS installed. Adapter calls without the optional dependency raise a clear `UCNSDependencyError`; no local substitute is created.
 
-It exists to let METAPAT represent its own root, primitive extension, and Chapter Zero objects as UCNS-shaped carriers while the full external adapter remains unresolved.
+## Implemented behavior
 
-## Implemented
+1. Validate the actual UCNS public surface.
+2. Derive deterministic geometry from ordered source-statement count.
+3. Construct a real `ucns.UCNSObject`.
+4. Keep all UCNS payloads unit (`None`).
+5. Record the actual UCNS stable hash and serialization version.
+6. Preserve METAPAT module id, kind, canon identity, envelope provenance digest, exact source references, exact statements, and unresolved `hmmm` fields in a separate adaptation record.
+7. Delegate composition only to actual `ucns.multiply`.
+8. Mark theorem-status transfer and METAPAT-validity claims as false.
 
-The bridge implements:
+## Usage
 
-1. `AnchorPayload` — one positive-side anchor plus optional recursive payload;
-2. `UCNSObject` — a normalized carrier object with anchors, face bits, intrinsic carrier order, and label;
-3. `minimal_gonal_order` / `minimal_gonol_order` — intrinsic carrier order from normalized fractional-turn anchors;
-4. `make_ucns_object` — object factory with validation;
-5. `ucns_from_statements` — ordered statement encoding as evenly spaced anchors;
-6. `compose` — ordered UCNS-style product with XOR face-bit composition;
-7. `root_spine_ucns` — current METAPAT root spine as a five-anchor carrier;
-8. `primitive_extension_ucns` — primitive extension as a four-anchor carrier;
-9. `energy_question_ucns` — the Energy Theory question as a one-anchor carrier;
-10. `chapter_zero_ucns` — payload-bearing carrier with root, primitive extension, and question as recursive payloads.
+```python
+import metapat
+import ucns
+
+envelope = metapat.root_spine_module_envelope()
+adaptation = metapat.adapt_envelope_to_ucns(envelope)
+
+assert isinstance(adaptation.ucns_object, ucns.UCNSObject)
+assert adaptation.record.ucns_object_hash == ucns.stable_hash(adaptation.ucns_object)
+assert adaptation.record.canon_digest == envelope.canon_digest
+assert adaptation.record.envelope_provenance_digest == envelope.provenance_digest
+```
+
+Install the optional integration with:
+
+```bash
+python -m pip install -e .[ucns]
+```
+
+## Geometry convention
+
+For an envelope containing `n` ordered source statements, the adapter constructs `n` evenly spaced anchors using UCNS half-turn angles:
+
+```text
+angle_i = 2i / n
+```
+
+It declares `n_dec = n_min = n`, supplies unit payloads, and defaults every face bit to `0` unless the caller explicitly supplies a same-length binary sequence.
+
+This is an adapter contract, not a METAPAT claim that statement order or count exhausts semantic geometry.
+
+## Semantic boundary
+
+Current mapping:
+
+```text
+semantic_mapping = external-provenance
+```
+
+The envelope retains:
+
+- exact statement references;
+- exact statement text;
+- constraints;
+- permitted interpretations;
+- unresolved constraints;
+- canon digest;
+- provenance digest.
+
+None of these fields are silently placed into UCNS payloads or assigned UCNS mathematical meaning.
+
+## Removed local algebra
+
+The following former METAPAT-native surfaces are retired:
+
+- local `UCNSObject`;
+- local `AnchorPayload`;
+- local normalization and carrier calculation;
+- local object factory;
+- local statement-to-payload encoding;
+- local XOR product/composition;
+- recursive Chapter Zero UCNS payload construction.
+
+METAPAT may not reproduce these operations under new names. Geometry belongs to UCNS.
 
 ## Gonol constants
+
+The existing project constants remain declarative:
 
 ```text
 GONOL_VERTEX_COUNT = 157
@@ -45,56 +108,24 @@ SPACE_ANCHOR_VERTEX = 0
 ADDRESSABLE_GONOL_VERTICES = 156
 ```
 
-The space-anchor is reserved.
+They do not define a local UCNS vertex algebra or symbolic table.
 
-The 156 remaining vertices are addressable.
+## Proof and validity firewall
 
-The bridge does not yet define the full symbolic vertex table.
+Successful adaptation establishes only that:
 
-## Carrier convention
+- the envelope passed schema checks;
+- actual UCNS constructed the object;
+- the stable hash and provenance were recorded.
 
-METAPAT bridge positions are fractional turns in `[0, 1)`.
+It does not establish:
 
-The first anchor is normalized to zero.
+- METAPAT ontology validity;
+- EDCM measurement validity;
+- empirical truth;
+- a concrete UCNS negative certification;
+- transfer of UCNS theorem status.
 
-The intrinsic carrier order is the least common multiple of non-zero normalized denominators.
+## hmmm
 
-The external UCNS canonical constructor uses half-turn angles. The bridge exposes `to_canonical_args()` to map:
-
-```text
-position -> angle = 2 * position
-```
-
-## Face bits
-
-Face bits are stored as `0` or `1` parallel to anchors.
-
-Composition uses XOR.
-
-No extra semantic claim is attached to face bits inside METAPAT until a specific mapping is declared.
-
-## Recursive payloads
-
-`None` is the unit payload.
-
-A payload may itself be a `UCNSObject`.
-
-`chapter_zero_ucns()` uses recursive payloads:
-
-```text
-root_spine
-primitive_extension
-energy_question
-```
-
-## External UCNS status
-
-```text
-external The-Interdependency/ucns adapter: hmmm
-full UCNS algebra completeness inside METAPAT: not claimed
-UCNS-gonol symbolic vertex table: hmmm
-```
-
-The current bridge is sufficient for METAPAT-local representation and tests.
-
-It is not yet sufficient for full UCNS algebra, theorem transfer, or EDCM measurement construction.
+Whether any METAPAT statement should eventually map to UCNS payloads, tags, or remain external provenance is unresolved. The current adapter intentionally chooses no payload semantics while preserving that unresolved question in every canonical root-spine envelope.
