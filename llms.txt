@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-METAPAT is the canonical source for Meta Energy Theory: a substrate-independent ontology of energy-state relation and transformation. It is doctrine-first, msdmd-declared, and planned to import UCNS representations and export resulting modules to EDCM without letting either implementation own the root.
+METAPAT is the canonical semantic authority for Meta Energy Theory: a substrate-independent ontology of energy-state relation and transformation. It preserves exact canon and emits immutable semantic constraint envelopes without becoming UCNS algebra or EDCM measurement.
 
 ## Key Definitions (never infer or expand these)
 
@@ -16,10 +16,10 @@ METAPAT is the canonical source for Meta Energy Theory: a substrate-independent 
 
 ## Architecture Summary
 
-Canon lives in Markdown root docs and importable Python constants. msdmd declarations live beside package modules. Planned bridge direction is UCNS -> METAPAT -> EDCM. Bridge modules remain scaffolded until exact UCNS and EDCM APIs are selected.
+Authority flows from METAPAT canon into UCNS adapters and EDCM consumers. Runtime evidence flows through EDCM parsing and actual UCNS geometry into EDCM readouts under METAPAT-derived semantic constraints. UCNS theorem or domain status transfers into neither METAPAT ontology validity nor EDCM measurement validity.
 
 ## How to Use This Repo with LLMs / Agents
 
-Preserve METAPAT as root canon. Do not let domains redefine the root. Do not make consciousness parent to time. Do not make registration parent to time. Do not treat UCNS or EDCM as owners of Energy Theory. Use hmmm for unresolved import/export details. Update msdmd blocks in the same diff as code or documentation changes.
+Preserve METAPAT as root canon. Use `MetapatModuleEnvelope` for semantic authority and provenance. Do not recreate UCNS algebra. Use only the optional adapter to actual `ucns.UCNSObject`. Current semantic mapping is `external-provenance`; do not place statements into UCNS payloads unless separately ratified. Treat `validation.py` helpers as deterministic canon contract checks, not theorem validation. Do not turn semantic labels into EDCM metric values. Use `hmmm` for unresolved details and update msdmd blocks with code and documentation changes.
 
-This file is the single source of truth. If something is not explicitly stated in the files listed above, it does not exist in this repository.
+Read `AGENTS.md`, `docs/claims-ledger.md`, `src/metapat/envelope.py`, `src/metapat/ucns.py`, and the 2026-07-12 stack-repair handoff before changing architecture.
