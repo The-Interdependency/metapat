@@ -1,8 +1,48 @@
-"""Executable canon contract tests for the installed METAPAT surface.
+"""Executable canon contract tests for the installed METAPAT surface."""
 
-These tests protect encoded definitions and deterministic helper behavior. They
-do not empirically validate or formally prove Meta Energy Theory.
-"""
+# === CHECKS ===
+# id: check_root_spine_exact
+#   proves: metapat_root_spine_exact
+#   call: self::test_root_spine_contains_current_axioms
+#   mutates: none
+#   cleanup: none
+#
+# id: check_time_registration_separated
+#   proves: metapat_time_not_registration
+#   call: self::test_time_and_registration_are_separated
+#   mutates: none
+#   cleanup: none
+#
+# id: check_boundary_change_changes_outcome
+#   proves: boundary_change_changes_outcome
+#   call: self::test_boundary_change_changes_outcome
+#   mutates: none
+#   cleanup: none
+#
+# id: check_tensor_precedes_time
+#   proves: tensor_before_time
+#   call: self::test_tensor_precedes_time
+#   mutates: none
+#   cleanup: none
+#
+# id: check_registration_not_time
+#   proves: registration_not_time
+#   call: self::test_registration_is_not_time
+#   mutates: none
+#   cleanup: none
+#
+# id: check_observer_role_registration
+#   proves: observer_role_requires_registration
+#   call: self::test_observer_role_by_registration
+#   mutates: none
+#   cleanup: none
+#
+# id: check_consciousness_optional
+#   proves: consciousness_optional_observer_mode
+#   call: self::test_consciousness_is_optional
+#   mutates: none
+#   cleanup: none
+# === END CHECKS ===
 
 import unittest
 
