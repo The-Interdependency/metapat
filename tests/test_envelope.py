@@ -1,5 +1,67 @@
 from __future__ import annotations
 
+# === CHECKS ===
+# id: check_canon_digest_deterministic
+#   proves: metapat_canon_digest_deterministic
+#   call: self::test_canon_digest_is_deterministic
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_exact_provenance
+#   proves: metapat_envelope_exact_provenance
+#   call: self::test_root_spine_envelope_preserves_exact_sources_and_constraints
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_roundtrip
+#   proves: metapat_envelope_roundtrip
+#   call: self::test_envelope_roundtrip_preserves_hmmm
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_rotation_visible
+#   proves: metapat_envelope_rotation_visible
+#   call: self::test_canon_or_constraint_rotation_changes_provenance
+#   mutates: none
+#   cleanup: none
+#
+# id: check_labels_not_measurements
+#   proves: metapat_labels_not_measurements
+#   call: self::test_envelope_contains_no_measurement_values
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_tamper_rejected
+#   proves: metapat_envelope_tamper_rejected
+#   call: self::test_tampered_provenance_digest_fails_closed
+#   mutates: none
+#   cleanup: none
+#
+# id: check_unknown_envelope_field_rejected
+#   proves: metapat_envelope_unknown_field_rejected
+#   call: self::test_unknown_schema_field_fails_closed
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_canonical_json
+#   proves: metapat_envelope_canonical_json
+#   call: self::test_serialized_envelope_is_canonical_json
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_scalar_types_strict
+#   proves: metapat_envelope_type_strict
+#   call: self::test_from_dict_rejects_scalar_field_coercion
+#   mutates: none
+#   cleanup: none
+#
+# id: check_envelope_sequence_types_strict
+#   proves: metapat_envelope_type_strict
+#   call: self::test_from_dict_rejects_string_for_sequence_fields
+#   mutates: none
+#   cleanup: none
+# === END CHECKS ===
+
 import json
 
 import pytest
@@ -20,6 +82,7 @@ def test_canon_digest_is_deterministic() -> None:
     assert first == second
     assert len(first) == 64
     assert canonical_canon_data()["root_spine"] == list(ROOT_SPINE)
+    assert canonical_canon_data()["canon_file_blobs"]
 
 
 def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
@@ -28,6 +91,8 @@ def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
     assert envelope.module_kind == "simplex"
     assert envelope.source_statements == ROOT_SPINE
     assert len(envelope.source_statement_refs) == len(ROOT_SPINE)
+    assert envelope.constraints
+    assert envelope.permitted_interpretations
     assert envelope.canon_digest == canon_digest()
     assert envelope.provenance_digest
     assert any(value.startswith("hmmm:") for value in envelope.unresolved_constraints)
@@ -97,3 +162,17 @@ def test_unknown_schema_field_fails_closed() -> None:
 def test_serialized_envelope_is_canonical_json() -> None:
     encoded = root_spine_module_envelope().to_json()
     assert json.dumps(json.loads(encoded), ensure_ascii=False, sort_keys=True, separators=(",", ":")) == encoded
+
+
+def test_from_dict_rejects_scalar_field_coercion() -> None:
+    data = root_spine_module_envelope().to_dict()
+    data["module_id"] = 7
+    with pytest.raises(ValueError, match="module_id must be a string"):
+        MetapatModuleEnvelope.from_dict(data)
+
+
+def test_from_dict_rejects_string_for_sequence_fields() -> None:
+    data = root_spine_module_envelope().to_dict()
+    data["constraints"] = "not-an-array"
+    with pytest.raises(ValueError, match="constraints must be an array"):
+        MetapatModuleEnvelope.from_dict(data)
