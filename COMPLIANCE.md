@@ -1,62 +1,71 @@
-# METAPAT skill-lib / msdmd compliance ledger
+# METAPAT compliance surface
 
-## Status
+Date: 2026-07-12
 
-METAPAT has a full structural compliance scaffold for skill-lib / msdmd:
+## Authority
 
-- `AGENTS.md` exists and contains the source `LLMS` declaration.
-- `llms.txt` exists as the generated-style repo instruction file.
-- `.agents/skills/` exists with local skill entries for directly used skill-lib skills.
-- `pyproject.toml` exists.
-- `src/metapat/` exists as an importable Python package.
-- `src/metapat/canon.py` has colocated msdmd metadata for module build, docs, capability, owner, boundary, and contracts.
-- `src/metapat/validation.py` has colocated msdmd metadata for module build, docs, capability, owner, boundary, and contracts.
-- `src/metapat/flow_plan.py` has colocated msdmd metadata for planned UCNS -> METAPAT -> EDCM flow.
-- `tests/test_contracts.py` exists as executable theorem contract tests.
-- `metapat_msdmd.ts` exists as the repo-level msdmd collection point.
+- Meta Energy Theory doctrine: `The-Interdependency/metapat`.
+- Reusable build and evidence doctrine: `The-Interdependency/skill-lib`.
+- Repo-local skill pin: `The-Interdependency/skill-lib@6f36340`.
+- `meta-module-build/SKILL.md` is byte-identical to the canonical file at the pinned lineage; its Git blob identity is `e9ca23f03a124a44d39b4ea79b60833677816711`.
 
-## Five functional tests
+If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the skill contract. METAPAT governs only Meta Energy Theory doctrine.
 
-The executable suite now protects:
+## Standing gates
 
-1. Boundary Earns Its Keep.
-2. Tensor Precedes Time.
-3. Registration Is Not Time.
-4. Observer Role by Registration.
-5. Consciousness Is Optional.
+| Surface | Command | Required result |
+|---|---|---|
+| Source obligations / test evidence | `python tools/check_contract_graph.py` | graph closes with no orphan contract, phantom target, unresolved call, or undeclared top-level test |
+| Generated metadata | `python tools/generate_msdmd.py --check` | committed `metapat_msdmd.ts` is byte-current |
+| Complete canon bytes | `python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"` | every declared canon file matches its exact Git blob identity |
+| Canon contracts | `python -m unittest discover -s tests` | pass |
+| Full base suite | `python -m pytest -q` | pass; actual-UCNS tests may skip only when the optional dependency is absent |
+| Actual UCNS integration | `python -m pip install -e .[dev,ucns]` then targeted pytest | actual object, complete provenance, strict record roundtrip, and no theorem transfer pass |
+| Distribution | `python -m build && python -m twine check dist/*` | source and wheel artifacts valid |
+| Clean wheel | install `dist/*.whl` into a new virtual environment | version, typing marker, packaged fixture, envelope identity, and dependency-free base import pass |
 
-The suite also retains root-spine and time/registration definition checks.
+GitHub Actions is the standing execution evidence. A local run is supporting evidence only and does not supersede a later failing run of the same command.
 
-## Planned architecture edge
+## CONTRACTS / CHECKS status
+
+Source modules contain obligations only. Test modules contain executable `CHECKS` entries using `proves:` and `self::function` resolution. Source `call:` fields are forbidden.
+
+The audit performs no imports. It is negative-tested by planting:
+
+- an orphan contract;
+- a check claiming an unknown contract;
+- an unresolvable call;
+- an executable top-level test without a declaration.
+
+The graph is `[test-backed]` only after the ordinary suite passes and the audit closes. Mutation-level verification remains a higher, currently unclaimed rung.
+
+## Canon identity status
+
+The canon text remains `metapat-canon-v1`. Identity schema `2.0.0` binds:
+
+- importable canon constants and definitions;
+- exact byte identities for `CHAPTER_ZERO.md`, `AXIOMS.md`, `POSTULATES.md`, `THEOREMS.md`, `THEORIES.md`, `GLOSSARY.md`, and `DOMAIN_RESTRAINT.md`.
+
+The aggregate identity uses SHA-256. Git SHA-1 appears only as the repository's exact blob identity for each file and is not presented as a security proof or empirical validation.
+
+## Envelope and UCNS status
+
+`MetapatModuleEnvelope` rejects unknown, missing, or incorrectly typed fields. The actual-UCNS adaptation record now retains exact statements, references, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and envelope provenance identity. It is independently strict and serializable.
+
+The canonical root-spine fixture is packaged at:
 
 ```text
-UCNS -> METAPAT -> EDCM
+metapat/fixtures/root-spine-envelope-v1.json
 ```
 
-Current state:
+The fixture must equal `root_spine_module_envelope().to_json()` byte-for-byte after trailing newline normalization.
 
-```text
-UCNS side: hmmm, planned but not implemented.
-EDCM side: hmmm, planned but not implemented.
-Exact bridge APIs: hmmm.
-```
+## Explicit exclusion
 
-## Local check command
+This repair does not modify `The-Interdependency/edcm`. The EDCM semantic consumer and full shared-stack fixture are a separate downstream PR after this producer contract merges.
 
-```bash
-python -m unittest discover -s tests
-```
+No UCNS-A theorem/proof status is transferred to EDCM, edcmbone, or UCNS-G by this change.
 
 ## hmmm
 
-Full local execution of the compliance/test commands was not run from this chat environment.
-
-A local clone should run:
-
-```bash
-python -m unittest discover -s tests
-python -m llms.build --root . --out llms.txt --check
-python -m msdmd.collect --root . --repo metapat --out metapat_msdmd.ts
-```
-
-Record exact output here after local execution.
+Payload, tag, or external-provenance semantics remain unresolved. The current adapter uses external provenance and unit UCNS payloads because choosing semantic payload meaning requires separate ratification.

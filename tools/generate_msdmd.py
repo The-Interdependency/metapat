@@ -85,28 +85,39 @@ def render_collection(root: Path) -> str:
             REPOSITORY,
             source_commit=SKILL_LIB_PIN,
         )
+        grouped: dict[tuple[str, str], list[dict]] = {}
+        for declaration in collection["declarations"]:
+            grouped.setdefault((declaration["file"], declaration["block"]), []).append(declaration)
+
+        declarations = []
+        for (file, block), entries in sorted(grouped.items()):
+            ids = sorted(entry["id"] for entry in entries)
+            digest_payload = [
+                {"id": entry["id"], "fields": entry["fields"]}
+                for entry in sorted(entries, key=lambda item: item["id"])
+            ]
+            slug = file.replace("/", "_").replace(".", "_").replace("-", "_")
+            declarations.append(
+                {
+                    "file": file,
+                    "block": block,
+                    "id": f"generated_{slug}_{block.lower()}",
+                    "fields": {
+                        "count": str(len(entries)),
+                        "ids": ",".join(ids),
+                        "metadata_digest": hashlib.sha256(
+                            json.dumps(digest_payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+                        ).hexdigest(),
+                    },
+                }
+            )
+
         compact = {
             "repo": collection["repo"],
             "source_commit": collection["source_commit"],
-            "declarations": [
-                {
-                    "file": declaration["file"],
-                    "block": declaration["block"],
-                    "id": declaration["id"],
-                    "fields": {
-                        "metadata_digest": hashlib.sha256(
-                            json.dumps(
-                                declaration["fields"],
-                                sort_keys=True,
-                                separators=(",", ":"),
-                            ).encode("utf-8")
-                        ).hexdigest()
-                    },
-                }
-                for declaration in collection["declarations"]
-            ],
+            "declarations": declarations,
             "gaps": collection["gaps"],
-            "edges": collection["edges"],
+            "edges": [edge for edge in collection["edges"] if edge["kind"] == "claims_proves"],
         }
         payload = json.dumps(compact, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
         return (

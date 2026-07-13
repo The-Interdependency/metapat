@@ -41,14 +41,17 @@ RETRACTED_OR_SUPERSEDED
 | `observer_role_by_registration` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | Supplied simplex record preserves the supplied sequence. | Mind, consciousness, intent, or lived observer status. |
 | `consciousness_is_optional` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | Registration value is present while a separate conscious-story value is non-empty. | Detection or proof of consciousness. |
 
-## Implemented architecture contracts
+## Implemented architecture and evidence contracts
 
 | Surface | Status | Contract |
 |---|---|---|
-| `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable canon surface; digest rotation is observable. |
-| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable, versioned semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive serialization. |
-| `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; records stable hash and schema; transfers no theorem status. |
-| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed `metapat` public surface, metadata, typing marker, deterministic envelopes, and optional actual-UCNS integration work as declared. |
+| `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable canon surface and complete canon-file manifest. |
+| `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as the repository's exact blob identity; the aggregate public identity is SHA-256. |
+| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable, versioned semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. |
+| `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope in a serializable record; transfers no theorem status. |
+| `tools/check_contract_graph.py` | IMPLEMENTED-CONTRACT | Reconciles source `CONTRACTS` and test `CHECKS` without imports and reports planted graph defects. |
+| `tools/generate_msdmd.py` | IMPLEMENTED-CONTRACT | Generates the committed product metadata graph through the pinned skill-lib collector and excludes vendored skill declarations. |
+| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed `metapat` public surface, metadata, typing marker, packaged fixture, deterministic envelopes, and optional actual-UCNS integration work as declared. |
 
 ## Cross-domain and empirical status
 
@@ -66,6 +69,8 @@ RETRACTED_OR_SUPERSEDED
 |---|---|---|
 | Single flow `UCNS -> METAPAT -> EDCM` | RETRACTED_OR_SUPERSEDED | Separate authority, runtime-data, and proof-status flows in `metapat.flow_plan`. |
 | METAPAT-native `UCNSObject`, normalization, carrier calculation, and composition | RETRACTED_OR_SUPERSEDED | Optional adapter to the actual `ucns` package; no second algebra. |
+| `call:` fields inside source `CONTRACTS` | RETRACTED_OR_SUPERSEDED | Test-owned `CHECKS` entries with `proves:` and `self::` resolution. |
+| Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema 2.0.0 binds the complete canon-file manifest alongside importable constants. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
 
 ## Usage
@@ -75,7 +80,7 @@ When adding or changing a public claim:
 1. cite the exact source statement or executable surface;
 2. assign one status from this ledger;
 3. state what evidence would change that status;
-4. update affected code metadata, documentation, and tests together;
+4. update affected code metadata, documentation, tests, generated msdmd, and canon manifest together;
 5. preserve unresolved constraints as `hmmm`.
 
 ## hmmm
