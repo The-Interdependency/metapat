@@ -1,15 +1,7 @@
 """Versioned immutable semantic-authority envelopes for METAPAT consumers.
 
-Usage guidance
---------------
-Create envelopes with :func:`build_module_envelope` or use
-:func:`root_spine_module_envelope` as the cross-repository fixture. Consumers
-may constrain interpretation using the envelope, but must not convert module
-labels or statements directly into measured values.
-
-Serialization is deterministic. ``provenance_digest`` binds every semantic and
-provenance field except itself. Canon identity is carried separately through
-``canon_version`` and ``canon_digest`` so a canon rotation is observable.
+Serialization is deterministic and strict. Deserialization rejects unknown,
+missing, or incorrectly typed fields rather than coercing malformed values.
 """
 
 # === MODULE_BUILD ===
@@ -19,13 +11,13 @@ provenance field except itself. Canon identity is carried separately through
 #   summary: versioned immutable semantic-authority and provenance envelope for UCNS adapters and EDCM consumers
 #   owner: The Interdependency
 #   public_surface: MODULE_ENVELOPE_SCHEMA_ID, MODULE_ENVELOPE_SCHEMA_VERSION, MODULE_KINDS, MetapatModuleEnvelope, build_module_envelope, root_spine_module_envelope
-#   internal_surface: _canonical_payload, _digest_payload, _tuple_of_strings
+#   internal_surface: _canonical_payload, _digest_payload, _tuple_of_strings, _require_string, _require_string_sequence
 #   auth_boundary: none
 #   storage_boundary: serialized envelope only; no persistence performed
 #   network_boundary: none
 #   user_data_boundary: caller-supplied statements and constraints are preserved exactly
 #   admin_only: false
-#   tests: tests.test_envelope, tests.test_ucns_bridge
+#   tests: tests.test_envelope, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
 #   rollback: remove envelope exports and cross-repository adapter fixtures
 #   requires: metapat_canon_core
@@ -38,7 +30,7 @@ provenance field except itself. Canon identity is carried separately through
 #   summary: defines the METAPAT-to-consumer semantic authority boundary
 #   audience: developer, agent
 #   source: codex-handoff/2026-07-12-stack-repair/REQUIRED_CHANGES.md
-#   covers: MetapatModuleEnvelope, provenance digest, canon identity, unresolved hmmm preservation
+#   covers: MetapatModuleEnvelope, strict schema validation, provenance digest, canon identity, unresolved hmmm preservation
 #   status: current
 # === END DOCS ===
 
@@ -62,36 +54,58 @@ provenance field except itself. Canon identity is carried separately through
 # === END BOUNDARIES ===
 
 # === CONTRACTS ===
+# id: metapat_envelope_exact_provenance
+#   given: the canonical root-spine envelope is constructed
+#   then: exact statements, references, constraints, permitted interpretations, canon identity, and unresolved hmmm are present
+#   class: schema_contract
+#
 # id: metapat_envelope_roundtrip
 #   given: a valid immutable module envelope including unresolved hmmm fields
 #   then: deterministic JSON roundtrip preserves every field and digest
 #   class: schema_contract
-#   call: tests.test_envelope.test_envelope_roundtrip_preserves_hmmm
 #
 # id: metapat_envelope_rotation_visible
 #   given: otherwise identical envelopes with different canon digest or semantic constraints
 #   then: provenance digests differ
 #   class: provenance_contract
-#   call: tests.test_envelope.test_canon_or_constraint_rotation_changes_provenance
 #
 # id: metapat_labels_not_measurements
 #   given: a semantic envelope is constructed
 #   then: no measured-values field or measurement-validity claim exists
 #   class: boundary_contract
-#   call: tests.test_envelope.test_envelope_contains_no_measurement_values
+#
+# id: metapat_envelope_tamper_rejected
+#   given: serialized envelope content changes without a matching provenance digest
+#   then: reconstruction fails closed
+#   class: safety
+#
+# id: metapat_envelope_unknown_field_rejected
+#   given: serialized envelope data contains an undeclared field
+#   then: reconstruction fails closed
+#   class: safety
+#
+# id: metapat_envelope_canonical_json
+#   given: the same envelope is serialized repeatedly
+#   then: JSON bytes remain canonical and deterministic
+#   class: evidence
+#
+# id: metapat_envelope_type_strict
+#   given: serialized envelope fields have incorrect scalar or sequence types
+#   then: reconstruction rejects them rather than coercing them
+#   class: safety
 # === END CONTRACTS ===
 
 from __future__ import annotations
 
 import hashlib
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from typing import Any, Iterable, Mapping
 
 from .canon import CANON_VERSION, ROOT_SPINE, canon_digest
 
 MODULE_ENVELOPE_SCHEMA_ID = "metapat.module-envelope"
-MODULE_ENVELOPE_SCHEMA_VERSION = "1.0.0"
+MODULE_ENVELOPE_SCHEMA_VERSION = "1.1.0"
 MODULE_KINDS = frozenset(
     {
         "simplex",
@@ -107,13 +121,32 @@ MODULE_KINDS = frozenset(
 
 
 def _tuple_of_strings(name: str, values: Iterable[str], *, allow_empty: bool = True) -> tuple[str, ...]:
-    result = tuple(values)
+    if isinstance(values, (str, bytes)):
+        raise ValueError(f"{name} must be a sequence of strings, not a scalar string")
+    try:
+        result = tuple(values)
+    except TypeError as exc:
+        raise ValueError(f"{name} must be an iterable of strings") from exc
     if not allow_empty and not result:
         raise ValueError(f"{name} must not be empty")
     for index, value in enumerate(result):
         if not isinstance(value, str) or not value.strip():
             raise ValueError(f"{name}[{index}] must be a non-empty string")
     return result
+
+
+def _require_string(data: Mapping[str, Any], name: str) -> str:
+    value = data[name]
+    if not isinstance(value, str):
+        raise ValueError(f"{name} must be a string")
+    return value
+
+
+def _require_string_sequence(data: Mapping[str, Any], name: str) -> tuple[str, ...]:
+    value = data[name]
+    if not isinstance(value, (list, tuple)):
+        raise ValueError(f"{name} must be an array of strings")
+    return _tuple_of_strings(name, value)
 
 
 def _canonical_payload(data: Mapping[str, Any]) -> bytes:
@@ -131,12 +164,7 @@ def _digest_payload(data: Mapping[str, Any]) -> str:
 
 @dataclass(frozen=True, slots=True)
 class MetapatModuleEnvelope:
-    """Immutable semantic-authority record for external adapters and consumers.
-
-    The envelope carries exact statements and bounded interpretation rules. It
-    contains no EDCM metric values and makes no theorem, empirical, or external
-    truth claim.
-    """
+    """Immutable semantic-authority record for external adapters and consumers."""
 
     module_id: str
     module_kind: str
@@ -154,7 +182,7 @@ class MetapatModuleEnvelope:
     def __post_init__(self) -> None:
         if not isinstance(self.module_id, str) or not self.module_id.strip():
             raise ValueError("module_id must be a non-empty string")
-        if self.module_kind not in MODULE_KINDS:
+        if not isinstance(self.module_kind, str) or self.module_kind not in MODULE_KINDS:
             raise ValueError(
                 f"unsupported module_kind {self.module_kind!r}; "
                 f"expected one of {sorted(MODULE_KINDS)!r}"
@@ -183,6 +211,8 @@ class MetapatModuleEnvelope:
         object.__setattr__(self, "unresolved_constraints", unresolved)
 
         digest = self.canon_digest or canon_digest()
+        if not isinstance(digest, str):
+            raise ValueError("canon_digest must be a string")
         if len(digest) != 64 or any(character not in "0123456789abcdef" for character in digest.lower()):
             raise ValueError("canon_digest must be a lowercase hexadecimal SHA-256 digest")
         object.__setattr__(self, "canon_digest", digest.lower())
@@ -208,21 +238,17 @@ class MetapatModuleEnvelope:
         }
 
     def to_dict(self) -> dict[str, Any]:
-        """Return a deterministic JSON-compatible representation."""
-
         data = self._provenance_fields()
         data["provenance_digest"] = self.provenance_digest
         return data
 
     def to_json(self) -> str:
-        """Return canonical deterministic JSON."""
-
         return _canonical_payload(self.to_dict()).decode("utf-8")
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "MetapatModuleEnvelope":
-        """Validate and reconstruct an envelope from a mapping."""
-
+        if not isinstance(data, Mapping):
+            raise ValueError("module envelope must be a mapping")
         expected_fields = {
             "schema_id",
             "schema_version",
@@ -244,24 +270,24 @@ class MetapatModuleEnvelope:
         if missing:
             raise ValueError(f"missing envelope fields: {sorted(missing)!r}")
         return cls(
-            schema_id=str(data["schema_id"]),
-            schema_version=str(data["schema_version"]),
-            module_id=str(data["module_id"]),
-            module_kind=str(data["module_kind"]),
-            canon_version=str(data["canon_version"]),
-            canon_digest=str(data["canon_digest"]),
-            source_statement_refs=tuple(data["source_statement_refs"]),
-            source_statements=tuple(data["source_statements"]),
-            constraints=tuple(data["constraints"]),
-            permitted_interpretations=tuple(data["permitted_interpretations"]),
-            unresolved_constraints=tuple(data["unresolved_constraints"]),
-            provenance_digest=str(data["provenance_digest"]),
+            schema_id=_require_string(data, "schema_id"),
+            schema_version=_require_string(data, "schema_version"),
+            module_id=_require_string(data, "module_id"),
+            module_kind=_require_string(data, "module_kind"),
+            canon_version=_require_string(data, "canon_version"),
+            canon_digest=_require_string(data, "canon_digest"),
+            source_statement_refs=_require_string_sequence(data, "source_statement_refs"),
+            source_statements=_require_string_sequence(data, "source_statements"),
+            constraints=_require_string_sequence(data, "constraints"),
+            permitted_interpretations=_require_string_sequence(data, "permitted_interpretations"),
+            unresolved_constraints=_require_string_sequence(data, "unresolved_constraints"),
+            provenance_digest=_require_string(data, "provenance_digest"),
         )
 
     @classmethod
     def from_json(cls, value: str) -> "MetapatModuleEnvelope":
-        """Validate and reconstruct an envelope from canonical JSON text."""
-
+        if not isinstance(value, str):
+            raise ValueError("module envelope JSON must be a string")
         decoded = json.loads(value)
         if not isinstance(decoded, dict):
             raise ValueError("module envelope JSON must decode to an object")
@@ -280,8 +306,6 @@ def build_module_envelope(
     canon_version: str = CANON_VERSION,
     canon_identity: str | None = None,
 ) -> MetapatModuleEnvelope:
-    """Construct a validated envelope using the current canon identity by default."""
-
     return MetapatModuleEnvelope(
         module_id=module_id,
         module_kind=module_kind,
@@ -296,8 +320,6 @@ def build_module_envelope(
 
 
 def root_spine_module_envelope() -> MetapatModuleEnvelope:
-    """Return the canonical cross-repository fixture for the five-line root spine."""
-
     refs = tuple(f"AXIOMS.md::ROOT_SPINE[{index}]" for index in range(1, len(ROOT_SPINE) + 1))
     return build_module_envelope(
         module_id="metapat.root_spine",
