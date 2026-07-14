@@ -60,6 +60,17 @@ jobs:
       - name: Audit source CONTRACTS against test CHECKS
         run: python tools/check_contract_graph.py
 
+      - name: Generate exact expected msdmd collection
+        run: python tools/generate_msdmd.py --out /tmp/metapat_msdmd.ts
+
+      - name: Upload exact expected msdmd collection
+        uses: actions/upload-artifact@v4
+        with:
+          name: expected-metapat-msdmd
+          path: /tmp/metapat_msdmd.ts
+          if-no-files-found: error
+          retention-days: 1
+
       - name: Verify generated msdmd collection
         run: python tools/generate_msdmd.py --check
 
