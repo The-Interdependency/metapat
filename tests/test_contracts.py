@@ -68,6 +68,7 @@ def test_root_spine_contains_current_axioms() -> None:
 
 def test_time_and_registration_are_separated() -> None:
     defs = definitions()
+    assert defs["METAPAT"] == "Meta Energy Theory — Axioms, Postulates, Theorems, and Theories."
     assert defs["time"] == "Time is sequential tensor alteration."
     assert "preserve, express, or transmit" in defs["registration"]
     assert defs["time"] != defs["registration"]
@@ -119,9 +120,11 @@ def test_observer_role_by_registration() -> None:
 def test_consciousness_is_optional() -> None:
     nonconscious_registration = ({"layer": 1}, {"layer": 2})
     conscious_story = "I remember the alteration."
+    assert consciousness_is_optional(nonconscious_registration)
+    assert consciousness_is_optional(nonconscious_registration, None)
     assert consciousness_is_optional(nonconscious_registration, conscious_story)
+    assert consciousness_is_optional(nonconscious_registration, "")
     assert not consciousness_is_optional(None, conscious_story)
-    assert not consciousness_is_optional(nonconscious_registration, "")
 
 
 class MetapatContractTests(unittest.TestCase):

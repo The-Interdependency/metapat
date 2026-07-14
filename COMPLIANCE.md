@@ -1,6 +1,6 @@
 # METAPAT compliance surface
 
-Date: 2026-07-12
+Date: 2026-07-14
 
 ## Authority
 
@@ -16,7 +16,7 @@ If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the 
 | Surface | Command | Required result |
 |---|---|---|
 | Source obligations / test evidence | `python tools/check_contract_graph.py` | graph closes with no orphan contract, phantom target, unresolved call, or undeclared top-level test |
-| Generated metadata | `python tools/generate_msdmd.py --check` | committed `metapat_msdmd.ts` is byte-current |
+| Generated metadata | `python tools/generate_msdmd.py --check` | committed `metapat_msdmd.ts` is byte-current and includes `src/metapat/flow_plan.py` declarations |
 | Complete canon bytes | `python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"` | every declared canon file matches its exact Git blob identity |
 | Canon contracts | `python -m unittest discover -s tests` | pass |
 | Full base suite | `python -m pytest -q` | pass; actual-UCNS tests may skip only when the optional dependency is absent |
@@ -46,11 +46,15 @@ The canon text remains `metapat-canon-v1`. Identity schema `2.0.0` binds:
 - importable canon constants and definitions;
 - exact byte identities for `CHAPTER_ZERO.md`, `AXIOMS.md`, `POSTULATES.md`, `THEOREMS.md`, `THEORIES.md`, `GLOSSARY.md`, and `DOMAIN_RESTRAINT.md`.
 
+The corrected `CHAPTER_ZERO.md` Git blob identity is `ba5fcd47086b292ee7e0ddfd7951ca0c4385625f`. The resulting aggregate canon identity is `116fffd7a02487537e43581152fca74099db43c1a0af8df2e737fa9b8afbd00e`.
+
 The aggregate identity uses SHA-256. Git SHA-1 appears only as the repository's exact blob identity for each file and is not presented as a security proof or empirical validation.
 
 ## Envelope and UCNS status
 
-`MetapatModuleEnvelope` rejects unknown, missing, or incorrectly typed fields. The actual-UCNS adaptation record now retains exact statements, references, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and envelope provenance identity. It is independently strict and serializable.
+`MetapatModuleEnvelope` schema `1.2.0` rejects unknown, missing, or incorrectly typed fields. The root spine is represented as a neutral `canon-module`; canonical terms including distinction, energy-state, scalar, vector, transformation, observer, postulate, theorem, and theory can be named without classifying them as simplexes by constructor convenience.
+
+The actual-UCNS adaptation record retains exact statements, resolvable references, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and envelope provenance identity. It is independently strict and serializable.
 
 The canonical root-spine fixture is packaged at:
 

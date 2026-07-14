@@ -42,15 +42,19 @@ Status: implemented and continuously required.
 - Keep root/tool/domain separation.
 - Bind consumers to `CANON_VERSION`, `CANON_IDENTITY_SCHEMA_VERSION`, `canon_digest()`, and the complete canon-file manifest.
 - Fail closed when any canon-bearing Markdown file changes without an explicit manifest update.
+- Check repeated root-spine text against `AXIOMS.md` and `CHAPTER_ZERO.md` rather than protecting inconsistent copies independently.
 - Keep unresolved details marked `hmmm`.
 - Classify public claims in `docs/claims-ledger.md`.
 
 ## Phase 1 — Semantic module envelope
 
-Status: implemented.
+Status: implemented at schema `1.2.0`.
 
 - `MetapatModuleEnvelope` is immutable and versioned.
 - Exact source references and statements survive serialization.
+- Root-spine references resolve to stable `AXIOMS.md` heading and statement identifiers.
+- The root spine is a neutral `canon-module`; it is not classified as a simplex by constructor convenience.
+- The module-kind vocabulary can name distinction, simplex, boundary-simplex, tensor, energy-state, scalar, vector, relation, gradient, transformation, registration, observer, time, question, postulate, theorem, and theory.
 - Constraints, permitted interpretations, unresolved constraints, canon identity, and provenance digest remain distinct.
 - Unknown, missing, or incorrectly typed schema fields fail closed.
 - Canon or constraint rotation changes provenance identity.
@@ -76,11 +80,12 @@ Remaining:
 
 ## Phase 3 — Evidence and metadata integrity
 
-Status: implemented as a standing gate.
+Status: repaired as a standing gate.
 
 - Source modules own `CONTRACTS`; tests own `CHECKS`.
 - `tools/check_contract_graph.py` audits without imports and is negative-tested.
 - `metapat_msdmd.ts` is generated from bounded product surfaces through the pinned collector.
+- The generated graph includes `src/metapat/flow_plan.py`; omission is a failing stale-collection condition.
 - `COMPLIANCE.md` names the current pin, commands, evidence boundaries, and downstream exclusion.
 - CI enforces graph closure, generated metadata freshness, complete canon-file integrity, packaged fixture identity, ordinary tests, builds, and wheel smoke checks.
 
@@ -97,7 +102,7 @@ EDCM must:
 - create a new epoch when canon or policy identity changes;
 - fail closed on malformed schema or provenance.
 
-No EDCM implementation is included in the METAPAT repair PR.
+No EDCM implementation is included in this METAPAT repair.
 
 ## Phase 5 — Shared stack fixture
 
@@ -116,4 +121,4 @@ The deterministic fixture must prove:
 
 ## hmmm
 
-The application-specific meaning of future simplex, boundary-simplex, tensor, relation, gradient, registration, time, and question modules must be declared per module. Naming a module kind does not supply a measured state or an empirical result.
+The application-specific meaning of every future module remains separately declarative. Naming a module kind does not supply a measured state, an empirical result, or proof that an application object instantiates the named METAPAT term.

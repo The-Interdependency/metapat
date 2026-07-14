@@ -105,17 +105,27 @@ from typing import Any, Iterable, Mapping
 from .canon import CANON_VERSION, ROOT_SPINE, canon_digest
 
 MODULE_ENVELOPE_SCHEMA_ID = "metapat.module-envelope"
-MODULE_ENVELOPE_SCHEMA_VERSION = "1.1.0"
+MODULE_ENVELOPE_SCHEMA_VERSION = "1.2.0"
 MODULE_KINDS = frozenset(
     {
+        "canon-module",
+        "distinction",
         "simplex",
         "boundary-simplex",
         "tensor",
+        "energy-state",
+        "scalar",
+        "vector",
         "relation",
         "gradient",
+        "transformation",
         "registration",
+        "observer",
         "time",
         "question",
+        "postulate",
+        "theorem",
+        "theory",
     }
 )
 
@@ -320,10 +330,16 @@ def build_module_envelope(
 
 
 def root_spine_module_envelope() -> MetapatModuleEnvelope:
-    refs = tuple(f"AXIOMS.md::ROOT_SPINE[{index}]" for index in range(1, len(ROOT_SPINE) + 1))
+    refs = (
+        "AXIOMS.md#1-legible-difference::statement-1",
+        "AXIOMS.md#2-boundary::statement-1",
+        "AXIOMS.md#3-simplex::statement-1",
+        "AXIOMS.md#2-boundary::statement-2",
+        "AXIOMS.md#3-simplex::statement-3",
+    )
     return build_module_envelope(
         module_id="metapat.root_spine",
-        module_kind="simplex",
+        module_kind="canon-module",
         source_statement_refs=refs,
         source_statements=ROOT_SPINE,
         constraints=(
