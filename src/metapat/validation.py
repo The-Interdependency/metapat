@@ -85,8 +85,8 @@ Energy Theory, formally prove the ontology, or transfer UCNS theorem status.
 #   class: canon_contract
 #
 # id: consciousness_optional_observer_mode
-#   given: non-conscious registration and conscious story registration
-#   then: encoded condition distinguishes registration presence from conscious narrative presence
+#   given: non-conscious registration with or without a separate conscious story
+#   then: encoded condition requires registration but does not require conscious narrative
 #   class: canon_contract
 # === END CONTRACTS ===
 
@@ -130,8 +130,13 @@ def observer_role_by_registration(simplex: dict[str, object], sequence: tuple[ob
     return tuple(registered) == tuple(sequence) if isinstance(registered, (tuple, list)) else False
 
 
-def consciousness_is_optional(nonconscious_registration: object, conscious_story: object) -> bool:
-    return nonconscious_registration is not None and isinstance(conscious_story, str) and len(conscious_story) > 0
+def consciousness_is_optional(
+    nonconscious_registration: object,
+    conscious_story: object | None = None,
+) -> bool:
+    if nonconscious_registration is None:
+        return False
+    return conscious_story is None or isinstance(conscious_story, str)
 
 
 __all__ = [
