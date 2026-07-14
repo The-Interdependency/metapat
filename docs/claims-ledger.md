@@ -1,6 +1,6 @@
 # METAPAT claims ledger
 
-Date: 2026-07-12
+Date: 2026-07-14
 
 This ledger classifies public doctrine and executable assertions without changing Erin Spencer's canon text. Executable checks of definitions and encoded conditions are contract tests; they are not independent empirical evidence, formal proof, or validation of Meta Energy Theory as external truth.
 
@@ -39,7 +39,7 @@ RETRACTED_OR_SUPERSEDED
 | `tensor_precedes_time` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | A tensor value is present and an ordered alteration sequence has at least two states. | Metaphysical or physical proof of temporal priority. |
 | `registration_is_not_time` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | Sequence may exist without registration; supplied registration preserves the sequence exactly. | Empirical validation of time or registration. |
 | `observer_role_by_registration` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | Supplied simplex record preserves the supplied sequence. | Mind, consciousness, intent, or lived observer status. |
-| `consciousness_is_optional` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | Registration value is present while a separate conscious-story value is non-empty. | Detection or proof of consciousness. |
+| `consciousness_is_optional` | INTERNAL-DERIVATION plus IMPLEMENTED-CONTRACT | A non-conscious registration value is present whether or not a separate conscious story is supplied. | Detection or proof of consciousness. |
 
 ## Implemented architecture and evidence contracts
 
@@ -47,7 +47,7 @@ RETRACTED_OR_SUPERSEDED
 |---|---|---|
 | `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable canon surface and complete canon-file manifest. |
 | `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as the repository's exact blob identity; the aggregate public identity is SHA-256. |
-| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable, versioned semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. |
+| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. The root spine is a neutral `canon-module`, not silently classified as a simplex. |
 | `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope in a serializable record; transfers no theorem status. |
 | `tools/check_contract_graph.py` | IMPLEMENTED-CONTRACT | Reconciles source `CONTRACTS` and test `CHECKS` without imports and reports planted graph defects. |
 | `tools/generate_msdmd.py` | IMPLEMENTED-CONTRACT | Generates the committed product metadata graph through the pinned skill-lib collector and excludes vendored skill declarations. |
@@ -71,6 +71,7 @@ RETRACTED_OR_SUPERSEDED
 | METAPAT-native `UCNSObject`, normalization, carrier calculation, and composition | RETRACTED_OR_SUPERSEDED | Optional adapter to the actual `ucns` package; no second algebra. |
 | `call:` fields inside source `CONTRACTS` | RETRACTED_OR_SUPERSEDED | Test-owned `CHECKS` entries with `proves:` and `self::` resolution. |
 | Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema 2.0.0 binds the complete canon-file manifest alongside importable constants. |
+| Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema 1.2.0 classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
 
 ## Usage
@@ -85,4 +86,4 @@ When adding or changing a public claim:
 
 ## hmmm
 
-The status of future domain-specific modules cannot be assigned in advance. Each module must declare whether it is definition, internal derivation, cross-domain hypothesis, or empirical frontier rather than inheriting root status merely by using METAPAT vocabulary.
+The status of future domain-specific modules cannot be assigned in advance. Each module must declare whether it is definition, internal derivation, cross-domain hypothesis, or empirical frontier rather than inheriting root status merely by using METAPAT vocabulary. The schema can now name the complete canonical vocabulary; that does not by itself supply application meaning or measured state.
