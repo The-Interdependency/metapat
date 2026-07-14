@@ -1,6 +1,6 @@
 # METAPAT
 
-**Meta Energy Theory — Axioms, Postulates, Theorems, and Theories**
+**Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.**
 
 METAPAT is the canonical semantic authority for Meta Energy Theory: a substrate-independent ontology of energy-state relation and transformation. UCNS may represent geometry and EDCM may measure source evidence; neither implementation owns or proves the root.
 
