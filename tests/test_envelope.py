@@ -67,6 +67,8 @@ import json
 import pytest
 
 from metapat import (
+    MODULE_ENVELOPE_SCHEMA_VERSION,
+    MODULE_KINDS,
     ROOT_SPINE,
     MetapatModuleEnvelope,
     build_module_envelope,
@@ -87,10 +89,38 @@ def test_canon_digest_is_deterministic() -> None:
 
 def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
     envelope = root_spine_module_envelope()
+    assert MODULE_ENVELOPE_SCHEMA_VERSION == "1.2.0"
     assert envelope.module_id == "metapat.root_spine"
-    assert envelope.module_kind == "simplex"
+    assert envelope.module_kind == "canon-module"
+    assert envelope.source_statement_refs == (
+        "AXIOMS.md#1-legible-difference::statement-1",
+        "AXIOMS.md#2-boundary::statement-1",
+        "AXIOMS.md#3-simplex::statement-1",
+        "AXIOMS.md#2-boundary::statement-2",
+        "AXIOMS.md#3-simplex::statement-3",
+    )
     assert envelope.source_statements == ROOT_SPINE
     assert len(envelope.source_statement_refs) == len(ROOT_SPINE)
+    assert {
+        "canon-module",
+        "distinction",
+        "simplex",
+        "boundary-simplex",
+        "tensor",
+        "energy-state",
+        "scalar",
+        "vector",
+        "relation",
+        "gradient",
+        "transformation",
+        "registration",
+        "observer",
+        "time",
+        "question",
+        "postulate",
+        "theorem",
+        "theory",
+    } <= MODULE_KINDS
     assert envelope.constraints
     assert envelope.permitted_interpretations
     assert envelope.canon_digest == canon_digest()
