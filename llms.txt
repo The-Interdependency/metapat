@@ -2,11 +2,11 @@
 
 ## Project Overview
 
-METAPAT is the canonical semantic authority for Meta Energy Theory: a substrate-independent ontology of energy-state relation and transformation. It preserves exact canon and emits immutable semantic constraint envelopes without becoming UCNS algebra or EDCM measurement.
+METAPAT is the canonical semantic authority for Meta Energy Theory. It protects exact canon text and the byte identity of every canon-bearing file, then emits strict immutable semantic constraint envelopes without becoming UCNS algebra or EDCM measurement.
 
-## Key Definitions (never infer or expand these)
+## Key Definitions — do not infer or expand
 
-- **METAPAT** = Meta Energy Theory — Axioms, Postulates, and Theorems.
+- **METAPAT** = Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.
 - **root_spine** = Legible difference is distinction; distinction defines boundaries; boundaries define simplex; boundary is simplex of distinction; simplex holds or modifies energy in a state of being.
 - **tensor** = Primitive simultaneous arrangement of energy-states.
 - **time** = Sequential tensor alteration.
@@ -16,10 +16,18 @@ METAPAT is the canonical semantic authority for Meta Energy Theory: a substrate-
 
 ## Architecture Summary
 
-Authority flows from METAPAT canon into UCNS adapters and EDCM consumers. Runtime evidence flows through EDCM parsing and actual UCNS geometry into EDCM readouts under METAPAT-derived semantic constraints. UCNS theorem or domain status transfers into neither METAPAT ontology validity nor EDCM measurement validity.
+METAPAT owns semantic authority. Actual UCNS owns geometry. EDCM owns measurement. Canon identity, UCNS geometry identity, EDCM policy identity, and proof status remain distinct. No implementation owns the root.
 
-## How to Use This Repo with LLMs / Agents
+## Required Agent Behavior
 
-Preserve METAPAT as root canon. Use `MetapatModuleEnvelope` for semantic authority and provenance. Do not recreate UCNS algebra. Use only the optional adapter to actual `ucns.UCNSObject`. Current semantic mapping is `external-provenance`; do not place statements into UCNS payloads unless separately ratified. Treat `validation.py` helpers as deterministic canon contract checks, not theorem validation. Do not turn semantic labels into EDCM metric values. Use `hmmm` for unresolved details and update msdmd blocks with code and documentation changes.
+Preserve canon text exactly unless a canon change is separately authorized. Treat `CANON_FILE_BLOBS`, identity schema `2.0.0`, and `canon_digest()` as one complete identity boundary. Use `MetapatModuleEnvelope` and the packaged root-spine fixture for semantic authority. Reject malformed envelope and adaptation-record types rather than coercing them. Do not recreate UCNS algebra. Keep exact statements, references, constraints, permitted interpretations, unresolved `hmmm`, and provenance external to UCNS payload meaning. Never turn semantic labels into EDCM metric values or transfer UCNS theorem status.
 
-Read `AGENTS.md`, `docs/claims-ledger.md`, `src/metapat/envelope.py`, `src/metapat/ucns.py`, and the 2026-07-12 stack-repair handoff before changing architecture.
+Source modules own `CONTRACTS`; tests own `CHECKS`. Run the no-import graph audit, generated-msdmd freshness check, complete canon-file integrity gate, ordinary suites, actual-UCNS integration, build, and clean-wheel checks. `metapat_msdmd.ts` is generated and must not be edited by hand.
+
+This repository does not implement the EDCM consumer. That is a separate downstream change after the METAPAT producer contract merges.
+
+Read `AGENTS.md`, `COMPLIANCE.md`, `docs/claims-ledger.md`, `src/metapat/canon.py`, `src/metapat/envelope.py`, `src/metapat/ucns.py`, and the 2026-07-12 stack-repair handoff before changing architecture.
+
+## hmmm
+
+Payload, tag, or external-provenance semantics remain unresolved; current behavior is external provenance with unit UCNS payloads.

@@ -47,7 +47,7 @@ include-package-data = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-metapat = ["py.typed"]
+metapat = ["py.typed", "fixtures/*.json"]
 
 [tool.setuptools.dynamic]
 version = { attr = "metapat.__version__" }

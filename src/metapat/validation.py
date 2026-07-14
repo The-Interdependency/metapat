@@ -68,31 +68,26 @@ Energy Theory, formally prove the ontology, or transfer UCNS theorem status.
 #   given: source and target are fixed while boundary state changes
 #   then: encoded boundary condition passes only when outcome changes
 #   class: canon_contract
-#   call: tests.test_contracts.test_boundary_change_changes_outcome
 #
 # id: tensor_before_time
 #   given: one tensor state and then an ordered pair of tensor states
 #   then: encoded tensor-before-sequence condition passes
 #   class: canon_contract
-#   call: tests.test_contracts.test_tensor_precedes_time
 #
 # id: registration_not_time
 #   given: a tensor alteration sequence and an optional registration
 #   then: encoded condition allows sequence without registration and checks exact preservation when present
 #   class: canon_contract
-#   call: tests.test_contracts.test_registration_is_not_time
 #
 # id: observer_role_requires_registration
 #   given: a simplex and a tensor alteration sequence
 #   then: encoded observer-role condition passes only when the sequence is registered
 #   class: canon_contract
-#   call: tests.test_contracts.test_observer_role_by_registration
 #
 # id: consciousness_optional_observer_mode
 #   given: non-conscious registration and conscious story registration
 #   then: encoded condition distinguishes registration presence from conscious narrative presence
 #   class: canon_contract
-#   call: tests.test_contracts.test_consciousness_is_optional
 # === END CONTRACTS ===
 
 
@@ -104,13 +99,6 @@ def boundary_earns_its_keep(
     outcome_a: object,
     outcome_b: object,
 ) -> bool:
-    """Check the encoded boundary/outcome condition.
-
-    Corresponds to the current boundary derivation discussion. It establishes
-    neither causal truth nor empirical validation; it only compares supplied
-    values under the encoded fixed-source/fixed-target preconditions.
-    """
-
     if source_state is None or target_state is None:
         return False
     if boundary_state_a == boundary_state_b:
@@ -119,24 +107,12 @@ def boundary_earns_its_keep(
 
 
 def tensor_precedes_time(tensor_state: object, sequenced_tensor_states: tuple[object, ...]) -> bool:
-    """Check that a tensor value is present before an encoded alteration sequence.
-
-    This is a definitional contract check, not an independent proof that tensor
-    is metaphysically prior to time.
-    """
-
     if tensor_state is None:
         return False
     return len(sequenced_tensor_states) >= 2
 
 
 def registration_is_not_time(sequence: tuple[object, ...], registration: object | None) -> bool:
-    """Check that an encoded sequence can exist without registration.
-
-    When registration is supplied, this function checks exact sequence
-    preservation. It does not establish an empirical theory of time.
-    """
-
     time_exists = len(sequence) >= 2
     if not time_exists:
         return False
@@ -146,12 +122,6 @@ def registration_is_not_time(sequence: tuple[object, ...], registration: object 
 
 
 def observer_role_by_registration(simplex: dict[str, object], sequence: tuple[object, ...]) -> bool:
-    """Check the encoded observer-role-by-registration condition.
-
-    ``observer`` here is the METAPAT role definition, not a diagnosis of mind,
-    consciousness, or lived experience.
-    """
-
     if len(sequence) < 2:
         return False
     registered = simplex.get("registered")
@@ -161,12 +131,6 @@ def observer_role_by_registration(simplex: dict[str, object], sequence: tuple[ob
 
 
 def consciousness_is_optional(nonconscious_registration: object, conscious_story: object) -> bool:
-    """Check the encoded distinction between registration and conscious story.
-
-    The function does not detect consciousness. It only checks that one value
-    represents registration presence while another is a non-empty narrative.
-    """
-
     return nonconscious_registration is not None and isinstance(conscious_story, str) and len(conscious_story) > 0
 
 
