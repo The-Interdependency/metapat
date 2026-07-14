@@ -127,7 +127,7 @@ ENERGY_THEORY_QUESTION = "What questions do I ask?"
 # canon-v1 source epoch. Git blob identities bind file bytes including length.
 CANON_FILE_BLOBS: Mapping[str, str] = {
     "AXIOMS.md": "c7bd186da7e437c691dc3d3bfd305e843f0f149b",
-    "CHAPTER_ZERO.md": "5ad0fcd3d9f1c985ae4c17ae10a9294d8cd6fb37",
+    "CHAPTER_ZERO.md": "ba5fcd47086b292ee7e0ddfd7951ca0c4385625f",
     "DOMAIN_RESTRAINT.md": "d36a46037fa7bd9b3776b47372eab2ced402fd1e",
     "GLOSSARY.md": "42405fb57d9cd365b2b1550c83e9711caa10817b",
     "POSTULATES.md": "3b77d0178fb8abc4416d6c6015f8aa9866377723",
@@ -172,7 +172,7 @@ def definitions() -> dict[str, str]:
     """Return compact canonical definitions for contract checks and consumers."""
 
     return {
-        "METAPAT": "Meta Energy Theory — Axioms, Postulates, and Theorems.",
+        "METAPAT": "Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.",
         "tensor": "Primitive simultaneous arrangement of energy-states.",
         "time": TIME_DEFINITION,
         "registration": "Capacity of a simplex to preserve, express, or transmit sequential tensor alteration.",
