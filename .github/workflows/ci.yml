@@ -36,7 +36,22 @@ jobs:
         run: python -m unittest discover -s tests
 
       - name: Run pytest contracts
-        run: python -m pytest -q
+        id: pytest
+        continue-on-error: true
+        run: python -m pytest -q --junitxml=pytest-results-${{ matrix.python-version }}.xml
+
+      - name: Upload pytest report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-results-${{ matrix.python-version }}
+          path: pytest-results-${{ matrix.python-version }}.xml
+          if-no-files-found: error
+          retention-days: 1
+
+      - name: Preserve pytest failure status
+        if: steps.pytest.outcome == 'failure'
+        run: exit 1
 
   compliance:
     name: Skill graph, generated metadata, and canon integrity
