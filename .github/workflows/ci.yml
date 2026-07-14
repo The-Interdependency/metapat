@@ -6,7 +6,7 @@ on:
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   base-package:
@@ -43,8 +43,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out repository
+      - name: Check out repository head branch
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -61,13 +63,25 @@ jobs:
         run: python tools/check_contract_graph.py
 
       - name: Generate exact expected msdmd collection
-        run: python tools/generate_msdmd.py --out /tmp/metapat_msdmd.ts
+        run: python tools/generate_msdmd.py
+
+      - name: Commit exact generated metadata to PR branch
+        if: github.event_name == 'pull_request'
+        run: |
+          if git diff --quiet -- metapat_msdmd.ts; then
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add metapat_msdmd.ts
+          git commit -m "build(msdmd): use exact generated graph"
+          git push origin HEAD:${{ github.head_ref }}
 
       - name: Upload exact expected msdmd collection
         uses: actions/upload-artifact@v4
         with:
           name: expected-metapat-msdmd
-          path: /tmp/metapat_msdmd.ts
+          path: metapat_msdmd.ts
           if-no-files-found: error
           retention-days: 1
 
