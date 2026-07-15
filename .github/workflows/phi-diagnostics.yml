@@ -1,0 +1,41 @@
+name: temporary Phi diagnostics
+
+on:
+  push:
+    branches:
+      - agent/metapat-ucns-phi-policy
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install package and test tools
+        run: python -m pip install -e .[dev]
+      - name: Capture focused Phi test output and canonical metadata
+        shell: bash
+        run: |
+          set +e
+          python -m pytest -vv tests/test_ucns_phi.py > "$RUNNER_TEMP/phi-tests.log" 2>&1
+          printf '%s\n' "$?" > "$RUNNER_TEMP/phi-tests.status"
+          set -e
+          python tools/generate_msdmd.py --out "$RUNNER_TEMP/metapat_msdmd.ts"
+      - name: Upload diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: phi-diagnostics
+          path: |
+            ${{ runner.temp }}/phi-tests.log
+            ${{ runner.temp }}/phi-tests.status
+            ${{ runner.temp }}/metapat_msdmd.ts
+          if-no-files-found: error
+          retention-days: 2
+      - name: Preserve focused test result
+        run: test "$(cat "$RUNNER_TEMP/phi-tests.status")" = "0"
