@@ -4,19 +4,19 @@
 # id: metapat_application_fixture_generator
 #   module_name: tools.generate_application_fixtures
 #   module_kind: instrument
-#   summary: generates or verifies deterministic packaged application and engineering-design fixtures from canonical constructors
+#   summary: generates or verifies deterministic packaged application-module fixtures from canonical constructors
 #   owner: The Interdependency
-#   public_surface: render_quantum_magnetism_fixture, render_electromagnetic_pipe_fixture, write_fixtures, main
+#   public_surface: render_quantum_magnetism_fixture, write_fixtures, main
 #   internal_surface: FIXTURES
 #   auth_boundary: none
 #   storage_boundary: read, optional generated-file write
 #   network_boundary: none
 #   user_data_boundary: none
 #   admin_only: false
-#   tests: tests.test_quantum_magnetism, tests.test_electromagnetic_pipe
+#   tests: tests.test_quantum_magnetism
 #   rollout: CI compliance gate and explicit regeneration command
-#   rollback: restore prior generated fixtures only with constructor and digest evidence attached
-#   requires: metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application
+#   rollback: restore prior generated fixture only with constructor and digest evidence attached
+#   requires: metapat_quantum_magnetism_application
 #   since: 2026-07-21
 #   unresolved: future application fixtures require separate constructors and evidence classification
 # === END MODULE_BUILD ===
@@ -31,16 +31,6 @@
 #   given: the generator runs in check mode against the packaged quantum-magnetism fixture
 #   then: stale or missing fixture bytes fail visibly and current bytes pass
 #   class: safety
-#
-# id: metapat_pipe_fixture_generated
-#   given: the electromagnetic-pipe design constructor runs
-#   then: the rendered fixture is deterministic JSON with one trailing newline
-#   class: evidence
-#
-# id: metapat_pipe_fixture_current
-#   given: the generator runs in check mode against the packaged electromagnetic-pipe fixture
-#   then: stale or missing fixture bytes fail visibly and current bytes pass
-#   class: safety
 # === END CONTRACTS ===
 
 from __future__ import annotations
@@ -48,14 +38,10 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from metapat.electromagnetic_pipe import electromagnetic_pipe_design
 from metapat.quantum_magnetism import quantum_magnetism_application_module
 
 QUANTUM_MAGNETISM_OUTPUT = Path(
     "src/metapat/fixtures/quantum-magnetism-application-v1.json"
-)
-ELECTROMAGNETIC_PIPE_OUTPUT = Path(
-    "src/metapat/fixtures/three-phase-electromagnetic-pipe-v1.json"
 )
 
 
@@ -63,14 +49,7 @@ def render_quantum_magnetism_fixture() -> str:
     return quantum_magnetism_application_module().to_json() + "\n"
 
 
-def render_electromagnetic_pipe_fixture() -> str:
-    return electromagnetic_pipe_design().to_json() + "\n"
-
-
-FIXTURES = {
-    QUANTUM_MAGNETISM_OUTPUT: render_quantum_magnetism_fixture,
-    ELECTROMAGNETIC_PIPE_OUTPUT: render_electromagnetic_pipe_fixture,
-}
+FIXTURES = {QUANTUM_MAGNETISM_OUTPUT: render_quantum_magnetism_fixture}
 
 
 def write_fixtures(root: Path) -> tuple[Path, ...]:
