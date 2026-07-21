@@ -74,6 +74,23 @@ The nested application record separately keeps METAPAT validity, domain validity
 
 Fault statements are objectives to test. Ceramic containment, molten-copper isolation, absence of conductive spray, and absence of spacecraft fire are not represented as demonstrated outcomes.
 
+## Short-section prototype gate
+
+The three-meter assembly is not the first experimental object. A short instrumented section must first demonstrate that the proposed controls and boundaries are measurable without silently coupling unresolved variables.
+
+The short section should establish, at minimum:
+
+- one declared physical phase-displacement geometry;
+- independently measured phase current and voltage for all active circuits;
+- field magnitude and phase at declared axial and radial positions;
+- attractor distribution and mechanical motion tracking;
+- temperature and insulation-leakage monitoring;
+- repeatable boundary-change trials;
+- bounded end leakage and magnetic-return geometry;
+- declared pass, fail, and inconclusive criteria.
+
+Scaling to three meters requires a new evidence record. Short-section success does not automatically transfer through length, end geometry, thermal accumulation, insulation stress, or attractor population.
+
 ## Source and fixture
 
 Human source:
