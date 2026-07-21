@@ -1,95 +1,4 @@
-"""Catalog-bound three-phase nested electromagnetic-pipe application record."""
-
-# === MODULE_BUILD ===
-# id: metapat_electromagnetic_pipe_application
-#   module_name: metapat.electromagnetic_pipe
-#   module_kind: schema
-#   summary: preserves the three-phase nested electromagnetic-pipe handoff as a strict catalog-bound engineering application and design record without claiming device performance
-#   owner: The Interdependency
-#   public_surface: pipe application and design schema constants, WindingLayerSpec, AlloyCandidate, ElectromagneticPipeDesign, electromagnetic_pipe_application_module, electromagnetic_pipe_design, electromagnetic_pipe_design_digest
-#   internal_surface: source declarations, binding specifications, canonical JSON and digest helpers
-#   auth_boundary: none
-#   storage_boundary: serialization-only and read-only source verification
-#   network_boundary: none
-#   user_data_boundary: public engineering handoff and provenance only
-#   admin_only: false
-#   tests: tests.test_electromagnetic_pipe
-#   rollout: importable package constructor and packaged fixture
-#   rollback: remove application exports and fixture while preserving generic application schema and canonical catalog
-#   requires: metapat_application_module_schema, metapat_semantic_catalog
-#   since: 2026-07-21
-#   unresolved: frequency, current, target field, shielding, phase shift, attractor geometry, thermal limits, protection distance, and alloy performance remain empirical frontiers
-# === END MODULE_BUILD ===
-
-# === DOCS ===
-# id: metapat_electromagnetic_pipe_docs
-#   summary: preserves geometry, six-vector control topology, mobile-attractor distinction, alloy search, instrumentation, fault objectives, and empirical boundaries
-#   audience: developer, electrical engineer, materials engineer, safety reviewer, agent
-#   source: docs/applications/three-phase-electromagnetic-pipe.md
-#   covers: electromagnetic_pipe_application_module, electromagnetic_pipe_design, catalog bindings, source integrity, engineering evidence boundary
-#   status: current
-# === END DOCS ===
-
-# === CAPABILITIES ===
-# id: metapat_electromagnetic_pipe_fixture
-#   summary: emits one deterministic catalog-bound engineering application and typed device-design record for the nested three-phase pipe system
-#   exposes: metapat.electromagnetic_pipe_design
-#   inputs: canonical semantic catalog v1
-#   outputs: strict engineering application, typed topology and material-search record, deterministic digest
-#   boundaries: auth:none, storage:serialization-only, network:none, user_data:public engineering handoff only
-# === END CAPABILITIES ===
-
-# === BOUNDARIES ===
-# id: metapat_electromagnetic_pipe_boundary
-#   summary: engineering proposal and optimization structure only; no electromagnetic, materials, insulation, thermal, fault, spacecraft, measurement, UCNS topology, or theorem-status validity claim
-#   auth_boundary: none
-#   storage_boundary: serialization-only and read-only source verification
-#   network_boundary: none
-#   user_data_boundary: public engineering handoff only
-#   admin_only: false
-# === END BOUNDARIES ===
-
-# === CONTRACTS ===
-# id: metapat_pipe_control_topology_exact
-#   given: the electromagnetic-pipe design record is constructed
-#   then: three radial layers, two handednesses, three phases per handedness, eighteen phase circuits, and six three-phase control systems remain exact and internally reconciled
-#   class: schema_contract
-#
-# id: metapat_pipe_winding_layers_exact
-#   given: the winding layers are inspected
-#   then: outer 12 AWG at 6 turns per inch, middle 16 AWG at 12, and inner 20 AWG at 18 remain ordered and exact
-#   class: provenance_contract
-#
-# id: metapat_pipe_attractors_not_bearings
-#   given: the mobile-element fields are inspected
-#   then: the objects remain ceramic-coated magnetic eddy-current attractors and are never typed as bearings
-#   class: boundary_contract
-#
-# id: metapat_pipe_alloy_search_bounded
-#   given: the alloy candidates are inspected
-#   then: every candidate is atomic percent, totals 100, preserves Fe plus Co plus Ni at 75, Cr at 15, Mn at 10, and remains a search candidate rather than an ideal-alloy claim
-#   class: materials_boundary
-#
-# id: metapat_pipe_application_catalog_bound
-#   given: the pipe application is constructed
-#   then: every METAPAT use is bound to an exact catalog module identity, digest, and claim status
-#   class: integration_contract
-#
-# id: metapat_pipe_source_current
-#   given: the constructor and handoff source are checked together
-#   then: control topology, geometry, winding, attractor, alloy, instrumentation, fault, high-voltage, next-work, evidence, and hmmm statements remain source-current
-#   class: provenance_contract
-#
-# id: metapat_pipe_performance_firewall
-#   given: the design record and application are inspected
-#   then: electromagnetic, materials, insulation, thermal, mechanical, spacecraft, measurement, topology, theorem-transfer, and METAPAT validity claims remain false
-#   class: boundary_contract
-#
-# id: metapat_pipe_roundtrip_strict
-#   given: a valid design record is serialized and reconstructed
-#   then: every nested field and digest survive while unknown, missing, malformed, or tampered fields fail closed
-#   class: schema_contract
-# === END CONTRACTS ===
+"""Catalog-bound three-phase nested electromagnetic-pipe engineering record."""
 
 from __future__ import annotations
 
@@ -144,24 +53,20 @@ def _strings(value: Any, name: str, *, minimum: int = 0) -> tuple[str, ...]:
     if not isinstance(value, (list, tuple)):
         raise ValueError(f"{name} must be an array of strings")
     result = tuple(value)
-    if len(result) < minimum:
-        raise ValueError(f"{name} must contain at least {minimum} entries")
-    if any(not isinstance(item, str) or not item.strip() for item in result):
-        raise ValueError(f"{name} must contain only non-empty strings")
+    if len(result) < minimum or any(not isinstance(item, str) or not item.strip() for item in result):
+        raise ValueError(f"{name} must contain at least {minimum} non-empty strings")
     return result
 
 
-def _boolean_false(value: Any, name: str) -> bool:
-    if not isinstance(value, bool):
-        raise ValueError(f"{name} must be boolean")
+def _false(value: Any, name: str) -> bool:
     if value is not False:
         raise ValueError(f"{name} must remain false")
     return False
 
 
-def _hex_digest(value: Any, name: str) -> str:
+def _hex(value: Any, name: str) -> str:
     text = _text(value, name).lower()
-    if len(text) != 64 or any(character not in "0123456789abcdef" for character in text):
+    if len(text) != 64 or any(ch not in "0123456789abcdef" for ch in text):
         raise ValueError(f"{name} must be a lowercase hexadecimal SHA-256 digest")
     return text
 
@@ -220,18 +125,16 @@ class WindingLayerSpec:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "WindingLayerSpec":
-        if not isinstance(data, Mapping):
-            raise ValueError("winding layer must be a mapping")
         expected = {
             "schema_id", "schema_version", "layer_name", "radial_order", "wire_awg",
             "turns_per_inch", "clockwise_phase_count", "widdershins_phase_count",
             "phase_circuit_count", "three_phase_system_count", "layer_digest",
         }
+        if not isinstance(data, Mapping):
+            raise ValueError("winding layer must be a mapping")
         unknown, missing = set(data) - expected, expected - set(data)
-        if unknown:
-            raise ValueError(f"unknown winding-layer fields: {sorted(unknown)!r}")
-        if missing:
-            raise ValueError(f"missing winding-layer fields: {sorted(missing)!r}")
+        if unknown or missing:
+            raise ValueError(f"invalid winding-layer fields: unknown={sorted(unknown)!r}, missing={sorted(missing)!r}")
         result = cls(
             schema_id=_text(data["schema_id"], "schema_id"),
             schema_version=_text(data["schema_version"], "schema_version"),
@@ -241,7 +144,7 @@ class WindingLayerSpec:
             turns_per_inch=_integer(data["turns_per_inch"], "turns_per_inch", minimum=1),
             clockwise_phase_count=_integer(data["clockwise_phase_count"], "clockwise_phase_count", minimum=1),
             widdershins_phase_count=_integer(data["widdershins_phase_count"], "widdershins_phase_count", minimum=1),
-            layer_digest=_hex_digest(data["layer_digest"], "layer_digest"),
+            layer_digest=_hex(data["layer_digest"], "layer_digest"),
         )
         if data["phase_circuit_count"] != result.phase_circuit_count:
             raise ValueError("phase_circuit_count mismatch")
@@ -307,17 +210,15 @@ class AlloyCandidate:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "AlloyCandidate":
-        if not isinstance(data, Mapping):
-            raise ValueError("alloy candidate must be a mapping")
         expected = {
             "schema_id", "schema_version", "label", "iron", "cobalt", "nickel",
             "chromium", "manganese", "basis", "candidate_digest",
         }
+        if not isinstance(data, Mapping):
+            raise ValueError("alloy candidate must be a mapping")
         unknown, missing = set(data) - expected, expected - set(data)
-        if unknown:
-            raise ValueError(f"unknown alloy-candidate fields: {sorted(unknown)!r}")
-        if missing:
-            raise ValueError(f"missing alloy-candidate fields: {sorted(missing)!r}")
+        if unknown or missing:
+            raise ValueError(f"invalid alloy-candidate fields: unknown={sorted(unknown)!r}, missing={sorted(missing)!r}")
         return cls(
             schema_id=_text(data["schema_id"], "schema_id"),
             schema_version=_text(data["schema_version"], "schema_version"),
@@ -328,7 +229,7 @@ class AlloyCandidate:
             chromium=_number(data["chromium"], "chromium"),
             manganese=_number(data["manganese"], "manganese"),
             basis=_text(data["basis"], "basis"),
-            candidate_digest=_hex_digest(data["candidate_digest"], "candidate_digest"),
+            candidate_digest=_hex(data["candidate_digest"], "candidate_digest"),
         )
 
 
@@ -356,22 +257,13 @@ PIPE_BINDING_SPECS = (
 )
 
 DOMAINS = (
-    "electromagnetics",
-    "power electronics",
-    "magnetic materials",
-    "thermal engineering",
-    "mechanical dynamics",
-    "vacuum high-voltage insulation",
-    "spacecraft systems",
+    "electromagnetics", "power electronics", "magnetic materials",
+    "thermal engineering", "mechanical dynamics",
+    "vacuum high-voltage insulation", "spacecraft systems",
 )
 SELECTED_SCALES = (
-    "phase-circuit",
-    "three-phase-vector",
-    "winding-layer",
-    "pipe-boundary",
-    "mobile-attractor",
-    "three-meter-assembly",
-    "spacecraft-environment",
+    "phase-circuit", "three-phase-vector", "winding-layer", "pipe-boundary",
+    "mobile-attractor", "three-meter-assembly", "spacecraft-environment",
 )
 DOMAIN_STATEMENTS = (
     "The natural control object is one three-phase vector per handedness per radial layer.",
@@ -382,11 +274,8 @@ DOMAIN_STATEMENTS = (
     "The ideal alloy remains a composition-search problem rather than a selected formula until operating and measurement bounds are registered.",
 )
 SHARED_QUESTION_FORM = (
-    "current tensor",
-    "→ magnetic gradient",
-    "→ attractor magnetization and movement",
-    "→ altered boundary state",
-    "→ changed shielding amplitude and phase",
+    "current tensor", "→ magnetic gradient", "→ attractor magnetization and movement",
+    "→ altered boundary state", "→ changed shielding amplitude and phase",
     "→ changed force gradient",
 )
 TRANSFERS = (
@@ -403,8 +292,17 @@ DOES_NOT_TRANSFER = (
     "Ceramic coating guarantees fault containment, insulation life, or vacuum partial-discharge performance.",
     "METAPAT terminology replaces electromagnetic simulation, circuit analysis, materials testing, thermal analysis, or experiment.",
 )
-WORKING_QUESTION = "What phase geometry, current tensor, boundary configuration, attractor distribution, alloy state, and thermal envelope produce the required field, shielding, phase, motion, and fault response without exceeding declared spacecraft limits?"
-EVIDENCE_BOUNDARY = "The geometry and control topology are an engineering proposal. Magnetic, shielding, phase-delay, heating, fault-containment, insulation, motion, alloy, and protection-distance performance remain answerable to simulation, characterization, qualification testing, and instrumented prototypes."
+WORKING_QUESTION = (
+    "What phase geometry, current tensor, boundary configuration, attractor distribution, alloy state, "
+    "and thermal envelope produce the required field, shielding, phase, motion, and fault response "
+    "without exceeding declared spacecraft limits?"
+)
+EVIDENCE_BOUNDARY = (
+    "The geometry and control topology are specified as an engineering proposal. Claimed magnetic, "
+    "shielding, phase-delay, fault-containment, thermal, high-voltage, mechanical, and materials "
+    "performance remain answerable to electromagnetic simulation, circuit analysis, coupon "
+    "characterization, vacuum insulation testing, thermal testing, fault testing, and instrumented prototypes."
+)
 EVIDENCE_REQUIREMENTS = (
     "Define whether physical phase displacement is circumferential, axial, or helical.",
     "Define voltage as peak, RMS, or direct-current-link value and bound circuit-to-circuit differential and overshoot.",
@@ -436,11 +334,8 @@ ALLOY_CANDIDATES = (
     AlloyCandidate("D", 45, 15, 15, 15, 10),
     AlloyCandidate("E", 35, 30, 10, 15, 10),
 )
-
 DRIVE_MODES = (
-    "alternating current",
-    "direct-current bias",
-    "reversed polarity",
+    "alternating current", "direct-current bias", "reversed polarity",
     "independently controlled amplitude and phase",
 )
 PHASE_GEOMETRY_OPTIONS = (
@@ -449,32 +344,17 @@ PHASE_GEOMETRY_OPTIONS = (
     "helical displacement → simultaneous rotation and translation",
 )
 MOBILE_ELEMENT_EFFECTS = (
-    "shielding amplitude",
-    "magnetic phase delay",
-    "field gradients",
-    "settling behavior",
-    "local permeability",
-    "local eddy-current losses",
+    "shielding amplitude", "magnetic phase delay", "field gradients",
+    "settling behavior", "local permeability", "local eddy-current losses",
     "field-history response",
 )
 MOBILE_ELEMENT_BEHAVIORS = (
-    "move",
-    "cluster",
-    "chain",
-    "redistribute",
-    "rotate",
-    "occupy field maxima",
+    "move", "cluster", "chain", "redistribute", "rotate", "occupy field maxima",
 )
 MEASUREMENT_REQUIREMENTS = (
-    "phase current and voltage",
-    "field magnitude",
-    "field phase",
-    "attractor distribution",
-    "temperature",
-    "hysteresis",
-    "settling time",
-    "leakage field",
-    "mechanical motion",
+    "phase current and voltage", "field magnitude", "field phase",
+    "attractor distribution", "temperature", "hysteresis", "settling time",
+    "leakage field", "mechanical motion",
 )
 NORMAL_OPERATION_CONSTRAINTS = (
     "copper remains solid",
@@ -516,46 +396,23 @@ IMMEDIATE_NEXT_WORK = (
 )
 
 
-def _catalog_binding_rows() -> tuple[str, ...]:
-    return tuple(
-        f"| `{module_id}` | {role} | {statement} |"
-        for module_id, role, statement in PIPE_BINDING_SPECS
-    )
-
-
 def _source_pairs() -> tuple[tuple[str, str], ...]:
     pairs: list[tuple[str, str]] = [
         ("application-identity", "Status: **EMPIRICAL-FRONTIER / engineering application**"),
         ("application-identity", "Root impact: **none**"),
         ("canon-correction", "|∆|The natural control object is one three-phase vector per handedness per radial layer.|∆|"),
         ("canon-correction", "The system is not eighteen unrelated currents and the internal alloy objects are not bearings."),
-        ("current-geometry", "Three-meter coaxial assembly for space use:"),
         ("windings", "- 18 phase circuits total;"),
         ("windings", "- naturally organized as |∆|six three-phase systems|∆|."),
-        ("windings", "| outer | 12 AWG | 6 | 3 | 3 |"),
-        ("windings", "| middle | 16 AWG | 12 | 3 | 3 |"),
-        ("windings", "| inner | 20 AWG | 18 | 3 | 3 |"),
         ("windings", "The drives should be current-controlled. Voltage is compliance, not the magnetic command variable."),
-        ("three-phase-behavior", "Each handedness/layer pair is one three-phase vector system."),
-        ("three-phase-behavior", "Three-phase currents require physical phase displacement."),
         ("mobile-internal-elements", "The internal objects are |∆|not bearings|∆|."),
-        ("mobile-internal-elements", "They are ceramic-coated magnetic eddy-current attractors intended to alter:"),
-        ("candidate-alloy", "Fe + Co + Ni = 75 atomic percent"),
-        ("candidate-alloy", "Cr = 15 atomic percent"),
-        ("candidate-alloy", "Mn = 10 atomic percent"),
-        ("candidate-alloy", "Fe42.5 Co22.5 Ni10 Cr15 Mn10 atomic percent"),
-        ("candidate-alloy", "The ideal alloy cannot be selected from elemental properties alone. It depends on:"),
+        ("protection-distance-status", "No fixed protection distance is established yet."),
+        ("evidence-boundary", EVIDENCE_BOUNDARY),
     ]
-    pairs.extend(("catalog-bindings", row) for row in _catalog_binding_rows())
-    pairs.extend(("feedback-chain", line) for line in SHARED_QUESTION_FORM)
-    pairs.extend(("registration", f"- {statement};" if statement != "mechanical motion" else f"- {statement}.") for statement in MEASUREMENT_REQUIREMENTS)
-    pairs.extend(("fault-philosophy", f"- {statement};" if index < len(NORMAL_OPERATION_CONSTRAINTS) else f"- {statement}.") for index, statement in enumerate(NORMAL_OPERATION_CONSTRAINTS, start=1))
-    pairs.extend(("high-voltage-requirements", f"- {statement};" if index < len(HIGH_VOLTAGE_REQUIREMENTS) else f"- {statement}.") for index, statement in enumerate(HIGH_VOLTAGE_REQUIREMENTS, start=1))
-    pairs.append(("protection-distance-status", "No fixed protection distance is established yet."))
-    pairs.extend(("immediate-next-work", f"{index}. {statement}") for index, statement in enumerate(IMMEDIATE_NEXT_WORK, start=1))
-    pairs.append(("evidence-boundary", EVIDENCE_BOUNDARY))
-    pairs.append(("evidence-boundary", "No fixed protection distance, ideal alloy, operating frequency, maximum phase current, target field, shielding attenuation, phase shift, attractor dimension, or thermal limit is established by this application record."))
-    pairs.append(("hmmm", "The geometry is conceptually bounded, but frequency, current, target field, desired phase shift, attractor dimensions, and thermal limits remain unresolved. Until those are registered, “ideal alloy” remains a composition-search problem rather than a single truthful formula."))
+    pairs.extend(
+        ("catalog-bindings", f"| `{module_id}` | {role} | {statement} |")
+        for module_id, role, statement in PIPE_BINDING_SPECS
+    )
     return tuple(pairs)
 
 
@@ -571,10 +428,10 @@ def electromagnetic_pipe_application_module(
         )
         for module_id, role, statement in PIPE_BINDING_SPECS
     )
-    source_pairs = _source_pairs()
+    pairs = _source_pairs()
     refs = tuple(
         f"{SOURCE_DOCUMENT}#{anchor}::statement-{index}"
-        for index, (anchor, _statement) in enumerate(source_pairs, start=1)
+        for index, (anchor, _statement) in enumerate(pairs, start=1)
     )
     application = MetapatApplicationModule(
         application_id="metapat.application.three_phase_electromagnetic_pipe",
@@ -585,7 +442,7 @@ def electromagnetic_pipe_application_module(
         selected_scales=SELECTED_SCALES,
         source_document=SOURCE_DOCUMENT,
         source_statement_refs=refs,
-        source_statements=tuple(statement for _anchor, statement in source_pairs),
+        source_statements=tuple(statement for _anchor, statement in pairs),
         catalog_version=selected.catalog_version,
         catalog_digest=selected.catalog_digest,
         catalog_bindings=bindings,
@@ -607,30 +464,26 @@ class ElectromagneticPipeDesign:
     application: MetapatApplicationModule
     assembly_length_m: float
     outer_pipe_diameter_in: float
-    iron_pipe_count: int
     radial_layer_count: int
     handednesses: tuple[str, ...]
     phases_per_handedness: int
-    phase_circuit_count: int
-    three_phase_system_count: int
     winding_layers: tuple[WindingLayerSpec, ...]
     control_object: str
     current_command_variable: str
     voltage_role: str
-    nominal_drive_statement: str
     drive_modes: tuple[str, ...]
     phase_geometry_options: tuple[str, ...]
     mobile_element_designation: str
     prohibited_mobile_element_designation: str
     mobile_element_effects: tuple[str, ...]
     mobile_element_behaviors: tuple[str, ...]
+    alloy_candidates: tuple[AlloyCandidate, ...]
     measurement_requirements: tuple[str, ...]
     normal_operation_constraints: tuple[str, ...]
     extreme_fault_objectives: tuple[str, ...]
     high_voltage_requirements: tuple[str, ...]
     protection_distance_status: str
     immediate_next_work: tuple[str, ...]
-    alloy_candidates: tuple[AlloyCandidate, ...]
     unresolved_constraints: tuple[str, ...]
     electromagnetic_validity_claim: bool = False
     alloy_validity_claim: bool = False
@@ -643,85 +496,64 @@ class ElectromagneticPipeDesign:
 
     def __post_init__(self) -> None:
         if not isinstance(self.application, MetapatApplicationModule):
-            raise ValueError("application must be a MetapatApplicationModule")
-        if self.application.claim_status != "EMPIRICAL-FRONTIER":
-            raise ValueError("pipe application must remain EMPIRICAL-FRONTIER")
+            raise TypeError("application must be a MetapatApplicationModule")
         object.__setattr__(self, "assembly_length_m", _number(self.assembly_length_m, "assembly_length_m", minimum=0.001))
         object.__setattr__(self, "outer_pipe_diameter_in", _number(self.outer_pipe_diameter_in, "outer_pipe_diameter_in", minimum=0.001))
-        _integer(self.iron_pipe_count, "iron_pipe_count", minimum=1)
-        _integer(self.radial_layer_count, "radial_layer_count", minimum=1)
+        if self.radial_layer_count != 3:
+            raise ValueError("radial_layer_count must remain 3")
         handednesses = _strings(self.handednesses, "handednesses", minimum=2)
         if handednesses != ("clockwise", "widdershins"):
             raise ValueError("handednesses must remain clockwise and widdershins")
         if self.phases_per_handedness != 3:
             raise ValueError("phases_per_handedness must remain 3")
         layers = tuple(self.winding_layers)
-        if len(layers) != 3 or any(not isinstance(layer, WindingLayerSpec) for layer in layers):
-            raise ValueError("winding_layers must contain exactly three WindingLayerSpec values")
-        if tuple(layer.layer_name for layer in layers) != ("outer", "middle", "inner"):
-            raise ValueError("winding layers must remain ordered outer, middle, inner")
-        if tuple(layer.radial_order for layer in layers) != (1, 2, 3):
-            raise ValueError("winding radial order must remain 1, 2, 3")
-        calculated_circuits = sum(layer.phase_circuit_count for layer in layers)
-        calculated_systems = sum(layer.three_phase_system_count for layer in layers)
-        if self.radial_layer_count != len(layers):
-            raise ValueError("radial_layer_count mismatch")
-        if self.phase_circuit_count != calculated_circuits or self.phase_circuit_count != 18:
-            raise ValueError("phase_circuit_count must reconcile to 18")
-        if self.three_phase_system_count != calculated_systems or self.three_phase_system_count != 6:
-            raise ValueError("three_phase_system_count must reconcile to 6")
-        if self.iron_pipe_count != 3:
-            raise ValueError("iron_pipe_count must remain 3")
+        if tuple((x.layer_name, x.radial_order, x.wire_awg, x.turns_per_inch) for x in layers) != (
+            ("outer", 1, 12, 6), ("middle", 2, 16, 12), ("inner", 3, 20, 18),
+        ):
+            raise ValueError("winding layer order or specification mismatch")
         if self.control_object != "one three-phase vector per handedness per radial layer":
-            raise ValueError("control_object must preserve the canon correction")
+            raise ValueError("control_object mismatch")
         if self.current_command_variable != "phase current" or self.voltage_role != "compliance":
-            raise ValueError("current must remain command variable and voltage must remain compliance")
-        _text(self.nominal_drive_statement, "nominal_drive_statement")
-        drive_modes = _strings(self.drive_modes, "drive_modes", minimum=4)
-        geometries = _strings(self.phase_geometry_options, "phase_geometry_options", minimum=3)
-        _text(self.mobile_element_designation, "mobile_element_designation")
+            raise ValueError("current command or voltage role mismatch")
         if self.mobile_element_designation != "ceramic-coated magnetic eddy-current attractors":
             raise ValueError("mobile elements must remain ceramic-coated magnetic eddy-current attractors")
         if self.prohibited_mobile_element_designation != "bearings":
             raise ValueError("prohibited mobile-element designation must remain bearings")
-        if "bearing" in self.mobile_element_designation.lower():
-            raise ValueError("mobile-element designation may not become bearings")
-        effects = _strings(self.mobile_element_effects, "mobile_element_effects", minimum=7)
-        behaviors = _strings(self.mobile_element_behaviors, "mobile_element_behaviors", minimum=6)
-        measurements = _strings(self.measurement_requirements, "measurement_requirements", minimum=9)
-        normal = _strings(self.normal_operation_constraints, "normal_operation_constraints", minimum=4)
-        faults = _strings(self.extreme_fault_objectives, "extreme_fault_objectives", minimum=5)
-        high_voltage = _strings(self.high_voltage_requirements, "high_voltage_requirements", minimum=9)
-        _text(self.protection_distance_status, "protection_distance_status")
-        next_work = _strings(self.immediate_next_work, "immediate_next_work", minimum=12)
-        alloys = tuple(self.alloy_candidates)
-        if len(alloys) != 5 or any(not isinstance(item, AlloyCandidate) for item in alloys):
-            raise ValueError("alloy_candidates must contain exactly five AlloyCandidate values")
-        unresolved = _strings(self.unresolved_constraints, "unresolved_constraints", minimum=4)
-        for name in (
-            "electromagnetic_validity_claim", "alloy_validity_claim", "insulation_validity_claim",
-            "fault_containment_validity_claim", "spacecraft_safety_validity_claim",
-        ):
-            _boolean_false(getattr(self, name), name)
-        if self.schema_id != PIPE_DESIGN_SCHEMA_ID or self.schema_version != PIPE_DESIGN_SCHEMA_VERSION:
-            raise ValueError("unsupported pipe-design schema")
+        candidates = tuple(self.alloy_candidates)
+        if len(candidates) != 5 or any(not isinstance(x, AlloyCandidate) for x in candidates):
+            raise ValueError("exactly five alloy candidates are required")
+        tuple_fields = (
+            "drive_modes", "phase_geometry_options", "mobile_element_effects",
+            "mobile_element_behaviors", "measurement_requirements",
+            "normal_operation_constraints", "extreme_fault_objectives",
+            "high_voltage_requirements", "immediate_next_work", "unresolved_constraints",
+        )
+        for name in tuple_fields:
+            object.__setattr__(self, name, _strings(getattr(self, name), name, minimum=1))
         object.__setattr__(self, "handednesses", handednesses)
         object.__setattr__(self, "winding_layers", layers)
-        object.__setattr__(self, "drive_modes", drive_modes)
-        object.__setattr__(self, "phase_geometry_options", geometries)
-        object.__setattr__(self, "mobile_element_effects", effects)
-        object.__setattr__(self, "mobile_element_behaviors", behaviors)
-        object.__setattr__(self, "measurement_requirements", measurements)
-        object.__setattr__(self, "normal_operation_constraints", normal)
-        object.__setattr__(self, "extreme_fault_objectives", faults)
-        object.__setattr__(self, "high_voltage_requirements", high_voltage)
-        object.__setattr__(self, "immediate_next_work", next_work)
-        object.__setattr__(self, "alloy_candidates", alloys)
-        object.__setattr__(self, "unresolved_constraints", unresolved)
+        object.__setattr__(self, "alloy_candidates", candidates)
+        _text(self.protection_distance_status, "protection_distance_status")
+        for name in (
+            "electromagnetic_validity_claim", "alloy_validity_claim",
+            "insulation_validity_claim", "fault_containment_validity_claim",
+            "spacecraft_safety_validity_claim",
+        ):
+            _false(getattr(self, name), name)
+        if self.schema_id != PIPE_DESIGN_SCHEMA_ID or self.schema_version != PIPE_DESIGN_SCHEMA_VERSION:
+            raise ValueError("unsupported pipe-design schema")
         expected = _digest(self._payload())
         if self.design_digest and self.design_digest != expected:
             raise ValueError("design_digest mismatch")
         object.__setattr__(self, "design_digest", expected)
+
+    @property
+    def phase_circuit_count(self) -> int:
+        return self.radial_layer_count * len(self.handednesses) * self.phases_per_handedness
+
+    @property
+    def three_phase_system_count(self) -> int:
+        return self.radial_layer_count * len(self.handednesses)
 
     def _payload(self) -> dict[str, Any]:
         return {
@@ -730,7 +562,6 @@ class ElectromagneticPipeDesign:
             "application": self.application.to_dict(),
             "assembly_length_m": self.assembly_length_m,
             "outer_pipe_diameter_in": self.outer_pipe_diameter_in,
-            "iron_pipe_count": self.iron_pipe_count,
             "radial_layer_count": self.radial_layer_count,
             "handednesses": list(self.handednesses),
             "phases_per_handedness": self.phases_per_handedness,
@@ -740,20 +571,19 @@ class ElectromagneticPipeDesign:
             "control_object": self.control_object,
             "current_command_variable": self.current_command_variable,
             "voltage_role": self.voltage_role,
-            "nominal_drive_statement": self.nominal_drive_statement,
             "drive_modes": list(self.drive_modes),
             "phase_geometry_options": list(self.phase_geometry_options),
             "mobile_element_designation": self.mobile_element_designation,
             "prohibited_mobile_element_designation": self.prohibited_mobile_element_designation,
             "mobile_element_effects": list(self.mobile_element_effects),
             "mobile_element_behaviors": list(self.mobile_element_behaviors),
+            "alloy_candidates": [candidate.to_dict() for candidate in self.alloy_candidates],
             "measurement_requirements": list(self.measurement_requirements),
             "normal_operation_constraints": list(self.normal_operation_constraints),
             "extreme_fault_objectives": list(self.extreme_fault_objectives),
             "high_voltage_requirements": list(self.high_voltage_requirements),
             "protection_distance_status": self.protection_distance_status,
             "immediate_next_work": list(self.immediate_next_work),
-            "alloy_candidates": [candidate.to_dict() for candidate in self.alloy_candidates],
             "unresolved_constraints": list(self.unresolved_constraints),
             "electromagnetic_validity_claim": self.electromagnetic_validity_claim,
             "alloy_validity_claim": self.alloy_validity_claim,
@@ -770,83 +600,75 @@ class ElectromagneticPipeDesign:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "ElectromagneticPipeDesign":
-        if not isinstance(data, Mapping):
-            raise ValueError("electromagnetic pipe design must be a mapping")
         expected = {
             "schema_id", "schema_version", "application", "assembly_length_m",
-            "outer_pipe_diameter_in", "iron_pipe_count", "radial_layer_count",
-            "handednesses", "phases_per_handedness", "phase_circuit_count",
-            "three_phase_system_count", "winding_layers", "control_object",
-            "current_command_variable", "voltage_role", "nominal_drive_statement",
+            "outer_pipe_diameter_in", "radial_layer_count", "handednesses",
+            "phases_per_handedness", "phase_circuit_count", "three_phase_system_count",
+            "winding_layers", "control_object", "current_command_variable", "voltage_role",
             "drive_modes", "phase_geometry_options", "mobile_element_designation",
             "prohibited_mobile_element_designation", "mobile_element_effects",
-            "mobile_element_behaviors", "measurement_requirements",
+            "mobile_element_behaviors", "alloy_candidates", "measurement_requirements",
             "normal_operation_constraints", "extreme_fault_objectives",
             "high_voltage_requirements", "protection_distance_status",
-            "immediate_next_work", "alloy_candidates", "unresolved_constraints",
+            "immediate_next_work", "unresolved_constraints",
             "electromagnetic_validity_claim", "alloy_validity_claim",
             "insulation_validity_claim", "fault_containment_validity_claim",
             "spacecraft_safety_validity_claim", "design_digest",
         }
+        if not isinstance(data, Mapping):
+            raise ValueError("pipe design must be a mapping")
         unknown, missing = set(data) - expected, expected - set(data)
         if unknown:
             raise ValueError(f"unknown pipe-design fields: {sorted(unknown)!r}")
         if missing:
             raise ValueError(f"missing pipe-design fields: {sorted(missing)!r}")
-        for array_name in (
-            "handednesses", "winding_layers", "drive_modes", "phase_geometry_options",
-            "mobile_element_effects", "mobile_element_behaviors", "measurement_requirements",
-            "normal_operation_constraints", "extreme_fault_objectives", "high_voltage_requirements",
-            "immediate_next_work", "alloy_candidates", "unresolved_constraints",
-        ):
-            if not isinstance(data[array_name], (list, tuple)):
-                raise ValueError(f"{array_name} must be an array")
-        return cls(
+        result = cls(
             schema_id=_text(data["schema_id"], "schema_id"),
             schema_version=_text(data["schema_version"], "schema_version"),
             application=MetapatApplicationModule.from_dict(data["application"]),
-            assembly_length_m=_number(data["assembly_length_m"], "assembly_length_m", minimum=0.001),
-            outer_pipe_diameter_in=_number(data["outer_pipe_diameter_in"], "outer_pipe_diameter_in", minimum=0.001),
-            iron_pipe_count=_integer(data["iron_pipe_count"], "iron_pipe_count", minimum=1),
-            radial_layer_count=_integer(data["radial_layer_count"], "radial_layer_count", minimum=1),
+            assembly_length_m=_number(data["assembly_length_m"], "assembly_length_m"),
+            outer_pipe_diameter_in=_number(data["outer_pipe_diameter_in"], "outer_pipe_diameter_in"),
+            radial_layer_count=_integer(data["radial_layer_count"], "radial_layer_count"),
             handednesses=_strings(data["handednesses"], "handednesses", minimum=2),
-            phases_per_handedness=_integer(data["phases_per_handedness"], "phases_per_handedness", minimum=1),
-            phase_circuit_count=_integer(data["phase_circuit_count"], "phase_circuit_count", minimum=1),
-            three_phase_system_count=_integer(data["three_phase_system_count"], "three_phase_system_count", minimum=1),
-            winding_layers=tuple(WindingLayerSpec.from_dict(item) for item in data["winding_layers"]),
+            phases_per_handedness=_integer(data["phases_per_handedness"], "phases_per_handedness"),
+            winding_layers=tuple(WindingLayerSpec.from_dict(x) for x in data["winding_layers"]),
             control_object=_text(data["control_object"], "control_object"),
             current_command_variable=_text(data["current_command_variable"], "current_command_variable"),
             voltage_role=_text(data["voltage_role"], "voltage_role"),
-            nominal_drive_statement=_text(data["nominal_drive_statement"], "nominal_drive_statement"),
-            drive_modes=_strings(data["drive_modes"], "drive_modes", minimum=4),
-            phase_geometry_options=_strings(data["phase_geometry_options"], "phase_geometry_options", minimum=3),
+            drive_modes=_strings(data["drive_modes"], "drive_modes", minimum=1),
+            phase_geometry_options=_strings(data["phase_geometry_options"], "phase_geometry_options", minimum=1),
             mobile_element_designation=_text(data["mobile_element_designation"], "mobile_element_designation"),
             prohibited_mobile_element_designation=_text(data["prohibited_mobile_element_designation"], "prohibited_mobile_element_designation"),
-            mobile_element_effects=_strings(data["mobile_element_effects"], "mobile_element_effects", minimum=7),
-            mobile_element_behaviors=_strings(data["mobile_element_behaviors"], "mobile_element_behaviors", minimum=6),
-            measurement_requirements=_strings(data["measurement_requirements"], "measurement_requirements", minimum=9),
-            normal_operation_constraints=_strings(data["normal_operation_constraints"], "normal_operation_constraints", minimum=4),
-            extreme_fault_objectives=_strings(data["extreme_fault_objectives"], "extreme_fault_objectives", minimum=5),
-            high_voltage_requirements=_strings(data["high_voltage_requirements"], "high_voltage_requirements", minimum=9),
+            mobile_element_effects=_strings(data["mobile_element_effects"], "mobile_element_effects", minimum=1),
+            mobile_element_behaviors=_strings(data["mobile_element_behaviors"], "mobile_element_behaviors", minimum=1),
+            alloy_candidates=tuple(AlloyCandidate.from_dict(x) for x in data["alloy_candidates"]),
+            measurement_requirements=_strings(data["measurement_requirements"], "measurement_requirements", minimum=1),
+            normal_operation_constraints=_strings(data["normal_operation_constraints"], "normal_operation_constraints", minimum=1),
+            extreme_fault_objectives=_strings(data["extreme_fault_objectives"], "extreme_fault_objectives", minimum=1),
+            high_voltage_requirements=_strings(data["high_voltage_requirements"], "high_voltage_requirements", minimum=1),
             protection_distance_status=_text(data["protection_distance_status"], "protection_distance_status"),
-            immediate_next_work=_strings(data["immediate_next_work"], "immediate_next_work", minimum=12),
-            alloy_candidates=tuple(AlloyCandidate.from_dict(item) for item in data["alloy_candidates"]),
-            unresolved_constraints=_strings(data["unresolved_constraints"], "unresolved_constraints", minimum=4),
-            electromagnetic_validity_claim=_boolean_false(data["electromagnetic_validity_claim"], "electromagnetic_validity_claim"),
-            alloy_validity_claim=_boolean_false(data["alloy_validity_claim"], "alloy_validity_claim"),
-            insulation_validity_claim=_boolean_false(data["insulation_validity_claim"], "insulation_validity_claim"),
-            fault_containment_validity_claim=_boolean_false(data["fault_containment_validity_claim"], "fault_containment_validity_claim"),
-            spacecraft_safety_validity_claim=_boolean_false(data["spacecraft_safety_validity_claim"], "spacecraft_safety_validity_claim"),
-            design_digest=_hex_digest(data["design_digest"], "design_digest"),
+            immediate_next_work=_strings(data["immediate_next_work"], "immediate_next_work", minimum=1),
+            unresolved_constraints=_strings(data["unresolved_constraints"], "unresolved_constraints", minimum=1),
+            electromagnetic_validity_claim=_false(data["electromagnetic_validity_claim"], "electromagnetic_validity_claim"),
+            alloy_validity_claim=_false(data["alloy_validity_claim"], "alloy_validity_claim"),
+            insulation_validity_claim=_false(data["insulation_validity_claim"], "insulation_validity_claim"),
+            fault_containment_validity_claim=_false(data["fault_containment_validity_claim"], "fault_containment_validity_claim"),
+            spacecraft_safety_validity_claim=_false(data["spacecraft_safety_validity_claim"], "spacecraft_safety_validity_claim"),
+            design_digest=_hex(data["design_digest"], "design_digest"),
         )
+        if data["phase_circuit_count"] != result.phase_circuit_count:
+            raise ValueError("phase_circuit_count mismatch")
+        if data["three_phase_system_count"] != result.three_phase_system_count:
+            raise ValueError("three_phase_system_count mismatch")
+        return result
 
     @classmethod
     def from_json(cls, value: str) -> "ElectromagneticPipeDesign":
         if not isinstance(value, str):
-            raise ValueError("pipe-design JSON must be a string")
+            raise ValueError("pipe design JSON must be a string")
         decoded = json.loads(value)
         if not isinstance(decoded, dict):
-            raise ValueError("pipe-design JSON must decode to an object")
+            raise ValueError("pipe design JSON must decode to an object")
         return cls.from_dict(decoded)
 
 
@@ -854,35 +676,33 @@ def electromagnetic_pipe_design(
     catalog: MetapatSemanticCatalog | None = None,
 ) -> ElectromagneticPipeDesign:
     selected = catalog or canonical_semantic_catalog()
-    application = electromagnetic_pipe_application_module(selected)
     return ElectromagneticPipeDesign(
-        application=application,
+        application=electromagnetic_pipe_application_module(selected),
         assembly_length_m=3.0,
         outer_pipe_diameter_in=3.0,
-        iron_pipe_count=3,
         radial_layer_count=3,
         handednesses=("clockwise", "widdershins"),
         phases_per_handedness=3,
-        phase_circuit_count=18,
-        three_phase_system_count=6,
         winding_layers=LAYER_SPECS,
         control_object="one three-phase vector per handedness per radial layer",
         current_command_variable="phase current",
         voltage_role="compliance",
-        nominal_drive_statement="0–250+ volts per phase; peak, RMS, or direct-current-link interpretation unresolved",
         drive_modes=DRIVE_MODES,
         phase_geometry_options=PHASE_GEOMETRY_OPTIONS,
         mobile_element_designation="ceramic-coated magnetic eddy-current attractors",
         prohibited_mobile_element_designation="bearings",
         mobile_element_effects=MOBILE_ELEMENT_EFFECTS,
         mobile_element_behaviors=MOBILE_ELEMENT_BEHAVIORS,
+        alloy_candidates=ALLOY_CANDIDATES,
         measurement_requirements=MEASUREMENT_REQUIREMENTS,
         normal_operation_constraints=NORMAL_OPERATION_CONSTRAINTS,
         extreme_fault_objectives=EXTREME_FAULT_OBJECTIVES,
         high_voltage_requirements=HIGH_VOLTAGE_REQUIREMENTS,
-        protection_distance_status="No fixed protection distance is established; end leakage and return geometry remain load-bearing.",
+        protection_distance_status=(
+            "No fixed protection distance is established yet; end leakage, return paths, "
+            "frequency, field limits, saturation, and attractor state remain determinant."
+        ),
         immediate_next_work=IMMEDIATE_NEXT_WORK,
-        alloy_candidates=ALLOY_CANDIDATES,
         unresolved_constraints=UNRESOLVED,
     )
 
