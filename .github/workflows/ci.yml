@@ -9,6 +9,36 @@ permissions:
   contents: read
 
 jobs:
+  diagnose-full-pytest:
+    if: github.event_name == 'pull_request' && github.head_ref == 'agent/release-electromagnetic-pipe-v060'
+    name: Diagnose full pytest suite
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install package and development tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Capture full pytest output
+        run: python -m pytest -q --tb=short > full-pytest.txt 2>&1 || true
+
+      - name: Upload full pytest output
+        uses: actions/upload-artifact@v4
+        with:
+          name: full-pytest-diagnostic
+          path: full-pytest.txt
+          if-no-files-found: error
+
   base-package:
     name: Base package / Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
