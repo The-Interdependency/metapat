@@ -22,6 +22,8 @@ Authority flow:
 METAPAT canon
     |
     +-- constrains terms, interpretation, allowed derivations, and claim status
+    +-- catalog makes doctrine addressable
+    +-- application modules bind domain uses to exact catalog identities and evidence limits
     v
 UCNS adapters and EDCM consumers
 ```
@@ -54,6 +56,7 @@ python -m unittest discover -s tests
 python -m pytest -q
 python tools/check_contract_graph.py
 python tools/generate_catalog.py --check
+python tools/generate_application_fixtures.py --check
 python tools/generate_msdmd.py --check
 python -m build
 python -m twine check dist/*
@@ -146,6 +149,35 @@ Catalog v1 preserves distinctions among `ROOT-STIPULATION`, `DEFINITION`, `WORKI
 
 The packaged `fixtures/semantic-module-catalog-v1.json` must remain byte-identical to the live constructor plus one trailing newline. See `docs/semantic-module-catalog.md`.
 
+## Catalog-bound application modules
+
+`MetapatApplicationModule` binds a domain application to exact catalog module IDs, module digests, and declared claim statuses while preserving source text, scales, transfer limits, evidence requirements, unresolved `hmmm`, and a deterministic application digest.
+
+The first vertical slice is:
+
+```text
+application: metapat.application.quantum_magnetism
+version: quantum-magnetism-application-v1
+claim status: CROSS-DOMAIN-HYPOTHESIS
+catalog bindings: 12
+root impact: none
+```
+
+```python
+from pathlib import Path
+import metapat
+
+catalog = metapat.canonical_semantic_catalog()
+application = metapat.quantum_magnetism_application_module(catalog)
+metapat.validate_application_against_catalog(application, catalog)
+metapat.assert_application_sources_match(Path("."), application)
+print(application.application_digest)
+```
+
+The application preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions, keeps physics answerable to physics, deliberately excludes Theory 10, and makes no METAPAT-validity, domain-validity, measurement-validity, theorem-transfer, or UCNS-topology claim.
+
+The packaged fixture is `fixtures/quantum-magnetism-application-v1.json`. See `docs/application-modules.md` and `docs/applications/quantum-magnetism.md`.
+
 ## Actual UCNS adapter
 
 METAPAT defines no local `UCNSObject`, normalization, carrier calculation, or composition algebra. `metapat.ucns` lazily imports the actual `ucns` package only when adaptation is requested.
@@ -182,7 +214,7 @@ authorized relation: constitutive-simultaneous
 authorization mode: explicit-only
 ```
 
-Temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry actions, arbitrary association, and ordinary catalog ancestry are not payload containment. Authorization binds semantic meaning only; UCNS owns geometry, and a downstream integration must still bind the authorization to the exact parent object, payload path, ordered child hashes, and encoded topology. No theorem status, METAPAT validity, or EDCM measurement validity transfers.
+Temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry actions, arbitrary association, catalog ancestry, and application binding are not payload containment. Authorization binds semantic meaning only; UCNS owns geometry, and a downstream integration must still bind the authorization to the exact parent object, payload path, ordered child hashes, and encoded topology. No theorem status, METAPAT validity, or EDCM measurement validity transfers.
 
 See `docs/ucns-phi-policy.md`.
 
@@ -215,6 +247,8 @@ audit reconciles the graph without importing code.
 - `GLOSSARY.md` — term meanings and status.
 - `docs/claims-ledger.md` — public claim classification.
 - `docs/semantic-module-catalog.md` — addressable catalog contract and limits.
+- `docs/application-modules.md` — catalog-bound application schema and evidence firewall.
+- `docs/applications/quantum-magnetism.md` — first catalog-bound application vertical slice.
 - `UCNS_IMPLEMENTATION.md` — actual adapter scope and limits.
 - `docs/ucns-phi-policy.md` — explicit constitutive-fork semantic authority and downstream limits.
 - `COMPLIANCE.md` — current evidence surfaces and commands.
@@ -229,4 +263,4 @@ No implementation owns the root.
 
 ## hmmm
 
-The next METAPAT-native vertical slice is to bind the quantum-magnetism application note to exact catalog module identities while preserving its cross-domain-hypothesis status, physical scale distinctions, evidence boundary, and unresolved meanings of “field-space.” The downstream EDCM consumer and topology-bound shared UCNS/METAPAT/EDCM fixture remain separate repository changes.
+The quantum-magnetism application is now catalog-bound and source-checked, but it remains a cross-domain hypothesis. Advancing its evidentiary status requires explicit physical-variable mappings, distinguishing predictions, and experimental or computational comparison. The downstream EDCM consumer and topology-bound shared UCNS/METAPAT/EDCM fixture remain separate repository changes.
