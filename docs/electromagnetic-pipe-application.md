@@ -74,7 +74,9 @@ The nested application record separately keeps METAPAT validity, domain validity
 
 Fault statements are objectives to test. Ceramic containment, molten-copper isolation, absence of conductive spray, and absence of spacecraft fire are not represented as demonstrated outcomes.
 
-## Source and tests
+## Release surface
+
+METAPAT `0.6.0` exports the pipe application and design records through the top-level `metapat` package.
 
 Human source:
 
@@ -82,14 +84,23 @@ Human source:
 docs/applications/three-phase-electromagnetic-pipe.md
 ```
 
-Trusted ordinary test surface:
+Packaged deterministic fixture:
 
-```bash
-python -m unittest tests.test_electromagnetic_pipe
-python -m pytest -q tests/test_electromagnetic_pipe.py
+```text
+src/metapat/fixtures/three-phase-electromagnetic-pipe-v1.json
 ```
 
-The module is deliberately not yet promoted into the top-level package export, release-version, generated-fixture, or generated-msdmd surfaces. Those release-facing changes belong in a separate follow-up after this application core is reviewed and the stacked prerequisites are merged.
+Generation and verification:
+
+```bash
+python tools/generate_application_fixtures.py
+python tools/generate_application_fixtures.py --check
+python tools/generate_msdmd.py --check
+python -m unittest tests.test_electromagnetic_pipe
+python -m pytest -q tests/test_electromagnetic_pipe.py tests/test_packaging.py
+```
+
+The clean-wheel smoke test verifies version `0.6.0`, the top-level constructors, the exact packaged fixture, the 18-circuit / six-system topology, catalog binding, and design digest without requiring UCNS.
 
 ## Short-section prototype gate
 

@@ -30,6 +30,12 @@ from __future__ import annotations
 #   call: self::test_root_spine_fixture_is_packaged_and_exact
 #   mutates: filesystem_read
 #   cleanup: none
+#
+# id: check_pipe_fixture_packaged
+#   proves: metapat_pipe_fixture_packaged
+#   call: self::test_electromagnetic_pipe_fixture_is_packaged_and_exact
+#   mutates: filesystem_read
+#   cleanup: none
 # === END CHECKS ===
 
 from importlib.metadata import version
@@ -39,6 +45,7 @@ import metapat
 
 
 def test_public_version_matches_distribution_metadata() -> None:
+    assert metapat.__version__ == "0.6.0"
     assert version("metapat") == metapat.__version__
 
 
@@ -48,9 +55,13 @@ def test_typed_marker_is_packaged() -> None:
 
 def test_base_import_does_not_require_ucns() -> None:
     assert callable(metapat.root_spine_module_envelope)
+    assert callable(metapat.electromagnetic_pipe_design)
     envelope = metapat.root_spine_module_envelope()
+    design = metapat.electromagnetic_pipe_design()
     assert envelope.module_id == "metapat.root_spine"
     assert envelope.provenance_digest
+    assert design.phase_circuit_count == 18
+    assert design.three_phase_system_count == 6
 
 
 def test_public_surface_contains_no_local_ucns_object_class() -> None:
@@ -62,3 +73,9 @@ def test_root_spine_fixture_is_packaged_and_exact() -> None:
     fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v1.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8").strip() == metapat.root_spine_module_envelope().to_json()
+
+
+def test_electromagnetic_pipe_fixture_is_packaged_and_exact() -> None:
+    fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json")
+    assert fixture.is_file()
+    assert fixture.read_text(encoding="utf-8").strip() == metapat.electromagnetic_pipe_design().to_json()
