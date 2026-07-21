@@ -39,7 +39,7 @@ jobs:
         run: python -m pytest -q
 
   compliance:
-    name: Skill graph, generated metadata, and canon integrity
+    name: Skill graph, generated metadata, catalog, and canon integrity
     runs-on: ubuntu-latest
 
     steps:
@@ -59,6 +59,15 @@ jobs:
 
       - name: Audit source CONTRACTS against test CHECKS
         run: python tools/check_contract_graph.py
+
+      - name: Verify addressable semantic catalog contracts
+        run: python -m pytest -q tests/test_catalog.py tests/test_relations.py
+
+      - name: Verify packaged semantic catalog fixture
+        run: python tools/generate_catalog.py --check
+
+      - name: Verify catalog source references against exact canon sections
+        run: python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"
 
       - name: Verify explicit Phi policy contracts
         run: python -m pytest -q tests/test_ucns_phi.py
@@ -161,12 +170,19 @@ jobs:
 
           assert version("metapat") == metapat.__version__
           assert files("metapat").joinpath("py.typed").is_file()
-          fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v1.json")
-          assert fixture.is_file()
+          root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v1.json")
+          catalog_fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v1.json")
+          assert root_fixture.is_file()
+          assert catalog_fixture.is_file()
           envelope = metapat.root_spine_module_envelope()
-          assert fixture.read_text(encoding="utf-8").strip() == envelope.to_json()
+          catalog = metapat.canonical_semantic_catalog()
+          assert root_fixture.read_text(encoding="utf-8").strip() == envelope.to_json()
+          assert catalog_fixture.read_text(encoding="utf-8").strip() == catalog.to_json()
           assert envelope.canon_digest == metapat.canon_digest()
+          assert catalog.canon_digest == metapat.canon_digest()
+          assert len(catalog.modules) == 39
           assert envelope.provenance_digest
+          assert catalog.catalog_digest
           assert not hasattr(metapat, "UCNSObject")
           print(f"metapat {metapat.__version__} wheel smoke passed")
           PY
