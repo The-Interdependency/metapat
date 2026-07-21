@@ -1,10 +1,10 @@
-"""Public METAPAT canon, catalog, semantic-envelope, contract-check, and adapter exports."""
+"""Public METAPAT canon, catalog, application, semantic-envelope, contract-check, and adapter exports."""
 
 # === MODULE_BUILD ===
 # id: metapat_package_exports
 #   module_name: metapat
 #   module_kind: schema
-#   summary: re-exports byte-complete canon identity, addressable semantic catalog, strict immutable envelopes and relations, deterministic canon checks, explicit UCNS Phi authority, and the optional actual-UCNS adapter
+#   summary: re-exports byte-complete canon identity, addressable semantic catalog, strict catalog-bound application modules, immutable envelopes and relations, deterministic checks, explicit UCNS Phi authority, and the optional actual-UCNS adapter
 #   owner: The Interdependency
 #   public_surface: __version__, canon identity, semantic catalog and relations, MetapatModuleEnvelope, canon contract checks, UCNSPhiPolicy, UCNSForkAuthorization, actual-UCNS adapter
 #   internal_surface: none
@@ -13,10 +13,10 @@
 #   network_boundary: none
 #   user_data_boundary: none
 #   admin_only: false
-#   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
+#   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
 #   rollback: remove catalog exports and fixture while preserving prior canon, envelope, Phi, and adapter surfaces
-#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
+#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-12
 #   unresolved: downstream consumers must bind module and fork authorizations to exact application and UCNS topology identities
 # === END MODULE_BUILD ===
@@ -24,7 +24,7 @@
 # === DEPENDENCIES ===
 # id: metapat_package_dependency_edges
 #   summary: base exports depend on canon, semantic catalog, relation and envelope schemas, contract checks, flow declarations, Phi policy, and a lazy optional UCNS adapter
-#   imports: metapat.canon, metapat.catalog, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
+#   imports: metapat.canon, metapat.catalog, metapat.application, metapat.quantum_magnetism, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
 #   external_optional: ucns
 #   provides: metapat_package_exports
 #   class: runtime
@@ -58,8 +58,21 @@
 #   class: packaging
 # === END CONTRACTS ===
 
-__version__ = "0.4.0"
+__version__ = "0.5.0"
 
+from .application import (
+    APPLICATION_BINDING_SCHEMA_ID,
+    APPLICATION_BINDING_SCHEMA_VERSION,
+    APPLICATION_CLAIM_STATUSES,
+    APPLICATION_SCHEMA_ID,
+    APPLICATION_SCHEMA_VERSION,
+    ApplicationCatalogBinding,
+    MetapatApplicationModule,
+    application_source_mismatches,
+    assert_application_sources_match,
+    bind_catalog_module,
+    validate_application_against_catalog,
+)
 from .canon import (
     CANON_FILE_BLOBS,
     CANON_IDENTITY_SCHEMA_VERSION,
@@ -112,6 +125,12 @@ from .flow_plan import (
     PROOF_STATUS_FLOW,
     RUNTIME_DATA_FLOW,
     UCNS_SIDE_STATUS,
+)
+from .quantum_magnetism import (
+    QUANTUM_MAGNETISM_APPLICATION_VERSION,
+    QUANTUM_MAGNETISM_BINDING_SPECS,
+    quantum_magnetism_application_digest,
+    quantum_magnetism_application_module,
 )
 from .relations import (
     CLAIM_STATUSES,
@@ -243,4 +262,19 @@ __all__ = [
     "semantic_module_by_id",
     "tensor_precedes_time",
     "validate_fork_authorization",
+    "APPLICATION_BINDING_SCHEMA_ID",
+    "APPLICATION_BINDING_SCHEMA_VERSION",
+    "APPLICATION_CLAIM_STATUSES",
+    "APPLICATION_SCHEMA_ID",
+    "APPLICATION_SCHEMA_VERSION",
+    "ApplicationCatalogBinding",
+    "MetapatApplicationModule",
+    "QUANTUM_MAGNETISM_APPLICATION_VERSION",
+    "QUANTUM_MAGNETISM_BINDING_SPECS",
+    "application_source_mismatches",
+    "assert_application_sources_match",
+    "bind_catalog_module",
+    "quantum_magnetism_application_digest",
+    "quantum_magnetism_application_module",
+    "validate_application_against_catalog",
 ]
