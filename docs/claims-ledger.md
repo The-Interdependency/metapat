@@ -9,6 +9,7 @@ This ledger classifies public doctrine and executable assertions without changin
 ```text
 ROOT-STIPULATION
 DEFINITION
+WORKING-POSTULATE
 INTERNAL-DERIVATION
 IMPLEMENTED-CONTRACT
 CROSS-DOMAIN-HYPOTHESIS
@@ -16,7 +17,9 @@ EMPIRICAL-FRONTIER
 RETRACTED_OR_SUPERSEDED
 ```
 
-## Root canon
+`WORKING-POSTULATE` names a revisable commitment that organizes application but may not rewrite root axioms. It was added so postulates are not flattened into either root stipulations or internal theorem claims.
+
+## Root canon and doctrine classes
 
 | Statement or surface | Status | Source | Boundary |
 |---|---|---|---|
@@ -30,6 +33,10 @@ RETRACTED_OR_SUPERSEDED
 | Registration | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Distinct from time and consciousness. |
 | Observer role | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Observer does not necessarily mean mind. |
 | Question as bounded unresolved energy-state | DEFINITION | root documents, `metapat.canon.definitions()` | Definition; unresolved questions remain unresolved. |
+| Six current postulates | WORKING-POSTULATE | `POSTULATES.md`, catalog modules `metapat.postulate.1` through `.6` | Revisable application commitments; may not rewrite axioms or inherit proof status. |
+| Eight current theorems | INTERNAL-DERIVATION | `THEOREMS.md`, catalog modules `metapat.theorem.1` through `.8` | Internal reductions and proof sketches, not formal or empirical proofs. |
+| Theories 0–9 and 11 | INTERNAL-DERIVATION | `THEORIES.md`, corresponding catalog modules | Organized application lenses reducible to current doctrine; remain demotable. |
+| Theory 10, Symbolic and Memetic Transfer | CROSS-DOMAIN-HYPOTHESIS | `THEORIES.md`, `metapat.theory.10.symbolic_and_memetic_transfer` | Remains application-layer pending symbolic vertex tables, receiver tests, and UCNS-gonol mappings. |
 
 ## Internal derivations and checks
 
@@ -46,26 +53,34 @@ RETRACTED_OR_SUPERSEDED
 | Surface | Status | Contract |
 |---|---|---|
 | `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable canon surface and complete canon-file manifest. |
-| `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as the repository's exact blob identity; the aggregate public identity is SHA-256. |
-| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. The root spine is a neutral `canon-module`, not silently classified as a simplex. |
-| `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope in a serializable record; transfers no theorem status. |
-| `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as the default semantic mapping, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
-| `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record declares producer-side semantic authority only; it does not prove downstream topology. |
-| `validate_fork_authorization` | IMPLEMENTED-CONTRACT | Fails closed on parent, child-order, canon, source-reference, policy, relation-kind, or digest mismatch. It does not inspect or validate an actual UCNS payload path. |
+| `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as repository blob identity; aggregate identity is SHA-256. |
+| `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. |
+| `MetapatModuleRelation` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` record with bounded relation kind, evidence status, exact endpoints and source provenance, unresolved constraints, and deterministic digest; no theorem or measurement status transfer surface. |
+| `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 39 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
+| `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 6, theorems 8, and theories 12. |
+| `assert_catalog_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every module and relation statement against its exact declared Markdown section and fails on source drift. |
+| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |
+| `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope; transfers no theorem status. |
+| `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as default, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
+| `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record does not prove downstream topology. |
+| `validate_fork_authorization` | IMPLEMENTED-CONTRACT | Fails closed on parent, child-order, canon, source-reference, policy, relation-kind, or digest mismatch. It does not inspect an actual UCNS payload path. |
 | `tools/check_contract_graph.py` | IMPLEMENTED-CONTRACT | Reconciles source `CONTRACTS` and test `CHECKS` without imports and reports planted graph defects. |
 | `tools/generate_msdmd.py` | IMPLEMENTED-CONTRACT | Generates the committed product metadata graph through the pinned skill-lib collector and excludes vendored skill declarations. |
-| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed `metapat` public surface, metadata, typing marker, packaged fixture, deterministic envelopes, Phi policy, and optional actual-UCNS integration work as declared. |
+| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed public surface, metadata, typing marker, both packaged fixtures, catalog identity, Phi policy, and optional actual-UCNS integration work as declared. |
 
 ## Cross-domain and empirical status
 
 | Claim family | Status | Boundary |
 |---|---|---|
-| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Domain tools may not redefine root canon. |
-| Explicitly authorized ordered children are simultaneous constitutive components of one semantic parent | IMPLEMENTED-CONTRACT as a METAPAT declaration | The authorization records the declared meaning and provenance; it does not establish that an actual UCNS fixture encodes that topology correctly. |
+| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Catalog addressability does not make the application root, theorem, or empirical result. |
+| A catalog module correctly reproduces the exact current source statement and declared status | IMPLEMENTED-CONTRACT | This establishes addressability and provenance only, not external truth. |
+| A catalog `derived-from` edge correctly reproduces a `THEORIES.md` declaration | IMPLEMENTED-CONTRACT | This records declared semantic ancestry, not formal proof of the derivation. |
+| Explicitly authorized ordered children are simultaneous constitutive components of one semantic parent | IMPLEMENTED-CONTRACT as a METAPAT declaration | The authorization records declared meaning and provenance; it does not establish that an actual UCNS fixture encodes the topology correctly. |
 | Binding a `UCNSForkAuthorization` to exact UCNS parent identity, payload path, ordered child hashes, and encoded topology | EMPIRICAL-FRONTIER / hmmm | Requires a downstream topology-binding schema and fail-closed linter. Geometry cannot supply missing semantic child identities by itself. |
 | Mapping METAPAT statements into UCNS payload or tag semantics outside an explicit constitutive authorization | EMPIRICAL-FRONTIER / hmmm | Current adapter remains external provenance with unit payloads. No broader payload or tag meaning is ratified. |
 | EDCM measurements corresponding to METAPAT semantic labels | EMPIRICAL-FRONTIER | Labels constrain interpretation; they are not measured values. |
 | Claims that contract tests validate the ontology externally | RETRACTED_OR_SUPERSEDED | Tests protect encoded contracts only. |
+| Claims that catalog membership promotes a statement's claim status | RETRACTED_OR_SUPERSEDED | Catalog modules retain declared status; addressability transfers no status. |
 | Claims that UCNS theorem status proves METAPAT ontology | RETRACTED_OR_SUPERSEDED | Proof-status transfer is forbidden. |
 
 ## Superseded architecture statements
@@ -77,8 +92,10 @@ RETRACTED_OR_SUPERSEDED
 | `call:` fields inside source `CONTRACTS` | RETRACTED_OR_SUPERSEDED | Test-owned `CHECKS` entries with `proves:` and `self::` resolution. |
 | Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema `2.0.0` binds the complete canon-file manifest alongside importable constants. |
 | Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema `1.2.0` classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
+| Postulates implicitly sharing theorem or root status | RETRACTED_OR_SUPERSEDED | `WORKING-POSTULATE` explicitly preserves revisability and non-root status. |
+| Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v1 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
-| All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and every broader semantic mapping remain unresolved. |
+| All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and broader semantic mappings remain unresolved. |
 
 ## Usage
 
@@ -87,9 +104,9 @@ When adding or changing a public claim:
 1. cite the exact source statement or executable surface;
 2. assign one status from this ledger;
 3. state what evidence would change that status;
-4. update affected code metadata, documentation, tests, generated msdmd, and canon manifest together;
+4. update affected catalog declarations, fixtures, code metadata, documentation, tests, generated msdmd, and canon manifest as applicable;
 5. preserve unresolved constraints as `hmmm`.
 
 ## hmmm
 
-The status of future domain-specific modules cannot be assigned in advance. Each module must declare whether it is definition, internal derivation, cross-domain hypothesis, or empirical frontier rather than inheriting root status merely by using METAPAT vocabulary. The Phi policy can now authorize one bounded semantic relation; it does not by itself supply child application meaning, measured state, or proof that downstream UCNS topology matches the authorization.
+Catalog v1 can name current doctrine and declared ancestry without guessing. The status of future domain-specific modules still must be assigned separately. The first application vertical slice must show that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, or measurement.
