@@ -1,0 +1,196 @@
+name: Reconcile application authority docs
+
+on:
+  push:
+    branches: [agent/quantum-magnetism-application-module]
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/quantum-magnetism-application-module
+
+      - name: Reconcile public authority surfaces
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path: str, old: str, new: str) -> None:
+              file = Path(path)
+              text = file.read_text(encoding="utf-8")
+              if old not in text:
+                  raise SystemExit(f"missing replacement marker in {path}: {old[:80]!r}")
+              file.write_text(text.replace(old, new, 1), encoding="utf-8")
+
+          replace_once(
+              "README.md",
+              "python tools/generate_catalog.py --check\npython tools/generate_msdmd.py --check",
+              "python tools/generate_catalog.py --check\npython tools/generate_application_fixtures.py --check\npython tools/generate_msdmd.py --check",
+          )
+          replace_once(
+              "README.md",
+              "The packaged `fixtures/semantic-module-catalog-v1.json` must remain byte-identical to the live constructor plus one trailing newline. See `docs/semantic-module-catalog.md`.\n\n## Actual UCNS adapter",
+              """The packaged `fixtures/semantic-module-catalog-v1.json` must remain byte-identical to the live constructor plus one trailing newline. See `docs/semantic-module-catalog.md`.
+
+## Catalog-bound application modules
+
+`MetapatApplicationModule` binds a domain application to exact catalog module IDs, module digests, and declared claim statuses while preserving source text, scales, transfer limits, evidence requirements, unresolved `hmmm`, and a deterministic application digest.
+
+The first vertical slice is:
+
+```text
+metapat.application.quantum_magnetism
+claim status: CROSS-DOMAIN-HYPOTHESIS
+catalog bindings: 12
+root impact: none
+```
+
+```python
+from pathlib import Path
+import metapat
+
+catalog = metapat.canonical_semantic_catalog()
+application = metapat.quantum_magnetism_application_module(catalog)
+metapat.validate_application_against_catalog(application, catalog)
+metapat.assert_application_sources_match(Path("."), application)
+print(application.application_digest)
+```
+
+The application preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions, keeps physics answerable to physics, deliberately excludes Theory 10, and makes no METAPAT-validity, domain-validity, measurement-validity, theorem-transfer, or UCNS-topology claim.
+
+The packaged fixture is `fixtures/quantum-magnetism-application-v1.json`. See `docs/application-modules.md` and `docs/applications/quantum-magnetism.md`.
+
+## Actual UCNS adapter""",
+          )
+          replace_once(
+              "README.md",
+              "- `docs/semantic-module-catalog.md` — addressable catalog contract and limits.\n- `UCNS_IMPLEMENTATION.md`",
+              "- `docs/semantic-module-catalog.md` — addressable catalog contract and limits.\n- `docs/application-modules.md` — catalog-bound application schema and evidence firewall.\n- `docs/applications/quantum-magnetism.md` — first catalog-bound application vertical slice.\n- `UCNS_IMPLEMENTATION.md`",
+          )
+          replace_once(
+              "README.md",
+              "The next METAPAT-native vertical slice is to bind the quantum-magnetism application note to exact catalog module identities while preserving its cross-domain-hypothesis status, physical scale distinctions, evidence boundary, and unresolved meanings of “field-space.” The downstream EDCM consumer and topology-bound shared UCNS/METAPAT/EDCM fixture remain separate repository changes.",
+              "The quantum-magnetism application is now catalog-bound and source-checked, but it remains a cross-domain hypothesis. Advancing its evidentiary status requires explicit physical-variable mappings, distinguishing predictions, and experimental or computational comparison. The downstream EDCM consumer and topology-bound shared UCNS/METAPAT/EDCM fixture remain separate repository changes.",
+          )
+
+          old_phase = """## Phase 5 — Application-module vertical slices
+
+Status: next METAPAT-native implementation.
+
+The quantum-magnetism application should:
+
+- identify every applied METAPAT module by exact catalog ID;
+- retain its `CROSS-DOMAIN-HYPOTHESIS` status;
+- distinguish nuclear, atomic, crystalline, and magnetic-domain scales;
+- preserve what transfers and what does not transfer;
+- keep physics evidence answerable to physics;
+- retain the unresolved meanings of “field-space” as `hmmm`;
+- demonstrate that catalog addressability does not import application claims into root canon.
+"""
+          new_phase = """## Phase 5 — Application-module vertical slices
+
+Status: first vertical slice implemented at application schema `1.0.0`.
+
+The quantum-magnetism application now:
+
+- binds twelve applied METAPAT terms to exact catalog module IDs, module digests, and declared claim statuses;
+- retains `CROSS-DOMAIN-HYPOTHESIS` status and root impact `none`;
+- distinguishes nuclear, atomic, crystalline, and magnetic-domain scales;
+- preserves what transfers and what does not transfer;
+- keeps physics evidence answerable to physics;
+- deliberately excludes Theory 10;
+- preserves unresolved “field-space” meaning as `hmmm`;
+- packages a deterministic source-checked fixture;
+- makes every ontology, domain, measurement, theorem-transfer, and UCNS-topology validation field false.
+
+Remaining:
+
+- hmmm: define physical variables and boundaries precisely enough to test the mapping;
+- hmmm: produce predictions that differ from a restatement of established physics;
+- hmmm: compare those predictions with experimental or computational evidence;
+- hmmm: add later application modules only with separate source, status, and domain evidence declarations.
+"""
+          replace_once("ROADMAP.md", old_phase, new_phase)
+          replace_once(
+              "ROADMAP.md",
+              "Catalog v1 makes doctrine addressable; it does not make future application meaning automatic. The next repo-native move is the quantum-magnetism application-module vertical slice. The topology-bound Phi fixture and EDCM consumer remain cross-repository work.",
+              "Catalog v1 now has one complete application-module vertical slice. Application provenance is implemented; physics validation is not. The topology-bound Phi fixture and EDCM consumer remain cross-repository work.",
+          )
+
+          replace_once(
+              "docs/claims-ledger.md",
+              "| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |\n| `metapat.ucns.adapt_envelope_to_ucns`",
+              "| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |\n| `ApplicationCatalogBinding` | IMPLEMENTED-CONTRACT | Binds exact catalog module ID, digest, claim status, application role, and application statement without altering the module or transferring status. |\n| `MetapatApplicationModule` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` preserves domain, scales, source, catalog identity, bindings, transfer limits, evidence requirements, unresolved `hmmm`, and explicit false validation/status-transfer fields. |\n| `quantum_magnetism_application_module()` | IMPLEMENTED-CONTRACT | Emits the first source-checked catalog-bound application fixture with twelve exact bindings and `CROSS-DOMAIN-HYPOTHESIS` status. |\n| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism application fixture byte-for-byte. |\n| `metapat.ucns.adapt_envelope_to_ucns`",
+          )
+          replace_once(
+              "docs/claims-ledger.md",
+              "| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Catalog addressability does not make the application root, theorem, or empirical result. |",
+              "| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Catalog or application-module addressability does not make the application root, theorem, measurement, or empirical result. |\n| Quantum-magnetism catalog bindings and source-current fixture | IMPLEMENTED-CONTRACT | Establish exact provenance and evidence limits only; physics validity remains a CROSS-DOMAIN-HYPOTHESIS. |",
+          )
+          replace_once(
+              "docs/claims-ledger.md",
+              "Catalog v1 can name current doctrine and declared ancestry without guessing. The status of future domain-specific modules still must be assigned separately. The first application vertical slice must show that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, or measurement.",
+              "Catalog v1 can name current doctrine and declared ancestry without guessing. The first application vertical slice now demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.",
+          )
+
+          application_section = """## Application modules
+
+Use `MetapatApplicationModule` only for domain applications with an exact source document and explicit evidence boundary.
+
+- Bind every applied term through `ApplicationCatalogBinding` to exact catalog module ID, digest, and claim status.
+- Preserve application status as `CROSS-DOMAIN-HYPOTHESIS` or `EMPIRICAL-FRONTIER`; never inherit root, theorem, or definition status.
+- Preserve named domains, selected scales, transfers, non-transfers, evidence requirements, and unresolved `hmmm`.
+- Keep root impact and all METAPAT, domain, measurement, theorem-transfer, and UCNS-topology claim fields false.
+- Validate every application against the exact catalog and source Markdown.
+- Do not infer application validity from successful serialization or fixture identity.
+
+The first application is `metapat.application.quantum_magnetism`. It binds twelve catalog modules, excludes Theory 10, and remains answerable to physics evidence.
+
+"""
+          replace_once("AGENTS.md", "## UCNS adapter\n", application_section + "## UCNS adapter\n")
+          replace_once(
+              "AGENTS.md",
+              "python tools/generate_catalog.py --check\npython -c \"from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))\"",
+              "python tools/generate_catalog.py --check\npython -c \"from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))\"\npython -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py\npython tools/generate_application_fixtures.py --check",
+          )
+          replace_once(
+              "AGENTS.md",
+              "- The quantum-magnetism application-module vertical slice using exact catalog IDs.",
+              "- Physical validation of the catalog-bound quantum-magnetism application beyond its current cross-domain hypothesis status.",
+          )
+
+          replace_once(
+              "llms.txt",
+              "This repository does not implement the EDCM consumer or the UCNS topology-binding linter. The next METAPAT-native slice is the quantum-magnetism application module using exact catalog IDs while preserving its cross-domain evidence boundary.",
+              "This repository does not implement the EDCM consumer or the UCNS topology-binding linter. The quantum-magnetism application module is implemented with twelve exact catalog bindings and remains a cross-domain hypothesis answerable to physics evidence.",
+          )
+          replace_once(
+              "llms.txt",
+              "Read `AGENTS.md`, `COMPLIANCE.md`, `docs/claims-ledger.md`, `docs/semantic-module-catalog.md`, `src/metapat/canon.py`",
+              "Read `AGENTS.md`, `COMPLIANCE.md`, `docs/claims-ledger.md`, `docs/semantic-module-catalog.md`, `docs/application-modules.md`, `docs/applications/quantum-magnetism.md`, `src/metapat/canon.py`",
+          )
+          replace_once(
+              "llms.txt",
+              "The first application-module vertical slice, downstream EDCM catalog consumer, and first topology-bound constitutive-fork fixture remain separate work. Catalog addressability supplies identity and provenance, not automatic application meaning.",
+              "The first application-module vertical slice is implemented. Its physics evidence, the downstream EDCM catalog consumer, and the first topology-bound constitutive-fork fixture remain unresolved. Application identity and provenance are not application validation.",
+          )
+          PY
+
+      - name: Commit reconciled docs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md ROADMAP.md AGENTS.md llms.txt docs/claims-ledger.md
+          if git diff --cached --quiet; then
+            echo "Authority docs already current."
+            exit 0
+          fi
+          git commit -m "docs(application): reconcile application authority surfaces"
+          git push origin HEAD:agent/quantum-magnetism-application-module
