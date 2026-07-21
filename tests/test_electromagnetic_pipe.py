@@ -1,6 +1,54 @@
 from __future__ import annotations
 
 # === CHECKS ===
+# id: check_pipe_control_topology
+#   proves: metapat_pipe_control_topology_exact
+#   call: self::test_control_topology_and_windings
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_winding_layers
+#   proves: metapat_pipe_winding_layers_exact
+#   call: self::test_control_topology_and_windings
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_attractors_not_bearings
+#   proves: metapat_pipe_attractors_not_bearings
+#   call: self::test_attractors_and_alloy_search_remain_bounded
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_alloy_search
+#   proves: metapat_pipe_alloy_search_bounded
+#   call: self::test_attractors_and_alloy_search_remain_bounded
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_catalog_binding
+#   proves: metapat_pipe_application_catalog_bound
+#   call: self::test_application_is_catalog_bound_and_source_current
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_source_current
+#   proves: metapat_pipe_source_current
+#   call: self::test_application_is_catalog_bound_and_source_current
+#   mutates: filesystem_read
+#   cleanup: none
+#
+# id: check_pipe_performance_firewall
+#   proves: metapat_pipe_performance_firewall
+#   call: self::test_roundtrip_and_evidence_firewall
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_roundtrip
+#   proves: metapat_pipe_roundtrip_strict
+#   call: self::test_roundtrip_and_evidence_firewall
+#   mutates: none
+#   cleanup: none
+#
 # id: check_pipe_fixture_rendered
 #   proves: metapat_pipe_fixture_generated
 #   call: self::test_pipe_fixture_renderer_is_deterministic
