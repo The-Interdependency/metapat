@@ -6,8 +6,8 @@ Date: 2026-07-21
 
 - Meta Energy Theory doctrine: `The-Interdependency/metapat`.
 - Reusable build and evidence doctrine: `The-Interdependency/skill-lib`.
-- Repo-local skill source commit: `The-Interdependency/skill-lib@05ee7aa`, as declared by `.agents/skills/README.md`.
-- `meta-module-build/SKILL.md` is byte-identical to the canonical file at both the declared source commit and later lineage `6f36340`; its Git blob identity is `e9ca23f03a124a44d39b4ea79b60833677816711`.
+- Repo-local skill pin: `The-Interdependency/skill-lib@6f36340`, used by `tools/generate_msdmd.py` and declared by `.agents/skills/README.md`.
+- `meta-module-build/SKILL.md` is byte-identical to the canonical file at the pinned lineage; its Git blob identity is `e9ca23f03a124a44d39b4ea79b60833677816711`.
 
 If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the skill contract. METAPAT governs only Meta Energy Theory doctrine.
 
