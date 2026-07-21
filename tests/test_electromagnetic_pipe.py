@@ -3,13 +3,13 @@ from __future__ import annotations
 # === CHECKS ===
 # id: check_pipe_fixture_rendered
 #   proves: metapat_pipe_fixture_generated
-#   call: self::TestElectromagneticPipeApplication.test_pipe_fixture_renderer_is_deterministic
+#   call: self::test_pipe_fixture_renderer_is_deterministic
 #   mutates: none
 #   cleanup: none
 #
 # id: check_pipe_fixture_current
 #   proves: metapat_pipe_fixture_current
-#   call: self::TestElectromagneticPipeApplication.test_packaged_pipe_fixture_matches_live_constructor
+#   call: self::test_packaged_pipe_fixture_matches_live_constructor
 #   mutates: filesystem_read
 #   cleanup: none
 # === END CHECKS ===
