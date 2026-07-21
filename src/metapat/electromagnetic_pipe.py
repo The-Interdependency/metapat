@@ -1,5 +1,96 @@
 """Catalog-bound three-phase nested electromagnetic-pipe engineering record."""
 
+# === MODULE_BUILD ===
+# id: metapat_electromagnetic_pipe_application
+#   module_name: metapat.electromagnetic_pipe
+#   module_kind: schema
+#   summary: preserves the three-phase nested electromagnetic-pipe handoff as a strict catalog-bound engineering application and design record without claiming device performance
+#   owner: The Interdependency
+#   public_surface: pipe application and design schema constants, WindingLayerSpec, AlloyCandidate, ElectromagneticPipeDesign, electromagnetic_pipe_application_module, electromagnetic_pipe_design, electromagnetic_pipe_design_digest
+#   internal_surface: source declarations, binding specifications, canonical JSON and digest helpers
+#   auth_boundary: none
+#   storage_boundary: serialization-only and read-only source verification
+#   network_boundary: none
+#   user_data_boundary: public engineering handoff and provenance only
+#   admin_only: false
+#   tests: tests.test_electromagnetic_pipe
+#   rollout: public package exports and deterministic fixture in metapat 0.6.0
+#   rollback: remove electromagnetic-pipe exports and fixture while preserving the generic application schema and semantic catalog
+#   requires: metapat_application_module_schema, metapat_semantic_catalog
+#   since: 2026-07-21
+#   unresolved: frequency, current, target field, shielding, phase shift, attractor geometry, thermal limits, protection distance, and alloy performance remain empirical frontiers
+# === END MODULE_BUILD ===
+
+# === DOCS ===
+# id: metapat_electromagnetic_pipe_docs
+#   summary: preserves geometry, six-vector control topology, mobile-attractor distinction, alloy search, instrumentation, fault objectives, and empirical boundaries
+#   audience: developer, electrical engineer, materials engineer, safety reviewer, agent
+#   source: docs/applications/three-phase-electromagnetic-pipe.md
+#   covers: electromagnetic_pipe_application_module, electromagnetic_pipe_design, catalog bindings, source integrity, engineering evidence boundary
+#   status: current
+# === END DOCS ===
+
+# === CAPABILITIES ===
+# id: metapat_electromagnetic_pipe_fixture
+#   summary: emits one deterministic catalog-bound engineering application and typed device-design record for the nested three-phase pipe system
+#   exposes: metapat.electromagnetic_pipe_design
+#   inputs: canonical semantic catalog v1
+#   outputs: strict engineering application, typed topology and material-search record, deterministic digest
+#   boundaries: auth:none, storage:serialization-only, network:none, user_data:public engineering handoff only
+# === END CAPABILITIES ===
+
+# === BOUNDARIES ===
+# id: metapat_electromagnetic_pipe_boundary
+#   summary: engineering proposal and optimization structure only; no electromagnetic, materials, insulation, thermal, fault, spacecraft, measurement, UCNS topology, or theorem-status validity claim
+#   auth_boundary: none
+#   storage_boundary: serialization-only and read-only source verification
+#   network_boundary: none
+#   user_data_boundary: public engineering handoff only
+#   admin_only: false
+# === END BOUNDARIES ===
+
+# === CONTRACTS ===
+# id: metapat_pipe_control_topology_exact
+#   given: the electromagnetic-pipe design record is constructed
+#   then: three radial layers, two handednesses, three phases per handedness, eighteen phase circuits, and six three-phase control systems remain exact and internally reconciled
+#   class: schema_contract
+#
+# id: metapat_pipe_winding_layers_exact
+#   given: the winding layers are inspected
+#   then: outer 12 AWG at 6 turns per inch, middle 16 AWG at 12, and inner 20 AWG at 18 remain ordered and exact
+#   class: provenance_contract
+#
+# id: metapat_pipe_attractors_not_bearings
+#   given: the mobile-element fields are inspected
+#   then: the objects remain ceramic-coated magnetic eddy-current attractors and are never typed as bearings
+#   class: boundary_contract
+#
+# id: metapat_pipe_alloy_search_bounded
+#   given: the alloy candidates are inspected
+#   then: every candidate is atomic percent, totals 100, preserves Fe plus Co plus Ni at 75, Cr at 15, Mn at 10, and remains a search candidate rather than an ideal-alloy claim
+#   class: materials_boundary
+#
+# id: metapat_pipe_application_catalog_bound
+#   given: the pipe application is constructed
+#   then: every METAPAT use is bound to an exact catalog module identity, digest, and claim status
+#   class: integration_contract
+#
+# id: metapat_pipe_source_current
+#   given: the constructor and handoff source are checked together
+#   then: control topology, geometry, winding, attractor, alloy, instrumentation, fault, high-voltage, next-work, evidence, and hmmm statements remain source-current
+#   class: provenance_contract
+#
+# id: metapat_pipe_performance_firewall
+#   given: the design record and application are inspected
+#   then: electromagnetic, materials, insulation, thermal, mechanical, spacecraft, measurement, topology, theorem-transfer, and METAPAT validity claims remain false
+#   class: boundary_contract
+#
+# id: metapat_pipe_roundtrip_strict
+#   given: a valid design record is serialized and reconstructed
+#   then: every nested field and digest survive while unknown, missing, malformed, or tampered fields fail closed
+#   class: schema_contract
+# === END CONTRACTS ===
+
 from __future__ import annotations
 
 import hashlib
