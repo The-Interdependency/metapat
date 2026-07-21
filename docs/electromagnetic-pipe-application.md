@@ -74,24 +74,7 @@ The nested application record separately keeps METAPAT validity, domain validity
 
 Fault statements are objectives to test. Ceramic containment, molten-copper isolation, absence of conductive spray, and absence of spacecraft fire are not represented as demonstrated outcomes.
 
-## Short-section prototype gate
-
-The three-meter assembly is not the first experimental object. A short instrumented section must first demonstrate that the proposed controls and boundaries are measurable without silently coupling unresolved variables.
-
-The short section should establish, at minimum:
-
-- one declared physical phase-displacement geometry;
-- independently measured phase current and voltage for all active circuits;
-- field magnitude and phase at declared axial and radial positions;
-- attractor distribution and mechanical motion tracking;
-- temperature and insulation-leakage monitoring;
-- repeatable boundary-change trials;
-- bounded end leakage and magnetic-return geometry;
-- declared pass, fail, and inconclusive criteria.
-
-Scaling to three meters requires a new evidence record. Short-section success does not automatically transfer through length, end geometry, thermal accumulation, insulation stress, or attractor population.
-
-## Source and fixture
+## Source and tests
 
 Human source:
 
@@ -99,19 +82,27 @@ Human source:
 docs/applications/three-phase-electromagnetic-pipe.md
 ```
 
-Packaged generated fixture:
-
-```text
-metapat/fixtures/three-phase-electromagnetic-pipe-v1.json
-```
-
-Generation and verification:
+Trusted ordinary test surface:
 
 ```bash
-python tools/generate_application_fixtures.py
-python tools/generate_application_fixtures.py --check
+python -m unittest tests.test_electromagnetic_pipe
 python -m pytest -q tests/test_electromagnetic_pipe.py
 ```
+
+The module is deliberately not yet promoted into the top-level package export, release-version, generated-fixture, or generated-msdmd surfaces. Those release-facing changes belong in a separate follow-up after this application core is reviewed and the stacked prerequisites are merged.
+
+## Short-section prototype gate
+
+The first physical build should be a short instrumented section rather than the full three-meter assembly. It should register, at minimum:
+
+- all phase currents and voltages;
+- local field magnitude and phase;
+- attractor distribution and mechanical motion;
+- winding, pipe, ceramic, and attractor temperatures;
+- hysteresis, settling, leakage, and insulation behavior;
+- end leakage and return-path effects.
+
+The prototype does not authorize extrapolation to full-length operation until the six coupled three-phase systems, moving boundaries, thermal behavior, and vacuum high-voltage behavior are reconciled against measurement.
 
 ## hmmm
 
