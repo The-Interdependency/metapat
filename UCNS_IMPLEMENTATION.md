@@ -2,7 +2,7 @@
 
 METAPAT does not implement UCNS algebra.
 
-The optional adapter lives at `src/metapat/ucns.py` and is tested by `tests/test_ucns_bridge.py`.
+The optional adapter lives at `src/metapat/ucns.py` and is tested by `tests/test_ucns_bridge.py`. Semantic fork authorization lives separately at `src/metapat/ucns_phi.py` and is tested by `tests/test_ucns_phi.py`.
 
 ## Scope
 
@@ -10,7 +10,7 @@ The adapter converts a versioned immutable `MetapatModuleEnvelope` into actual g
 
 Base METAPAT remains importable without UCNS installed. Adapter calls without the optional dependency raise a clear `UCNSDependencyError`; no local substitute is created.
 
-## Implemented behavior
+## Implemented adapter behavior
 
 1. Validate the actual UCNS public surface.
 2. Derive deterministic geometry from ordered source-statement count.
@@ -58,9 +58,9 @@ It declares `n_dec = n_min = n`, supplies unit payloads, and defaults every face
 
 This is an adapter contract, not a METAPAT claim that statement order or count exhausts semantic geometry.
 
-## Semantic boundary
+## Default semantic boundary
 
-Current mapping:
+The adapter mapping remains:
 
 ```text
 semantic_mapping = external-provenance
@@ -76,7 +76,31 @@ The envelope and adaptation record retain:
 - canon version and digest;
 - envelope provenance digest.
 
-None of these fields are silently placed into UCNS payloads or assigned UCNS mathematical meaning.
+None of these fields are silently placed into UCNS payloads or assigned UCNS mathematical meaning. The adapter does not infer semantic meaning from a payload, tag, cell, path, carrier, symmetry, or object shape.
+
+## Explicit Phi semantic authority
+
+METAPAT has ratified one semantic exception without altering the adapter: an explicit, canon-bound `UCNSForkAuthorization` may declare ordered children to be simultaneous constitutive components of one parent.
+
+```text
+default semantic mapping: external-provenance
+fork mode: explicit-authorization-only
+allowed relation: constitutive-simultaneous
+```
+
+The authorization binds:
+
+- parent semantic module identity;
+- ordered child semantic module identities;
+- exact source statement references;
+- METAPAT canon digest;
+- Phi policy version;
+- unresolved constraints;
+- deterministic authorization digest.
+
+It refuses to treat temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry action, or arbitrary association as payload containment.
+
+This producer authorization is necessary but not sufficient for an encoded UCNS fixture. A downstream integration must separately bind the exact UCNS parent object, payload-bearing cell or path, ordered child stable hashes, authorization digest, and encoding-policy version. See `docs/ucns-phi-policy.md`.
 
 ## Removed local algebra
 
@@ -112,14 +136,17 @@ Successful adaptation establishes only that:
 - actual UCNS constructed the object;
 - the stable hash and complete provenance were recorded.
 
-It does not establish:
+A valid Phi authorization establishes only that METAPAT explicitly declared one ordered constitutive-simultaneous semantic relation under the named canon and policy.
+
+Neither establishes:
 
 - METAPAT ontology validity;
 - EDCM measurement validity;
 - empirical truth;
 - a concrete UCNS negative certification;
+- correct downstream payload topology;
 - transfer of UCNS theorem status.
 
 ## hmmm
 
-Whether any METAPAT statement should eventually map to UCNS payloads, tags, or remain external provenance is unresolved. The current adapter intentionally chooses no payload semantics while preserving that unresolved question in every canonical root-spine envelope.
+The topology-binding schema and fail-closed linter for the first actual constitutive-fork fixture remain downstream work. Any payload or tag semantics beyond explicit constitutive-simultaneous authorization remain unresolved; the adapter intentionally continues to use unit payloads and external provenance.

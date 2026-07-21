@@ -60,6 +60,9 @@ jobs:
       - name: Audit source CONTRACTS against test CHECKS
         run: python tools/check_contract_graph.py
 
+      - name: Verify explicit Phi policy contracts
+        run: python -m pytest -q tests/test_ucns_phi.py
+
       - name: Verify generated msdmd collection
         run: python tools/generate_msdmd.py --check
 
