@@ -130,13 +130,27 @@ assert adaptation.record.permitted_interpretations == envelope.permitted_interpr
 assert adaptation.record.theorem_status_transfer is False
 ```
 
-Current semantic mapping is explicitly:
+The adapter's default semantic mapping is explicitly:
 
 ```text
 external-provenance
 ```
 
-METAPAT statement text is not inserted into UCNS payloads. The complete semantic envelope survives in the serializable adaptation record while UCNS payloads remain unit.
+METAPAT statement text is not inserted into UCNS payloads by the adapter. The complete semantic envelope survives in the serializable adaptation record while UCNS payloads remain unit.
+
+## Explicit UCNS Phi fork authority
+
+The default external-provenance mapping has one ratified semantic exception: METAPAT may issue a canon-bound `UCNSForkAuthorization` when ordered children are simultaneous constitutive components of one parent.
+
+```text
+default adapter mapping: external-provenance
+authorized relation: constitutive-simultaneous
+authorization mode: explicit-only
+```
+
+Temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry actions, and arbitrary association are not payload containment. Authorization binds semantic meaning only; UCNS owns geometry, and a downstream integration must still bind the authorization to the exact parent object, payload path, ordered child hashes, and encoded topology. No theorem status, METAPAT validity, or EDCM measurement validity transfers.
+
+See `docs/ucns-phi-policy.md`.
 
 ## Contract and evidence graph
 
@@ -167,6 +181,7 @@ audit reconciles the graph without importing code.
 - `GLOSSARY.md` — term meanings and status.
 - `docs/claims-ledger.md` — public claim classification.
 - `UCNS_IMPLEMENTATION.md` — actual adapter scope and limits.
+- `docs/ucns-phi-policy.md` — explicit constitutive-fork semantic authority and downstream limits.
 - `COMPLIANCE.md` — current evidence surfaces and commands.
 
 ## Repository rule
@@ -179,4 +194,4 @@ No implementation owns the root.
 
 ## hmmm
 
-The downstream EDCM consumer and full shared UCNS/METAPAT/EDCM fixture remain a separate repository change. The semantic payload/tag/external-provenance choice remains unresolved and must not be silently selected by constructor convenience.
+The downstream EDCM consumer and full shared UCNS/METAPAT/EDCM fixture remain separate repository changes. The first complete constitutive-fork fixture still requires a topology-binding schema and fail-closed linter over actual UCNS payload paths. Semantic uses outside explicitly authorized constitutive-simultaneous forks remain external provenance unless separately ratified.
