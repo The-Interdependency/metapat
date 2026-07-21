@@ -10,13 +10,17 @@ permissions:
 
 jobs:
   materialize-release-artifacts:
-    if: github.event_name == 'pull_request' && github.head_ref == 'agent/release-electromagnetic-pipe-v060'
+    if: github.event_name == 'pull_request' && github.head_ref == 'agent/release-electromagnetic-pipe-v060' && github.actor != 'github-actions[bot]'
     name: Materialize electromagnetic-pipe release artifacts
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Check out release branch
         uses: actions/checkout@v4
+        with:
+          ref: agent/release-electromagnetic-pipe-v060
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -32,7 +36,7 @@ jobs:
       - name: Generate deterministic release artifacts
         run: |
           python tools/generate_application_fixtures.py
-          python tools/generate_msdmd.py --out release-metapat_msdmd.ts
+          python tools/generate_msdmd.py
 
       - name: Upload deterministic release artifacts
         uses: actions/upload-artifact@v4
@@ -40,8 +44,20 @@ jobs:
           name: electromagnetic-pipe-release-artifacts
           path: |
             src/metapat/fixtures/three-phase-electromagnetic-pipe-v1.json
-            release-metapat_msdmd.ts
+            metapat_msdmd.ts
           if-no-files-found: error
+
+      - name: Commit deterministic release artifacts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/metapat/fixtures/three-phase-electromagnetic-pipe-v1.json metapat_msdmd.ts
+          if git diff --cached --quiet; then
+            echo "Generated artifacts already current."
+            exit 0
+          fi
+          git commit -m "build(release): materialize electromagnetic pipe artifacts"
+          git push origin HEAD:agent/release-electromagnetic-pipe-v060
 
   base-package:
     name: Base package / Python ${{ matrix.python-version }}
