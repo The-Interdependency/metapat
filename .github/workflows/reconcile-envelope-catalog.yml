@@ -1,0 +1,75 @@
+name: Reconcile envelope and catalog outputs
+
+on:
+  push:
+    branches: [agent/semantic-module-catalog-v1]
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/semantic-module-catalog-v1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Reconcile the root envelope boundary
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path("src/metapat/envelope.py")
+          text = path.read_text(encoding="utf-8")
+          text = text.replace(
+              "#   tests: tests.test_envelope, tests.test_ucns_bridge, tests.test_packaging",
+              "#   tests: tests.test_envelope, tests.test_catalog, tests.test_ucns_bridge, tests.test_packaging",
+          )
+          text = text.replace(
+              "#   unresolved: whether METAPAT statements map to UCNS tags, payloads, or external provenance references",
+              "#   unresolved: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved",
+          )
+          text = text.replace(
+              '"hmmm: whether METAPAT statements should be represented as UCNS payloads, tags, or external provenance references.",',
+              '"hmmm: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved.",',
+          )
+          path.write_text(text, encoding="utf-8")
+          PY
+
+      - name: Install package and generators
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+
+      - name: Regenerate envelope, catalog, and metadata fixtures
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import metapat
+          Path("src/metapat/fixtures/root-spine-envelope-v1.json").write_text(
+              metapat.root_spine_module_envelope().to_json() + "\n",
+              encoding="utf-8",
+          )
+          PY
+          python tools/generate_catalog.py
+          python tools/generate_msdmd.py
+
+      - name: Commit reconciled outputs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/metapat/envelope.py src/metapat/fixtures/root-spine-envelope-v1.json src/metapat/fixtures/semantic-module-catalog-v1.json metapat_msdmd.ts
+          if git diff --cached --quiet; then
+            echo "Outputs already reconciled."
+            exit 0
+          fi
+          git commit -m "fix(catalog): reconcile root envelope boundary"
+          git push origin HEAD:agent/semantic-module-catalog-v1
