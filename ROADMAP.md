@@ -6,11 +6,15 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. It exposes:
 
 - exact root canon constants and byte-complete deterministic canon identity;
 - immutable, strictly validated `MetapatModuleEnvelope` records;
-- deterministic canon contract checks with explicit non-validation boundaries;
+- a complete addressable semantic catalog of 39 doctrine modules and 52 exact declared derivation edges;
+- strict semantic-relation records with bounded claim status and deterministic identity;
+- strict catalog-bound application modules with explicit evidence firewalls;
+- a source-checked quantum-magnetism application fixture bound to twelve exact catalog modules;
+- deterministic canon, catalog, and application contract checks with explicit non-validation boundaries;
 - an optional adapter that constructs actual `ucns.UCNSObject` geometry while retaining the complete semantic envelope in a serializable record;
 - an explicit canon-bound Phi policy that may authorize ordered simultaneous constitutive children without inferring semantics from geometry;
 - a source-CONTRACTS/test-CHECKS audit and generated msdmd collection;
-- package, wheel, base, canon-integrity, Phi-policy, and actual-UCNS integration gates.
+- package, wheel, base, canon-integrity, catalog-integrity, application-integrity, Phi-policy, and actual-UCNS integration gates.
 
 ## Architecture
 
@@ -19,7 +23,9 @@ Authority:
 ```text
 METAPAT canon
     |
-    +-- constrains terms, interpretation, allowed derivations, and claim status
+    +-- addressable catalog constrains terms, interpretation, derivation, and claim status
+    |
+    +-- application modules bind domain uses to exact catalog identities and evidence limits
     v
 UCNS adapters and EDCM consumers
 ```
@@ -53,16 +59,33 @@ Status: implemented at schema `1.2.0`.
 
 - `MetapatModuleEnvelope` is immutable and versioned.
 - Exact source references and statements survive serialization.
-- Root-spine references resolve to stable `AXIOMS.md` heading and statement identifiers.
 - The root spine is a neutral `canon-module`; it is not classified as a simplex by constructor convenience.
-- The module-kind vocabulary can name distinction, simplex, boundary-simplex, tensor, energy-state, scalar, vector, relation, gradient, transformation, registration, observer, time, question, postulate, theorem, and theory.
 - Constraints, permitted interpretations, unresolved constraints, canon identity, and provenance digest remain distinct.
 - Unknown, missing, or incorrectly typed schema fields fail closed.
 - Canon or constraint rotation changes provenance identity.
 - No measured EDCM values are present.
 - The canonical root-spine fixture is packaged and checked against the live constructor.
 
-## Phase 2 — Actual UCNS geometry adapter and Phi authority
+## Phase 2 — Addressable semantic module catalog
+
+Status: implemented at catalog schema `1.0.0` and catalog version `metapat-semantic-catalog-v1`.
+
+- Catalog v1 contains exactly one root, twelve axioms, six postulates, eight theorems, and twelve theories.
+- Every module has a stable ID, contiguous ordinal, doctrine class, bounded claim status, exact envelope, and deterministic module digest.
+- `WORKING-POSTULATE` keeps revisable postulates distinct from root stipulations and internal derivations.
+- Theory 10 remains `CROSS-DOMAIN-HYPOTHESIS`; ordinary theorem and theory derivations do not inherit formal-proof status.
+- Fifty-two `derived-from` edges reproduce exact declarations already present in `THEORIES.md`.
+- Every relation binds exact source text, evidence status, unresolved constraints, and a deterministic relation digest.
+- Source verification fails if a file, heading, exact statement, or `Derived from:` declaration drifts.
+- Catalog construction rejects inferred `constitutive-simultaneous` relations without a separate `UCNSForkAuthorization`.
+- The packaged `semantic-module-catalog-v1.json` fixture must remain byte-current with the live constructor.
+
+Remaining:
+
+- hmmm: define migration consequences for future catalog or canon rotations.
+- hmmm: decide whether non-theory declared relations require additional relation kinds in a later catalog version.
+
+## Phase 3 — Actual UCNS geometry adapter and Phi authority
 
 Status: adapter implemented for ordered statement-count geometry; semantic authorization implemented at policy `1.0.0`.
 
@@ -75,7 +98,7 @@ Status: adapter implemented for ordered statement-count geometry; semantic autho
 - METAPAT contains no local normalization, product, factorization, star/disk-flip, or theorem-status algebra.
 - `UCNSPhiPolicy` requires explicit authorization and permits only the `constitutive-simultaneous` relation.
 - `UCNSForkAuthorization` binds parent identity, ordered child identities, source references, canon identity, policy version, unresolved constraints, and a deterministic authorization digest.
-- Temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry action, and arbitrary association remain prohibited as payload-containment meanings.
+- Temporal succession, adjacency, provenance, alternatives, fiq connectivity, external symmetry action, arbitrary association, catalog ancestry, and application binding remain prohibited as payload-containment meanings.
 - Phi policy and authorization records transfer no theorem status and make no METAPAT validity claim.
 
 Remaining:
@@ -85,49 +108,73 @@ Remaining:
 - hmmm: consume an official versioned UCNS bridge record if UCNS standardizes one.
 - hmmm: ratify any semantic mapping beyond default external provenance and explicitly authorized constitutive-simultaneous forks.
 
-## Phase 3 — Evidence and metadata integrity
+## Phase 4 — Evidence and metadata integrity
 
-Status: repaired as a standing gate.
+Status: implemented as a standing gate.
 
 - Source modules own `CONTRACTS`; tests own `CHECKS`.
 - `tools/check_contract_graph.py` audits without imports and is negative-tested.
 - `metapat_msdmd.ts` is generated from bounded product surfaces through the pinned collector.
-- The generated graph includes `src/metapat/flow_plan.py`; omission is a failing stale-collection condition.
+- `tools/generate_catalog.py --check` verifies the packaged catalog fixture.
+- Catalog source checks resolve exact statements against canon sections.
+- `tools/generate_application_fixtures.py --check` verifies packaged application fixtures.
+- Application checks validate exact catalog bindings and exact source statements.
 - `COMPLIANCE.md` names the current pin, commands, evidence boundaries, and downstream exclusion.
-- CI enforces graph closure, generated metadata freshness, complete canon-file integrity, explicit Phi-policy tests, packaged fixture identity, ordinary tests, builds, and wheel smoke checks.
+- CI enforces graph closure, generated metadata freshness, complete canon-file integrity, catalog integrity, application integrity, explicit Phi-policy tests, packaged fixture identity, ordinary tests, builds, and wheel smoke checks.
 
-## Phase 4 — EDCM semantic consumer
+## Phase 5 — Application-module vertical slices
+
+Status: first vertical slice implemented at application schema `1.0.0`.
+
+The quantum-magnetism application now:
+
+- binds twelve applied METAPAT terms to exact catalog module IDs, module digests, and declared claim statuses;
+- retains `CROSS-DOMAIN-HYPOTHESIS` status and root impact `none`;
+- distinguishes nuclear, atomic, crystalline, and magnetic-domain scales;
+- preserves what transfers and what does not transfer;
+- keeps physics evidence answerable to physics;
+- deliberately excludes Theory 10;
+- preserves unresolved “field-space” meaning as `hmmm`;
+- packages a deterministic source-checked fixture;
+- makes every ontology, domain, measurement, theorem-transfer, and UCNS-topology validation field false.
+
+Remaining:
+
+- hmmm: define physical variables and boundaries precisely enough to test the mapping.
+- hmmm: produce predictions that differ from a restatement of established physics.
+- hmmm: compare those predictions with experimental or computational evidence.
+- hmmm: add later application modules only with separate source, status, and domain evidence declarations.
+
+## Phase 6 — EDCM semantic consumer
 
 Status: separate downstream implementation required.
 
 EDCM must:
 
-- accept the exact versioned envelope or packaged fixture;
-- retain canon digest, source refs, statements, constraints, permitted interpretations, unresolved `hmmm`, and provenance digest;
+- accept the exact versioned catalog module, application module, or envelope;
+- retain catalog digest, module digest, application digest, canon digest, source refs, statements, constraints, permitted interpretations, unresolved `hmmm`, and provenance digest;
 - keep semantic labels separate from metric values;
-- preserve UCNS geometry identity, EDCM policy identity, METAPAT canon identity, and any Phi authorization identity as separate provenance components;
-- create a new epoch when canon or policy identity changes;
+- preserve UCNS geometry identity, EDCM policy identity, METAPAT canon and catalog identity, application identity, and any Phi authorization identity as separate provenance components;
+- create a new epoch when canon, catalog, application policy, or measurement policy identity changes;
 - fail closed on malformed schema or provenance.
 
-No EDCM implementation is included in this METAPAT repair.
+## Phase 7 — Shared stack fixture
 
-## Phase 5 — Shared stack fixture
-
-Status: hmmm / next cross-repository gate.
+Status: hmmm / next cross-repository gate after a downstream consumer exists.
 
 The deterministic fixture must prove:
 
 1. METAPAT root canon remains byte-stable;
-2. the envelope round-trips without loss;
-3. an actual UCNS object is constructed;
-4. stable hash and complete semantic provenance survive adaptation;
-5. EDCM consumes constraints without making them metric values;
-6. theorem status does not transfer;
-7. `hmmm` fields survive the complete path;
-8. canon or policy rotation produces a distinct epoch identity;
-9. any constitutive fork is backed by a valid METAPAT authorization;
-10. the authorization is bound to exact UCNS topology rather than inferred from payload presence.
+2. catalog, application, and envelope round-trip without loss;
+3. selected modules and application statements resolve to exact source;
+4. an actual UCNS object is constructed;
+5. stable hash and complete semantic provenance survive adaptation;
+6. EDCM consumes constraints without making them metric values;
+7. theorem status does not transfer;
+8. `hmmm` fields survive the complete path;
+9. canon, catalog, application, or policy rotation produces a distinct epoch identity;
+10. any constitutive fork is backed by a valid METAPAT authorization and exact UCNS topology binding.
 
 ## hmmm
 
-The application-specific meaning of every future module remains separately declarative. Naming a module kind does not supply a measured state, an empirical result, or proof that an application object instantiates the named METAPAT term. The next METAPAT-native advancement is a complete addressable semantic module catalog; the first topology-bound Phi fixture remains a downstream UCNS/EDCM integration task.
+Catalog v1 now has one complete application-module vertical slice. Application provenance is implemented; physics validation is not. The topology-bound Phi fixture and EDCM consumer remain cross-repository work.
