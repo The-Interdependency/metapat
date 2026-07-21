@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import base64
+import unittest
 from pathlib import Path
 
 from tools.generate_application_fixtures import render_electromagnetic_pipe_fixture
@@ -15,8 +16,13 @@ def _emit(label: str, content: str) -> None:
     print(f"{label}_END")
 
 
-def test_emit_release_artifacts() -> None:
-    root = Path(__file__).resolve().parents[1]
-    _emit("PIPE_FIXTURE", render_electromagnetic_pipe_fixture())
-    _emit("MSDMD", render_collection(root))
-    raise AssertionError("release artifacts emitted")
+class TestReleaseMaterialization(unittest.TestCase):
+    def test_emit_release_artifacts(self) -> None:
+        root = Path(__file__).resolve().parents[1]
+        _emit("PIPE_FIXTURE", render_electromagnetic_pipe_fixture())
+        _emit("MSDMD", render_collection(root))
+        self.fail("release artifacts emitted")
+
+
+if __name__ == "__main__":
+    unittest.main()
