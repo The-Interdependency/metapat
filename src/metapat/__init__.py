@@ -1,30 +1,30 @@
-"""Public METAPAT canon, semantic-envelope, contract-check, and adapter exports."""
+"""Public METAPAT canon, catalog, semantic-envelope, contract-check, and adapter exports."""
 
 # === MODULE_BUILD ===
 # id: metapat_package_exports
 #   module_name: metapat
 #   module_kind: schema
-#   summary: re-exports byte-complete canon identity, strict immutable semantic envelopes, deterministic canon contract checks, explicit UCNS Phi fork authority, and the optional lossless actual-UCNS adapter
+#   summary: re-exports byte-complete canon identity, addressable semantic catalog, strict immutable envelopes and relations, deterministic canon checks, explicit UCNS Phi authority, and the optional actual-UCNS adapter
 #   owner: The Interdependency
-#   public_surface: __version__, canon constants and file manifest, MetapatModuleEnvelope, build_module_envelope, root_spine_module_envelope, canon contract checks, UCNSPhiPolicy, UCNSForkAuthorization, authorize_constitutive_fork, validate_fork_authorization, adapt_envelope_to_ucns, root_spine_adaptation
+#   public_surface: __version__, canon identity, semantic catalog and relations, MetapatModuleEnvelope, canon contract checks, UCNSPhiPolicy, UCNSForkAuthorization, actual-UCNS adapter
 #   internal_surface: none
 #   auth_boundary: none
 #   storage_boundary: read-only canon verification and serialization only
 #   network_boundary: none
 #   user_data_boundary: none
 #   admin_only: false
-#   tests: tests.test_contracts, tests.test_envelope, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
+#   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
-#   rollback: remove new exports while preserving source modules and canon files
-#   requires: metapat_canon_core, metapat_module_envelope, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
+#   rollback: remove catalog exports and fixture while preserving prior canon, envelope, Phi, and adapter surfaces
+#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-12
-#   unresolved: downstream EDCM must bind explicit fork authorizations to exact UCNS payload topology
+#   unresolved: downstream consumers must bind module and fork authorizations to exact application and UCNS topology identities
 # === END MODULE_BUILD ===
 
 # === DEPENDENCIES ===
 # id: metapat_package_dependency_edges
-#   summary: base exports depend on canon, envelope, contract checks, flow declarations, Phi policy, and a lazy optional UCNS adapter module
-#   imports: metapat.canon, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
+#   summary: base exports depend on canon, semantic catalog, relation and envelope schemas, contract checks, flow declarations, Phi policy, and a lazy optional UCNS adapter
+#   imports: metapat.canon, metapat.catalog, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
 #   external_optional: ucns
 #   provides: metapat_package_exports
 #   class: runtime
@@ -44,7 +44,7 @@
 #
 # id: metapat_base_import_without_ucns
 #   given: the base package is imported without invoking the optional adapter
-#   then: canon, envelope, and Phi policy surfaces work without requiring UCNS
+#   then: canon, catalog, envelope, relation, and Phi policy surfaces work without requiring UCNS
 #   class: packaging
 #
 # id: metapat_no_public_local_ucns
@@ -58,7 +58,7 @@
 #   class: packaging
 # === END CONTRACTS ===
 
-__version__ = "0.3.0"
+__version__ = "0.4.0"
 
 from .canon import (
     CANON_FILE_BLOBS,
@@ -81,6 +81,23 @@ from .canon import (
     primitive_extension,
     root_spine,
 )
+from .catalog import (
+    CATALOG_SCHEMA_ID,
+    CATALOG_SCHEMA_VERSION,
+    CATALOG_VERSION,
+    DOCTRINE_CLASSES,
+    EXPECTED_MODULE_COUNT,
+    EXPECTED_MODULE_COUNTS,
+    MetapatSemanticCatalog,
+    SemanticCatalogModule,
+    assert_catalog_complete,
+    assert_catalog_sources_match,
+    canonical_semantic_catalog,
+    catalog_digest,
+    catalog_module_counts,
+    catalog_source_mismatches,
+    semantic_module_by_id,
+)
 from .envelope import (
     MODULE_ENVELOPE_SCHEMA_ID,
     MODULE_ENVELOPE_SCHEMA_VERSION,
@@ -95,6 +112,14 @@ from .flow_plan import (
     PROOF_STATUS_FLOW,
     RUNTIME_DATA_FLOW,
     UCNS_SIDE_STATUS,
+)
+from .relations import (
+    CLAIM_STATUSES,
+    RELATION_KINDS,
+    RELATION_SCHEMA_ID,
+    RELATION_SCHEMA_VERSION,
+    MetapatModuleRelation,
+    build_relation,
 )
 from .ucns_phi import (
     CONSTITUTIVE_RELATION_KIND,
@@ -141,11 +166,18 @@ __all__ = [
     "CANON_FILE_BLOBS",
     "CANON_IDENTITY_SCHEMA_VERSION",
     "CANON_VERSION",
+    "CATALOG_SCHEMA_ID",
+    "CATALOG_SCHEMA_VERSION",
+    "CATALOG_VERSION",
+    "CLAIM_STATUSES",
     "CONSTITUTIVE_RELATION_KIND",
     "CanonIntegrityError",
     "DEFAULT_UCNS_PHI_POLICY",
+    "DOCTRINE_CLASSES",
     "EDCM_SIDE_STATUS",
     "ENERGY_THEORY_QUESTION",
+    "EXPECTED_MODULE_COUNT",
+    "EXPECTED_MODULE_COUNTS",
     "FORK_AUTHORIZATION_SCHEMA_ID",
     "FORK_AUTHORIZATION_SCHEMA_VERSION",
     "ForkAuthorizationError",
@@ -154,14 +186,20 @@ __all__ = [
     "MODULE_ENVELOPE_SCHEMA_VERSION",
     "MODULE_KINDS",
     "MetapatModuleEnvelope",
+    "MetapatModuleRelation",
+    "MetapatSemanticCatalog",
     "PHI_POLICY_SCHEMA_ID",
     "PHI_POLICY_VERSION",
     "PRIMITIVE_EXTENSION",
     "PROHIBITED_FORK_RELATION_KINDS",
     "PROOF_STATUS_FLOW",
+    "RELATION_KINDS",
+    "RELATION_SCHEMA_ID",
+    "RELATION_SCHEMA_VERSION",
     "ROOT_SPINE",
     "RUNTIME_DATA_FLOW",
     "SPACE_ANCHOR_VERTEX",
+    "SemanticCatalogModule",
     "TIME_DEFINITION",
     "UCNS_ADAPTER_SCHEMA",
     "UCNS_ADAPTER_VERSION",
@@ -174,14 +212,21 @@ __all__ = [
     "UCNS_SIDE_STATUS",
     "adapt_envelope_to_ucns",
     "assert_canon_files_match",
+    "assert_catalog_complete",
+    "assert_catalog_sources_match",
     "authorize_constitutive_fork",
     "boundary_earns_its_keep",
     "build_module_envelope",
+    "build_relation",
     "canon_digest",
     "canon_file_mismatches",
     "canon_manifest_digest",
     "canonical_canon_data",
     "canonical_canon_manifest_data",
+    "canonical_semantic_catalog",
+    "catalog_digest",
+    "catalog_module_counts",
+    "catalog_source_mismatches",
     "compose",
     "consciousness_is_optional",
     "definitions",
@@ -195,6 +240,7 @@ __all__ = [
     "root_spine_adaptation",
     "root_spine_module_envelope",
     "root_spine_ucns",
+    "semantic_module_by_id",
     "tensor_precedes_time",
     "validate_fork_authorization",
 ]
