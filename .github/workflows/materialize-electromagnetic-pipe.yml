@@ -3,6 +3,8 @@ name: Materialize electromagnetic pipe outputs
 on:
   push:
     branches: [agent/electromagnetic-pipe-application-module]
+  pull_request:
+    branches: [agent/quantum-magnetism-application-module]
 
 permissions:
   contents: write
@@ -37,12 +39,44 @@ jobs:
           text = text.replace("metapat.quantum_magnetism, metapat.relations", "metapat.quantum_magnetism, metapat.electromagnetic_pipe, metapat.relations")
           text = text.replace('__version__ = "0.5.0"', '__version__ = "0.6.0"')
           marker = "from .envelope import ("
-          imports = '''from .electromagnetic_pipe import (\n    ALLOY_CANDIDATE_SCHEMA_ID,\n    ALLOY_CANDIDATE_SCHEMA_VERSION,\n    PIPE_APPLICATION_VERSION,\n    PIPE_BINDING_SPECS,\n    PIPE_DESIGN_SCHEMA_ID,\n    PIPE_DESIGN_SCHEMA_VERSION,\n    WINDING_LAYER_SCHEMA_ID,\n    WINDING_LAYER_SCHEMA_VERSION,\n    AlloyCandidate,\n    ElectromagneticPipeDesign,\n    WindingLayerSpec,\n    electromagnetic_pipe_application_module,\n    electromagnetic_pipe_design,\n    electromagnetic_pipe_design_digest,\n)\n'''
+          imports = '''from .electromagnetic_pipe import (
+    ALLOY_CANDIDATE_SCHEMA_ID,
+    ALLOY_CANDIDATE_SCHEMA_VERSION,
+    PIPE_APPLICATION_VERSION,
+    PIPE_BINDING_SPECS,
+    PIPE_DESIGN_SCHEMA_ID,
+    PIPE_DESIGN_SCHEMA_VERSION,
+    WINDING_LAYER_SCHEMA_ID,
+    WINDING_LAYER_SCHEMA_VERSION,
+    AlloyCandidate,
+    ElectromagneticPipeDesign,
+    WindingLayerSpec,
+    electromagnetic_pipe_application_module,
+    electromagnetic_pipe_design,
+    electromagnetic_pipe_design_digest,
+)
+'''
           if imports not in text:
               text = text.replace(marker, imports + marker)
-          additions = '''    "ALLOY_CANDIDATE_SCHEMA_ID",\n    "ALLOY_CANDIDATE_SCHEMA_VERSION",\n    "PIPE_APPLICATION_VERSION",\n    "PIPE_BINDING_SPECS",\n    "PIPE_DESIGN_SCHEMA_ID",\n    "PIPE_DESIGN_SCHEMA_VERSION",\n    "WINDING_LAYER_SCHEMA_ID",\n    "WINDING_LAYER_SCHEMA_VERSION",\n    "AlloyCandidate",\n    "ElectromagneticPipeDesign",\n    "WindingLayerSpec",\n    "electromagnetic_pipe_application_module",\n    "electromagnetic_pipe_design",\n    "electromagnetic_pipe_design_digest",\n'''
+          additions = '''    "ALLOY_CANDIDATE_SCHEMA_ID",
+    "ALLOY_CANDIDATE_SCHEMA_VERSION",
+    "PIPE_APPLICATION_VERSION",
+    "PIPE_BINDING_SPECS",
+    "PIPE_DESIGN_SCHEMA_ID",
+    "PIPE_DESIGN_SCHEMA_VERSION",
+    "WINDING_LAYER_SCHEMA_ID",
+    "WINDING_LAYER_SCHEMA_VERSION",
+    "AlloyCandidate",
+    "ElectromagneticPipeDesign",
+    "WindingLayerSpec",
+    "electromagnetic_pipe_application_module",
+    "electromagnetic_pipe_design",
+    "electromagnetic_pipe_design_digest",
+'''
           if '    "PIPE_DESIGN_SCHEMA_ID",' not in text:
-              text = text.replace('    "validate_application_against_catalog",\n]', '    "validate_application_against_catalog",\n' + additions + ']')
+              text = text.replace('    "validate_application_against_catalog",
+]', '    "validate_application_against_catalog",
+' + additions + ']')
           init_path.write_text(text, encoding="utf-8")
 
           ci_path = Path(".github/workflows/ci.yml")
@@ -55,8 +89,14 @@ jobs:
               "python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py",
               "python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py",
           )
-          old_source = '''          application = metapat.quantum_magnetism_application_module(catalog)\n          metapat.validate_application_against_catalog(application, catalog)\n          metapat.assert_application_sources_match(Path("."), application)'''
-          new_source = '''          quantum = metapat.quantum_magnetism_application_module(catalog)\n          pipe = metapat.electromagnetic_pipe_application_module(catalog)\n          for application in (quantum, pipe):\n              metapat.validate_application_against_catalog(application, catalog)\n              metapat.assert_application_sources_match(Path("."), application)'''
+          old_source = '''          application = metapat.quantum_magnetism_application_module(catalog)
+          metapat.validate_application_against_catalog(application, catalog)
+          metapat.assert_application_sources_match(Path("."), application)'''
+          new_source = '''          quantum = metapat.quantum_magnetism_application_module(catalog)
+          pipe = metapat.electromagnetic_pipe_application_module(catalog)
+          for application in (quantum, pipe):
+              metapat.validate_application_against_catalog(application, catalog)
+              metapat.assert_application_sources_match(Path("."), application)'''
           ci = ci.replace(old_source, new_source)
           ci = ci.replace(
               '          application_fixture = files("metapat").joinpath("fixtures/quantum-magnetism-application-v1.json")',
