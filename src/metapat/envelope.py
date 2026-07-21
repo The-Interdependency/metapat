@@ -17,12 +17,12 @@ missing, or incorrectly typed fields rather than coercing malformed values.
 #   network_boundary: none
 #   user_data_boundary: caller-supplied statements and constraints are preserved exactly
 #   admin_only: false
-#   tests: tests.test_envelope, tests.test_ucns_bridge, tests.test_packaging
+#   tests: tests.test_envelope, tests.test_catalog, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
 #   rollback: remove envelope exports and cross-repository adapter fixtures
 #   requires: metapat_canon_core
 #   since: 2026-07-12
-#   unresolved: whether METAPAT statements map to UCNS tags, payloads, or external provenance references
+#   unresolved: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved
 # === END MODULE_BUILD ===
 
 # === DOCS ===
@@ -353,7 +353,7 @@ def root_spine_module_envelope() -> MetapatModuleEnvelope:
             "Bind adaptations and consumer epochs to canon_digest and provenance_digest.",
         ),
         unresolved_constraints=(
-            "hmmm: whether METAPAT statements should be represented as UCNS payloads, tags, or external provenance references.",
+            "hmmm: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved.",
         ),
     )
 
