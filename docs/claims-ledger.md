@@ -1,6 +1,6 @@
 # METAPAT claims ledger
 
-Date: 2026-07-14
+Date: 2026-07-21
 
 This ledger classifies public doctrine and executable assertions without changing Erin Spencer's canon text. Executable checks of definitions and encoded conditions are contract tests; they are not independent empirical evidence, formal proof, or validation of Meta Energy Theory as external truth.
 
@@ -49,16 +49,21 @@ RETRACTED_OR_SUPERSEDED
 | `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as the repository's exact blob identity; the aggregate public identity is SHA-256. |
 | `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. The root spine is a neutral `canon-module`, not silently classified as a simplex. |
 | `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope in a serializable record; transfers no theorem status. |
+| `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as the default semantic mapping, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
+| `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record declares producer-side semantic authority only; it does not prove downstream topology. |
+| `validate_fork_authorization` | IMPLEMENTED-CONTRACT | Fails closed on parent, child-order, canon, source-reference, policy, relation-kind, or digest mismatch. It does not inspect or validate an actual UCNS payload path. |
 | `tools/check_contract_graph.py` | IMPLEMENTED-CONTRACT | Reconciles source `CONTRACTS` and test `CHECKS` without imports and reports planted graph defects. |
 | `tools/generate_msdmd.py` | IMPLEMENTED-CONTRACT | Generates the committed product metadata graph through the pinned skill-lib collector and excludes vendored skill declarations. |
-| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed `metapat` public surface, metadata, typing marker, packaged fixture, deterministic envelopes, and optional actual-UCNS integration work as declared. |
+| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed `metapat` public surface, metadata, typing marker, packaged fixture, deterministic envelopes, Phi policy, and optional actual-UCNS integration work as declared. |
 
 ## Cross-domain and empirical status
 
 | Claim family | Status | Boundary |
 |---|---|---|
 | Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Domain tools may not redefine root canon. |
-| Mapping METAPAT statements into UCNS payload semantics | EMPIRICAL-FRONTIER / hmmm | Current adapter uses external provenance only. No payload meaning is ratified. |
+| Explicitly authorized ordered children are simultaneous constitutive components of one semantic parent | IMPLEMENTED-CONTRACT as a METAPAT declaration | The authorization records the declared meaning and provenance; it does not establish that an actual UCNS fixture encodes that topology correctly. |
+| Binding a `UCNSForkAuthorization` to exact UCNS parent identity, payload path, ordered child hashes, and encoded topology | EMPIRICAL-FRONTIER / hmmm | Requires a downstream topology-binding schema and fail-closed linter. Geometry cannot supply missing semantic child identities by itself. |
+| Mapping METAPAT statements into UCNS payload or tag semantics outside an explicit constitutive authorization | EMPIRICAL-FRONTIER / hmmm | Current adapter remains external provenance with unit payloads. No broader payload or tag meaning is ratified. |
 | EDCM measurements corresponding to METAPAT semantic labels | EMPIRICAL-FRONTIER | Labels constrain interpretation; they are not measured values. |
 | Claims that contract tests validate the ontology externally | RETRACTED_OR_SUPERSEDED | Tests protect encoded contracts only. |
 | Claims that UCNS theorem status proves METAPAT ontology | RETRACTED_OR_SUPERSEDED | Proof-status transfer is forbidden. |
@@ -70,9 +75,10 @@ RETRACTED_OR_SUPERSEDED
 | Single flow `UCNS -> METAPAT -> EDCM` | RETRACTED_OR_SUPERSEDED | Separate authority, runtime-data, and proof-status flows in `metapat.flow_plan`. |
 | METAPAT-native `UCNSObject`, normalization, carrier calculation, and composition | RETRACTED_OR_SUPERSEDED | Optional adapter to the actual `ucns` package; no second algebra. |
 | `call:` fields inside source `CONTRACTS` | RETRACTED_OR_SUPERSEDED | Test-owned `CHECKS` entries with `proves:` and `self::` resolution. |
-| Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema 2.0.0 binds the complete canon-file manifest alongside importable constants. |
-| Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema 1.2.0 classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
+| Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema `2.0.0` binds the complete canon-file manifest alongside importable constants. |
+| Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema `1.2.0` classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
+| All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and every broader semantic mapping remain unresolved. |
 
 ## Usage
 
@@ -86,4 +92,4 @@ When adding or changing a public claim:
 
 ## hmmm
 
-The status of future domain-specific modules cannot be assigned in advance. Each module must declare whether it is definition, internal derivation, cross-domain hypothesis, or empirical frontier rather than inheriting root status merely by using METAPAT vocabulary. The schema can now name the complete canonical vocabulary; that does not by itself supply application meaning or measured state.
+The status of future domain-specific modules cannot be assigned in advance. Each module must declare whether it is definition, internal derivation, cross-domain hypothesis, or empirical frontier rather than inheriting root status merely by using METAPAT vocabulary. The Phi policy can now authorize one bounded semantic relation; it does not by itself supply child application meaning, measured state, or proof that downstream UCNS topology matches the authorization.
