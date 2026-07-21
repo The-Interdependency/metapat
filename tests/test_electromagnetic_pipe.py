@@ -1,7 +1,22 @@
 from __future__ import annotations
 
+# === CHECKS ===
+# id: check_pipe_fixture_rendered
+#   proves: metapat_pipe_fixture_generated
+#   call: self::TestElectromagneticPipeApplication.test_pipe_fixture_renderer_is_deterministic
+#   mutates: none
+#   cleanup: none
+#
+# id: check_pipe_fixture_current
+#   proves: metapat_pipe_fixture_current
+#   call: self::TestElectromagneticPipeApplication.test_packaged_pipe_fixture_matches_live_constructor
+#   mutates: filesystem_read
+#   cleanup: none
+# === END CHECKS ===
+
 import json
 import unittest
+from importlib.resources import files
 from pathlib import Path
 
 from metapat import canonical_semantic_catalog, validate_application_against_catalog
@@ -12,6 +27,7 @@ from metapat.electromagnetic_pipe import (
     electromagnetic_pipe_application_module,
     electromagnetic_pipe_design,
 )
+from tools.generate_application_fixtures import render_electromagnetic_pipe_fixture
 
 
 class TestElectromagneticPipeApplication(unittest.TestCase):
@@ -100,6 +116,24 @@ class TestElectromagneticPipeApplication(unittest.TestCase):
         changed["protection_distance_status"] = "known"
         with self.assertRaisesRegex(ValueError, "design_digest"):
             ElectromagneticPipeDesign.from_dict(changed)
+
+    def test_pipe_fixture_renderer_is_deterministic(self) -> None:
+        first = render_electromagnetic_pipe_fixture()
+        second = render_electromagnetic_pipe_fixture()
+        self.assertEqual(first, second)
+        self.assertTrue(first.endswith("\n"))
+        self.assertEqual(
+            ElectromagneticPipeDesign.from_json(first.strip()),
+            electromagnetic_pipe_design(),
+        )
+
+    def test_packaged_pipe_fixture_matches_live_constructor(self) -> None:
+        fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json")
+        self.assertTrue(fixture.is_file())
+        self.assertEqual(
+            fixture.read_text(encoding="utf-8"),
+            render_electromagnetic_pipe_fixture(),
+        )
 
 
 if __name__ == "__main__":
