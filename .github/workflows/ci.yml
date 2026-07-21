@@ -9,43 +9,6 @@ permissions:
   contents: read
 
 jobs:
-  materialize-release-metadata:
-    if: github.event_name == 'pull_request' && github.head_ref == 'agent/release-electromagnetic-pipe-v060' && github.actor != 'github-actions[bot]'
-    name: Materialize release metadata
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Check out release branch
-        uses: actions/checkout@v4
-        with:
-          ref: agent/release-electromagnetic-pipe-v060
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-
-      - name: Install package and metadata generator
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -e .[dev]
-
-      - name: Generate and commit exact msdmd evidence
-        run: |
-          python tools/generate_msdmd.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add metapat_msdmd.ts
-          if git diff --cached --quiet; then
-            echo "Generated metadata already current."
-            exit 0
-          fi
-          git commit -m "build(release): refresh electromagnetic pipe check metadata"
-          git push origin HEAD:agent/release-electromagnetic-pipe-v060
-
   base-package:
     name: Base package / Python ${{ matrix.python-version }}
     runs-on: ubuntu-latest
