@@ -60,27 +60,36 @@ RETRACTED_OR_SUPERSEDED
 | `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 6, theorems 8, and theories 12. |
 | `assert_catalog_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every module and relation statement against its exact declared Markdown section and fails on source drift. |
 | `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |
+| `ApplicationCatalogBinding` | IMPLEMENTED-CONTRACT | Binds exact catalog module ID, digest, claim status, application role, and application statement without altering the module or transferring status. |
+| `MetapatApplicationModule` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` preserves domains, scales, source, catalog identity, bindings, transfer limits, evidence requirements, unresolved `hmmm`, and explicit false validation/status-transfer fields. |
+| `validate_application_against_catalog()` | IMPLEMENTED-CONTRACT | Fails on catalog version or digest drift and on any bound module identity, digest, or claim-status mismatch. |
+| `assert_application_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every identity, binding, mapping, transfer, evidence, and `hmmm` statement against the exact application Markdown section. |
+| `quantum_magnetism_application_module()` | IMPLEMENTED-CONTRACT | Emits the first source-checked catalog-bound application fixture with twelve exact bindings and `CROSS-DOMAIN-HYPOTHESIS` status. |
+| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism application fixture byte-for-byte. |
 | `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope; transfers no theorem status. |
 | `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as default, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
 | `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record does not prove downstream topology. |
 | `validate_fork_authorization` | IMPLEMENTED-CONTRACT | Fails closed on parent, child-order, canon, source-reference, policy, relation-kind, or digest mismatch. It does not inspect an actual UCNS payload path. |
 | `tools/check_contract_graph.py` | IMPLEMENTED-CONTRACT | Reconciles source `CONTRACTS` and test `CHECKS` without imports and reports planted graph defects. |
 | `tools/generate_msdmd.py` | IMPLEMENTED-CONTRACT | Generates the committed product metadata graph through the pinned skill-lib collector and excludes vendored skill declarations. |
-| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed public surface, metadata, typing marker, both packaged fixtures, catalog identity, Phi policy, and optional actual-UCNS integration work as declared. |
+| Package and wheel gates | IMPLEMENTED-CONTRACT | Installed public surface, metadata, typing marker, all packaged fixtures, catalog and application identity, Phi policy, and optional actual-UCNS integration work as declared. |
 
 ## Cross-domain and empirical status
 
 | Claim family | Status | Boundary |
 |---|---|---|
-| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Catalog addressability does not make the application root, theorem, or empirical result. |
+| Applying METAPAT terms to a particular scientific, organizational, psychological, or AI domain | CROSS-DOMAIN-HYPOTHESIS unless separately demonstrated | Catalog or application-module addressability does not make the application root, theorem, measurement, or empirical result. |
 | A catalog module correctly reproduces the exact current source statement and declared status | IMPLEMENTED-CONTRACT | This establishes addressability and provenance only, not external truth. |
 | A catalog `derived-from` edge correctly reproduces a `THEORIES.md` declaration | IMPLEMENTED-CONTRACT | This records declared semantic ancestry, not formal proof of the derivation. |
+| Quantum-magnetism catalog bindings and source-current fixture | IMPLEMENTED-CONTRACT | Establish exact provenance and evidence limits only; physics validity remains a CROSS-DOMAIN-HYPOTHESIS. |
+| Quantum-magnetism physical interpretation and predictive adequacy | CROSS-DOMAIN-HYPOTHESIS / EMPIRICAL-FRONTIER | Requires precise scale and boundary definitions, explicit physical-variable mapping, distinguishing predictions, and experimental or computational comparison. |
 | Explicitly authorized ordered children are simultaneous constitutive components of one semantic parent | IMPLEMENTED-CONTRACT as a METAPAT declaration | The authorization records declared meaning and provenance; it does not establish that an actual UCNS fixture encodes the topology correctly. |
 | Binding a `UCNSForkAuthorization` to exact UCNS parent identity, payload path, ordered child hashes, and encoded topology | EMPIRICAL-FRONTIER / hmmm | Requires a downstream topology-binding schema and fail-closed linter. Geometry cannot supply missing semantic child identities by itself. |
 | Mapping METAPAT statements into UCNS payload or tag semantics outside an explicit constitutive authorization | EMPIRICAL-FRONTIER / hmmm | Current adapter remains external provenance with unit payloads. No broader payload or tag meaning is ratified. |
 | EDCM measurements corresponding to METAPAT semantic labels | EMPIRICAL-FRONTIER | Labels constrain interpretation; they are not measured values. |
 | Claims that contract tests validate the ontology externally | RETRACTED_OR_SUPERSEDED | Tests protect encoded contracts only. |
 | Claims that catalog membership promotes a statement's claim status | RETRACTED_OR_SUPERSEDED | Catalog modules retain declared status; addressability transfers no status. |
+| Claims that application binding validates a domain claim | RETRACTED_OR_SUPERSEDED | Binding establishes identity, provenance, and evidence boundaries only. |
 | Claims that UCNS theorem status proves METAPAT ontology | RETRACTED_OR_SUPERSEDED | Proof-status transfer is forbidden. |
 
 ## Superseded architecture statements
@@ -94,6 +103,7 @@ RETRACTED_OR_SUPERSEDED
 | Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema `1.2.0` classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
 | Postulates implicitly sharing theorem or root status | RETRACTED_OR_SUPERSEDED | `WORKING-POSTULATE` explicitly preserves revisability and non-root status. |
 | Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v1 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
+| Free-form application labels sufficient for downstream use | RETRACTED_OR_SUPERSEDED | Application schema `1.0.0` requires exact catalog module identities, digests, statuses, source statements, and explicit evidence boundaries. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
 | All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and broader semantic mappings remain unresolved. |
 
@@ -104,9 +114,9 @@ When adding or changing a public claim:
 1. cite the exact source statement or executable surface;
 2. assign one status from this ledger;
 3. state what evidence would change that status;
-4. update affected catalog declarations, fixtures, code metadata, documentation, tests, generated msdmd, and canon manifest as applicable;
+4. update affected catalog or application declarations, fixtures, code metadata, documentation, tests, generated msdmd, and canon manifest as applicable;
 5. preserve unresolved constraints as `hmmm`.
 
 ## hmmm
 
-Catalog v1 can name current doctrine and declared ancestry without guessing. The status of future domain-specific modules still must be assigned separately. The first application vertical slice must show that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, or measurement.
+Catalog v1 can name current doctrine and declared ancestry without guessing. The first application vertical slice now demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.
