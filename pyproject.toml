@@ -35,9 +35,10 @@ dev = [
   "pytest>=8.0",
   "twine>=5.0",
 ]
-ucns = [
-  "ucns @ git+https://github.com/The-Interdependency/ucns.git@3c6c37f41fadba699331e8b1632a52aee9364503",
-]
+# Deliberately empty until the reviewed post-reset producer profile and exact
+# UCNS commit are available. Installing an arbitrary package named `ucns`
+# cannot activate the suspended consumer adapter.
+ucns = []
 
 [tool.setuptools]
 package-dir = {"" = "src"}
@@ -60,6 +61,6 @@ addopts = "-ra"
 canonical_root = true
 upstream_owner = "The-Interdependency"
 authority_consumers = ["The-Interdependency/ucns", "The-Interdependency/edcm"]
-runtime_geometry_provider = "The-Interdependency/ucns"
+runtime_geometry_provider = "suspended-awaiting-reviewed-post-reset-profile"
 measurement_consumer = "The-Interdependency/edcm"
 proof_status_transfer = false
