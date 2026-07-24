@@ -55,30 +55,6 @@ jobs:
       - name: Verify packaged semantic catalog fixture
         run: python tools/generate_catalog.py --check
       - name: Verify catalog source references against exact canon sections
-        run: python -c "from
-
-  compliance:
-    name: Skill graph, generated metadata, applications, catalog, and canon integrity
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-          cache: pip
-      - name: Install package and development tools
-        run: |
-          python -m pip install --upgrade pip
-          python -m pip install -e .[dev]
-      - name: Audit source CONTRACTS against test CHECKS
-        run: python tools/check_contract_graph.py
-      - name: Verify addressable semantic catalog contracts
-        run: python -m pytest -q tests/test_catalog.py tests/test_relations.py
-      - name: Verify packaged semantic catalog fixture
-        run: python tools/generate_catalog.py --check
-      - name: Verify catalog source references against exact canon sections
         run: python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"
       - name: Verify catalog-bound application contracts
         run: python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py
