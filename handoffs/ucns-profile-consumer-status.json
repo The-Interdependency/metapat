@@ -10,17 +10,17 @@
     "ucns.bridge-record@1.0.0",
     "ucns.factorization-evidence@1.0.0"
   ],
-  "tests_proving_fail_closed_behavior": [
-    "legacy lookalike package cannot activate",
-    "missing package remains typed inactive",
-    "face-bit archived adapter arguments are rejected",
-    "composition remains unauthorized"
+  "verified_gates": [
+    "base tests on Python 3.11, 3.12, and 3.13",
+    "exact pinned UCNS profile integration",
+    "contract graph and generated msdmd closure",
+    "catalog, applications, canon, build, Twine, and clean-wheel smoke"
   ],
-  "tests_proving_exact_profile_behavior": [
-    "exact producer/profile/bridge identities activate",
-    "statement order and multiplicity become occurrence-preserving cells",
+  "behavior": [
+    "one source statement becomes one ordered UCNS occurrence",
+    "repetition and order are preserved",
     "semantic text remains external METAPAT provenance",
-    "bridge and METAPAT adaptation records round-trip deterministically"
+    "archived face-bit and universal composition requests fail closed"
   ],
   "unresolved_constraints": [
     "No universal UCNS composition or factorization is authorized by this profile.",
