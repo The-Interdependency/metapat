@@ -1,13 +1,15 @@
-"""Fail-closed METAPAT consumer boundary for post-reset UCNS profiles.
+"""Exact-profile METAPAT consumer for the post-reset UCNS ordered-occurrence bridge.
 
-UCNS is a stable identifier without a canonical expansion.  This module preserves
-METAPAT semantic envelopes without constructing or imitating UCNS objects.
+``UCNS`` is a stable identifier without a canonical expansion. METAPAT retains
+semantic authority; UCNS supplies only the explicitly pinned carrier profile.
 """
 from __future__ import annotations
 
+import importlib
 import importlib.util
 import json
 from dataclasses import asdict, dataclass
+from types import ModuleType
 from typing import Any, Mapping
 
 from .envelope import MetapatModuleEnvelope, root_spine_module_envelope
@@ -15,40 +17,40 @@ from .envelope import MetapatModuleEnvelope, root_spine_module_envelope
 GONOL_VERTEX_COUNT = 157
 SPACE_ANCHOR_VERTEX = 0
 ADDRESSABLE_GONOL_VERTICES = GONOL_VERTEX_COUNT - 1
-UCNS_ADAPTER_SCHEMA = "metapat-ucns-profile-consumer-suspended-v2"
-UCNS_ADAPTER_VERSION = "2.0.0"
-RESET_BOUNDARY_REASON = (
-    "awaiting post-reset producer profile, reviewed handoff, and exact UCNS source commit"
-)
-REJECTED_LEGACY_SCHEMAS = frozenset(
-    {
-        "metapat-actual-ucns-adapter-v1",
-        "ucns-canonical-json-v1",
-        "ucns.bridge-record@1.0.0",
-        "ucns.factorization-evidence@1.0.0",
-    }
-)
+UCNS_ADAPTER_SCHEMA = "metapat-ucns-ordered-occurrence-consumer"
+UCNS_ADAPTER_VERSION = "1.0.0"
+SUPPORTED_PRODUCER_EPOCH = "ucns.post-reset.v1"
+SUPPORTED_PROFILE = ("ucns.profile.edcm-metapat-ordered-occurrence", "1.0.0")
+SUPPORTED_BRIDGE_SCHEMA = ("ucns.bridge.edcm-metapat-ordered-occurrence", "1.0.0")
+PINNED_UCNS_COMMIT = "19f1afddb993f7d933ac8727627e7d5e1c3b88fc"
+RESET_BOUNDARY_REASON = "exact post-reset UCNS producer profile is unavailable or mismatched"
+REJECTED_LEGACY_SCHEMAS = frozenset({
+    "metapat-actual-ucns-adapter-v1",
+    "ucns-canonical-json-v1",
+    "ucns.bridge-record@1.0.0",
+    "ucns.factorization-evidence@1.0.0",
+})
 
 
 class UCNSDependencyError(RuntimeError):
-    """Raised when profile consumption is requested while activation is suspended."""
+    """Raised when the exact pinned UCNS producer cannot be imported."""
 
 
 class UCNSAdapterError(RuntimeError):
-    """Raised when a consumer request crosses the reset/profile boundary."""
+    """Raised when UCNS fails the exact profile or bridge contract."""
 
 
 @dataclass(frozen=True, slots=True)
 class UCNSConsumerStatus:
     package_present: bool
-    producer_recognized: bool = False
-    profile_supported: bool = False
-    adapter_active: bool = False
-    supported_producer_epoch: str | None = None
-    supported_profile: tuple[str, str] | None = None
-    supported_bridge_schema: tuple[str, str] | None = None
-    pinned_ucns_commit: str | None = None
-    reason: str = RESET_BOUNDARY_REASON
+    producer_recognized: bool
+    profile_supported: bool
+    adapter_active: bool
+    supported_producer_epoch: str = SUPPORTED_PRODUCER_EPOCH
+    supported_profile: tuple[str, str] = SUPPORTED_PROFILE
+    supported_bridge_schema: tuple[str, str] = SUPPORTED_BRIDGE_SCHEMA
+    pinned_ucns_commit: str = PINNED_UCNS_COMMIT
+    reason: str | None = None
     theorem_status_transfer: bool = False
     measurement_validity: bool = False
     metapat_validity: bool = False
@@ -59,10 +61,16 @@ class UCNSConsumerStatus:
 
 @dataclass(frozen=True, slots=True)
 class UCNSAdaptationRecord:
-    """Suspended deterministic record retaining METAPAT provenance only."""
-
     adapter_schema: str
     adapter_version: str
+    producer_epoch: str
+    profile_id: str
+    profile_version: str
+    bridge_schema_id: str
+    bridge_schema_version: str
+    ucns_source_commit: str
+    ucns_stable_identity: str
+    ucns_bridge_json: str
     envelope_schema_id: str
     envelope_schema_version: str
     envelope_provenance_digest: str
@@ -75,33 +83,32 @@ class UCNSAdaptationRecord:
     constraints: tuple[str, ...]
     permitted_interpretations: tuple[str, ...]
     unresolved_constraints: tuple[str, ...]
-    activation_status: str = "suspended"
     semantic_mapping: str = "external-provenance"
     theorem_status_transfer: bool = False
     measurement_validity_claim: bool = False
     metapat_validity_claim: bool = False
 
     def __post_init__(self) -> None:
-        if self.adapter_schema != UCNS_ADAPTER_SCHEMA or self.adapter_version != UCNS_ADAPTER_VERSION:
-            raise ValueError("unsupported suspended adapter identity")
-        if self.activation_status != "suspended":
-            raise ValueError("adapter activation must remain suspended")
+        if (self.adapter_schema, self.adapter_version) != (UCNS_ADAPTER_SCHEMA, UCNS_ADAPTER_VERSION):
+            raise ValueError("unsupported METAPAT UCNS adapter identity")
+        if self.producer_epoch != SUPPORTED_PRODUCER_EPOCH:
+            raise ValueError("producer epoch mismatch")
+        if (self.profile_id, self.profile_version) != SUPPORTED_PROFILE:
+            raise ValueError("profile identity mismatch")
+        if (self.bridge_schema_id, self.bridge_schema_version) != SUPPORTED_BRIDGE_SCHEMA:
+            raise ValueError("bridge schema mismatch")
+        if self.ucns_source_commit != PINNED_UCNS_COMMIT:
+            raise ValueError("UCNS source commit mismatch")
         if self.semantic_mapping != "external-provenance":
             raise ValueError("semantic text must remain external provenance")
         if self.theorem_status_transfer or self.measurement_validity_claim or self.metapat_validity_claim:
             raise ValueError("validity or theorem status cannot transfer")
         if len(self.source_statement_refs) != len(self.source_statements):
-            raise ValueError("source refs and statements must preserve equal ordered occurrence counts")
+            raise ValueError("source references and statements must preserve ordered occurrence count")
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)
-        for key in (
-            "source_statement_refs",
-            "source_statements",
-            "constraints",
-            "permitted_interpretations",
-            "unresolved_constraints",
-        ):
+        for key in ("source_statement_refs", "source_statements", "constraints", "permitted_interpretations", "unresolved_constraints"):
             data[key] = list(data[key])
         return data
 
@@ -111,13 +118,7 @@ class UCNSAdaptationRecord:
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "UCNSAdaptationRecord":
         values = dict(data)
-        for key in (
-            "source_statement_refs",
-            "source_statements",
-            "constraints",
-            "permitted_interpretations",
-            "unresolved_constraints",
-        ):
+        for key in ("source_statement_refs", "source_statements", "constraints", "permitted_interpretations", "unresolved_constraints"):
             values[key] = tuple(values[key])
         return cls(**values)
 
@@ -131,9 +132,7 @@ class UCNSAdaptationRecord:
 
 @dataclass(frozen=True, slots=True)
 class UCNSAdaptation:
-    """Compatibility container; no UCNS object can exist while suspended."""
-
-    ucns_object: None
+    ucns_object: Any
     record: UCNSAdaptationRecord
     status: UCNSConsumerStatus
 
@@ -145,18 +144,91 @@ def _package_present() -> bool:
         return False
 
 
+def _validate_module(module: ModuleType) -> None:
+    required = (
+        "PRODUCER_EPOCH", "PROFILE_ID", "PROFILE_VERSION",
+        "BRIDGE_SCHEMA_ID", "BRIDGE_SCHEMA_VERSION", "Cell", "make_carrier",
+        "EdcmMetapatOrderedOccurrenceProfile", "EdcmMetapatBridgeRecord",
+    )
+    missing = [name for name in required if not hasattr(module, name)]
+    if missing:
+        raise UCNSAdapterError("UCNS exact-profile surface missing: " + ", ".join(missing))
+    if str(module.PRODUCER_EPOCH) != SUPPORTED_PRODUCER_EPOCH:
+        raise UCNSAdapterError("UCNS producer epoch mismatch")
+    if (str(module.PROFILE_ID), str(module.PROFILE_VERSION)) != SUPPORTED_PROFILE:
+        raise UCNSAdapterError("UCNS profile identity mismatch")
+    if (str(module.BRIDGE_SCHEMA_ID), str(module.BRIDGE_SCHEMA_VERSION)) != SUPPORTED_BRIDGE_SCHEMA:
+        raise UCNSAdapterError("UCNS bridge schema mismatch")
+
+
+def require_ucns() -> ModuleType:
+    try:
+        module = importlib.import_module("ucns")
+    except ModuleNotFoundError as exc:
+        if exc.name != "ucns":
+            raise
+        raise UCNSDependencyError(RESET_BOUNDARY_REASON) from exc
+    _validate_module(module)
+    return module
+
+
 def ucns_consumer_status() -> UCNSConsumerStatus:
-    return UCNSConsumerStatus(package_present=_package_present())
+    present = _package_present()
+    if not present:
+        return UCNSConsumerStatus(False, False, False, False, reason=RESET_BOUNDARY_REASON)
+    try:
+        require_ucns()
+    except (UCNSDependencyError, UCNSAdapterError) as exc:
+        return UCNSConsumerStatus(True, False, False, False, reason=str(exc))
+    return UCNSConsumerStatus(True, True, True, True)
 
 
-def require_ucns() -> None:
-    raise UCNSDependencyError(RESET_BOUNDARY_REASON)
+def suspended_envelope_record(envelope: MetapatModuleEnvelope) -> Mapping[str, Any]:
+    """Return semantic provenance even when geometry is unavailable."""
+    return {
+        "source_statement_refs": tuple(envelope.source_statement_refs),
+        "source_statements": tuple(envelope.source_statements),
+        "canon_digest": envelope.canon_digest,
+        "constraints": tuple(envelope.constraints),
+        "permitted_interpretations": tuple(envelope.permitted_interpretations),
+        "unresolved_constraints": tuple((*envelope.unresolved_constraints, RESET_BOUNDARY_REASON)),
+        "semantic_mapping": "external-provenance",
+    }
 
 
-def _suspended_record(envelope: MetapatModuleEnvelope) -> UCNSAdaptationRecord:
-    return UCNSAdaptationRecord(
+def adapt_envelope_to_ucns(envelope: MetapatModuleEnvelope, *, face_bits: Any = None) -> UCNSAdaptation:
+    if not isinstance(envelope, MetapatModuleEnvelope):
+        raise TypeError("envelope must be a MetapatModuleEnvelope")
+    if face_bits is not None:
+        raise UCNSAdapterError("face_bits belong to the archived adapter and are not accepted by this profile")
+    module = require_ucns()
+    cells = tuple(
+        module.Cell(payload=None, provenance={"source_ref": ref})
+        for ref in envelope.source_statement_refs
+    )
+    carrier = module.make_carrier(cells)
+    profile = module.EdcmMetapatOrderedOccurrenceProfile()
+    bound = profile.bind(carrier)
+    bridge = profile.to_bridge(
+        bound,
+        source_commit=PINNED_UCNS_COMMIT,
+        operator_history=("metapat-envelope-ordered-occurrence",),
+    )
+    encoded = bridge.to_json_bytes()
+    decoded = module.EdcmMetapatBridgeRecord.from_json_bytes(encoded)
+    if decoded != bridge:
+        raise UCNSAdapterError("UCNS bridge round-trip mismatch")
+    record = UCNSAdaptationRecord(
         adapter_schema=UCNS_ADAPTER_SCHEMA,
         adapter_version=UCNS_ADAPTER_VERSION,
+        producer_epoch=SUPPORTED_PRODUCER_EPOCH,
+        profile_id=SUPPORTED_PROFILE[0],
+        profile_version=SUPPORTED_PROFILE[1],
+        bridge_schema_id=SUPPORTED_BRIDGE_SCHEMA[0],
+        bridge_schema_version=SUPPORTED_BRIDGE_SCHEMA[1],
+        ucns_source_commit=PINNED_UCNS_COMMIT,
+        ucns_stable_identity=bridge.stable_identity,
+        ucns_bridge_json=encoded.decode("utf-8"),
         envelope_schema_id=envelope.schema_id,
         envelope_schema_version=envelope.schema_version,
         envelope_provenance_digest=envelope.provenance_digest,
@@ -168,53 +240,31 @@ def _suspended_record(envelope: MetapatModuleEnvelope) -> UCNSAdaptationRecord:
         source_statements=tuple(envelope.source_statements),
         constraints=tuple(envelope.constraints),
         permitted_interpretations=tuple(envelope.permitted_interpretations),
-        unresolved_constraints=tuple((*envelope.unresolved_constraints, RESET_BOUNDARY_REASON)),
+        unresolved_constraints=tuple(envelope.unresolved_constraints),
     )
+    return UCNSAdaptation(bound, record, UCNSConsumerStatus(True, True, True, True))
 
 
-def suspended_envelope_record(envelope: MetapatModuleEnvelope) -> UCNSAdaptationRecord:
-    """Retain semantic provenance deterministically without geometry construction."""
-    return _suspended_record(envelope)
+def root_spine_adaptation() -> UCNSAdaptation:
+    return adapt_envelope_to_ucns(root_spine_module_envelope())
 
 
-def adapt_envelope_to_ucns(envelope: MetapatModuleEnvelope, *args: Any, **kwargs: Any) -> UCNSAdaptation:
-    del args, kwargs
-    _suspended_record(envelope)
-    raise UCNSAdapterError(RESET_BOUNDARY_REASON)
-
-
-def root_spine_adaptation(*args: Any, **kwargs: Any) -> UCNSAdaptation:
-    return adapt_envelope_to_ucns(root_spine_module_envelope(), *args, **kwargs)
-
-
-def root_spine_ucns(*args: Any, **kwargs: Any) -> None:
-    del args, kwargs
-    raise UCNSAdapterError(RESET_BOUNDARY_REASON)
+def root_spine_ucns() -> Any:
+    return root_spine_adaptation().ucns_object
 
 
 def compose(*objects: Any) -> None:
     del objects
-    raise UCNSAdapterError(RESET_BOUNDARY_REASON)
+    raise UCNSAdapterError("composition is not authorized by the ordered-occurrence profile")
 
 
 __all__ = [
-    "ADDRESSABLE_GONOL_VERTICES",
-    "GONOL_VERTEX_COUNT",
-    "REJECTED_LEGACY_SCHEMAS",
-    "RESET_BOUNDARY_REASON",
-    "SPACE_ANCHOR_VERTEX",
-    "UCNS_ADAPTER_SCHEMA",
-    "UCNS_ADAPTER_VERSION",
-    "UCNSAdapterError",
-    "UCNSAdaptation",
-    "UCNSAdaptationRecord",
-    "UCNSConsumerStatus",
-    "UCNSDependencyError",
-    "adapt_envelope_to_ucns",
-    "compose",
-    "require_ucns",
-    "root_spine_adaptation",
-    "root_spine_ucns",
-    "suspended_envelope_record",
+    "ADDRESSABLE_GONOL_VERTICES", "GONOL_VERTEX_COUNT", "PINNED_UCNS_COMMIT",
+    "REJECTED_LEGACY_SCHEMAS", "RESET_BOUNDARY_REASON", "SPACE_ANCHOR_VERTEX",
+    "SUPPORTED_BRIDGE_SCHEMA", "SUPPORTED_PRODUCER_EPOCH", "SUPPORTED_PROFILE",
+    "UCNS_ADAPTER_SCHEMA", "UCNS_ADAPTER_VERSION", "UCNSAdapterError",
+    "UCNSAdaptation", "UCNSAdaptationRecord", "UCNSConsumerStatus",
+    "UCNSDependencyError", "adapt_envelope_to_ucns", "compose", "require_ucns",
+    "root_spine_adaptation", "root_spine_ucns", "suspended_envelope_record",
     "ucns_consumer_status",
 ]
