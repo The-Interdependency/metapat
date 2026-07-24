@@ -1,0 +1,27 @@
+{
+  "supported_producer_epoch": null,
+  "supported_profile": null,
+  "supported_bridge_schema": null,
+  "pinned_ucns_commit": null,
+  "adapter_activation_status": "suspended-awaiting-reviewed-post-reset-producer-profile",
+  "rejected_legacy_schemas": [
+    "metapat-actual-ucns-adapter-v1",
+    "ucns-canonical-json-v1",
+    "ucns.bridge-record@1.0.0",
+    "ucns.factorization-evidence@1.0.0"
+  ],
+  "tests_proving_fail_closed_behavior": [
+    "pending: installed package named ucns cannot activate archived adapter",
+    "pending: adaptation request fails with awaiting post-reset producer profile",
+    "pending: semantic envelopes remain usable without geometry"
+  ],
+  "unresolved_constraints": [
+    "Reviewed UCNS handoff is unavailable.",
+    "Exact producer epoch, profile ID/version, bridge schema ID/version, accepted package identity, complete option set, stable identity contract, and exact UCNS commit are not yet declared.",
+    "Profile-driven adapter must remain inactive until those identities are pinned."
+  ],
+  "theorem_transfer": false,
+  "measurement_validity": false,
+  "metapat_validity": false,
+  "hmmm": "The consumer recognizes no lookalikes; exact identity or honest suspension."
+}
