@@ -1,3 +1,29 @@
+# === CHECKS ===
+# id: check_metapat_base_survives_ucns_profile
+#   proves: metapat_ucns_ordered_occurrence_provenance
+#   call: self::test_base_metapat_remains_available
+#   mutates: none
+#   cleanup: none
+#
+# id: check_metapat_ucns_exact_identity
+#   proves: metapat_ucns_exact_identity_or_inactive
+#   call: self::test_missing_or_legacy_package_stays_inactive
+#   mutates: process_import_state
+#   cleanup: monkeypatch_restore
+#
+# id: check_metapat_ucns_order_and_no_transfer
+#   proves: metapat_ucns_ordered_occurrence_provenance, metapat_ucns_no_authority_transfer
+#   call: self::test_exact_profile_activates_and_preserves_order
+#   mutates: process_import_state
+#   cleanup: monkeypatch_restore
+#
+# id: check_metapat_ucns_archived_operations
+#   proves: metapat_ucns_archived_operations_rejected
+#   call: self::test_record_round_trip_and_legacy_boundaries
+#   mutates: process_import_state
+#   cleanup: monkeypatch_restore
+# === END CHECKS ===
+
 from __future__ import annotations
 
 import sys
