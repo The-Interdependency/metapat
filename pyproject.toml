@@ -35,9 +35,8 @@ dev = [
   "pytest>=8.0",
   "twine>=5.0",
 ]
-# Deliberately empty until the reviewed post-reset producer profile and exact
-# UCNS commit are available. Installing an arbitrary package named `ucns`
-# cannot activate the suspended consumer adapter.
+# UCNS remains separately installed from the exact producer commit. The runtime
+# adapter verifies producer epoch, profile, bridge identity, and source commit.
 ucns = []
 
 [tool.setuptools]
@@ -61,6 +60,6 @@ addopts = "-ra"
 canonical_root = true
 upstream_owner = "The-Interdependency"
 authority_consumers = ["The-Interdependency/ucns", "The-Interdependency/edcm"]
-runtime_geometry_provider = "suspended-awaiting-reviewed-post-reset-profile"
+runtime_geometry_provider = "The-Interdependency/ucns@19f1afddb993f7d933ac8727627e7d5e1c3b88fc"
 measurement_consumer = "The-Interdependency/edcm"
 proof_status_transfer = false
