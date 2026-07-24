@@ -1,3 +1,46 @@
+# === MODULE_BUILD ===
+# id: metapat_exact_ucns_profile_consumer
+#   module_name: metapat.ucns
+#   module_kind: adapter
+#   summary: consumes only the exact post-reset UCNS ordered-occurrence profile while retaining METAPAT semantic authority externally
+#   owner: The Interdependency
+#   public_surface: UCNSConsumerStatus, UCNSAdaptationRecord, UCNSAdaptation, require_ucns, adapt_envelope_to_ucns, root_spine_adaptation, root_spine_ucns, compose
+#   internal_surface: _package_present, _validate_module
+#   auth_boundary: none
+#   storage_boundary: deterministic serialized bridge and provenance records
+#   network_boundary: package import only
+#   user_data_boundary: semantic statements remain external provenance and are not placed in UCNS payloads
+#   admin_only: false
+#   tests: tests/test_ucns_bridge.py
+#   rollout: exact_profile_only
+#   rollback: restore typed suspension without restoring archived adapter surfaces
+#   requires: metapat_module_envelope, exact UCNS post-reset profile
+#   since: 2026-07-23
+#   unresolved: no universal composition or factorization is authorized
+# === END MODULE_BUILD ===
+#
+# === CONTRACTS ===
+# id: metapat_ucns_exact_identity_or_inactive
+#   given: an installed package named ucns is inspected
+#   then: only the exact producer epoch, profile, and bridge identities activate the adapter
+#   class: safety
+#
+# id: metapat_ucns_ordered_occurrence_provenance
+#   given: a METAPAT envelope is adapted through the exact profile
+#   then: statement order and multiplicity survive while semantic text remains external provenance
+#   class: provenance
+#
+# id: metapat_ucns_no_authority_transfer
+#   given: an adaptation succeeds
+#   then: theorem, measurement, and METAPAT validity transfer fields remain false
+#   class: boundary
+#
+# id: metapat_ucns_archived_operations_rejected
+#   given: archived face-bit or universal composition behavior is requested
+#   then: the adapter fails closed
+#   class: safety
+# === END CONTRACTS ===
+
 """Exact-profile METAPAT consumer for the post-reset UCNS ordered-occurrence bridge.
 
 ``UCNS`` is a stable identifier without a canonical expansion. METAPAT retains
