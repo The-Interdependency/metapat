@@ -31,4 +31,4 @@ Installed local skill entries:
 - `the-interdependency/`
 - `skill-build/`
 
-Source commit: `The-Interdependency/skill-lib` @ `6f36340` (verbatim sync).
+Source commit: `The-Interdependency/skill-lib` @ `289d495` (verbatim sync).
