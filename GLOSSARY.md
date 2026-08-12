@@ -94,7 +94,7 @@ Conscious registration of time.
 
 ## tensor
 
-Primitive simultaneous arrangement of energy-states.
+Primitive simultaneous arrangement of energy-states. Primitive names the priority of simultaneous arrangement, not atomicity or indivisibility. Tensor organization may be nested or recursive across scales. Scalar, vector, matrix, and higher-order forms may become legible within tensor structure or may be used as domain-specific representations of it; such domain formalizations do not redefine the METAPAT root.
 
 ## time
 
