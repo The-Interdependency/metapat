@@ -127,9 +127,9 @@ ENERGY_THEORY_QUESTION = "What questions do I ask?"
 # canon-v1 source epoch. Git blob identities bind file bytes including length.
 CANON_FILE_BLOBS: Mapping[str, str] = {
     "AXIOMS.md": "c7bd186da7e437c691dc3d3bfd305e843f0f149b",
-    "CHAPTER_ZERO.md": "ba5fcd47086b292ee7e0ddfd7951ca0c4385625f",
+    "CHAPTER_ZERO.md": "2af21ec8286238e14456e94bb906799fdf0b6b67",
     "DOMAIN_RESTRAINT.md": "d36a46037fa7bd9b3776b47372eab2ced402fd1e",
-    "GLOSSARY.md": "42405fb57d9cd365b2b1550c83e9711caa10817b",
+    "GLOSSARY.md": "0fcc30c6400dde78aa85a34c3082741790273716",
     "POSTULATES.md": "3b77d0178fb8abc4416d6c6015f8aa9866377723",
     "THEOREMS.md": "e2efa9038f8ef8f951637906fc2586b19b0832f5",
     "THEORIES.md": "3cf10ab07c74bdf447dd4f5e0a99a06142af0466",
