@@ -18,9 +18,9 @@ jobs:
         python-version: ["3.11", "3.12", "3.13"]
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: ${{ matrix.python-version }}
           cache: pip
@@ -38,9 +38,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
           cache: pip
@@ -88,15 +88,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out METAPAT
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
       - name: Check out pinned UCNS producer
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           repository: The-Interdependency/ucns
           ref: 19f1afddb993f7d933ac8727627e7d5e1c3b88fc
           path: .ucns-producer
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.12"
           cache: pip
@@ -147,9 +147,9 @@ jobs:
     needs: [base-package, compliance]
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7.0.0
         with:
           python-version: "3.11"
           cache: pip
