@@ -35,7 +35,7 @@
 #   summary: emits a deterministic complete catalog of current METAPAT doctrine and exact declared derivation edges
 #   exposes: metapat.canonical_semantic_catalog, metapat.semantic_module_by_id, metapat.catalog_digest
 #   inputs: byte-identified METAPAT canon and static catalog declarations
-#   outputs: 39 ordered semantic modules, declared derivation relations, strict JSON, catalog digest
+#   outputs: 40 ordered semantic modules, declared derivation relations, strict JSON, catalog digest
 #   boundaries: auth:none, storage:serialization-only, network:none, user_data:canon text only
 # === END CAPABILITIES ===
 
@@ -52,7 +52,7 @@
 # === CONTRACTS ===
 # id: metapat_catalog_complete_ordered
 #   given: the canonical semantic catalog is constructed
-#   then: it contains exactly one root, twelve axioms, six postulates, eight theorems, and twelve theories in contiguous deterministic order
+#   then: it contains exactly one root, twelve axioms, seven postulates, eight theorems, and twelve theories in contiguous deterministic order
 #   class: canon_contract
 #
 # id: metapat_catalog_module_identity_unique
@@ -106,7 +106,7 @@ CATALOG_SCHEMA_ID = "metapat.semantic-catalog"
 CATALOG_SCHEMA_VERSION = "1.0.0"
 CATALOG_VERSION = "metapat-semantic-catalog-v2"
 DOCTRINE_CLASSES = frozenset({"root", "axiom", "postulate", "theorem", "theory"})
-EXPECTED_MODULE_COUNTS = {"root": 1, "axiom": 12, "postulate": 6, "theorem": 8, "theory": 12}
+EXPECTED_MODULE_COUNTS = {"root": 1, "axiom": 12, "postulate": 7, "theorem": 8, "theory": 12}
 EXPECTED_MODULE_COUNT = sum(EXPECTED_MODULE_COUNTS.values())
 
 

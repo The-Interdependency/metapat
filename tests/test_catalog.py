@@ -96,15 +96,15 @@ from tools.generate_catalog import render_catalog, render_root_spine_envelope
 def test_catalog_is_complete_and_ordered() -> None:
     catalog = canonical_semantic_catalog()
     assert_catalog_complete(catalog)
-    assert len(catalog.modules) == 39
+    assert len(catalog.modules) == 40
     assert catalog_module_counts(catalog) == EXPECTED_MODULE_COUNTS
-    assert [module.ordinal for module in catalog.modules] == list(range(39))
+    assert [module.ordinal for module in catalog.modules] == list(range(40))
 
 
 def test_catalog_module_identity_is_unique() -> None:
     catalog = canonical_semantic_catalog()
-    assert len({module.module_id for module in catalog.modules}) == 39
-    assert len({module.module_digest for module in catalog.modules}) == 39
+    assert len({module.module_id for module in catalog.modules}) == 40
+    assert len({module.module_digest for module in catalog.modules}) == 40
     assert (
         semantic_module_by_id("metapat.axiom.4.tensor", catalog).envelope.module_kind
         == "tensor"

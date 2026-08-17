@@ -9,10 +9,10 @@ It contains exactly:
 ```text
 1 root module
 12 axiom modules
-6 postulate modules
+7 postulate modules
 8 theorem modules
 12 theory modules
-39 modules total
+40 modules total
 ```
 
 Each catalog entry carries a strict `MetapatModuleEnvelope`, doctrine class, claim status, contiguous ordinal, and deterministic module digest. The complete catalog carries the METAPAT canon identity, exact declared derivation relations, and a deterministic catalog digest.

@@ -6,7 +6,7 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. It exposes:
 
 - exact root canon constants and byte-complete deterministic canon identity;
 - immutable, strictly validated `MetapatModuleEnvelope` records;
-- a complete addressable semantic catalog of 39 doctrine modules and 52 exact declared derivation edges;
+- a complete addressable semantic catalog of 40 doctrine modules and 52 exact declared derivation edges;
 - strict semantic-relation records with bounded claim status and deterministic identity;
 - strict catalog-bound application modules with explicit evidence firewalls;
 - a source-checked quantum-magnetism application fixture bound to twelve exact catalog modules;
@@ -70,7 +70,7 @@ Status: implemented at schema `1.2.0`.
 
 Status: implemented at catalog schema `1.0.0` and catalog version `metapat-semantic-catalog-v2`.
 
-- Catalog v2 contains exactly one root, twelve axioms, six postulates, eight theorems, and twelve theories.
+- Catalog v2 contains exactly one root, twelve axioms, seven postulates, eight theorems, and twelve theories.
 - Every module has a stable ID, contiguous ordinal, doctrine class, bounded claim status, exact envelope, and deterministic module digest.
 - `WORKING-POSTULATE` keeps revisable postulates distinct from root stipulations and internal derivations.
 - Theory 10 remains `CROSS-DOMAIN-HYPOTHESIS`; ordinary theorem and theory derivations do not inherit formal-proof status.

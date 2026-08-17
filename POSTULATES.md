@@ -47,3 +47,15 @@ Consciousness is one registration mode, not the parent ontology.
 ## Sixth Postulate: Validation by boundary change
 
 A boundary-simplex earns ontology only if changing its state changes vector direction, propagation, delay, filtering, or transformation outcome while source and target energy-states are held constant.
+
+## Seventh Postulate: Discovery before recovery
+
+Interest may select what to explore.
+
+Discovery may precede explanation.
+
+Freeze a result before independent recovery.
+
+Independent recovery tests the result, not the legitimacy of the discovery path.
+
+A simpler recovery method does not invalidate a more complex discovery method.

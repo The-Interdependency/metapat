@@ -14,7 +14,7 @@ description: |
 #   registration: Capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
 #   observer: A simplex performing registration; observer does not necessarily mean mind.
 #   question: A bounded unresolved energy-state.
-#   semantic_catalog_v2: 39 ordered doctrine modules and 52 exact source-declared derived-from relations bound to metapat-canon-v2.
+#   semantic_catalog_v2: 40 ordered doctrine modules and 52 exact source-declared derived-from relations bound to metapat-canon-v2.
 #   application_module: A source-checked domain application bound to exact catalog version, digest, module identities, module digests, module statuses, evidence boundaries, and deterministic application identity.
 #
 # id: architecture_summary
@@ -27,7 +27,7 @@ description: |
 #   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
 #     - The Fourth Axiom root statement remains exactly "Tensor is primitive." Domain formalisms and examples may explicate or represent the tensor; they do not redefine the root.
 #     - Use exact catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance. Reject malformed types rather than coercing them. Do not recreate UCNS algebra.
-#     - Catalog v2 remains exactly one root, twelve axioms, six postulates, eight theorems, twelve theories, and fifty-two source-declared relations. Preserve WORKING-POSTULATE and CROSS-DOMAIN-HYPOTHESIS status. Never infer ancestry or constitutive meaning from analogy, repeated terms, catalog order, or derived-from relations.
+#     - Catalog v2 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and fifty-two source-declared relations. Preserve WORKING-POSTULATE and CROSS-DOMAIN-HYPOTHESIS status. Never infer ancestry or constitutive meaning from analogy, repeated terms, catalog order, or derived-from relations.
 #     - Application modules bind exact catalog identities and preserve domains, scales, transfer and non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validation fields remain false.
 #     - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
 #     - Consumers pinned to metapat-canon-v1 must reject metapat-canon-v2 until migrated. Consumer repositories own their local epoch names and bind them to exact v2 identities.
@@ -108,10 +108,10 @@ Catalog v2 must remain exactly:
 ```text
 1 root
 12 axioms
-6 postulates
+7 postulates
 8 theorems
 12 theories
-39 modules
+40 modules
 52 exact derived-from relations
 ```
 

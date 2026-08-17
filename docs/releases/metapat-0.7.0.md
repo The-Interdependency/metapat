@@ -2,19 +2,21 @@
 
 ## Identity
 
-This release rotates the canon-bearing tensor clarification through every dependent identity:
+This release rotates the canon-bearing tensor clarification and Seventh Postulate through every dependent identity:
 
 ```text
 package: 0.7.0
 canon: metapat-canon-v2
-canon digest: 3bcfe224fc5bf7bac4d1035303b628447f81cfe81c31caf95ac18a74082bd9cc
+canon digest: fd177e4f3d545005048d6352fbf6753a2f06e471231edd5fa8030b8bd1a1b14a
+canon manifest digest: 8f6a4b6b961a47d823166a42a3111cb2c336143d1e1371f33c79ff3012765a83
+root-spine envelope provenance: 5c8185f7bf26e6a7680ff613ef0df3544675dc6ca8ff4604e86a525562ec462f
 catalog: metapat-semantic-catalog-v2
-catalog digest: 5dbbe75a6ab488a8f745f24137a705de7c739925715518cba391f16cd7f22621
+catalog digest: e2030c2758e56854736e606b81c6a7c8cc98c46dca081ffc1fdbaef2e10e4a37
 quantum-magnetism application: quantum-magnetism-application-v2
-quantum-magnetism digest: a504c15b80371abf57cbdbcc32030bca11227f3231b377e3a6f537d9bc130195
+quantum-magnetism digest: 70e77845f613d348202b6f3f62e845af1b6ce6d7e5fea9e8967b1457a5c013cc
 electromagnetic-pipe application: three-phase-electromagnetic-pipe-application-v2
-electromagnetic-pipe application digest: 9189aad20573e0c7e8e29cc795bb081bed89ebc5932c692b7d228899cc409940
-electromagnetic-pipe design digest: 42f3985b72491583f08aaa00b5f90bf585c38f07cc42915fdfc2ff451e1d4134
+electromagnetic-pipe application digest: 025df951a6b70da1199cb8d55530a6f6b1d3c1ef18155a96cc472d6fabe13623
+electromagnetic-pipe design digest: 4dc5b19b66ff684337fb7ba481276aae10e99124df5b87f79c08102ce73cb969
 ```
 
 The Fourth Axiom root statement remains exactly:

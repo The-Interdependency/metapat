@@ -33,7 +33,7 @@ RETRACTED_OR_SUPERSEDED
 | Registration | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Distinct from time and consciousness. |
 | Observer role | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Observer does not necessarily mean mind. |
 | Question as bounded unresolved energy-state | DEFINITION | root documents, `metapat.canon.definitions()` | Definition; unresolved questions remain unresolved. |
-| Six current postulates | WORKING-POSTULATE | `POSTULATES.md`, catalog modules `metapat.postulate.1` through `.6` | Revisable application commitments; may not rewrite axioms or inherit proof status. |
+| Seven current postulates | WORKING-POSTULATE | `POSTULATES.md`, catalog modules `metapat.postulate.1` through `.7` | Revisable application commitments; may not rewrite axioms or inherit proof status. |
 | Eight current theorems | INTERNAL-DERIVATION | `THEOREMS.md`, catalog modules `metapat.theorem.1` through `.8` | Internal reductions and proof sketches, not formal or empirical proofs. |
 | Theories 0–9 and 11 | INTERNAL-DERIVATION | `THEORIES.md`, corresponding catalog modules | Organized application lenses reducible to current doctrine; remain demotable. |
 | Theory 10, Symbolic and Memetic Transfer | CROSS-DOMAIN-HYPOTHESIS | `THEORIES.md`, `metapat.theory.10.symbolic_and_memetic_transfer` | Remains application-layer pending symbolic vertex tables, receiver tests, and UCNS-gonol mappings. |
@@ -56,8 +56,8 @@ RETRACTED_OR_SUPERSEDED
 | `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as repository blob identity; aggregate identity is SHA-256. |
 | `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. |
 | `MetapatModuleRelation` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` record with bounded relation kind, evidence status, exact endpoints and source provenance, unresolved constraints, and deterministic digest; no theorem or measurement status transfer surface. |
-| `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 39 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
-| `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 6, theorems 8, and theories 12. |
+| `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 40 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
+| `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 7, theorems 8, and theories 12. |
 | `assert_catalog_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every module and relation statement against its exact declared Markdown section and fails on source drift. |
 | `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `root-spine-envelope-v2.json` and `semantic-module-catalog-v2.json` fixtures byte-for-byte. |
 | `ApplicationCatalogBinding` | IMPLEMENTED-CONTRACT | Binds exact catalog module ID, digest, claim status, application role, and application statement without altering the module or transferring status. |
@@ -65,7 +65,7 @@ RETRACTED_OR_SUPERSEDED
 | `validate_application_against_catalog()` | IMPLEMENTED-CONTRACT | Fails on catalog version or digest drift and on any bound module identity, digest, or claim-status mismatch. |
 | `assert_application_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every identity, binding, mapping, transfer, evidence, and `hmmm` statement against the exact application Markdown section. |
 | `quantum_magnetism_application_module()` | IMPLEMENTED-CONTRACT | Emits the first source-checked catalog-bound application fixture with twelve exact bindings and `CROSS-DOMAIN-HYPOTHESIS` status. |
-| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism application fixture byte-for-byte. |
+| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism and three-phase electromagnetic-pipe application fixtures byte-for-byte. |
 | `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope; transfers no theorem status. |
 | `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as default, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
 | `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record does not prove downstream topology. |

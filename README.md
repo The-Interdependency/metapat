@@ -87,7 +87,7 @@ print(metapat.canon_digest())
 metapat.assert_canon_files_match(Path("."))
 ```
 
-The current canon epoch is `metapat-canon-v2`; identity schema `2.0.0` covers the complete canon file set. The aggregate identity is `3bcfe224fc5bf7bac4d1035303b628447f81cfe81c31caf95ac18a74082bd9cc`. The Fourth Axiom root statement remains exactly `Tensor is primitive.`; the v2 rotation binds the explanatory tensor clarification in `CHAPTER_ZERO.md` and `GLOSSARY.md` without allowing mathematical or other domain tools to redefine the METAPAT root. A digest is identity evidence, not empirical validation or formal proof of the ontology.
+The current canon epoch is `metapat-canon-v2`; identity schema `2.0.0` covers the complete canon file set. The aggregate identity is `fd177e4f3d545005048d6352fbf6753a2f06e471231edd5fa8030b8bd1a1b14a`. The Fourth Axiom root statement remains exactly `Tensor is primitive.`; the v2 rotation binds the explanatory tensor clarification in `CHAPTER_ZERO.md` and `GLOSSARY.md` plus the Seventh Postulate from current `main`, without allowing mathematical or other domain tools to redefine the METAPAT root. A digest is identity evidence, not empirical validation or formal proof of the ontology.
 
 Consumer migration is fail-closed: a consumer pinned to `metapat-canon-v1` must reject v2 until it explicitly binds the v2 canon, catalog, application, and provenance digests. METAPAT declares that migration consequence; UCNS, EDCM, and other consumers retain authority over their own epoch names.
 
@@ -125,10 +125,10 @@ The installed package includes `fixtures/root-spine-envelope-v2.json`, which mus
 ```text
 1 root module
 12 axiom modules
-6 postulate modules
+7 postulate modules
 8 theorem modules
 12 theory modules
-39 modules total
+40 modules total
 ```
 
 The catalog also carries 52 exact `derived-from` relations already declared in `THEORIES.md`. It does not infer ancestry from similar wording, analogy, ordering, geometry, carrier size, or repeated terms.

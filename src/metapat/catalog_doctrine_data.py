@@ -111,6 +111,13 @@ DOCTRINE_SPECS = (
     ("metapat.postulate.6.validation_by_boundary_change", "postulate", "postulate", "WORKING-POSTULATE", "POSTULATES.md", "sixth-postulate-validation-by-boundary-change", (
         "A boundary-simplex earns ontology only if changing its state changes vector direction, propagation, delay, filtering, or transformation outcome while source and target energy-states are held constant.",
     ), ()),
+    ("metapat.postulate.7.discovery_before_recovery", "postulate", "postulate", "WORKING-POSTULATE", "POSTULATES.md", "seventh-postulate-discovery-before-recovery", (
+        "Interest may select what to explore.",
+        "Discovery may precede explanation.",
+        "Freeze a result before independent recovery.",
+        "Independent recovery tests the result, not the legitimacy of the discovery path.",
+        "A simpler recovery method does not invalidate a more complex discovery method.",
+    ), ()),
     ("metapat.theorem.1.boundary_earns_its_keep", "theorem", "theorem", "INTERNAL-DERIVATION", "THEOREMS.md", "first-theorem-boundary-earns-its-keep", (
         "If boundary is simplex, then boundary can modify transformation.",
         "If boundary can modify transformation, then gradient dynamics cannot be reduced to simple distance values or difference alone.",
