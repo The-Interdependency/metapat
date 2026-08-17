@@ -59,7 +59,7 @@ RETRACTED_OR_SUPERSEDED
 | `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 39 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
 | `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 6, theorems 8, and theories 12. |
 | `assert_catalog_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every module and relation statement against its exact declared Markdown section and fails on source drift. |
-| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |
+| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `root-spine-envelope-v2.json` and `semantic-module-catalog-v2.json` fixtures byte-for-byte. |
 | `ApplicationCatalogBinding` | IMPLEMENTED-CONTRACT | Binds exact catalog module ID, digest, claim status, application role, and application statement without altering the module or transferring status. |
 | `MetapatApplicationModule` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` preserves domains, scales, source, catalog identity, bindings, transfer limits, evidence requirements, unresolved `hmmm`, and explicit false validation/status-transfer fields. |
 | `validate_application_against_catalog()` | IMPLEMENTED-CONTRACT | Fails on catalog version or digest drift and on any bound module identity, digest, or claim-status mismatch. |
@@ -102,7 +102,7 @@ RETRACTED_OR_SUPERSEDED
 | Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema `2.0.0` binds the complete canon-file manifest alongside importable constants. |
 | Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema `1.2.0` classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
 | Postulates implicitly sharing theorem or root status | RETRACTED_OR_SUPERSEDED | `WORKING-POSTULATE` explicitly preserves revisability and non-root status. |
-| Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v1 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
+| Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v2 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
 | Free-form application labels sufficient for downstream use | RETRACTED_OR_SUPERSEDED | Application schema `1.0.0` requires exact catalog module identities, digests, statuses, source statements, and explicit evidence boundaries. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
 | All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and broader semantic mappings remain unresolved. |
@@ -119,4 +119,4 @@ When adding or changing a public claim:
 
 ## hmmm
 
-Catalog v1 can name current doctrine and declared ancestry without guessing. The first application vertical slice now demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.
+Catalog v2 can name current doctrine and declared ancestry without guessing. The first application vertical slice demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.

@@ -102,7 +102,7 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
-CANON_VERSION = "metapat-canon-v1"
+CANON_VERSION = "metapat-canon-v2"
 CANON_IDENTITY_SCHEMA_VERSION = "2.0.0"
 
 ROOT_SPINE: tuple[str, ...] = (
@@ -124,7 +124,7 @@ TIME_DEFINITION = "Time is sequential tensor alteration."
 ENERGY_THEORY_QUESTION = "What questions do I ask?"
 
 # Exact Git blob SHA-1 identities of the canon-bearing Markdown files on the
-# canon-v1 source epoch. Git blob identities bind file bytes including length.
+# canon-v2 source epoch. Git blob identities bind file bytes including length.
 CANON_FILE_BLOBS: Mapping[str, str] = {
     "AXIOMS.md": "c7bd186da7e437c691dc3d3bfd305e843f0f149b",
     "CHAPTER_ZERO.md": "2af21ec8286238e14456e94bb906799fdf0b6b67",

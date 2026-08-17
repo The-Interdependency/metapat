@@ -14,7 +14,7 @@
 #   user_data_boundary: exact canon statements and references only
 #   admin_only: false
 #   tests: tests.test_catalog
-#   rollout: importable_package and packaged semantic-module-catalog-v1 fixture
+#   rollout: importable_package and packaged semantic-module-catalog-v2 fixture
 #   rollback: remove catalog exports and fixture while preserving envelope and canon surfaces
 #   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog_builder
 #   since: 2026-07-21
@@ -104,7 +104,7 @@ from .relations import CLAIM_STATUSES, MetapatModuleRelation
 
 CATALOG_SCHEMA_ID = "metapat.semantic-catalog"
 CATALOG_SCHEMA_VERSION = "1.0.0"
-CATALOG_VERSION = "metapat-semantic-catalog-v1"
+CATALOG_VERSION = "metapat-semantic-catalog-v2"
 DOCTRINE_CLASSES = frozenset({"root", "axiom", "postulate", "theorem", "theory"})
 EXPECTED_MODULE_COUNTS = {"root": 1, "axiom": 12, "postulate": 6, "theorem": 8, "theory": 12}
 EXPECTED_MODULE_COUNT = sum(EXPECTED_MODULE_COUNTS.values())

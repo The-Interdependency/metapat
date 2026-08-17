@@ -34,7 +34,7 @@
 # id: metapat_quantum_magnetism_fixture
 #   summary: emits one deterministic catalog-bound application record for nuclear charge configuration and magnetic state formation
 #   exposes: metapat.quantum_magnetism_application_module
-#   inputs: canonical semantic catalog v1
+#   inputs: canonical semantic catalog v2
 #   outputs: strict cross-domain application module and deterministic digest
 #   boundaries: auth:none, storage:serialization-only, network:none, user_data:public application text only
 # === END CAPABILITIES ===
@@ -85,7 +85,7 @@ from .application import (
 )
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-QUANTUM_MAGNETISM_APPLICATION_VERSION = "quantum-magnetism-application-v1"
+QUANTUM_MAGNETISM_APPLICATION_VERSION = "quantum-magnetism-application-v2"
 SOURCE_DOCUMENT = "docs/applications/quantum-magnetism.md"
 
 QUANTUM_MAGNETISM_BINDING_SPECS = (

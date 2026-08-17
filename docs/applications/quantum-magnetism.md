@@ -11,7 +11,7 @@ This note is the first catalog-bound METAPAT application module. It applies META
 The packaged application fixture is:
 
 ```text
-metapat/fixtures/quantum-magnetism-application-v1.json
+metapat/fixtures/quantum-magnetism-application-v2.json
 ```
 
 ## Catalog bindings

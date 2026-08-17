@@ -60,6 +60,18 @@
 #   call: self::test_packaged_catalog_fixture_is_current
 #   mutates: none
 #   cleanup: none
+#
+# id: check_root_envelope_fixture_generated
+#   proves: metapat_root_envelope_fixture_generated
+#   call: self::test_root_spine_fixture_render_is_deterministic
+#   mutates: none
+#   cleanup: none
+#
+# id: check_root_envelope_fixture_current
+#   proves: metapat_root_envelope_fixture_current
+#   call: self::test_packaged_root_spine_fixture_is_current
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 from dataclasses import replace
@@ -78,7 +90,7 @@ from metapat.catalog import (
     semantic_module_by_id,
 )
 from metapat.relations import build_relation
-from tools.generate_catalog import render_catalog
+from tools.generate_catalog import render_catalog, render_root_spine_envelope
 
 
 def test_catalog_is_complete_and_ordered() -> None:
@@ -187,7 +199,20 @@ def test_catalog_fixture_render_is_deterministic() -> None:
     assert rendered == render_catalog()
 
 
+def test_root_spine_fixture_render_is_deterministic() -> None:
+    rendered = render_root_spine_envelope()
+    assert rendered.endswith("\n") and rendered.count("\n") == 1
+    assert rendered == render_root_spine_envelope()
+
+
+def test_packaged_root_spine_fixture_is_current() -> None:
+    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v2.json")
+    assert fixture.is_file()
+    assert fixture.read_text(encoding="utf-8") == render_root_spine_envelope()
+
+
 def test_packaged_catalog_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v1.json")
+    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v2.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_catalog()
+    assert not files("metapat").joinpath("fixtures/semantic-module-catalog-v1.json").is_file()

@@ -19,17 +19,17 @@ If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the 
 | Generated metadata | `python tools/generate_msdmd.py --check` | committed `metapat_msdmd.ts` is byte-current across bounded `src/`, `tests/`, and `tools/` surfaces |
 | Complete canon bytes | `python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"` | every declared canon file matches its exact Git blob identity |
 | Semantic catalog tests | `python -m pytest -q tests/test_catalog.py tests/test_relations.py` | 39 modules, 52 declared relations, strict identity, bounded status, exact source resolution, and no inferred constitutive meaning pass |
-| Catalog fixture | `python tools/generate_catalog.py --check` | packaged `semantic-module-catalog-v1.json` is byte-current with the live constructor |
+| Canon-bound semantic fixtures | `python tools/generate_catalog.py --check` | packaged `root-spine-envelope-v2.json` and `semantic-module-catalog-v2.json` are byte-current with their live constructors |
 | Catalog source integrity | `python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"` | every module and relation resolves to an exact statement in its declared canon section |
-| Application-module tests | `python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py` | strict catalog bindings, roundtrip, source integrity, scale separation, evidence firewall, and fixture identity pass |
-| Application fixtures | `python tools/generate_application_fixtures.py --check` | packaged quantum-magnetism application fixture is byte-current with its constructor |
+| Application-module tests | `python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py` | strict catalog bindings, roundtrip, source integrity, scale separation, evidence firewall, pipe design identity, and fixture identity pass |
+| Application fixtures | `python tools/generate_application_fixtures.py --check` | packaged quantum-magnetism and three-phase electromagnetic-pipe application fixtures are byte-current with their constructors |
 | Application binding integrity | construct the catalog and application, then run `validate_application_against_catalog()` and `assert_application_sources_match()` | exact catalog version, catalog digest, twelve module identities/digests/statuses, and 45 source statements match |
 | Canon contracts | `python -m unittest discover -s tests` | pass |
 | Full base suite | `python -m pytest -q` | pass; actual-UCNS tests may skip only when the optional dependency is absent |
 | Explicit Phi policy | `python -m pytest -q tests/test_ucns_phi.py` | default external provenance, explicit-only constitutive authorization, exact order/canon binding, prohibited relation rejection, strict roundtrip, and no status transfer pass |
 | Actual UCNS integration | `python -m pip install -e .[dev,ucns]` then targeted pytest | actual object, complete provenance, strict record roundtrip, and no theorem transfer pass |
 | Distribution | `python -m build && python -m twine check dist/*` | source and wheel artifacts valid |
-| Clean wheel | install `dist/*.whl` into a new virtual environment | version, typing marker, all three packaged fixtures, catalog and application identity, and dependency-free base import pass |
+| Clean wheel | install `dist/*.whl` into a new virtual environment | version, typing marker, all four packaged fixtures, catalog and application identity, and dependency-free base import pass |
 
 GitHub Actions is the standing execution evidence. A local run is supporting evidence only and does not supersede a later failing run of the same command.
 
@@ -48,19 +48,21 @@ The graph is `[test-backed]` only after the ordinary suite passes and the audit 
 
 ## Canon identity status
 
-The canon text remains `metapat-canon-v1`. Identity schema `2.0.0` binds:
+The current canon epoch is `metapat-canon-v2`. Identity schema `2.0.0` binds:
 
 - importable canon constants and definitions;
 - exact byte identities for `CHAPTER_ZERO.md`, `AXIOMS.md`, `POSTULATES.md`, `THEOREMS.md`, `THEORIES.md`, `GLOSSARY.md`, and `DOMAIN_RESTRAINT.md`.
 
-The `CHAPTER_ZERO.md` Git blob identity is `ba5fcd47086b292ee7e0ddfd7951ca0c4385625f`. The aggregate canon identity is `116fffd7a02487537e43581152fca74099db43c1a0af8df2e737fa9b8afbd00e`.
+The `CHAPTER_ZERO.md` Git blob identity is `2af21ec8286238e14456e94bb906799fdf0b6b67`. The `GLOSSARY.md` Git blob identity is `0fcc30c6400dde78aa85a34c3082741790273716`. The aggregate canon identity is `3bcfe224fc5bf7bac4d1035303b628447f81cfe81c31caf95ac18a74082bd9cc`.
+
+The Fourth Axiom root statement remains exactly `Tensor is primitive.` The explanatory tensor clarification remains subordinate to the root and preserves domain-tool separation. Consumers pinned to v1 must reject this epoch until migrated; each downstream repository owns its consumer-local epoch name and must bind it to the exact v2 identities below.
 
 ## Semantic catalog status
 
-Catalog schema `1.0.0`, version `metapat-semantic-catalog-v1`, materializes one root, twelve axioms, six postulates, eight theorems, twelve theories, and fifty-two exact `derived-from` edges. The catalog digest is:
+Catalog schema `1.0.0`, version `metapat-semantic-catalog-v2`, materializes one root, twelve axioms, six postulates, eight theorems, twelve theories, and fifty-two exact `derived-from` edges. The catalog digest is:
 
 ```text
-871d8a9c40ede0e47999e672bdbc18b8b72a70bb74e1f43a29af44e43882d08a
+5dbbe75a6ab488a8f745f24137a705de7c739925715518cba391f16cd7f22621
 ```
 
 Every module and relation carries exact source provenance, bounded status, unresolved constraints, and deterministic identity. `WORKING-POSTULATE` preserves revisability. Theory 10 remains `CROSS-DOMAIN-HYPOTHESIS`. Ordinary catalog ancestry is not formal proof or constitutive payload containment.
@@ -71,17 +73,17 @@ Application schema `1.0.0` binds domain applications to exact catalog identities
 
 ```text
 application id: metapat.application.quantum_magnetism
-version: quantum-magnetism-application-v1
+version: quantum-magnetism-application-v2
 claim status: CROSS-DOMAIN-HYPOTHESIS
 root impact: none
 catalog bindings: 12
-application digest: 8579a9f88bce4ca2242a36731ce7fec76191ef57a6d2ccd7af9d72de1471b0ae
+application digest: a504c15b80371abf57cbdbcc32030bca11227f3231b377e3a6f537d9bc130195
 ```
 
 The packaged fixture is:
 
 ```text
-metapat/fixtures/quantum-magnetism-application-v1.json
+metapat/fixtures/quantum-magnetism-application-v2.json
 ```
 
 Each binding fixes catalog module ID, module digest, module claim status, application role, application statement, and binding digest. Theory 10 is deliberately absent. Nuclear, atomic, crystalline, and magnetic-domain scales remain separate. Physics remains the governing evidence domain.
