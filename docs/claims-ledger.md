@@ -33,7 +33,7 @@ RETRACTED_OR_SUPERSEDED
 | Registration | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Distinct from time and consciousness. |
 | Observer role | DEFINITION | `GLOSSARY.md`, `metapat.canon.definitions()` | Observer does not necessarily mean mind. |
 | Question as bounded unresolved energy-state | DEFINITION | root documents, `metapat.canon.definitions()` | Definition; unresolved questions remain unresolved. |
-| Six current postulates | WORKING-POSTULATE | `POSTULATES.md`, catalog modules `metapat.postulate.1` through `.6` | Revisable application commitments; may not rewrite axioms or inherit proof status. |
+| Seven current postulates | WORKING-POSTULATE | `POSTULATES.md`, catalog modules `metapat.postulate.1` through `.7` | Revisable application commitments; may not rewrite axioms or inherit proof status. |
 | Eight current theorems | INTERNAL-DERIVATION | `THEOREMS.md`, catalog modules `metapat.theorem.1` through `.8` | Internal reductions and proof sketches, not formal or empirical proofs. |
 | Theories 0–9 and 11 | INTERNAL-DERIVATION | `THEORIES.md`, corresponding catalog modules | Organized application lenses reducible to current doctrine; remain demotable. |
 | Theory 10, Symbolic and Memetic Transfer | CROSS-DOMAIN-HYPOTHESIS | `THEORIES.md`, `metapat.theory.10.symbolic_and_memetic_transfer` | Remains application-layer pending symbolic vertex tables, receiver tests, and UCNS-gonol mappings. |
@@ -56,16 +56,16 @@ RETRACTED_OR_SUPERSEDED
 | `CANON_FILE_BLOBS` and `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind every canon-bearing Markdown file byte-for-byte and fail closed on drift or absence. Git SHA-1 is used only as repository blob identity; aggregate identity is SHA-256. |
 | `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Immutable schema `1.2.0` semantic-authority and provenance envelope; exact references, statements, constraints, permitted interpretations, unresolved `hmmm`, canon identity, and provenance digest survive strict serialization. |
 | `MetapatModuleRelation` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` record with bounded relation kind, evidence status, exact endpoints and source provenance, unresolved constraints, and deterministic digest; no theorem or measurement status transfer surface. |
-| `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 39 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
-| `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 6, theorems 8, and theories 12. |
+| `MetapatSemanticCatalog` | IMPLEMENTED-CONTRACT | Catalog schema `1.0.0` contains exactly 40 ordered modules and 52 exact source-declared derivation edges, binds canon identity, round-trips strictly, and rejects undeclared or inferred constitutive containment. |
+| `assert_catalog_complete()` | IMPLEMENTED-CONTRACT | Fails unless doctrine counts are exactly root 1, axioms 12, postulates 7, theorems 8, and theories 12. |
 | `assert_catalog_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every module and relation statement against its exact declared Markdown section and fails on source drift. |
-| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `semantic-module-catalog-v1.json` fixture byte-for-byte. |
+| `tools/generate_catalog.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged `root-spine-envelope-v2.json` and `semantic-module-catalog-v2.json` fixtures byte-for-byte. |
 | `ApplicationCatalogBinding` | IMPLEMENTED-CONTRACT | Binds exact catalog module ID, digest, claim status, application role, and application statement without altering the module or transferring status. |
 | `MetapatApplicationModule` | IMPLEMENTED-CONTRACT | Strict schema `1.0.0` preserves domains, scales, source, catalog identity, bindings, transfer limits, evidence requirements, unresolved `hmmm`, and explicit false validation/status-transfer fields. |
 | `validate_application_against_catalog()` | IMPLEMENTED-CONTRACT | Fails on catalog version or digest drift and on any bound module identity, digest, or claim-status mismatch. |
 | `assert_application_sources_match()` | IMPLEMENTED-CONTRACT | Resolves every identity, binding, mapping, transfer, evidence, and `hmmm` statement against the exact application Markdown section. |
 | `quantum_magnetism_application_module()` | IMPLEMENTED-CONTRACT | Emits the first source-checked catalog-bound application fixture with twelve exact bindings and `CROSS-DOMAIN-HYPOTHESIS` status. |
-| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism application fixture byte-for-byte. |
+| `tools/generate_application_fixtures.py` | IMPLEMENTED-CONTRACT | Generates or checks the packaged quantum-magnetism and three-phase electromagnetic-pipe application fixtures byte-for-byte. |
 | `metapat.ucns.adapt_envelope_to_ucns` | IMPLEMENTED-CONTRACT | Constructs an actual `ucns.UCNSObject`; keeps METAPAT statements as external provenance; retains the complete semantic envelope; transfers no theorem status. |
 | `DEFAULT_UCNS_PHI_POLICY` | IMPLEMENTED-CONTRACT | Keeps `external-provenance` as default, requires explicit authorization for a semantic fork, permits only `constitutive-simultaneous`, and transfers no theorem or validity status. |
 | `UCNSForkAuthorization` and `authorize_constitutive_fork` | IMPLEMENTED-CONTRACT | Bind exact parent module, ordered child modules, canon digest, source references, policy version, unresolved constraints, and authorization digest. The record does not prove downstream topology. |
@@ -102,7 +102,7 @@ RETRACTED_OR_SUPERSEDED
 | Importable-constants-only canon digest | RETRACTED_OR_SUPERSEDED | Identity schema `2.0.0` binds the complete canon-file manifest alongside importable constants. |
 | Root spine classified as a `simplex` by constructor convenience | RETRACTED_OR_SUPERSEDED | Schema `1.2.0` classifies the root spine as a neutral `canon-module`; simplex claims require their own source authority. |
 | Postulates implicitly sharing theorem or root status | RETRACTED_OR_SUPERSEDED | `WORKING-POSTULATE` explicitly preserves revisability and non-root status. |
-| Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v1 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
+| Whole documents required as the only machine-addressable semantic surface | RETRACTED_OR_SUPERSEDED | Catalog v2 supplies stable module IDs, exact source resolution, claim status, and deterministic identity without replacing canon files. |
 | Free-form application labels sufficient for downstream use | RETRACTED_OR_SUPERSEDED | Application schema `1.0.0` requires exact catalog module identities, digests, statuses, source statements, and explicit evidence boundaries. |
 | “theorem validation helpers” wording | RETRACTED_OR_SUPERSEDED | Deterministic canon contract checks with explicit non-validation boundaries. |
 | All payload, tag, and external-provenance semantics described as wholly unresolved | RETRACTED_OR_SUPERSEDED | Default adapter mapping is external provenance; explicit canon-bound `constitutive-simultaneous` authorization is ratified; topology binding and broader semantic mappings remain unresolved. |
@@ -119,4 +119,4 @@ When adding or changing a public claim:
 
 ## hmmm
 
-Catalog v1 can name current doctrine and declared ancestry without guessing. The first application vertical slice now demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.
+Catalog v2 can name current doctrine and declared ancestry without guessing. The first application vertical slice demonstrates that catalog reuse preserves the quantum-magnetism note's cross-domain status rather than laundering it into canon, proof, measurement, or UCNS topology. Physics evidence remains unresolved and external.

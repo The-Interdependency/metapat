@@ -14,7 +14,7 @@
 #   user_data_boundary: public engineering handoff and provenance only
 #   admin_only: false
 #   tests: tests.test_electromagnetic_pipe
-#   rollout: public package exports and deterministic fixture in metapat 0.6.0
+#   rollout: public package exports and deterministic fixture in metapat 0.7.0
 #   rollback: remove electromagnetic-pipe exports and fixture while preserving the generic application schema and semantic catalog
 #   requires: metapat_application_module_schema, metapat_semantic_catalog
 #   since: 2026-07-21
@@ -34,7 +34,7 @@
 # id: metapat_electromagnetic_pipe_fixture
 #   summary: emits one deterministic catalog-bound engineering application and typed device-design record for the nested three-phase pipe system
 #   exposes: metapat.electromagnetic_pipe_design
-#   inputs: canonical semantic catalog v1
+#   inputs: canonical semantic catalog v2
 #   outputs: strict engineering application, typed topology and material-search record, deterministic digest
 #   boundaries: auth:none, storage:serialization-only, network:none, user_data:public engineering handoff only
 # === END CAPABILITIES ===
@@ -101,7 +101,7 @@ from typing import Any, Mapping
 from .application import MetapatApplicationModule, bind_catalog_module, validate_application_against_catalog
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-PIPE_APPLICATION_VERSION = "three-phase-electromagnetic-pipe-application-v1"
+PIPE_APPLICATION_VERSION = "three-phase-electromagnetic-pipe-application-v2"
 PIPE_DESIGN_SCHEMA_ID = "metapat.electromagnetic-pipe-design"
 PIPE_DESIGN_SCHEMA_VERSION = "1.0.0"
 WINDING_LAYER_SCHEMA_ID = "metapat.electromagnetic-pipe-winding-layer"

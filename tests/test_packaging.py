@@ -45,7 +45,7 @@ import metapat
 
 
 def test_public_version_matches_distribution_metadata() -> None:
-    assert metapat.__version__ == "0.6.0"
+    assert metapat.__version__ == "0.7.0"
     assert version("metapat") == metapat.__version__
 
 
@@ -70,12 +70,14 @@ def test_public_surface_contains_no_local_ucns_object_class() -> None:
 
 
 def test_root_spine_fixture_is_packaged_and_exact() -> None:
-    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v1.json")
+    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v2.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8").strip() == metapat.root_spine_module_envelope().to_json()
+    assert not files("metapat").joinpath("fixtures/root-spine-envelope-v1.json").is_file()
 
 
 def test_electromagnetic_pipe_fixture_is_packaged_and_exact() -> None:
-    fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json")
+    fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v2.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8").strip() == metapat.electromagnetic_pipe_design().to_json()
+    assert not files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json").is_file()

@@ -81,7 +81,7 @@ jobs:
       - name: Verify every canon-bearing file byte identity
         run: python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"
       - name: Verify packaged root-spine fixture
-        run: python -c "from importlib.resources import files; import metapat; assert files('metapat').joinpath('fixtures/root-spine-envelope-v1.json').read_text(encoding='utf-8').strip() == metapat.root_spine_module_envelope().to_json()"
+        run: python -c "from importlib.resources import files; import metapat; assert files('metapat').joinpath('fixtures/root-spine-envelope-v2.json').read_text(encoding='utf-8').strip() == metapat.root_spine_module_envelope().to_json()"
 
   exact-ucns-integration:
     name: Exact post-reset UCNS profile / pinned producer
@@ -172,12 +172,12 @@ jobs:
           from importlib.metadata import version
           from importlib.resources import files
           import metapat
-          assert version("metapat") == metapat.__version__ == "0.6.0"
+          assert version("metapat") == metapat.__version__ == "0.7.0"
           assert files("metapat").joinpath("py.typed").is_file()
-          root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v1.json")
-          catalog_fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v1.json")
-          application_fixture = files("metapat").joinpath("fixtures/quantum-magnetism-application-v1.json")
-          pipe_fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json")
+          root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v2.json")
+          catalog_fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v2.json")
+          application_fixture = files("metapat").joinpath("fixtures/quantum-magnetism-application-v2.json")
+          pipe_fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v2.json")
           envelope = metapat.root_spine_module_envelope()
           catalog = metapat.canonical_semantic_catalog()
           application = metapat.quantum_magnetism_application_module(catalog)

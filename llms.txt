@@ -1,11 +1,9 @@
 # LLM Instructions for METAPAT
 
 ## Project Overview
+METAPAT is the canonical semantic authority for Meta Energy Theory. It protects exact canon text and every canon-bearing file identity. Catalog v2 makes current root, axiom, postulate, theorem, and theory surfaces addressable. Application schema 1.0.0 binds domain applications to exact catalog identities, source statements, scales, transfer limits, evidence requirements, and unresolved hmmm without becoming UCNS algebra, EDCM measurement, formal proof, or domain validation.
 
-METAPAT is the canonical semantic authority for Meta Energy Theory. It protects exact canon text and every canon-bearing file identity. Catalog v1 makes current root, axiom, postulate, theorem, and theory surfaces addressable. Application schema `1.0.0` binds domain applications to exact catalog identities, source statements, scales, transfer limits, evidence requirements, and unresolved `hmmm` without becoming UCNS algebra, EDCM measurement, formal proof, or domain validation.
-
-## Key Definitions — do not infer or expand
-
+## Key Definitions (never infer or expand these)
 - **METAPAT** = Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.
 - **root_spine** = Legible difference is distinction; distinction defines boundaries; boundaries define simplex; boundary is simplex of distinction; simplex holds or modifies energy in a state of being.
 - **tensor** = Primitive simultaneous arrangement of energy-states.
@@ -13,31 +11,24 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. It protects 
 - **registration** = Capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
 - **observer** = A simplex performing registration; observer does not necessarily mean mind.
 - **question** = A bounded unresolved energy-state.
-- **semantic catalog v1** = 39 ordered doctrine modules and 52 exact source-declared `derived-from` relations bound to `metapat-canon-v1`.
-- **application module** = A source-checked domain application bound to exact catalog version, digest, module identities, module digests, module statuses, evidence boundaries, and deterministic application identity.
+- **semantic_catalog_v2** = 40 ordered doctrine modules and 52 exact source-declared derived-from relations bound to metapat-canon-v2.
+- **application_module** = A source-checked domain application bound to exact catalog version, digest, module identities, module digests, module statuses, evidence boundaries, and deterministic application identity.
 
 ## Architecture Summary
+- METAPAT owns semantic authority, the addressable catalog, application provenance, and explicit Phi semantic authorization.
+- Actual UCNS owns geometry and its proof status; domain evidence remains answerable to its source domain; EDCM owns measurement.
+- Canon, catalog, application, module, relation, geometry, policy, authorization, consumer-epoch, and proof identities remain separate.
+- No implementation owns the root.
 
-METAPAT owns semantic authority, the addressable catalog, and application provenance. Actual UCNS owns geometry. Domain evidence remains answerable to its source domain. EDCM owns measurement. Canon identity, catalog identity, application identity, module and relation identity, UCNS geometry identity, EDCM policy identity, Phi authorization identity, and proof status remain distinct. No implementation owns the root.
+## How to Use This Repo with LLMs / Agents
+- Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
+- The Fourth Axiom root statement remains exactly "Tensor is primitive." Domain formalisms and examples may explicate or represent the tensor; they do not redefine the root.
+- Use exact catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance. Reject malformed types rather than coercing them. Do not recreate UCNS algebra.
+- Catalog v2 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and fifty-two source-declared relations. Preserve WORKING-POSTULATE and CROSS-DOMAIN-HYPOTHESIS status. Never infer ancestry or constitutive meaning from analogy, repeated terms, catalog order, or derived-from relations.
+- Application modules bind exact catalog identities and preserve domains, scales, transfer and non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validation fields remain false.
+- The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
+- Consumers pinned to metapat-canon-v1 must reject metapat-canon-v2 until migrated. Consumer repositories own their local epoch names and bind them to exact v2 identities.
+- Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS. Run canon, catalog, application, fixture, generated-msdmd, Phi-policy, package, clean-wheel, and actual-UCNS gates.
+- Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from their constructors or source blocks; do not hand-maintain them.
 
-## Required Agent Behavior
-
-Preserve canon text exactly unless a canon change is separately authorized. Treat `CANON_FILE_BLOBS`, identity schema `2.0.0`, and `canon_digest()` as one complete identity boundary. Use exact catalog module IDs, `MetapatModuleEnvelope`, `MetapatModuleRelation`, `ApplicationCatalogBinding`, `MetapatApplicationModule`, and packaged fixtures for semantic authority and provenance. Reject malformed catalog, module, relation, application, envelope, adaptation-record, policy, and authorization types rather than coercing them. Do not recreate UCNS algebra.
-
-Catalog v1 must remain exactly one root, twelve axioms, six postulates, eight theorems, and twelve theories. Preserve `WORKING-POSTULATE` as distinct from root and theorem status. Preserve Theory 10 as `CROSS-DOMAIN-HYPOTHESIS`. Materialize only relations explicitly declared in source. Never infer ancestry from analogy or repeated terms. Never treat catalog order or `derived-from` relations as formal proof, application validation, or `constitutive-simultaneous` payload meaning.
-
-Application modules must bind every applied term to exact catalog module identity, digest, and declared status. Preserve domains, selected scales, transfer and non-transfer statements, evidence requirements, source references, and unresolved `hmmm`. Root impact and METAPAT-validity, domain-validity, measurement-validity, theorem-transfer, and UCNS-topology fields must remain false. Successful fixture generation establishes identity and provenance only.
-
-The quantum-magnetism application is implemented with twelve exact catalog bindings. It deliberately excludes Theory 10, distinguishes nuclear, atomic, crystalline, and magnetic-domain scales, and remains a `CROSS-DOMAIN-HYPOTHESIS` answerable to physics evidence.
-
-The actual UCNS adapter defaults to `external-provenance`, keeps payloads unit, and retains exact statements, references, constraints, permitted interpretations, unresolved `hmmm`, and provenance outside UCNS mathematical meaning. The only ratified semantic exception is an explicit canon-bound `UCNSForkAuthorization` for ordered `constitutive-simultaneous` children. Never infer authorization from catalog relations, application bindings, payload presence, order, adjacency, provenance, time, alternatives, fiq connectivity, symmetry, or carrier shape. Downstream topology verification remains required.
-
-Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own `CONTRACTS`; tests own `CHECKS`. Run the no-import graph audit, catalog fixture and source-integrity gates, application fixture and source-integrity gates, generated-msdmd freshness check, complete canon-file integrity gate, explicit Phi-policy test, ordinary suites, actual-UCNS integration, build, and clean-wheel checks. Generated fixtures and `metapat_msdmd.ts` must not be edited by hand.
-
-This repository does not implement the EDCM consumer or the UCNS topology-binding linter. The quantum-magnetism application's provenance surface is implemented; its physics validation is not.
-
-Read `AGENTS.md`, `COMPLIANCE.md`, `docs/claims-ledger.md`, `docs/semantic-module-catalog.md`, `docs/application-modules.md`, `docs/applications/quantum-magnetism.md`, `src/metapat/canon.py`, `src/metapat/envelope.py`, `src/metapat/relations.py`, `src/metapat/catalog.py`, `src/metapat/catalog_build.py`, `src/metapat/application.py`, `src/metapat/quantum_magnetism.py`, `src/metapat/ucns.py`, `src/metapat/ucns_phi.py`, and `docs/ucns-phi-policy.md` before changing architecture.
-
-## hmmm
-
-The first application-module vertical slice is implemented. Its physics evidence, the downstream EDCM catalog/application consumer, and the first topology-bound constitutive-fork fixture remain unresolved. Application identity and provenance are not application validation.
+This file is the single source of truth. If something is not explicitly stated in the files listed above, it does not exist in this repository.

@@ -76,7 +76,7 @@ Fault statements are objectives to test. Ceramic containment, molten-copper isol
 
 ## Release surface
 
-METAPAT `0.6.0` exports the pipe application and design records through the top-level `metapat` package.
+METAPAT `0.7.0` exports the canon-v2-bound pipe application and design records through the top-level `metapat` package.
 
 Human source:
 
@@ -87,7 +87,7 @@ docs/applications/three-phase-electromagnetic-pipe.md
 Packaged deterministic fixture:
 
 ```text
-src/metapat/fixtures/three-phase-electromagnetic-pipe-v1.json
+src/metapat/fixtures/three-phase-electromagnetic-pipe-v2.json
 ```
 
 Generation and verification:
@@ -100,7 +100,7 @@ python -m unittest tests.test_electromagnetic_pipe
 python -m pytest -q tests/test_electromagnetic_pipe.py tests/test_packaging.py
 ```
 
-The clean-wheel smoke test verifies version `0.6.0`, the top-level constructors, the exact packaged fixture, the 18-circuit / six-system topology, catalog binding, and design digest without requiring UCNS.
+The clean-wheel smoke test verifies version `0.7.0`, the top-level constructors, the exact packaged fixture, the 18-circuit / six-system topology, catalog binding, and design digest without requiring UCNS.
 
 ## Short-section prototype gate
 

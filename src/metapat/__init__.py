@@ -14,7 +14,7 @@
 #   user_data_boundary: none
 #   admin_only: false
 #   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
-#   rollout: importable_package version 0.6.0
+#   rollout: importable_package version 0.7.0
 #   rollback: remove electromagnetic-pipe exports and fixture while preserving canon, catalog, quantum application, envelope, Phi, and adapter surfaces
 #   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-21
@@ -63,7 +63,7 @@
 #   class: packaging
 # === END CONTRACTS ===
 
-__version__ = "0.6.0"
+__version__ = "0.7.0"
 
 from .application import (
     APPLICATION_BINDING_SCHEMA_ID,

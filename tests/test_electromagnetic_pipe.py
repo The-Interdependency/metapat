@@ -195,6 +195,6 @@ def test_pipe_fixture_renderer_is_deterministic() -> None:
 
 
 def test_packaged_pipe_fixture_matches_live_constructor() -> None:
-    fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v1.json")
+    fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v2.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_electromagnetic_pipe_fixture()

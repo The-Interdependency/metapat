@@ -87,7 +87,9 @@ print(metapat.canon_digest())
 metapat.assert_canon_files_match(Path("."))
 ```
 
-The canon remains `metapat-canon-v1`; identity schema `2.0.0` covers the complete canon file set. The aggregate identity is `116fffd7a02487537e43581152fca74099db43c1a0af8df2e737fa9b8afbd00e`. A digest is identity evidence, not empirical validation or formal proof of the ontology.
+The current canon epoch is `metapat-canon-v2`; identity schema `2.0.0` covers the complete canon file set. The aggregate identity is `fd177e4f3d545005048d6352fbf6753a2f06e471231edd5fa8030b8bd1a1b14a`. The Fourth Axiom root statement remains exactly `Tensor is primitive.`; the v2 rotation binds the explanatory tensor clarification in `CHAPTER_ZERO.md` and `GLOSSARY.md` plus the Seventh Postulate from current `main`, without allowing mathematical or other domain tools to redefine the METAPAT root. A digest is identity evidence, not empirical validation or formal proof of the ontology.
+
+Consumer migration is fail-closed: a consumer pinned to `metapat-canon-v1` must reject v2 until it explicitly binds the v2 canon, catalog, application, and provenance digests. METAPAT declares that migration consequence; UCNS, EDCM, and other consumers retain authority over their own epoch names.
 
 ## Immutable semantic module envelope
 
@@ -114,7 +116,7 @@ roundtrip = metapat.MetapatModuleEnvelope.from_json(serialized)
 assert roundtrip == module
 ```
 
-The installed package includes `fixtures/root-spine-envelope-v1.json`, which must remain byte-identical to the live canonical constructor.
+The installed package includes `fixtures/root-spine-envelope-v2.json`, which must remain byte-identical to the live canonical constructor.
 
 ## Addressable semantic module catalog
 
@@ -123,10 +125,10 @@ The installed package includes `fixtures/root-spine-envelope-v1.json`, which mus
 ```text
 1 root module
 12 axiom modules
-6 postulate modules
+7 postulate modules
 8 theorem modules
 12 theory modules
-39 modules total
+40 modules total
 ```
 
 The catalog also carries 52 exact `derived-from` relations already declared in `THEORIES.md`. It does not infer ancestry from similar wording, analogy, ordering, geometry, carrier size, or repeated terms.
@@ -145,9 +147,9 @@ print(tensor.envelope.source_statements)
 print(catalog.catalog_digest)
 ```
 
-Catalog v1 preserves distinctions among `ROOT-STIPULATION`, `DEFINITION`, `WORKING-POSTULATE`, `INTERNAL-DERIVATION`, and `CROSS-DOMAIN-HYPOTHESIS`. A module's status does not transfer into an application, UCNS object, EDCM measurement, or downstream theorem.
+Catalog v2 preserves distinctions among `ROOT-STIPULATION`, `DEFINITION`, `WORKING-POSTULATE`, `INTERNAL-DERIVATION`, and `CROSS-DOMAIN-HYPOTHESIS`. A module's status does not transfer into an application, UCNS object, EDCM measurement, or downstream theorem.
 
-The packaged `fixtures/semantic-module-catalog-v1.json` must remain byte-identical to the live constructor plus one trailing newline. See `docs/semantic-module-catalog.md`.
+The packaged `fixtures/semantic-module-catalog-v2.json` must remain byte-identical to the live constructor plus one trailing newline. See `docs/semantic-module-catalog.md`.
 
 ## Catalog-bound application modules
 
@@ -157,7 +159,7 @@ The first vertical slice is:
 
 ```text
 application: metapat.application.quantum_magnetism
-version: quantum-magnetism-application-v1
+version: quantum-magnetism-application-v2
 claim status: CROSS-DOMAIN-HYPOTHESIS
 catalog bindings: 12
 root impact: none
@@ -176,7 +178,7 @@ print(application.application_digest)
 
 The application preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions, keeps physics answerable to physics, deliberately excludes Theory 10, and makes no METAPAT-validity, domain-validity, measurement-validity, theorem-transfer, or UCNS-topology claim.
 
-The packaged fixture is `fixtures/quantum-magnetism-application-v1.json`. See `docs/application-modules.md` and `docs/applications/quantum-magnetism.md`.
+The packaged fixture is `fixtures/quantum-magnetism-application-v2.json`. See `docs/application-modules.md` and `docs/applications/quantum-magnetism.md`.
 
 ## Actual UCNS adapter
 

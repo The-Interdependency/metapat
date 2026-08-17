@@ -61,6 +61,16 @@ Tensor is not merely a later map of relations. Tensor is the primitive arrangeme
 
 Without sequence, there is tensor.
 
+#### Explanatory note: simultaneity, form, and recursion
+
+Primitive does not mean atomic or indivisible. It means that simultaneous arrangement is prior in Energy Theory to sequential alteration.
+
+A tensor may be nested or recursively organized. A simplex or formed object may participate in a tensor at one scale while retaining tensor organization at another scale.
+
+Scalar, vector, matrix, and higher-order forms may become legible within tensor structure or may be used by a domain to represent it. Their domain-specific formal definitions remain explicationary tools unless separately established by the root; they do not redefine what METAPAT means by tensor.
+
+Accordingly, METAPAT tensor names the root fact of simultaneous arranged state while allowing richer mathematical, physical, computational, linguistic, or other domain-specific tensor structures to be compared against that root without owning it.
+
 ### Fifth Axiom: Energy-State
 
 Energy appears as state of being.

@@ -1,4 +1,4 @@
-# METAPAT semantic module catalog v1
+# METAPAT semantic module catalog v2
 
 ## Purpose
 
@@ -9,10 +9,10 @@ It contains exactly:
 ```text
 1 root module
 12 axiom modules
-6 postulate modules
+7 postulate modules
 8 theorem modules
 12 theory modules
-39 modules total
+40 modules total
 ```
 
 Each catalog entry carries a strict `MetapatModuleEnvelope`, doctrine class, claim status, contiguous ordinal, and deterministic module digest. The complete catalog carries the METAPAT canon identity, exact declared derivation relations, and a deterministic catalog digest.
@@ -66,7 +66,7 @@ applies
 constitutive-simultaneous
 ```
 
-Catalog v1 materializes only exact `Derived from:` declarations already present in `THEORIES.md`. It does not infer relations from similar wording, analogy, order, geometry, carrier size, or repeated terms.
+Catalog v2 materializes only exact `Derived from:` declarations already present in `THEORIES.md`. It does not infer relations from similar wording, analogy, order, geometry, carrier size, or repeated terms.
 
 `constitutive-simultaneous` is recognized by the shared vocabulary but is prohibited inside an ordinary catalog unless separately backed by an explicit canon-bound `UCNSForkAuthorization`. A theory ancestry edge is not payload containment.
 
@@ -106,7 +106,7 @@ print(catalog.catalog_digest)
 The installed package includes:
 
 ```text
-metapat/fixtures/semantic-module-catalog-v1.json
+metapat/fixtures/semantic-module-catalog-v2.json
 ```
 
 It must remain byte-identical to `canonical_semantic_catalog().to_json()` plus one trailing newline.
@@ -121,7 +121,7 @@ python tools/check_contract_graph.py
 python -m pytest -q tests/test_catalog.py tests/test_relations.py
 ```
 
-Any catalog declaration change must update the packaged fixture, generated msdmd evidence, claims ledger, and consumer migration consequences together.
+The generator writes both the current root-spine envelope and catalog fixtures. Any canon or catalog identity change must update both packaged fixtures, generated msdmd evidence, claims ledger, applications, and consumer migration consequences together.
 
 ## Boundaries
 
