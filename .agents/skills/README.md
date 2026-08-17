@@ -1,34 +1,24 @@
-# Repo-local skill installation
+# Local agent skills
 
-METAPAT follows the organization convention for repo-local agent skills.
+This directory contains repo-local copies of canonical skills from
+`The-Interdependency/skill-lib`.
 
-Canonical upstream:
+Source commit: `b4234ca29529f56526541df8deb58c2c19570792`
 
-```text
-The-Interdependency/skill-lib
-```
+Repo-local copies are not the source of truth. Edit `skill-lib` first,
+then propagate from the canonical source.
 
-Local path:
+Installed skills:
 
-```text
-.agents/skills/<skill-name>/SKILL.md
-```
-
-This repo installs lightweight repo-local skill entries for the skills METAPAT uses directly. If a local skill entry conflicts with `The-Interdependency/skill-lib`, treat `skill-lib` as canonical for the skill contract. Treat `The-Interdependency/METAPAT` as canonical only for Meta Energy Theory doctrine.
-
-Installed local skill entries:
-
-- `msdmd/`
-- `llms-build/`
-- `meta-module-build/`
-- `doc-build/`
 - `cap-build/`
 - `deps-build/`
-- `owner-build/`
-- `test-build/`
-- `risk-boundary-build/`
+- `doc-build/`
+- `llms-build/`
 - `meta/`
-- `the-interdependency/`
+- `meta-module-build/`
+- `msdmd/`
+- `owner-build/`
+- `risk-boundary-build/`
 - `skill-build/`
-
-Source commit: `The-Interdependency/skill-lib` @ `289d495` (verbatim sync).
+- `test-build/`
+- `the-interdependency/`
