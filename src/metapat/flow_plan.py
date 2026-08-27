@@ -88,9 +88,9 @@ UCNS_SIDE_STATUS = (
     "METAPAT statements remain external provenance; no local UCNS algebra"
 )
 EDCM_SIDE_STATUS = (
-    "hmmm: METAPAT question-to-measurement handoff is declared in AUTHORITY_FLOW; "
-    "executable EDCM consumer and shared-stack fixture must still be merged in "
-    "The-Interdependency/edcm"
+    "implemented: EDCM owns the canonical METAPAT semantic-envelope consumer; "
+    "hmmm: a constructor that turns METAPAT-bounded measurable questions into "
+    "an EDCM measurement design is not yet implemented"
 )
 
 __all__ = [
