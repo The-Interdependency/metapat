@@ -42,11 +42,27 @@
 #   call: self::test_consciousness_is_optional
 #   mutates: none
 #   cleanup: none
+#
+# id: check_metapat_questions_seed_edcm
+#   proves: metapat_questions_seed_edcm
+#   call: self::test_metapat_questions_seed_edcm
+#   mutates: none
+#   cleanup: none
+#
+# id: check_metapat_metrics_do_not_choose_questions
+#   proves: metapat_metrics_do_not_choose_questions
+#   call: self::test_metapat_metrics_do_not_choose_questions
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 import unittest
 
 from metapat import TIME_DEFINITION, definitions, root_spine
+from metapat.flow_plan import (
+    MEASUREMENT_SELECTION_BOUNDARY,
+    QUESTION_TO_MEASUREMENT_FLOW,
+)
 from metapat.validation import (
     boundary_earns_its_keep,
     consciousness_is_optional,
@@ -127,6 +143,18 @@ def test_consciousness_is_optional() -> None:
     assert not consciousness_is_optional(None, conscious_story)
 
 
+def test_metapat_questions_seed_edcm() -> None:
+    assert "METAPAT -> bounded questions and distinctions" in QUESTION_TO_MEASUREMENT_FLOW
+    assert "EDCM -> observables, metrics, ratios, baselines, comparisons, falsifiers" in QUESTION_TO_MEASUREMENT_FLOW
+    assert QUESTION_TO_MEASUREMENT_FLOW.index("METAPAT ->") < QUESTION_TO_MEASUREMENT_FLOW.index("EDCM ->")
+
+
+def test_metapat_metrics_do_not_choose_questions() -> None:
+    assert "do not determine which distinctions matter" in MEASUREMENT_SELECTION_BOUNDARY
+    assert "remains hmmm" in MEASUREMENT_SELECTION_BOUNDARY
+    assert "invented proxy" in MEASUREMENT_SELECTION_BOUNDARY
+
+
 class MetapatContractTests(unittest.TestCase):
     def test_root_spine_contains_current_axioms(self) -> None:
         test_root_spine_contains_current_axioms()
@@ -148,3 +176,9 @@ class MetapatContractTests(unittest.TestCase):
 
     def test_05_consciousness_is_optional(self) -> None:
         test_consciousness_is_optional()
+
+    def test_06_metapat_questions_seed_edcm(self) -> None:
+        test_metapat_questions_seed_edcm()
+
+    def test_07_metapat_metrics_do_not_choose_questions(self) -> None:
+        test_metapat_metrics_do_not_choose_questions()
