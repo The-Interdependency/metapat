@@ -132,8 +132,10 @@ def test_metapat_questions_seed_edcm() -> None:
     assert "determines which bounded questions and distinctions matter" in AUTHORITY_FLOW
     assert "measurable questions seed EDCM measurement design" in AUTHORITY_FLOW
     assert AUTHORITY_FLOW.index("bounded questions") < AUTHORITY_FLOW.index("EDCM measurement design")
-    assert EDCM_SIDE_STATUS.startswith("hmmm:")
-    assert "executable EDCM consumer" in EDCM_SIDE_STATUS
+    assert EDCM_SIDE_STATUS.startswith("implemented:")
+    assert "canonical METAPAT semantic-envelope consumer" in EDCM_SIDE_STATUS
+    assert "hmmm:" in EDCM_SIDE_STATUS
+    assert "constructor that turns METAPAT-bounded measurable questions" in EDCM_SIDE_STATUS
 
 
 class MetapatContractTests(unittest.TestCase):
