@@ -24,7 +24,7 @@ are declarations of responsibility, not runtime execution or empirical proof.
 #   rollback: restore prior architecture declarations
 #   requires: metapat_module_envelope, metapat_ucns_adapter
 #   since: 2026-07-12
-#   unresolved: EDCM consumer implementation and shared-stack result envelope until merged cross-repository
+#   unresolved: question-to-measurement design constructor remains hmmm; EDCM semantic-envelope consumer exists
 # === END MODULE_BUILD ===
 
 # === CAPABILITIES ===
