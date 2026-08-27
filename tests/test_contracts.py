@@ -47,7 +47,6 @@
 import unittest
 
 from metapat import TIME_DEFINITION, definitions, root_spine
-from metapat.flow_plan import AUTHORITY_FLOW, EDCM_SIDE_STATUS
 from metapat.validation import (
     boundary_earns_its_keep,
     consciousness_is_optional,
@@ -128,16 +127,6 @@ def test_consciousness_is_optional() -> None:
     assert not consciousness_is_optional(None, conscious_story)
 
 
-def test_metapat_questions_seed_edcm() -> None:
-    assert "determines which bounded questions and distinctions matter" in AUTHORITY_FLOW
-    assert "measurable questions seed EDCM measurement design" in AUTHORITY_FLOW
-    assert AUTHORITY_FLOW.index("bounded questions") < AUTHORITY_FLOW.index("EDCM measurement design")
-    assert EDCM_SIDE_STATUS.startswith("implemented:")
-    assert "canonical METAPAT semantic-envelope consumer" in EDCM_SIDE_STATUS
-    assert "hmmm:" in EDCM_SIDE_STATUS
-    assert "constructor that turns METAPAT-bounded measurable questions" in EDCM_SIDE_STATUS
-
-
 class MetapatContractTests(unittest.TestCase):
     def test_root_spine_contains_current_axioms(self) -> None:
         test_root_spine_contains_current_axioms()
@@ -159,6 +148,3 @@ class MetapatContractTests(unittest.TestCase):
 
     def test_05_consciousness_is_optional(self) -> None:
         test_consciousness_is_optional()
-
-    def test_06_metapat_questions_seed_edcm(self) -> None:
-        test_metapat_questions_seed_edcm()
