@@ -14,7 +14,7 @@ comparison, ``QUESTION_TO_MEASUREMENT_FLOW`` declares the handoff into EDCM.
 #   module_kind: schema
 #   summary: separates METAPAT semantic authority, question-to-measurement, EDCM/UCNS runtime data, and proof-status flows
 #   owner: The Interdependency
-#   public_surface: AUTHORITY_FLOW, QUESTION_TO_MEASUREMENT_FLOW, RUNTIME_DATA_FLOW, PROOF_STATUS_FLOW, UCNS_SIDE_STATUS, EDCM_SIDE_STATUS
+#   public_surface: AUTHORITY_FLOW, QUESTION_TO_MEASUREMENT_FLOW, MEASUREMENT_SELECTION_BOUNDARY, RUNTIME_DATA_FLOW, PROOF_STATUS_FLOW, UCNS_SIDE_STATUS, EDCM_SIDE_STATUS
 #   internal_surface: none
 #   auth_boundary: none
 #   storage_boundary: none
@@ -32,7 +32,7 @@ comparison, ``QUESTION_TO_MEASUREMENT_FLOW`` declares the handoff into EDCM.
 # === CAPABILITIES ===
 # id: metapat_flow_status
 #   summary: exposes distinct authority, question-to-measurement, runtime-data, and proof-status architecture declarations
-#   exposes: metapat.flow_plan.AUTHORITY_FLOW, metapat.flow_plan.QUESTION_TO_MEASUREMENT_FLOW, metapat.flow_plan.RUNTIME_DATA_FLOW, metapat.flow_plan.PROOF_STATUS_FLOW
+#   exposes: metapat.flow_plan.AUTHORITY_FLOW, metapat.flow_plan.QUESTION_TO_MEASUREMENT_FLOW, metapat.flow_plan.MEASUREMENT_SELECTION_BOUNDARY, metapat.flow_plan.RUNTIME_DATA_FLOW, metapat.flow_plan.PROOF_STATUS_FLOW
 #   inputs: none
 #   outputs: str
 #   boundaries: auth:none, storage:none, network:none, user_data:none
@@ -96,6 +96,12 @@ EDCM -> observables, metrics, ratios, baselines, comparisons, falsifiers
     v
 domain measurement instrument"""
 
+MEASUREMENT_SELECTION_BOUNDARY = (
+    "Available metrics constrain what can be observed; they do not determine which "
+    "distinctions matter. An important distinction without an honest observable "
+    "remains hmmm rather than receiving an invented proxy."
+)
+
 RUNTIME_DATA_FLOW = """source evidence -> EDCM parsing -> actual UCNS representation -> EDCM readouts
                                      ^
                                      |
@@ -118,6 +124,7 @@ EDCM_SIDE_STATUS = (
 __all__ = [
     "AUTHORITY_FLOW",
     "QUESTION_TO_MEASUREMENT_FLOW",
+    "MEASUREMENT_SELECTION_BOUNDARY",
     "RUNTIME_DATA_FLOW",
     "PROOF_STATUS_FLOW",
     "UCNS_SIDE_STATUS",
