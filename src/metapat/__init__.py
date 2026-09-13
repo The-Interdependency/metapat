@@ -15,7 +15,7 @@
 #   admin_only: false
 #   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package version 0.7.0
-#   rollback: remove electromagnetic-pipe exports and fixture while preserving canon, catalog, quantum application, envelope, Phi, and adapter surfaces
+#   rollback: restore only with the matching canon epoch
 #   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-21
 #   unresolved: downstream consumers must bind module and fork authorizations to exact application and UCNS topology identities
@@ -83,6 +83,7 @@ from .canon import (
     CANON_IDENTITY_SCHEMA_VERSION,
     CANON_VERSION,
     CanonIntegrityError,
+    ENERGY_DEFINITION,
     ENERGY_THEORY_QUESTION,
     PRIMITIVE_EXTENSION,
     ROOT_SPINE,
@@ -192,11 +193,13 @@ from .ucns_phi import (
     validate_fork_authorization,
 )
 from .validation import (
-    boundary_earns_its_keep,
-    consciousness_is_optional,
-    observer_role_by_registration,
-    registration_is_not_time,
-    tensor_precedes_time,
+    boundary_requires_multiplicity,
+    energy_is_derived,
+    recursive_closure,
+    simplex_closes,
+    tensor_emerges,
+    transformation_produces_time,
+    vector_inferred_by_scalar,
 )
 
 __all__ = [
@@ -224,6 +227,7 @@ __all__ = [
     "DEFAULT_UCNS_PHI_POLICY",
     "DOCTRINE_CLASSES",
     "EDCM_SIDE_STATUS",
+    "ENERGY_DEFINITION",
     "ENERGY_THEORY_QUESTION",
     "EXPECTED_MODULE_COUNT",
     "EXPECTED_MODULE_COUNTS",
@@ -278,7 +282,7 @@ __all__ = [
     "assert_catalog_sources_match",
     "authorize_constitutive_fork",
     "bind_catalog_module",
-    "boundary_earns_its_keep",
+    "boundary_requires_multiplicity",
     "build_module_envelope",
     "build_relation",
     "canon_digest",
@@ -291,25 +295,27 @@ __all__ = [
     "catalog_module_counts",
     "catalog_source_mismatches",
     "compose",
-    "consciousness_is_optional",
     "definitions",
     "electromagnetic_pipe_application_module",
     "electromagnetic_pipe_design",
     "electromagnetic_pipe_design_digest",
+    "energy_is_derived",
     "git_blob_sha1",
     "observed_canon_file_blobs",
-    "observer_role_by_registration",
     "primitive_extension",
     "quantum_magnetism_application_digest",
     "quantum_magnetism_application_module",
-    "registration_is_not_time",
+    "recursive_closure",
     "require_ucns",
     "root_spine",
     "root_spine_adaptation",
     "root_spine_module_envelope",
     "root_spine_ucns",
     "semantic_module_by_id",
-    "tensor_precedes_time",
+    "simplex_closes",
+    "tensor_emerges",
+    "transformation_produces_time",
     "validate_application_against_catalog",
     "validate_fork_authorization",
+    "vector_inferred_by_scalar",
 ]
