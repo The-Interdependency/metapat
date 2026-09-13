@@ -113,7 +113,7 @@ def test_quantum_fixture_render_is_deterministic() -> None:
 
 def test_packaged_quantum_fixture_is_current() -> None:
     fixture = files("metapat").joinpath(
-        "fixtures/quantum-magnetism-application-v2.json"
+        "fixtures/quantum-magnetism-application-v3.json"
     )
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_quantum_magnetism_fixture()

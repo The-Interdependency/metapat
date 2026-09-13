@@ -90,17 +90,17 @@ from .application import (
 )
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v1"
+AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v2"
 SOURCE_DOCUMENT = "docs/applications/affixiation-harmonics.md"
 
 AFFIXIATION_HARMONICS_BINDING_SPECS = (
     (
-        "metapat.axiom.0.root_untouchable",
+        "metapat.root_spine",
         "domain-restraint",
         "Affixiation and harmonic terminology may organize a relational application without redefining the METAPAT root.",
     ),
     (
-        "metapat.postulate.1.domain_similarity",
+        "metapat.postulate.1.partial_domains",
         "shared-question-form",
         "Recurrent relational structures may be compared across domains while the participating domains remain distinct.",
     ),
@@ -110,52 +110,52 @@ AFFIXIATION_HARMONICS_BINDING_SPECS = (
         "Harmonic, oscillation, phase, and resonance are explicationary terms here and do not import physics or signal processing as root ontology.",
     ),
     (
-        "metapat.axiom.4.tensor",
+        "metapat.axiom.5.tensor",
         "simultaneous-arrangement",
         "Affixiation begins from participants already addressable within a simultaneous tensor arrangement; temporal succession is not required for their relation to exist.",
     ),
     (
-        "metapat.axiom.6.relation",
+        "metapat.axiom.6.relate",
         "relation",
         "Affixiation and harmonic correspondence are readable configurations within tensor rather than identity claims about their participants.",
     ),
     (
-        "metapat.axiom.9.time",
+        "metapat.axiom.11.time",
         "time-boundary",
-        "Time remains sequential tensor alteration; a harmonic structure may be parameterized over a non-temporal ordered relation without thereby becoming time.",
+        "Time remains sequential transformation; a harmonic structure may be parameterized over a non-temporal ordered relation without thereby becoming time.",
     ),
     (
-        "metapat.postulate.3.formed_objects",
+        "metapat.postulate.3.recursive_closure",
         "formed-object",
         "A relation among already-bounded participants may become object-whole only at a declared native scale rather than merely because the participants are associated.",
     ),
     (
-        "metapat.postulate.4.integration",
+        "metapat.theory.8.emergence",
         "integration",
         "Affixiation may integrate a declared relation as a higher-scale object-whole while retaining the addressable identities of its participants.",
     ),
     (
-        "metapat.theory.3.tensor_first_arrangement",
+        "metapat.theory.2.relational_tensor_formation",
         "tensor-first",
         "Simultaneous arrangement permits relational structure before sequential alteration and therefore before a temporal interpretation is required.",
     ),
     (
-        "metapat.theory.5.relational_gradient_selection",
+        "metapat.theory.4.state_measurement",
         "relational-structure",
         "Harmonic correspondence is interpreted through the complete declared relation rather than through one scalar difference alone.",
     ),
     (
-        "metapat.theory.6.time_as_sequential_tensor_alteration",
+        "metapat.theory.6.time",
         "time-separation",
         "Traversal of an ordered relational parameter must not be silently equated with physical or experiential time.",
     ),
     (
-        "metapat.theory.9.native_scale_object_integration",
+        "metapat.theory.3.recursive_closure",
         "recursive-scale",
         "An affixiated whole may become a bounded participant in a later relation only after its own native-scale integration remains explicit.",
     ),
     (
-        "metapat.theory.11.cross_domain_question_forms",
+        "metapat.theory.11.cross_domain_reconstruction",
         "cross-domain-question-form",
         "Time-agnostic harmonic language may compare recurrent relation-shapes across modalities while preserving what remains modality-specific.",
     ),

@@ -14,7 +14,7 @@ description: |
 #   registration: Capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
 #   observer: A simplex performing registration; observer does not necessarily mean mind.
 #   question: A bounded unresolved energy-state.
-#   semantic_catalog_v2: 40 ordered doctrine modules and 52 exact source-declared derived-from relations bound to metapat-canon-v2.
+#   semantic_catalog_v2: 40 ordered doctrine modules and 52 exact source-declared derived-from relations bound to metapat-canon-v3.
 #   application_module: A source-checked domain application bound to exact catalog version, digest, module identities, module digests, module statuses, evidence boundaries, and deterministic application identity.
 #
 # id: architecture_summary
@@ -30,7 +30,7 @@ description: |
 #     - Catalog v2 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and fifty-two source-declared relations. Preserve WORKING-POSTULATE and CROSS-DOMAIN-HYPOTHESIS status. Never infer ancestry or constitutive meaning from analogy, repeated terms, catalog order, or derived-from relations.
 #     - Application modules bind exact catalog identities and preserve domains, scales, transfer and non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validation fields remain false.
 #     - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
-#     - Consumers pinned to metapat-canon-v1 must reject metapat-canon-v2 until migrated. Consumer repositories own their local epoch names and bind them to exact v2 identities.
+#     - Consumers pinned to metapat-canon-v1 must reject metapat-canon-v3 until migrated. Consumer repositories own their local epoch names and bind them to exact v2 identities.
 #     - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS. Run canon, catalog, application, fixture, generated-msdmd, Phi-policy, package, clean-wheel, and actual-UCNS gates.
 #     - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from their constructors or source blocks; do not hand-maintain them.
 #     - hmmm: Physics validation, the downstream EDCM consumer, consumer-local epoch rollout, and the first topology-bound constitutive-fork fixture remain unresolved.
@@ -90,14 +90,14 @@ Do not restore the superseded single arrow `UCNS -> METAPAT -> EDCM`.
 - `CANON_VERSION`, `CANON_IDENTITY_SCHEMA_VERSION`, `CANON_FILE_BLOBS`, and `canon_digest()` jointly identify the complete canon surface.
 - Run `metapat.assert_canon_files_match(Path('.'))` from repository root.
 - Any authorized canon rotation requires explicit versioning, manifest rotation, catalog rotation, application invalidation or migration, documentation, and consumer epoch consequences.
-- Consumers pinned to `metapat-canon-v1` must reject `metapat-canon-v2` until explicitly migrated. UCNS and EDCM retain authority over their own epoch names and must bind any new consumer-local epoch to the exact v2 canon, catalog, application, and provenance digests.
+- Consumers pinned to `metapat-canon-v1` must reject `metapat-canon-v3` until explicitly migrated. UCNS and EDCM retain authority over their own epoch names and must bind any new consumer-local epoch to the exact v2 canon, catalog, application, and provenance digests.
 - Unknown status is `hmmm`, not guessed closure.
 
 ## Semantic envelope
 
 Use `MetapatModuleEnvelope` for cross-repository semantic authority. Preserve schema identity, module identity, canon identity, exact references and statements, constraints, permitted interpretations, unresolved constraints, and provenance digest. Deserialization must reject malformed types rather than coercing them. An envelope contains no calculated EDCM measurements.
 
-The packaged `fixtures/root-spine-envelope-v2.json` must equal the live canonical constructor.
+The packaged `fixtures/root-spine-envelope-v3.json` must equal the live canonical constructor.
 
 ## Semantic catalog
 
@@ -122,7 +122,7 @@ Catalog v2 must remain exactly:
 - Addressability does not transfer claim status into an application, UCNS object, EDCM value, or downstream proof.
 - Catalog relations reproduce declared ancestry only; do not infer edges from analogy, repeated words, order, geometry, carrier size, or symmetry.
 - Ordinary catalog construction must reject `constitutive-simultaneous` relations without explicit Phi authorization.
-- The packaged `fixtures/semantic-module-catalog-v2.json` must equal the live catalog constructor plus one trailing newline.
+- The packaged `fixtures/semantic-module-catalog-v3.json` must equal the live catalog constructor plus one trailing newline.
 - Run `assert_catalog_complete()` and `assert_catalog_sources_match(Path('.'))` after any doctrine, catalog, or source-reference change.
 
 ## Application modules
@@ -139,7 +139,7 @@ Use `MetapatApplicationModule` only for domain applications with an exact source
 
 The first application is `metapat.application.quantum_magnetism`. It binds twelve catalog modules, deliberately excludes Theory 10, distinguishes nuclear, atomic, crystalline, and magnetic-domain scales, and remains answerable to physics evidence.
 
-The packaged `fixtures/quantum-magnetism-application-v2.json` must equal the live application constructor plus one trailing newline.
+The packaged `fixtures/quantum-magnetism-application-v3.json` must equal the live application constructor plus one trailing newline.
 
 ## UCNS adapter
 

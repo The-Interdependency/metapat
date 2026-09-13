@@ -106,7 +106,7 @@ print(catalog.catalog_digest)
 The installed package includes:
 
 ```text
-metapat/fixtures/semantic-module-catalog-v2.json
+metapat/fixtures/semantic-module-catalog-v3.json
 ```
 
 It must remain byte-identical to `canonical_semantic_catalog().to_json()` plus one trailing newline.

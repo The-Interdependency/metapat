@@ -118,7 +118,7 @@ print(application.application_digest)
 Packaged fixture:
 
 ```text
-metapat/fixtures/quantum-magnetism-application-v2.json
+metapat/fixtures/quantum-magnetism-application-v3.json
 ```
 
 ## Regeneration
