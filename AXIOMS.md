@@ -1,97 +1,77 @@
 # Meta Energy Theory Axioms
 
-## 0. Root is untouchable
+The root restraint is separate from the numbered axioms:
 
+```text
 Domains may influence the exploratory tools of Energy Theory.
-
 Domains may not redefine the root.
-
 No domain owns Energy Theory.
+```
 
-## 1. Legible difference
+## 1. Thing
 
-Legible difference is distinction.
+Thing is that which is.
 
-Without legible difference, no boundary can be defined.
+A solitary thing has no boundary.
 
 ## 2. Boundary
 
-Distinction defines boundaries.
+Boundary is the thing between things.
 
-Boundary is simplex of distinction.
+Boundary requires more than one thing.
 
-A boundary is a state-bearing simplex whose configuration may affect transformation.
+## 3. State
 
-## 3. Simplex
+State is a metricable property of a thing.
 
-Boundaries define simplex.
+State is not measurement.
 
-A simplex is a bounded state-bearing object.
+## 4. Simplex
 
-Simplex holds or modifies energy in a state of being.
+A simplex is a thing with boundary and state.
 
-## 4. Tensor
+A simplex is primitive where it participates as a whole.
 
-Tensor is primitive.
+## 5. Tensor
 
-Tensor is simultaneous arrangement of energy-states.
+A tensor is structure produced when simplexes relate.
 
-Without sequence, there is tensor.
+A tensor is a thing.
 
-## 5. Energy-state
+## 6. Relate
 
-Energy appears as state of being.
+Relate is this to that.
 
-Energy-state held is scalar.
+Geometry is one possible relation, not the definition of relate.
 
-Energy-state motioned is vector.
+## 7. Emerge
 
-Energy-state vectors alter energy-state scalars.
+Tensors emerge from simplexes.
 
-## 6. Relation
+## 8. Vector
 
-Relation is readable configuration within tensor.
+Vector alters state.
 
-Relation includes configured possibility of alteration among simplexes, including boundary-simplexes.
+Vector is inferred by scalar measurement.
 
-## 7. Gradient
+## 9. Scalar
 
-Gradient is readable difference within relation.
+Scalar is a state metric.
 
-Gradient dynamics are how vectors select direction.
+## 10. Transformation
 
-Gradient dynamics include tensor arrangement, simplex relations, and boundary-simplex states.
+Transformation is resulting state change.
 
-## 8. Transformation
+## 11. Time
 
-Transformation is vector-compelled alteration of energy-state.
+Time is sequential transformation.
 
-A simplex may hold energy-state.
+Registration may preserve time.
 
-A simplex may modify energy-state.
+Registration does not produce time.
 
-A boundary-simplex may modify how alteration occurs.
+## 12. Energy
 
-## 9. Time
+Energy is vectors altering state through transformation across time.
 
-Time is sequential tensor alteration.
-
-Registration is not the parent of time.
-
-## 10. Registration
-
-Registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
-
-An observer is a simplex performing registration.
-
-An observer need not be conscious.
-
-Consciousness is one possible observer-mode.
-
-Story is conscious registration of time.
-
-## 11. Question
-
-A question is a bounded unresolved energy-state.
-
-Energy Theory answers: What questions do I ask?
+Energy is derived rather than primitive.
