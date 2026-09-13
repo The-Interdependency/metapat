@@ -1,0 +1,42 @@
+name: Align v3 pipe semantic roles once
+on:
+  push:
+    branches: [research/platonic-energy-operators]
+permissions:
+  contents: write
+jobs:
+  fix:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: research/platonic-energy-operators
+      - uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .[dev]
+      - name: Align source and docs
+        shell: python
+        run: |
+          from pathlib import Path
+          source=Path('src/metapat/electromagnetic_pipe.py')
+          s=source.read_text()
+          s=s.replace('(\"metapat.axiom.3.state\", \"energy-state\", \"Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces.\")', '(\"metapat.axiom.3.state\", \"state\", \"Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces.\")')
+          s=s.replace('(\"metapat.axiom.9.scalar\", \"gradient\", \"Readable differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response.\")', '(\"metapat.axiom.9.scalar\", \"state-metrics\", \"Measured differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response.\")')
+          source.write_text(s)
+          docs=Path('docs/applications/three-phase-electromagnetic-pipe.md')
+          d=docs.read_text()
+          d=d.replace('| `metapat.axiom.3.state` | energy-state | Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces. |', '| `metapat.axiom.3.state` | state | Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces. |')
+          d=d.replace('| `metapat.axiom.9.scalar` | gradient | Readable differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |', '| `metapat.axiom.9.scalar` | state-metrics | Measured differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |')
+          docs.write_text(d)
+      - name: Regenerate application fixtures
+        run: python tools/generate_application_fixtures.py
+      - name: Self-delete and commit
+        run: |
+          rm -f .github/workflows/v3-pipe-role-fix-once.yml
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'fix: align v3 application semantic roles'
+          git push origin HEAD:research/platonic-energy-operators
