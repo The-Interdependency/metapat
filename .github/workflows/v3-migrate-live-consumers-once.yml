@@ -1,0 +1,119 @@
+name: Migrate live v3 consumers once
+on:
+  push:
+    branches: [research/platonic-energy-operators]
+permissions:
+  contents: write
+jobs:
+  migrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: research/platonic-energy-operators
+      - name: Rebind live consumers
+        shell: python
+        run: |
+          from pathlib import Path
+
+          def apply(paths, mapping):
+              for name in paths:
+                  p = Path(name)
+                  s = p.read_text()
+                  for old, new in mapping.items():
+                      s = s.replace(old, new)
+                  p.write_text(s)
+
+          quantum = ["src/metapat/quantum_magnetism.py", "docs/applications/quantum-magnetism.md"]
+          apply(quantum, {
+              "metapat.axiom.0.root_untouchable":"metapat.root_spine",
+              "metapat.postulate.1.domain_similarity":"metapat.postulate.1.partial_domains",
+              "metapat.axiom.4.tensor":"metapat.axiom.5.tensor",
+              "metapat.axiom.6.relation":"metapat.axiom.6.relate",
+              "metapat.axiom.7.gradient":"metapat.axiom.9.scalar",
+              "metapat.axiom.5.energy_state":"metapat.axiom.3.state",
+              "metapat.axiom.8.transformation":"metapat.axiom.10.transformation",
+              "metapat.theory.2.boundary_mediated_transformation":"metapat.theory.1.thing_boundary_state",
+              "metapat.theory.5.relational_gradient_selection":"metapat.theory.4.state_measurement",
+              "metapat.theory.11.cross_domain_question_forms":"metapat.theory.11.cross_domain_reconstruction",
+              "quantum-magnetism-application-v2":"quantum-magnetism-application-v3",
+              "| `metapat.axiom.9.scalar` | gradient |":"| `metapat.axiom.9.scalar` | state-metric-difference |",
+              '"gradient",\n        "Readable potential difference within those relations."':'"state-metric-difference",\n        "Readable potential difference is treated as a measured difference among related states."',
+              "Readable potential difference within those relations.":"Readable potential difference is treated as a measured difference among related states.",
+              "| `metapat.axiom.3.state` | energy-state |":"| `metapat.axiom.3.state` | state |",
+              '"energy-state",\n        "An allowed electronic state':'"state",\n        "An allowed electronic state',
+              "boundary-mediated-transformation":"thing-boundary-state",
+              "Changing a modeled boundary state may change passage, permitted state selection, delay, filtering, propagation, or transformation outcome.":"Modeled physical boundaries participate in defining the selected physical things and states; their physical effects remain domain evidence.",
+              "relational-gradient-selection":"state-measurement",
+              "Direction and state selection are asked through the complete relation, boundary state, and tensor arrangement rather than difference alone.":"Direction and state selection are tested through measured state change rather than inferred from one unmeasured difference alone.",
+          })
+
+          affix = ["src/metapat/affixiation_harmonics.py", "docs/applications/affixiation-harmonics.md"]
+          apply(affix, {
+              "metapat.axiom.0.root_untouchable":"metapat.root_spine",
+              "metapat.postulate.1.domain_similarity":"metapat.postulate.1.partial_domains",
+              "metapat.axiom.4.tensor":"metapat.axiom.5.tensor",
+              "metapat.axiom.6.relation":"metapat.axiom.6.relate",
+              "metapat.axiom.9.time":"metapat.axiom.11.time",
+              "metapat.postulate.3.formed_objects":"metapat.postulate.3.recursive_closure",
+              "metapat.postulate.4.integration":"metapat.theory.8.emergence",
+              "metapat.theory.3.tensor_first_arrangement":"metapat.theory.2.relational_tensor_formation",
+              "metapat.theory.5.relational_gradient_selection":"metapat.theory.4.state_measurement",
+              "metapat.theory.6.time_as_sequential_tensor_alteration":"metapat.theory.6.time",
+              "metapat.theory.9.native_scale_object_integration":"metapat.theory.3.recursive_closure",
+              "metapat.theory.11.cross_domain_question_forms":"metapat.theory.11.cross_domain_reconstruction",
+              "affixiation-harmonics-application-v1":"affixiation-harmonics-application-v2",
+              "sequential tensor alteration":"sequential transformation",
+              "| `metapat.theory.8.emergence` | integration |":"| `metapat.theory.8.emergence` | emergence |",
+          })
+
+          pipe = ["src/metapat/electromagnetic_pipe.py", "docs/applications/three-phase-electromagnetic-pipe.md"]
+          apply(pipe, {
+              "metapat.axiom.0.root_untouchable":"metapat.root_spine",
+              "metapat.axiom.1.legible_difference":"metapat.axiom.1.thing",
+              "metapat.axiom.4.tensor":"metapat.axiom.5.tensor",
+              "metapat.axiom.5.energy_state":"metapat.axiom.3.state",
+              "metapat.axiom.6.relation":"metapat.axiom.6.relate",
+              "metapat.axiom.7.gradient":"metapat.axiom.9.scalar",
+              "metapat.axiom.8.transformation":"metapat.axiom.10.transformation",
+              "metapat.axiom.9.time":"metapat.axiom.11.time",
+              "metapat.axiom.10.registration":"metapat.postulate.4.registration_plurality",
+              "metapat.axiom.11.question":"metapat.theory.10.questions_unresolved_structure",
+              "metapat.postulate.6.validation_by_boundary_change":"metapat.postulate.6.cross_domain_falsification",
+              "metapat.theorem.1.boundary_earns_its_keep":"metapat.theorem.8.root_tool_separation",
+              "metapat.theory.2.boundary_mediated_transformation":"metapat.theory.1.thing_boundary_state",
+              "metapat.theory.5.relational_gradient_selection":"metapat.theory.4.state_measurement",
+              "metapat.theory.6.time_as_sequential_tensor_alteration":"metapat.theory.6.time",
+              "metapat.theory.7.registration_and_observer_roles":"metapat.theory.9.registration_observer",
+              "metapat.theory.8.questions_as_bounded_unresolved_energy_state":"metapat.postulate.7.discovery_before_recovery",
+              "metapat.theory.11.cross_domain_question_forms":"metapat.theory.11.cross_domain_reconstruction",
+              "three-phase-electromagnetic-pipe-application-v2":"three-phase-electromagnetic-pipe-application-v3",
+              "sequential tensor alterations":"sequential transformations",
+              "energy-state surfaces":"state surfaces",
+              "| `metapat.axiom.3.state` | energy-state |":"| `metapat.axiom.3.state` | state |",
+              "| `metapat.axiom.9.scalar` | gradient |":"| `metapat.axiom.9.scalar` | state-metrics |",
+          })
+
+          apply(["tools/generate_application_fixtures.py", "tests/test_quantum_magnetism.py", "tests/test_electromagnetic_pipe.py", "tests/test_packaging.py", "README.md", "COMPLIANCE.md", "AGENTS.md", "docs/application-modules.md", "docs/semantic-module-catalog.md", ".github/workflows/ci.yml"], {
+              "quantum-magnetism-application-v2":"quantum-magnetism-application-v3",
+              "three-phase-electromagnetic-pipe-v2":"three-phase-electromagnetic-pipe-v3",
+              "root-spine-envelope-v2":"root-spine-envelope-v3",
+              "semantic-module-catalog-v2":"semantic-module-catalog-v3",
+              "metapat-semantic-catalog-v2":"metapat-semantic-catalog-v3",
+              "metapat-canon-v2":"metapat-canon-v3",
+          })
+          # Assertions about absence move forward one epoch.
+          apply(["tests/test_packaging.py"], {
+              "root-spine-envelope-v1.json":"root-spine-envelope-v2.json",
+              "three-phase-electromagnetic-pipe-v1.json":"three-phase-electromagnetic-pipe-v2.json",
+          })
+          Path(".github/workflows/v3-migrate-live-consumers-once.yml").unlink()
+      - name: Commit
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m 'migration: bind live applications to metapat v3'
+          git push origin HEAD:research/platonic-energy-operators
