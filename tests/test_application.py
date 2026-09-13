@@ -50,7 +50,7 @@ from metapat.application import ApplicationCatalogBinding, MetapatApplicationMod
 def test_application_binding_is_exact_and_digest_bound() -> None:
     application = metapat.quantum_magnetism_application_module()
     binding = application.catalog_bindings[0]
-    assert binding.module_id == "metapat.axiom.0.root_untouchable"
+    assert binding.module_id == "metapat.root_spine"
     assert len(binding.module_digest) == 64
     assert len(binding.binding_digest) == 64
     data = binding.to_dict()
