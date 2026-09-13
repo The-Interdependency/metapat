@@ -14,8 +14,8 @@
 #   user_data_boundary: exact canon statements and references only
 #   admin_only: false
 #   tests: tests.test_catalog
-#   rollout: importable_package and packaged semantic-module-catalog-v2 fixture
-#   rollback: remove catalog exports and fixture while preserving envelope and canon surfaces
+#   rollout: importable_package and packaged semantic-module-catalog-v3 fixture
+#   rollback: restore the prior catalog epoch while preserving historical identity
 #   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog_builder
 #   since: 2026-07-21
 #   unresolved: downstream consumers must declare application meaning and any Phi topology binding separately
@@ -72,7 +72,7 @@
 #
 # id: metapat_catalog_claim_status_bounded
 #   given: doctrine classes and claim statuses are inspected
-#   then: postulates remain working postulates, internal derivations remain internal, and the symbolic transfer theory remains a cross-domain hypothesis
+#   then: postulates remain working postulates and internal derivations remain internal
 #   class: boundary_contract
 #
 # id: metapat_catalog_relations_declared
@@ -104,7 +104,7 @@ from .relations import CLAIM_STATUSES, MetapatModuleRelation
 
 CATALOG_SCHEMA_ID = "metapat.semantic-catalog"
 CATALOG_SCHEMA_VERSION = "1.0.0"
-CATALOG_VERSION = "metapat-semantic-catalog-v2"
+CATALOG_VERSION = "metapat-semantic-catalog-v3"
 DOCTRINE_CLASSES = frozenset({"root", "axiom", "postulate", "theorem", "theory"})
 EXPECTED_MODULE_COUNTS = {"root": 1, "axiom": 12, "postulate": 7, "theorem": 8, "theory": 12}
 EXPECTED_MODULE_COUNT = sum(EXPECTED_MODULE_COUNTS.values())
@@ -257,23 +257,15 @@ class MetapatSemanticCatalog:
         if not isinstance(data, Mapping):
             raise ValueError("semantic catalog must be a mapping")
         expected = {
-            "schema_id",
-            "schema_version",
-            "catalog_version",
-            "canon_version",
-            "canon_digest",
-            "modules",
-            "relations",
-            "catalog_digest",
+            "schema_id", "schema_version", "catalog_version", "canon_version",
+            "canon_digest", "modules", "relations", "catalog_digest",
         }
         unknown, missing = set(data) - expected, expected - set(data)
         if unknown:
             raise ValueError(f"unknown semantic catalog fields: {sorted(unknown)!r}")
         if missing:
             raise ValueError(f"missing semantic catalog fields: {sorted(missing)!r}")
-        if not isinstance(data["modules"], (list, tuple)) or not isinstance(
-            data["relations"], (list, tuple)
-        ):
+        if not isinstance(data["modules"], (list, tuple)) or not isinstance(data["relations"], (list, tuple)):
             raise ValueError("catalog modules and relations must be arrays")
         return cls(
             schema_id=_text(data["schema_id"], "schema_id"),
