@@ -168,7 +168,7 @@ The ideal alloy cannot be selected from elemental properties alone. It depends o
 | `metapat.axiom.5.tensor` | control-tensor | The simultaneous arrangement contains six three-phase vectors, direct-current biases, frequency, current limits, voltage compliance, winding handedness, radial layer, attractor positions, alloy state, temperature, magnetic history, and mechanical gaps. |
 | `metapat.axiom.3.state` | state | Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces. |
 | `metapat.axiom.6.relate` | relation | Layer, handedness, phase order, spatial displacement, pipe geometry, attractor position, and material state configure which transformations are possible. |
-| `metapat.axiom.9.scalar` | state-metrics | Readable differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |
+| `metapat.axiom.9.scalar` | state-metrics | Measured differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |
 | `metapat.axiom.10.transformation` | feedback-transformation | Current changes field; field changes attractor magnetization and motion; attractor redistribution changes the boundary and therefore the next field cycle. |
 | `metapat.axiom.11.time` | sequential-field-state | Alternating phase progression, settling, hysteresis, magnetic history, and fault evolution are sequential transformations. |
 | `metapat.postulate.4.registration_plurality` | instrumentation | Registration measures electrical, magnetic, thermal, mechanical, distribution, hysteresis, settling, and leakage states. |
@@ -185,7 +185,7 @@ The ideal alloy cannot be selected from elemental properties alone. It depends o
 
 ## METAPAT application
 
-The device is modeled as a boundary-mediated energy-state system.
+The device is modeled as a related state-and-transformation system.
 
 **Distinction:** each phase circuit, pipe, ceramic layer, attractor, gap, and field state must remain separately legible.
 
