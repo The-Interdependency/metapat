@@ -1,5 +1,7 @@
 # Nuclear Charge Configuration and Magnetic State Formation
 
+## Application identity
+
 Status: **CROSS-DOMAIN-HYPOTHESIS / worked physics application**
 
 Root impact: **none**
