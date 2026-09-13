@@ -1,4 +1,4 @@
-# METAPAT semantic module catalog v2
+# METAPAT semantic module catalog v3
 
 ## Purpose
 
@@ -13,9 +13,38 @@ It contains exactly:
 8 theorem modules
 12 theory modules
 40 modules total
+43 exact derived-from relations
 ```
 
-Each catalog entry carries a strict `MetapatModuleEnvelope`, doctrine class, claim status, contiguous ordinal, and deterministic module digest. The complete catalog carries the METAPAT canon identity, exact declared derivation relations, and a deterministic catalog digest.
+Each entry carries a strict `MetapatModuleEnvelope`, doctrine class, claim status, contiguous ordinal, and deterministic module digest. The complete catalog carries the exact METAPAT canon identity and a deterministic catalog digest.
+
+## Current canon relationship
+
+Catalog v3 is bound to `metapat-canon-v3`.
+
+The root begins:
+
+```text
+Thing
+Boundary
+State
+Simplex
+Tensor
+```
+
+The numbered extension adds:
+
+```text
+Relate
+Emerge
+Vector
+Scalar
+Transformation
+Time
+Energy
+```
+
+Tensor is constructed from related simplexes. Scalar is a state metric. Vector alters state and is inferred by scalar measurement. Energy is derived rather than primitive.
 
 ## Identity layers
 
@@ -32,24 +61,22 @@ Phi authorization digest
 EDCM policy and epoch identity
 ```
 
-A changed statement, source reference, claim status, constraint, unresolved `hmmm`, relation, or canon identity changes the appropriate digest. Catalog identity evidence is not empirical validation or formal proof.
+A changed statement, source reference, claim status, constraint, unresolved `hmmm`, relation, or canon identity changes the appropriate digest. Identity evidence is not empirical validation or formal proof.
 
 ## Claim status
 
-The catalog uses the claims-ledger vocabulary and adds the explicit status:
+The catalog uses:
 
 ```text
+ROOT-STIPULATION
+DEFINITION
 WORKING-POSTULATE
+INTERNAL-DERIVATION
+CROSS-DOMAIN-HYPOTHESIS
+EMPIRICAL-FRONTIER
 ```
 
-This prevents a postulate from being flattened into either root stipulation or internal theorem. Current classification is:
-
-- root and foundational axioms: `ROOT-STIPULATION`;
-- primitive extensions: `DEFINITION`;
-- postulates: `WORKING-POSTULATE`;
-- theorems: `INTERNAL-DERIVATION`;
-- theories 0–9 and 11: `INTERNAL-DERIVATION`;
-- theory 10, Symbolic and Memetic Transfer: `CROSS-DOMAIN-HYPOTHESIS`.
+Current doctrine uses root stipulations/definitions for axioms, `WORKING-POSTULATE` for postulates, and `INTERNAL-DERIVATION` for current theorems and theories. Domain applications carry their own bounded claim status separately.
 
 Using a module does not transfer its status into an application, measurement, UCNS object, or downstream theorem.
 
@@ -66,9 +93,9 @@ applies
 constitutive-simultaneous
 ```
 
-Catalog v2 materializes only exact `Derived from:` declarations already present in `THEORIES.md`. It does not infer relations from similar wording, analogy, order, geometry, carrier size, or repeated terms.
+Catalog v3 materializes only exact `Derived from:` declarations present in `THEORIES.md`. It does not infer ancestry from similar wording, analogy, ordering, geometry, carrier size, or repeated terms.
 
-`constitutive-simultaneous` is recognized by the shared vocabulary but is prohibited inside an ordinary catalog unless separately backed by an explicit canon-bound `UCNSForkAuthorization`. A theory ancestry edge is not payload containment.
+`constitutive-simultaneous` is recognized by the shared vocabulary but is prohibited inside an ordinary catalog unless separately backed by explicit canon-bound `UCNSForkAuthorization`. Theory ancestry is not payload containment.
 
 ## Source integrity
 
@@ -78,14 +105,9 @@ Every module statement has a source reference of the form:
 FILE.md#heading-slug::statement-N
 ```
 
-Every relation records both its exact `Derived from:` statement and its section reference. `assert_catalog_sources_match(Path("."))` fails if:
+Every relation records its exact `Derived from:` statement and section reference. `assert_catalog_sources_match(Path("."))` fails if a source file, heading, exact statement, or declared relation drifts.
 
-- a source file is absent;
-- a declared heading cannot be found;
-- an exact statement is absent from its declared section;
-- a relation statement drifts from the source section.
-
-The catalog does not replace the canon-bearing Markdown files. It makes their current statements addressable and verifies that the generated representation still resolves to them.
+The catalog does not replace canon-bearing Markdown. It makes those statements addressable and verifies that the generated representation still resolves to them.
 
 ## Package surface
 
@@ -97,7 +119,7 @@ catalog = metapat.canonical_semantic_catalog()
 metapat.assert_catalog_complete(catalog)
 metapat.assert_catalog_sources_match(Path("."), catalog)
 
-module = metapat.semantic_module_by_id("metapat.axiom.4.tensor", catalog)
+module = metapat.semantic_module_by_id("metapat.axiom.5.tensor", catalog)
 print(module.claim_status)
 print(module.envelope.source_statements)
 print(catalog.catalog_digest)
@@ -121,27 +143,14 @@ python tools/check_contract_graph.py
 python -m pytest -q tests/test_catalog.py tests/test_relations.py
 ```
 
-The generator writes both the current root-spine envelope and catalog fixtures. Any canon or catalog identity change must update both packaged fixtures, generated msdmd evidence, claims ledger, applications, and consumer migration consequences together.
+A canon/catalog rotation must update the packaged fixtures, generated evidence, application bindings, documentation, and consumer migration consequences together.
 
 ## Boundaries
 
-The catalog establishes:
+The catalog establishes stable semantic addresses, exact doctrine text/provenance, bounded claim status, declared ancestry, deterministic identity, and strict serialization.
 
-- stable semantic addresses;
-- exact doctrine text and provenance;
-- bounded claim status;
-- declared theory ancestry;
-- deterministic identity and strict serialization.
-
-It does not establish:
-
-- empirical truth of Meta Energy Theory;
-- formal proof of internal theorems;
-- EDCM metric values or validity;
-- UCNS theorem-status transfer;
-- application-specific meaning merely because a module name is reused;
-- constitutive payload topology without explicit Phi authorization and downstream object binding.
+It does not establish empirical truth, formal proof, EDCM metric values, UCNS theorem-status transfer, application validity, or constitutive payload topology.
 
 ## hmmm
 
-The first application-module vertical slice should bind the quantum-magnetism note to exact catalog module IDs while preserving its `CROSS-DOMAIN-HYPOTHESIS` status, physical scale distinctions, evidence boundary, and unresolved meanings of “field-space.”
+Completeness is never presumed. A later domain may require a new primitive, split a present one, refine one, or falsify part of the current construction.
