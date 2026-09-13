@@ -105,10 +105,7 @@ def test_catalog_module_identity_is_unique() -> None:
     catalog = canonical_semantic_catalog()
     assert len({module.module_id for module in catalog.modules}) == 40
     assert len({module.module_digest for module in catalog.modules}) == 40
-    assert (
-        semantic_module_by_id("metapat.axiom.4.tensor", catalog).envelope.module_kind
-        == "tensor"
-    )
+    assert semantic_module_by_id("metapat.axiom.5.tensor", catalog).envelope.module_kind == "tensor"
 
 
 def test_catalog_roundtrip_is_strict() -> None:
@@ -135,27 +132,20 @@ def test_catalog_claim_statuses_remain_bounded() -> None:
         for module in catalog.modules
         if module.doctrine_class == "postulate"
     } == {"WORKING-POSTULATE"}
-    assert (
-        semantic_module_by_id(
-            "metapat.theory.10.symbolic_and_memetic_transfer", catalog
-        ).claim_status
-        == "CROSS-DOMAIN-HYPOTHESIS"
-    )
     assert all(
         module.claim_status == "INTERNAL-DERIVATION"
         for module in catalog.modules
-        if module.doctrine_class == "theorem"
+        if module.doctrine_class in {"theorem", "theory"}
     )
 
 
 def test_catalog_relations_are_declared_and_resolvable() -> None:
     catalog = canonical_semantic_catalog()
     module_ids = {module.module_id for module in catalog.modules}
-    assert len(catalog.relations) == 52
+    assert len(catalog.relations) == 43
     assert all(relation.relation_kind == "derived-from" for relation in catalog.relations)
     assert all(
-        relation.subject_module_id in module_ids
-        and relation.object_module_id in module_ids
+        relation.subject_module_id in module_ids and relation.object_module_id in module_ids
         for relation in catalog.relations
     )
     assert all(
@@ -171,8 +161,8 @@ def test_catalog_rejects_unauthorized_constitutive_relation() -> None:
         relation_kind="constitutive-simultaneous",
         object_module_id=catalog.modules[2].module_id,
         evidence_status="ROOT-STIPULATION",
-        source_statement_refs=("AXIOMS.md#1-legible-difference::statement-1",),
-        source_statements=("Legible difference is distinction.",),
+        source_statement_refs=("AXIOMS.md#1-thing::statement-1",),
+        source_statements=("Thing is that which is.",),
     )
     with pytest.raises(ValueError, match="UCNSForkAuthorization"):
         MetapatSemanticCatalog(catalog.modules, catalog.relations + (relation,))
@@ -206,13 +196,14 @@ def test_root_spine_fixture_render_is_deterministic() -> None:
 
 
 def test_packaged_root_spine_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v2.json")
+    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v3.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_root_spine_envelope()
+    assert not files("metapat").joinpath("fixtures/root-spine-envelope-v2.json").is_file()
 
 
 def test_packaged_catalog_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v2.json")
+    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v3.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_catalog()
-    assert not files("metapat").joinpath("fixtures/semantic-module-catalog-v1.json").is_file()
+    assert not files("metapat").joinpath("fixtures/semantic-module-catalog-v2.json").is_file()
