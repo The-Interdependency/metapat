@@ -1,0 +1,28 @@
+.....F.................................................................. [ 74%]
+.........................                                                [100%]
+=================================== FAILURES ===================================
+______________________ test_application_source_is_current ______________________
+
+    def test_application_source_is_current() -> None:
+        application = affixiation_harmonics_application_module()
+>       metapat.assert_application_sources_match(Path(__file__).resolve().parents[1], application)
+
+tests/test_affixiation_harmonics.py:102: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+root = PosixPath('/home/runner/work/metapat/metapat')
+application = MetapatApplicationModule(application_id='metapat.application.affixiation_harmonics', application_version='affixiation-...module', schema_version='1.0.0', application_digest='77fdce04bb59fe34e510221fd051be289681016b40997a83a903d35998eb1e7a')
+
+    def assert_application_sources_match(
+        root: Path,
+        application: MetapatApplicationModule,
+    ) -> None:
+        mismatches = application_source_mismatches(root, application)
+        if mismatches:
+>           raise ValueError("application source mismatch: " + "; ".join(mismatches))
+E           ValueError: application source mismatch: source statement mismatch: docs/applications/affixiation-harmonics.md#catalog-bindings::statement-11
+
+src/metapat/application.py:499: ValueError
+=========================== short test summary info ============================
+FAILED tests/test_affixiation_harmonics.py::test_application_source_is_current - ValueError: application source mismatch: source statement mismatch: docs/applications/affixiation-harmonics.md#catalog-bindings::statement-11
+1 failed, 96 passed in 0.83s
