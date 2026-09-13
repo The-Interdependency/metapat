@@ -1,0 +1,35 @@
+name: Sync remaining v3 application source text once
+on:
+  push:
+    branches: [research/platonic-energy-operators]
+permissions:
+  contents: write
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: research/platonic-energy-operators
+      - name: Sync pipe source text
+        shell: python
+        run: |
+          from pathlib import Path
+          p = Path('docs/applications/three-phase-electromagnetic-pipe.md')
+          s = p.read_text()
+          old = '| `metapat.axiom.9.scalar` | state-metrics | Readable differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |'
+          new = '| `metapat.axiom.9.scalar` | state-metrics | Measured differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |'
+          if old not in s:
+              raise SystemExit('expected pipe scalar row not found')
+          s = s.replace(old, new)
+          s = s.replace('The device is modeled as a boundary-mediated energy-state system.', 'The device is modeled as a related state-and-transformation system.')
+          p.write_text(s)
+          Path('.github/workflows/v3-doc-source-sync-once.yml').unlink()
+      - name: Commit
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add -A
+          git commit -m 'docs: sync v3 application source statements'
+          git push origin HEAD:research/platonic-energy-operators
