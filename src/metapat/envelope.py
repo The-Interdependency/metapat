@@ -266,8 +266,6 @@ class MetapatModuleEnvelope:
             raise ValueError(f"unknown envelope fields: {sorted(unknown)!r}")
         if missing:
             raise ValueError(f"missing envelope fields: {sorted(missing)!r}")
-        if not isinstance(data["envelope"], Mapping) if "envelope" in data else False:
-            raise ValueError("module envelope must be a mapping")
         return cls(
             schema_id=_require_string(data, "schema_id"),
             schema_version=_require_string(data, "schema_version"),
