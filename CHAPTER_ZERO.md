@@ -1,5 +1,5 @@
 # Chapter Zero
-# Meta Energy Theory — Axioms, Postulates, and Theorems
+# Meta Energy Theory — Root Structure and Action
 
 ## Zeroth Note: Ordinal Counting
 
@@ -9,295 +9,253 @@ Zero is not nothing.
 
 Zero is position before the first domain.
 
-Ordinal counting marks order of appearance, not amount of substance. The zeroth place is the root-place: the place from which later distinctions, tools, domains, questions, and transformations become legible.
-
-## 0. Root Layer: Invariant Base
-
-### Zeroth Axiom: The Root Is Untouchable
+## 0. Root Restraint
 
 Domains may influence the exploratory tools of Energy Theory.
 
 Domains may not redefine the root.
 
-Energy Theory remains strictly prior to each application.
-
-Energy Theory may take explicationary tools from physics, mathematics, linguistics, thermodynamics, chemistry, literature, psychology, computation, and any other useful domain.
-
 No domain owns Energy Theory.
 
-### First Axiom: Legible Difference
+Every domain exposes some properties of Platonic energy.
 
-Legible difference is distinction.
+No domain exposes all properties of Platonic energy.
 
-Without legible difference, no boundary can be defined.
+## 1. Structure
+
+### First Axiom: Thing
+
+Thing is that which is.
+
+A solitary thing has no boundary.
 
 ### Second Axiom: Boundary
 
-Distinction defines boundaries.
+Boundary is the thing between things.
 
-Boundary is simplex of distinction.
+Boundary requires more than one thing.
 
-A boundary is not merely an edge. A boundary is a state-bearing simplex whose configuration may affect what passes, alters, translates, reflects, delays, amplifies, dampens, redirects, or fails to pass.
+### Third Axiom: State
 
-### Third Axiom: Simplex
+State is a metricable property of a thing.
 
-Boundaries define simplex.
+State is not measurement.
 
-A simplex is a bounded state-bearing object.
+### Fourth Axiom: Simplex
 
-Simplex holds or modifies energy in a state of being.
+A simplex is a thing with boundary and state.
 
-A simplex is not required to be physical. A simplex may be physical, spatial, linguistic, conceptual, archetypal, ideational, gestalt, mathematical, social, computational, or otherwise domain-expressed.
+A simplex is primitive where it participates as a whole.
 
-## 1. Primitive Extension Layer
+### Fifth Axiom: Tensor
 
-### Fourth Axiom: Tensor
+A tensor is structure produced when simplexes relate.
 
-Tensor is primitive.
+A tensor is a thing.
 
-Tensor is simultaneous arrangement of energy-states.
+## 2. Action
 
-Tensor is not merely a later map of relations. Tensor is the primitive arrangement within which relations, gradients, and transformations become readable.
+### Sixth Axiom: Relate
 
-Without sequence, there is tensor.
+Relate is this to that.
 
-#### Explanatory note: simultaneity, form, and recursion
+Geometry is one possible relation, not the definition of relate.
 
-Primitive does not mean atomic or indivisible. It means that simultaneous arrangement is prior in Energy Theory to sequential alteration.
+### Seventh Axiom: Emerge
 
-A tensor may be nested or recursively organized. A simplex or formed object may participate in a tensor at one scale while retaining tensor organization at another scale.
+Tensors emerge from simplexes.
 
-Scalar, vector, matrix, and higher-order forms may become legible within tensor structure or may be used by a domain to represent it. Their domain-specific formal definitions remain explicationary tools unless separately established by the root; they do not redefine what METAPAT means by tensor.
+### Eighth Axiom: Vector
 
-Accordingly, METAPAT tensor names the root fact of simultaneous arranged state while allowing richer mathematical, physical, computational, linguistic, or other domain-specific tensor structures to be compared against that root without owning it.
+Vector alters state.
 
-### Fifth Axiom: Energy-State
+Vector is inferred by scalar measurement.
 
-Energy appears as state of being.
+## 3. Measurement and Result
 
-Energy-state held is scalar.
+### Ninth Axiom: Scalar
 
-Energy-state motioned is vector.
+Scalar is a state metric.
 
-Energy-state vectors alter energy-state scalars.
+### Tenth Axiom: Transformation
 
-Standing wave and propagating wave are explicationary tools. They clarify scalar and vector behavior; they do not make wave physics the owner of Energy Theory.
+Transformation is resulting state change.
 
-## 2. Relational Conditioning Layer
+### Eleventh Axiom: Time
 
-### Sixth Axiom: Relation
+Time is sequential transformation.
 
-Relation is readable configuration within tensor.
+Registration may preserve time.
 
-Relation is not merely adjacency.
+Registration does not produce time.
 
-Relation includes the configured possibility of alteration among simplexes, including boundary-simplexes.
+### Twelfth Axiom: Energy
 
-### Seventh Axiom: Gradient
+Energy is vectors altering state through transformation across time.
 
-Gradient is readable difference within relation.
+Energy is derived rather than primitive.
 
-Gradient dynamics are how vectors select direction.
+## 4. Recursion
 
-Gradient dynamics include tensor arrangement, simplex relations, and boundary-simplex states.
+```text
+Thing + Thing -> Boundary
+Thing + Boundary + State -> Simplex
+Simplexes Relate -> Tensor Emerges
+Tensor -> Thing
+Thing + Boundary + State -> Simplex
+Repeat
+```
 
-A vector does not select direction from difference alone. Direction is selected through relation, boundary-simplex state, and total tensor arrangement.
+Construction history does not prevent a thing from participating as primitive when treated as a whole.
 
-### Eighth Axiom: Transformation
+## 5. Postulates
 
-Transformation is vector-compelled alteration of energy-state.
+### First Postulate: Partial Domains
 
-A simplex may hold energy-state.
+Every domain exposes some properties of Platonic energy.
 
-A simplex may modify energy-state.
+No domain exposes all properties of Platonic energy.
 
-A boundary-simplex may modify how alteration occurs.
+Cross-domain comparison may recover shared structure without making domains identical.
 
-## 3. Registration Layer: Emergent Sequentiality
+### Second Postulate: Explicationary Use
 
-### Ninth Axiom: Time
+A domain term may clarify the root.
 
-Time is sequential tensor alteration.
+A domain term may not redefine the root.
 
-Tensor is simultaneous arrangement.
+### Third Postulate: Recursive Closure
 
-Time is tensor alteration by sequence.
+A tensor may participate as a thing.
 
-Registration is not the parent of time.
+A tensor with boundary and state is a simplex.
 
-### Tenth Axiom: Registration
+### Fourth Postulate: Registration Plurality
 
-Registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
+Any simplex capable of preserving, expressing, or transmitting transformation may perform registration.
+
+Consciousness is one registration mode, not the parent ontology.
+
+### Fifth Postulate: Observation Does Not Create Structure
+
+Observation may register a boundary, state, relation, transformation, or tensor without creating the structure registered.
+
+### Sixth Postulate: Cross-Domain Falsification
+
+When different domains independently expose the same candidate structure or action, remove the domain-specific implementation and test what remains.
+
+A new domain may add, split, refine, or falsify a candidate.
+
+Completeness is never presumed.
+
+### Seventh Postulate: Discovery Before Recovery
+
+Interest may select what to explore.
+
+Discovery may precede explanation.
+
+Freeze a result before independent recovery.
+
+Independent recovery tests the result, not the legitimacy of the discovery path.
+
+## 6. Core Theorems
+
+### First Theorem: Boundary Requires Multiplicity
+
+If boundary is the thing between things, one thing alone has no boundary.
+
+Therefore boundary requires more than one thing.
+
+### Second Theorem: Simplex Closure
+
+If a thing has boundary and state, it satisfies the simplex definition.
+
+Therefore thing + boundary + state closes as simplex.
+
+### Third Theorem: Tensor Emergence
+
+If simplexes relate and tensor is the structure produced when simplexes relate, a tensor emerges from related simplexes.
+
+### Fourth Theorem: Recursive Closure
+
+If a tensor is a thing, then a tensor with boundary and state satisfies the simplex definition.
+
+Therefore tensor construction may recurse through simplex closure.
+
+### Fifth Theorem: Scalar and Vector Are Distinct
+
+If scalar is a state metric and vector alters state, scalar measures what vector alters.
+
+Therefore scalar and vector are not the same kind of thing.
+
+Vector is inferred through scalar measurement of state change.
+
+### Sixth Theorem: Transformation Produces Time by Sequence
+
+If vector alters state, the resulting state change is transformation.
+
+If transformations occur sequentially, there is time.
+
+### Seventh Theorem: Energy Is Derived
+
+If vectors alter state through transformation across time, energy requires vector, state, transformation, and time.
+
+Therefore energy is composite at this level rather than primitive.
+
+### Eighth Theorem: Root and Tool Separation
+
+If every domain exposes some properties and no domain exposes all, no single domain may own the root.
+
+Therefore domain implementations may reveal METAPAT structure without becoming METAPAT structure by identity.
+
+## 7. Registration and Questions
+
+Registration is the capacity of a simplex to preserve, express, or transmit transformation.
 
 An observer is a simplex performing registration.
 
 An observer need not be conscious.
 
-A rock stratum, log file, sensor stream, memory trace, written mark, downstream code module, or human mind may perform registration according to its native scale and structure.
+A question is a bounded unresolved state or relation available to transformation.
 
-Consciousness is one possible observer-mode.
-
-Story is conscious registration of time.
-
-## 4. Meta-Layer
-
-### Eleventh Axiom: The Question
-
-A question is a bounded unresolved energy-state.
-
-Energy Theory answers the question:
+Energy Theory remains a question-finder:
 
 ```text
 What questions do I ask?
 ```
 
-It does so by finding shared question-forms among domains.
-
-Energy Theory is not first an answer-machine.
-
-Energy Theory is a question-finder.
-
-## 5. Postulates
-
-### First Postulate: Domain Similarity
-
-When different domains show similarly shaped transformations, Energy Theory may compare them.
-
-The comparison does not make the domains identical.
-
-The comparison reveals shared question-forms.
-
-### Second Postulate: Explicationary Use
-
-A domain term may be used as an explicationary tool if it clarifies the root.
-
-A domain term must be rejected or demoted if it attempts to redefine the root.
-
-### Third Postulate: Formed Objects
-
-A formed object is a tensor of simplexes integrated at a scale.
-
-Object-instantiation requires integration at its native scale, not consciousness.
-
-A physical object may require physical and spatial simplexes.
-
-A mental object may require archetype, concept, idea, and gestalt simplexes.
-
-Gestalt simplex is cognitive registration of integrated object-whole. It is not the source of physical object existence.
-
-### Fourth Postulate: Integration
-
-Integration is a tensor configuration becoming object-whole at a native scale.
-
-An integration simplex may instantiate object-whole at that scale.
-
-A cognitive gestalt may register that integration when a mind encounters or constructs it.
-
-## 6. Core Theorems
-
-### First Theorem: Boundary Earns Its Keep
-
-If boundary is simplex, then boundary can modify transformation.
-
-If boundary can modify transformation, then gradient dynamics cannot be reduced to simple distance values or difference alone.
-
-Therefore, vector direction is selected through gradient dynamics that explicitly include the current state of the boundary-simplex.
-
-### Second Theorem: Tensor Precedes Time
-
-If tensor is simultaneous arrangement of energy-states, and time is sequential tensor alteration, then tensor precedes time in Energy Theory.
-
-Therefore, without sequence there is not nothingness.
-
-Without sequence, there is tensor.
-
-### Third Theorem: Question as Energy-State
-
-If a question is bounded and unresolved, and simplex holds energy in a state of being, then a question is a simplex holding unresolved energy-state.
-
-Therefore, questions are Energy Theory.
-
-### Fourth Theorem: Object Instantiation
-
-If a formed object is a tensor of simplexes integrated at a scale, then object-instantiation does not require a human mind.
-
-Therefore, the physical cup is not created by cognition.
-
-Cognition may register cup-whole as a gestalt simplex.
-
-### Fifth Theorem: Root and Tool Separation
-
-If domains influence tools but cannot alter the root, then Energy Theory can grow without root-drift.
-
-Therefore, Energy Theory is a magpie, not a mimic.
-
-It may take the shiny shape of a question from any domain.
-
-It may not surrender its root to any domain.
-
-## 7. Cup Example
-
-A cup without form is not a cup.
-
-At cup-scale, the cup is not one simplex.
-
-At physical scale, a cup is a tensor relation of at least two structural simplexes:
-
-1. physical wall simplex, playing boundary / retaining role;
-2. space-within simplex, playing interval / containment role.
-
-The physical wall simplex gives form.
-
-The space-within simplex gives containment.
-
-The cup is the tensor relation of physical boundary simplex and space-within simplex.
-
-Heat the physical boundary simplex, and the space-within simplex alters.
-
-The cup exists physically through boundary and hollow.
-
-The cup exists mentally when an observer-mode registers cup-whole through cognitive tensor profile: archetype, concept, idea, and gestalt.
-
-The cup's structural integrity remains independent of that observation.
-
 ## 8. Zeroth Summary
 
-Legible difference is distinction.
+Thing is that which is.
 
-Distinction defines boundaries.
+Boundary is the thing between things.
 
-Boundaries define simplex.
+State is a metricable property of a thing.
 
-Boundary is simplex of distinction.
+A simplex is a thing with boundary and state.
 
-Simplex holds or modifies energy in a state of being.
+A tensor is structure produced when simplexes relate.
 
-Tensor is primitive simultaneous arrangement of energy-states.
+Relate is this to that.
 
-Energy-state held is scalar.
+Tensors emerge from simplexes.
 
-Energy-state motioned is vector.
+Vector alters state and is inferred by scalar measurement.
 
-Energy-state vectors alter energy-state scalars.
+Scalar is a state metric.
 
-Relation is readable configuration within tensor.
+Transformation is resulting state change.
 
-Gradient is readable difference within relation.
+Time is sequential transformation.
 
-Gradient dynamics select vector direction through tensor arrangement, simplex relations, and boundary-simplex states.
+Energy is vectors altering state through transformation across time.
 
-Transformation is vector-compelled alteration of energy-state.
+Every domain exposes some properties of Platonic energy.
 
-Time is sequential tensor alteration.
-
-Registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
-
-Observer is a simplex performing registration.
-
-Consciousness is one possible observer-mode.
-
-Story is conscious registration of time.
-
-A question is a bounded unresolved energy-state.
+No domain exposes all properties of Platonic energy.
 
 Energy Theory answers: What questions do I ask?
+
+## hmmm
+
+The root is intentionally open to falsification. A later domain may require a new primitive, split a presently conflated primitive, refine a definition, or falsify part of this construction.
