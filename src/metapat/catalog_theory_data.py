@@ -15,112 +15,79 @@
 #   admin_only: false
 #   tests: tests.test_catalog
 #   rollout: internal catalog constructor dependency
-#   rollback: remove only with semantic catalog
+#   rollback: restore the prior canon-bound theory declarations
 #   requires: metapat_canon_core
 #   since: 2026-07-21
-#   unresolved: theory 10 remains cross-domain hypothesis and theory 11 remains domain-restraint bounded
+#   unresolved: none
 # === END MODULE_BUILD ===
 
 THEORY_SPECS = (
-    ("metapat.theory.0.root_prior_restraint", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "0-theory-of-root-prior-restraint", (
-        "Energy Theory can learn from any domain without being owned by that domain.",
-        "Domains may supply tools, examples, metaphors, measurements, and question-forms.",
-        "Domains may not redefine the root.",
+    ("metapat.theory.0.root_prior_restraint", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-0-root-prior-restraint", (
+        "Every domain may reveal part of Platonic energy without owning the root.",
     ), ()),
-    ("metapat.theory.1.distinction_formation", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "1-theory-of-distinction-formation", (
-        "Legible difference generates distinction.",
-        "Distinction defines boundary.",
-        "Boundary defines simplex.",
-        "A simplex is therefore not merely an object already sitting in a domain. A simplex is the bounded state-bearing result of legible distinction.",
+    ("metapat.theory.1.thing_boundary_state", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-1-thing-boundary-state-construction", (
+        "Thing, boundary, and state are sufficient to close simplex.",
     ), ()),
-    ("metapat.theory.2.boundary_mediated_transformation", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "2-theory-of-boundary-mediated-transformation", (
-        "Boundary is not passive edge.",
-        "Boundary is a state-bearing simplex whose configuration may alter passage, relation, gradient dynamics, vector direction, delay, filtering, propagation, or transformation outcome.",
+    ("metapat.theory.2.relational_tensor_formation", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-2-relational-tensor-formation", (
+        "Simplexes relate; tensor is the structure that emerges from their relation.",
     ), ()),
-    ("metapat.theory.3.tensor_first_arrangement", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "3-theory-of-tensor-first-arrangement", (
-        "Tensor is primitive simultaneous arrangement of energy-states.",
-        "Time is not the first condition.",
-        "Time appears when tensor alteration becomes sequential.",
-        "Without sequence, there is not nothingness.",
-        "Without sequence, there is tensor.",
+    ("metapat.theory.3.recursive_closure", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-3-recursive-closure", (
+        "A tensor is a thing and may close as simplex when it has boundary and state.",
     ), ()),
-    ("metapat.theory.4.energy_state_motion", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "4-theory-of-energy-state-motion", (
-        "Energy appears as state of being.",
-        "Energy-state held is scalar.",
-        "Energy-state motioned is vector.",
-        "Energy-state vectors alter energy-state scalars.",
-        "Transformation is vector-compelled alteration of energy-state.",
+    ("metapat.theory.4.state_measurement", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-4-state-measurement", (
+        "State exists independently of its metric; scalar measures state, while vector is inferred from measured state change.",
     ), ()),
-    ("metapat.theory.5.relational_gradient_selection", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "5-theory-of-relational-gradient-selection", (
-        "Relation is readable configuration within tensor.",
-        "Gradient is readable difference within relation.",
-        "Gradient dynamics select vector direction through tensor arrangement, simplex relations, and boundary-simplex states.",
-        "A vector does not select direction from difference alone.",
+    ("metapat.theory.5.transformation", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-5-transformation", (
+        "Vector alters state; the resulting state change is transformation.",
     ), ()),
-    ("metapat.theory.6.time_as_sequential_tensor_alteration", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "6-theory-of-time-as-sequential-tensor-alteration", (
-        "Time is sequential tensor alteration.",
-        "Registration is not the parent of time.",
-        "A sequence can occur without being preserved, narrated, or consciously observed.",
+    ("metapat.theory.6.time", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-6-time", (
+        "Time is sequential transformation.",
     ), ()),
-    ("metapat.theory.7.registration_and_observer_roles", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "7-theory-of-registration-and-observer-roles", (
-        "Registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration.",
-        "An observer is a simplex performing registration.",
-        "An observer need not be conscious.",
-        "Consciousness is one possible observer-mode.",
-        "Story is conscious registration of time.",
+    ("metapat.theory.7.derived_energy", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-7-derived-energy", (
+        "Energy is composite: vectors altering state through transformation across time.",
     ), ()),
-    ("metapat.theory.8.questions_as_bounded_unresolved_energy_state", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "8-theory-of-questions-as-bounded-unresolved-energy-state", (
-        "A question is a bounded unresolved energy-state.",
-        "Energy Theory is not first an answer-machine.",
-        "Energy Theory is a question-finder.",
+    ("metapat.theory.8.emergence", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-8-emergence", (
+        "Tensors emerge from simplexes and may become simplexes in recursive construction.",
     ), ()),
-    ("metapat.theory.9.native_scale_object_integration", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "9-theory-of-native-scale-object-integration", (
-        "A formed object is a tensor of simplexes integrated at a scale.",
-        "Object-instantiation requires integration at its native scale, not consciousness.",
-        "A physical object may require physical and spatial simplexes.",
-        "A mental object may require archetype, concept, idea, and gestalt simplexes.",
-        "A cognitive gestalt may register object-whole without creating physical objecthood.",
+    ("metapat.theory.9.registration_observer", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-9-registration-and-observer-roles", (
+        "Registration preserves, expresses, or transmits transformation; observation does not create the structure registered.",
     ), ()),
-    ("metapat.theory.10.symbolic_and_memetic_transfer", "theory", "theory", "CROSS-DOMAIN-HYPOTHESIS", "THEORIES.md", "10-theory-of-symbolic-and-memetic-transfer", (
-        "Thought does not transfer thought directly.",
-        "Thought emits symbolic form.",
-        "Symbolic form perturbs a receiver.",
-        "A reconstructed thought appears only if the receiving simplex or tensor can register, relate, and resolve the pattern.",
-        "Words, marks, gestures, numerals, operators, spacing, rhythm, and silence may function as symbolic boundary-simplexes.",
-    ), ("hmmm: symbolic vertex tables, receiver registration tests, and UCNS-gonol mappings are not yet specified.",)),
-    ("metapat.theory.11.cross_domain_question_forms", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "11-theory-of-cross-domain-question-forms", (
-        "Different domains may show similarly shaped transformations.",
-        "Energy Theory may compare those shapes to find shared question-forms.",
-        "The comparison does not make the domains identical.",
-    ), ("hmmm: this theory remains valid only while domain restraint is explicit.",)),
+    ("metapat.theory.10.questions_unresolved_structure", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-10-questions-as-unresolved-structure", (
+        "A question is a bounded unresolved state or relation available to transformation.",
+        "Energy Theory is a question-finder before it is an answer-machine.",
+    ), ()),
+    ("metapat.theory.11.cross_domain_reconstruction", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-11-cross-domain-reconstruction", (
+        "Independent domain implementations may expose the same candidate structure or action without making the domains identical.",
+        "The candidate survives only while later domains fail to falsify, split, or refine it.",
+    ), ("hmmm: completeness is never presumed.",)),
 )
 
 CATALOG_DERIVATIONS = {
-    "metapat.theory.0.root_prior_restraint": ("metapat.axiom.0.root_untouchable", "metapat.postulate.1.domain_similarity", "metapat.postulate.2.explicationary_use", "metapat.theorem.5.root_and_tool_separation"),
-    "metapat.theory.1.distinction_formation": ("metapat.axiom.1.legible_difference", "metapat.axiom.2.boundary", "metapat.axiom.3.simplex"),
-    "metapat.theory.2.boundary_mediated_transformation": ("metapat.axiom.2.boundary", "metapat.axiom.3.simplex", "metapat.axiom.7.gradient", "metapat.axiom.8.transformation", "metapat.postulate.6.validation_by_boundary_change", "metapat.theorem.1.boundary_earns_its_keep"),
-    "metapat.theory.3.tensor_first_arrangement": ("metapat.axiom.4.tensor", "metapat.axiom.9.time", "metapat.theorem.2.tensor_precedes_time"),
-    "metapat.theory.4.energy_state_motion": ("metapat.axiom.5.energy_state", "metapat.axiom.8.transformation"),
-    "metapat.theory.5.relational_gradient_selection": ("metapat.axiom.6.relation", "metapat.axiom.7.gradient", "metapat.axiom.8.transformation", "metapat.theorem.1.boundary_earns_its_keep"),
-    "metapat.theory.6.time_as_sequential_tensor_alteration": ("metapat.axiom.4.tensor", "metapat.axiom.9.time", "metapat.theorem.6.registration_is_not_time"),
-    "metapat.theory.7.registration_and_observer_roles": ("metapat.axiom.10.registration", "metapat.theorem.6.registration_is_not_time", "metapat.theorem.7.observer_role_earned_by_registration", "metapat.theorem.8.consciousness_is_optional", "metapat.postulate.5.registration_plurality"),
-    "metapat.theory.8.questions_as_bounded_unresolved_energy_state": ("metapat.axiom.11.question", "metapat.theorem.3.question_as_energy_state"),
-    "metapat.theory.9.native_scale_object_integration": ("metapat.axiom.2.boundary", "metapat.axiom.3.simplex", "metapat.axiom.4.tensor", "metapat.axiom.5.energy_state", "metapat.axiom.6.relation", "metapat.postulate.3.formed_objects", "metapat.postulate.4.integration", "metapat.theorem.4.object_instantiation"),
-    "metapat.theory.10.symbolic_and_memetic_transfer": ("metapat.axiom.5.energy_state", "metapat.axiom.6.relation", "metapat.axiom.8.transformation", "metapat.axiom.10.registration", "metapat.axiom.11.question", "metapat.theory.7.registration_and_observer_roles", "metapat.theory.8.questions_as_bounded_unresolved_energy_state"),
-    "metapat.theory.11.cross_domain_question_forms": ("metapat.axiom.0.root_untouchable", "metapat.axiom.11.question", "metapat.postulate.1.domain_similarity", "metapat.postulate.2.explicationary_use", "metapat.theorem.5.root_and_tool_separation"),
+    "metapat.theory.0.root_prior_restraint": ("metapat.root_spine", "metapat.postulate.1.partial_domains", "metapat.postulate.2.explicationary_use", "metapat.postulate.6.cross_domain_falsification", "metapat.theorem.8.root_tool_separation"),
+    "metapat.theory.1.thing_boundary_state": ("metapat.axiom.1.thing", "metapat.axiom.2.boundary", "metapat.axiom.3.state", "metapat.axiom.4.simplex", "metapat.theorem.1.boundary_requires_multiplicity", "metapat.theorem.2.simplex_closure"),
+    "metapat.theory.2.relational_tensor_formation": ("metapat.axiom.5.tensor", "metapat.axiom.6.relate", "metapat.axiom.7.emerge", "metapat.theorem.3.tensor_emergence"),
+    "metapat.theory.3.recursive_closure": ("metapat.axiom.5.tensor", "metapat.postulate.3.recursive_closure", "metapat.theorem.4.recursive_closure"),
+    "metapat.theory.4.state_measurement": ("metapat.axiom.3.state", "metapat.axiom.8.vector", "metapat.axiom.9.scalar", "metapat.theorem.5.scalar_vector_distinct"),
+    "metapat.theory.5.transformation": ("metapat.axiom.8.vector", "metapat.axiom.10.transformation", "metapat.theorem.6.transformation_produces_time"),
+    "metapat.theory.6.time": ("metapat.axiom.11.time", "metapat.theorem.6.transformation_produces_time"),
+    "metapat.theory.7.derived_energy": ("metapat.axiom.12.energy", "metapat.theorem.7.energy_is_derived"),
+    "metapat.theory.8.emergence": ("metapat.axiom.5.tensor", "metapat.axiom.6.relate", "metapat.axiom.7.emerge", "metapat.theorem.3.tensor_emergence", "metapat.theorem.4.recursive_closure"),
+    "metapat.theory.9.registration_observer": ("metapat.postulate.4.registration_plurality", "metapat.postulate.5.observation_does_not_create_structure"),
+    "metapat.theory.10.questions_unresolved_structure": ("metapat.postulate.5.observation_does_not_create_structure", "metapat.postulate.6.cross_domain_falsification", "metapat.postulate.7.discovery_before_recovery"),
+    "metapat.theory.11.cross_domain_reconstruction": ("metapat.postulate.1.partial_domains", "metapat.postulate.2.explicationary_use", "metapat.postulate.6.cross_domain_falsification", "metapat.theorem.8.root_tool_separation"),
 }
 
 CATALOG_DERIVED_TEXT = {
-    "metapat.theory.0.root_prior_restraint": "Derived from: Axiom 0; Postulates 1-2; Fifth Theorem.",
-    "metapat.theory.1.distinction_formation": "Derived from: Axioms 1-3.",
-    "metapat.theory.2.boundary_mediated_transformation": "Derived from: Axioms 2-3, 7-8; Postulate 6; First Theorem.",
-    "metapat.theory.3.tensor_first_arrangement": "Derived from: Axiom 4; Axiom 9; Second Theorem.",
-    "metapat.theory.4.energy_state_motion": "Derived from: Axiom 5; Axiom 8.",
-    "metapat.theory.5.relational_gradient_selection": "Derived from: Axioms 6-8; First Theorem.",
-    "metapat.theory.6.time_as_sequential_tensor_alteration": "Derived from: Axiom 4; Axiom 9; Sixth Theorem.",
-    "metapat.theory.7.registration_and_observer_roles": "Derived from: Axiom 10; Theorems 6-8; Postulate 5.",
-    "metapat.theory.8.questions_as_bounded_unresolved_energy_state": "Derived from: Axiom 11; Third Theorem.",
-    "metapat.theory.9.native_scale_object_integration": "Derived from: Axioms 2-6; Postulates 3-4; Fourth Theorem.",
-    "metapat.theory.10.symbolic_and_memetic_transfer": "Derived from: Axioms 5-6, 8, 10-11; Theory 7; Theory 8.",
-    "metapat.theory.11.cross_domain_question_forms": "Derived from: Axiom 0; Axiom 11; Postulates 1-2; Fifth Theorem.",
+    "metapat.theory.0.root_prior_restraint": "Derived from: root restraint; Postulates 1, 2, and 6; Theorem 8.",
+    "metapat.theory.1.thing_boundary_state": "Derived from: Axioms 1-4; Theorems 1-2.",
+    "metapat.theory.2.relational_tensor_formation": "Derived from: Axioms 5-7; Theorem 3.",
+    "metapat.theory.3.recursive_closure": "Derived from: Axiom 5; Postulate 3; Theorem 4.",
+    "metapat.theory.4.state_measurement": "Derived from: Axioms 3, 8, and 9; Theorem 5.",
+    "metapat.theory.5.transformation": "Derived from: Axioms 8 and 10; Theorem 6.",
+    "metapat.theory.6.time": "Derived from: Axiom 11; Theorem 6.",
+    "metapat.theory.7.derived_energy": "Derived from: Axiom 12; Theorem 7.",
+    "metapat.theory.8.emergence": "Derived from: Axioms 5-7; Theorems 3-4.",
+    "metapat.theory.9.registration_observer": "Derived from: Postulates 4-5.",
+    "metapat.theory.10.questions_unresolved_structure": "Derived from: Postulates 5-7.",
+    "metapat.theory.11.cross_domain_reconstruction": "Derived from: Postulates 1, 2, and 6; Theorem 8.",
 }
