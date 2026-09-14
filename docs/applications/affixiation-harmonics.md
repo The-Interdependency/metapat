@@ -21,7 +21,7 @@ This module does not amend the axioms, postulates, or theories. It is a catalog-
 | `metapat.axiom.6.relate` | relation | Affixiation and harmonic correspondence are readable configurations within tensor rather than identity claims about their participants. |
 | `metapat.axiom.11.time` | time-boundary | Time remains sequential transformation; a harmonic structure may be parameterized over a non-temporal ordered relation without thereby becoming time. |
 | `metapat.postulate.3.recursive_closure` | formed-object | A relation among already-bounded participants may become object-whole only at a declared native scale rather than merely because the participants are associated. |
-| `metapat.theory.8.emergence` | emergence | Affixiation may integrate a declared relation as a higher-scale object-whole while retaining the addressable identities of its participants. |
+| `metapat.theory.8.emergence` | integration | Affixiation may integrate a declared relation as a higher-scale object-whole while retaining the addressable identities of its participants. |
 | `metapat.theory.2.relational_tensor_formation` | tensor-first | Simultaneous arrangement permits relational structure before sequential alteration and therefore before a temporal interpretation is required. |
 | `metapat.theory.4.state_measurement` | relational-structure | Harmonic correspondence is interpreted through the complete declared relation rather than through one scalar difference alone. |
 | `metapat.theory.6.time` | time-separation | Traversal of an ordered relational parameter must not be silently equated with physical or experiential time. |
