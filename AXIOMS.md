@@ -6,6 +6,8 @@ The root restraint is separate from the numbered axioms:
 Domains may influence the exploratory tools of Energy Theory.
 Domains may not redefine the root.
 No domain owns Energy Theory.
+Different domains may independently expose common structures and actions.
+Structural resemblance does not transfer a domain term, mechanism, evidence standard, or conservation law.
 ```
 
 ## 1. Thing
@@ -70,8 +72,10 @@ Registration may preserve time.
 
 Registration does not produce time.
 
-## 12. Energy
+## 12. Domain Qualification
 
-Energy is vectors altering state through transformation across time.
+Structural recurrence does not transfer a domain term.
 
-Energy is derived rather than primitive.
+A domain term applies only where that domain independently licenses it.
+
+Energy is domain-qualified. METAPAT does not call every state transformation energy merely because state, vector, transformation, and time are present.
