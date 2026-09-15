@@ -196,14 +196,14 @@ def test_root_spine_fixture_render_is_deterministic() -> None:
 
 
 def test_packaged_root_spine_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v3.json")
+    fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v4.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_root_spine_envelope()
     assert not files("metapat").joinpath("fixtures/root-spine-envelope-v2.json").is_file()
 
 
 def test_packaged_catalog_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v3.json")
+    fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v4.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_catalog()
     assert not files("metapat").joinpath("fixtures/semantic-module-catalog-v2.json").is_file()

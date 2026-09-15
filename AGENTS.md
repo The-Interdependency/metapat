@@ -1,10 +1,10 @@
 name: METAPAT
 description: |
-  Canonical semantic authority for Meta Energy Theory. Preserve exact v3 canon and its complete file identity, use the addressable semantic catalog and strict catalog-bound application modules, use actual UCNS only through the optional adapter, and never convert semantic labels into EDCM measurements.
+  Canonical semantic authority for Meta Energy Theory. Preserve exact v4 canon and its complete file identity, use the addressable semantic catalog and strict catalog-bound application modules, use actual UCNS only through the optional adapter, and never convert semantic labels into EDCM measurements.
 
 # === LLMS ===
 # id: project_overview
-#   content: METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v3 derives energy from prior structure and action rather than assuming energy-state as primitive. Every domain exposes some properties of Platonic energy; no domain exposes all. Catalog v3 makes the current root, axiom, postulate, theorem, and theory surfaces addressable without transferring domain, measurement, theorem, or UCNS validity.
+#   content: METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v4 preserves the structure/action root through time and makes domain qualification explicit: structural resemblance does not transfer a domain term, mechanism, evidence standard, or conservation law. Catalog v4 makes the current root, axiom, postulate, theorem, and theory surfaces addressable without transferring domain, measurement, theorem, or UCNS validity.
 #
 # id: key_definitions
 #   METAPAT: Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.
@@ -19,11 +19,11 @@ description: |
 #   vector: Alters state; inferred by scalar measurement.
 #   transformation: Resulting state change.
 #   time: Sequential transformation.
-#   energy: Vectors altering state through transformation across time.
+#   energy: Domain-qualified; METAPAT does not call every state transformation energy.
 #   registration: Capacity of a simplex to preserve, express, or transmit transformation.
 #   observer: A simplex performing registration; observer does not necessarily mean mind.
 #   question: A bounded unresolved state or relation available to transformation.
-#   semantic_catalog_v3: 40 ordered doctrine modules and 43 exact source-declared derived-from relations bound to metapat-canon-v3.
+#   semantic_catalog_v4: 40 ordered doctrine modules and 43 exact source-declared derived-from relations bound to metapat-canon-v4.
 #   application_module: A source-checked domain application bound to exact catalog identities, source statements, transfer limits, evidence requirements, and unresolved hmmm without becoming root, UCNS algebra, EDCM measurement, formal proof, or domain validation.
 #
 # id: architecture_summary
@@ -34,12 +34,12 @@ description: |
 #
 # id: usage_rules
 #   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
-#     - Do not restore v2 doctrine: Tensor is not primitive in v3; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
-#     - Use exact v3 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
-#     - Catalog v3 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
+#     - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
+#     - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
+#     - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
 #     - Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
 #     - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
-#     - Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v3 identities. Consumer repositories own their local epoch names.
+#     - Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities. Consumer repositories own their local epoch names.
 #     - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
 #     - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
 #     - hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
@@ -98,17 +98,17 @@ Vector is inferred by scalar measurement.
 Scalar is a state metric.
 Transformation is resulting state change.
 Time is sequential transformation.
-Energy is vectors altering state through transformation across time.
+Structural recurrence does not transfer a domain term.
 ```
 
-Energy is derived rather than primitive.
+Energy is domain-qualified rather than a universal name for state transformation.
 
 ## Load-bearing boundaries
 
 - METAPAT constrains terms, interpretations, derivations, and claim status.
-- Every domain exposes some properties of Platonic energy; no domain exposes all.
+- Different domains may independently expose common structures/actions; resemblance alone transfers no domain-specific name or mechanism.
 - Domain implementations remain domain-specific unless a shared structure/action survives independent cross-domain reconstruction.
-- Catalog v3 makes current doctrine addressable; it does not replace canon-bearing Markdown.
+- Catalog v4 makes current doctrine addressable; it does not replace canon-bearing Markdown.
 - Application modules bind domain uses to exact catalog identities and evidence boundaries; they do not validate the domain application.
 - UCNS supplies actual representation/geometry through an optional adapter and retains authority over its theorem status.
 - EDCM measures source evidence and retains authority over its measurements.

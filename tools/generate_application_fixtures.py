@@ -52,10 +52,10 @@ from metapat.electromagnetic_pipe import electromagnetic_pipe_design
 from metapat.quantum_magnetism import quantum_magnetism_application_module
 
 QUANTUM_MAGNETISM_OUTPUT = Path(
-    "src/metapat/fixtures/quantum-magnetism-application-v3.json"
+    "src/metapat/fixtures/quantum-magnetism-application-v4.json"
 )
 ELECTROMAGNETIC_PIPE_OUTPUT = Path(
-    "src/metapat/fixtures/three-phase-electromagnetic-pipe-v3.json"
+    "src/metapat/fixtures/three-phase-electromagnetic-pipe-v4.json"
 )
 
 
