@@ -1,16 +1,10 @@
-"""Deterministic METAPAT v4 canon contract checks.
-
-These helpers test encoded conditions associated with current METAPAT
-statements. A ``True`` result means only that supplied Python values satisfy
-the named condition. It does not empirically validate Meta Energy Theory or
-transfer proof status from any domain.
-"""
+"""Executable internal reductions for the current METAPAT canon."""
 
 # === MODULE_BUILD ===
-# id: metapat_canon_contract_checks
+# id: metapat_validation_contracts
 #   module_name: metapat.validation
 #   module_kind: service
-#   summary: deterministic v4 canon contract checks; not theorem verification or empirical validation
+#   summary: executable internal reductions for current root, action, measurement, sequence, and domain-qualification contracts
 #   owner: The Interdependency
 #   public_surface: boundary_requires_multiplicity, simplex_closes, tensor_emerges, recursive_closure, vector_inferred_by_scalar, transformation_produces_time, domain_term_is_qualified
 #   internal_surface: none
@@ -21,36 +15,36 @@ transfer proof status from any domain.
 #   admin_only: false
 #   tests: tests.test_contracts
 #   rollout: importable_package
-#   rollback: restore only with the matching canon epoch
+#   rollback: restore prior canon-bound validation helpers
 #   requires: metapat_canon_core
-#   since: 2026-09-13
-#   unresolved: none
+#   since: 2026-09-14
+#   unresolved: external empirical and formal validity remain outside these internal contract predicates
 # === END MODULE_BUILD ===
 
 # === CONTRACTS ===
 # id: boundary_requires_multiple_things
-#   given: candidate things are supplied
-#   then: boundary eligibility requires at least two things
+#   given: candidate things participating in a boundary
+#   then: at least two distinct thing instances are required
 #   class: canon_contract
 #
 # id: simplex_closes_from_thing_boundary_state
-#   given: thing, boundary, and state are supplied
-#   then: simplex closure requires all three
+#   given: thing, boundary, and state candidates
+#   then: simplex closure requires all three to be present
 #   class: canon_contract
 #
 # id: tensor_emerges_from_related_simplexes
-#   given: simplexes and a relate condition are supplied
-#   then: tensor emergence requires multiple simplexes and relation
+#   given: multiple simplex candidates and a declared relation
+#   then: encoded tensor emergence requires multiplicity and relation
 #   class: canon_contract
 #
 # id: recursive_tensor_closure
-#   given: tensor, boundary, and state are supplied
-#   then: a tensor can satisfy simplex closure as a thing
+#   given: a tensor candidate with boundary and state
+#   then: the encoded simplex closure condition is reused
 #   class: canon_contract
 #
 # id: vector_inference_from_scalar_change
-#   given: scalar measurements before and after state change
-#   then: directed alteration is inferable only when the measurements differ
+#   given: two present scalar observations
+#   then: encoded vector inference requires an observed scalar change and fails closed when either observation is missing
 #   class: canon_contract
 #
 # id: sequential_transformation_produces_time
@@ -66,7 +60,7 @@ transfer proof status from any domain.
 
 
 def boundary_requires_multiplicity(things: tuple[object, ...]) -> bool:
-    return len(things) >= 2
+    return len({id(thing) for thing in things}) >= 2
 
 
 def simplex_closes(thing: object, boundary: object, state: object) -> bool:
@@ -82,7 +76,11 @@ def recursive_closure(tensor: object, boundary: object, state: object) -> bool:
 
 
 def vector_inferred_by_scalar(scalar_before: object, scalar_after: object) -> bool:
-    return scalar_before != scalar_after
+    return (
+        scalar_before is not None
+        and scalar_after is not None
+        and scalar_before != scalar_after
+    )
 
 
 def transformation_produces_time(transformations: tuple[object, ...]) -> bool:
