@@ -90,8 +90,11 @@ def test_time_and_registration_are_separated() -> None:
 
 
 def test_boundary_requires_multiplicity() -> None:
-    assert boundary_requires_multiplicity(("a", "b"))
-    assert not boundary_requires_multiplicity(("a",))
+    first = object()
+    second = object()
+    assert boundary_requires_multiplicity((first, second))
+    assert not boundary_requires_multiplicity((first,))
+    assert not boundary_requires_multiplicity((first, first))
 
 
 def test_simplex_closes() -> None:
@@ -113,6 +116,8 @@ def test_recursive_closure() -> None:
 def test_vector_inferred_by_scalar() -> None:
     assert vector_inferred_by_scalar(1, 2)
     assert not vector_inferred_by_scalar(1, 1)
+    assert not vector_inferred_by_scalar(None, 1)
+    assert not vector_inferred_by_scalar(1, None)
 
 
 def test_transformation_produces_time() -> None:
