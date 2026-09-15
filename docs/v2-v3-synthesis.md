@@ -14,11 +14,9 @@ The comparison is not a popularity vote between versions. The question is which 
 
 **SYNTHESIS.**
 
-v3 is the stronger root. v2 contains operational distinctions that remain useful, but several were placed too high in the ontology. The synthesis keeps v3 structure/action as root and recovers the useful v2 concepts as derived relations, theorems, or theory-layer operators.
+v3 is the stronger root. v2 contains operational distinctions that remain useful, but several were placed too high in the ontology. The synthesis keeps v3 structure/action as root and recovers useful v2 content only at the lowest layer that the applications actually require.
 
 No evidence from the three frozen applications requires restoring `energy-state`, `relation`, `gradient`, `registration`, `question`, or `distinction` as root axioms.
-
-The applications do require several of those concepts to remain available below the root.
 
 ## Frozen application coverage
 
@@ -44,11 +42,11 @@ v2 used `energy-state` as root and then defined scalar and vector as modes of it
 v3 separates:
 
 ```text
-state       = metricable property of a thing
-scalar      = state metric
-vector      = alters state
+state          = metricable property of a thing
+scalar         = state metric
+vector         = alters state
 transformation = resulting state change
-energy      = derived from vector + state + transformation + time
+energy         = derived from vector + state + transformation + time
 ```
 
 The applications survived this replacement without losing a required claim. Their former `energy-state` uses map cleanly to `state`.
@@ -82,7 +80,7 @@ This carries v2 formed-object/integration behavior with fewer independent primit
 
 ### 4. Registration and question moved to the right layer
 
-The applications still need registration and bounded unresolved questions, but neither application requires them to be primitive ontology.
+The applications still need registration and bounded unresolved questions, but neither requires them to be primitive ontology.
 
 v3 already carries them as postulate/theory:
 
@@ -106,7 +104,7 @@ Distinction is legible difference between things, states, or relations.
 Distinction makes structure addressable; it does not create the structure distinguished.
 ```
 
-**Placement: derived operator, not root primitive.**
+**Placement: derived legibility operator, not root primitive.**
 
 ### B. Boundary mediation
 
@@ -116,15 +114,18 @@ v3 correctly defines boundary minimally:
 Boundary is the thing between things.
 ```
 
-v2 correctly noticed an important consequence: a boundary with state can alter what happens across or through the relation.
+v2 correctly noticed an important consequence: some boundaries participate in transformation rather than merely marking adjacency.
 
 Synthesis:
 
 ```text
-If a boundary has state, it is a simplex.
-A change in boundary state may alter relation or transformation.
+When a boundary thing participates as a simplex at the selected scale,
+its state may participate in relation or transformation.
+A change in that boundary-state may alter the resulting relation or transformation.
 Whether and how it does so belongs to the applicable domain evidence.
 ```
+
+A boundary is therefore **not automatically a simplex**. It closes as simplex only when the required boundary-and-state structure exists at the scale being modeled.
 
 **Placement: theorem/theory consequence of Boundary + State + Simplex + Transformation.**
 
@@ -134,13 +135,13 @@ This preserves `boundary earns its keep` without loading behavior into the defin
 
 Affixiation still requires relations that exist without temporal succession. v2 expressed this strongly as `without sequence, there is tensor`.
 
-v3 derives tensor rather than treating it as primitive, but derivation does not require sequence.
+v3 derives tensor rather than treating it as primitive, but derivation need not itself be temporal.
 
 Synthesis:
 
 ```text
 A tensor is structure produced when simplexes relate.
-The relation may be structurally present without sequential transformation.
+A relation may be structurally present without sequential transformation.
 Time appears when transformation is sequential, not merely because a tensor exists.
 ```
 
@@ -148,42 +149,46 @@ Time appears when transformation is sequential, not merely because a tensor exis
 
 This retains the useful content of `tensor precedes time` without making tensor ontologically primitive.
 
-### D. Gradient
+### D. State-metric difference; domain-qualified gradient
 
-This is the clearest missing derived concept.
+The quantum-magnetism and electromagnetic-pipe applications still use gradients in their domain prose and feedback structures. v3 correctly moved their METAPAT bindings from root `gradient` to scalar state metrics.
 
-The quantum-magnetism and electromagnetic-pipe applications still use gradients in their domain prose and feedback structures. v3 maps the former root-gradient bindings to scalar state metrics, which preserves the application but leaves the recurring relation unnamed.
+The synthesis should not re-import the physics/mathematics term `gradient` as a universal METAPAT operator.
 
-Synthesis:
-
-```text
-A gradient is a difference among scalar state metrics across a declared relation.
-```
-
-A stronger universal claim is not yet licensed. In particular:
+Generic METAPAT relation:
 
 ```text
-A gradient does not universally determine vector direction.
-A domain may establish a law connecting a measured gradient to a vector.
+state-metric difference = difference among scalar measurements of related states
 ```
 
-**Placement: derived relation/theory operator, not root axiom.**
+Domain specialization:
 
-This preserves v2's useful gradient vocabulary while rejecting the overreach of `gradient dynamics are how vectors select direction` as a universal root law.
+```text
+When a domain supplies the ordered, geometric, differentiable, or other structure
+required to define a gradient, that domain gradient may instantiate a
+state-metric difference within the METAPAT mapping.
+```
+
+No universal gradient-to-vector law follows.
+
+**Placement: `state-metric difference` may be derived generically; `gradient` remains domain-qualified.**
+
+This preserves the useful application language while rejecting v2's overreach of `gradient dynamics are how vectors select direction` as a universal root law.
 
 ### E. Integration
 
 Affixiation uses the idea that a relation can become a higher-scale object-whole while participants retain identity and provenance.
 
-v3 already covers the structural part through `emerge` + recursive closure.
+v3 already covers the generic structural part through `emerge` + recursive closure. Identity/provenance retention is an affixiation requirement, not a universal property of every emergent tensor.
 
 Synthesis:
 
 ```text
-Integration is successful emergence of a relation as an object-whole at a declared scale while constituent identity remains recoverable where the application requires it.
+Generic METAPAT: emergence + recursive closure may produce a higher-scale whole.
+Affixiation: the higher-scale whole additionally preserves participant identity and provenance.
 ```
 
-**Placement: application/theory criterion, not root primitive.**
+**Placement: generic structure is already covered by v3; `integration` remains application/theory vocabulary where needed.**
 
 ## Synthesized architecture
 
@@ -217,38 +222,44 @@ Energy
 ### Derived operational layer
 
 ```text
-Distinction    = legible difference; makes structure addressable
-Relation       = configuration/result of things or simplexes relating
-Gradient       = difference among scalar state metrics across a relation
-Boundary mediation = boundary-state change may alter relation/transformation
-Tensor simultaneity = relation need not be sequential to exist as structure
-Registration   = preservation/expression/transmission of transformation
-Question       = bounded unresolved state or relation
-Integration    = emergence into object-whole at a declared scale
-Observer       = simplex performing registration
+Distinction            = legible difference; makes structure addressable
+Relation               = configuration/result of things or simplexes relating
+State-metric difference = difference among scalar measurements of related states
+Boundary mediation     = stateful boundary-simplex participation may alter relation/transformation
+Tensor simultaneity    = relation need not be sequential to exist as structure
+Registration           = preservation/expression/transmission of transformation
+Question               = bounded unresolved state or relation
+Observer               = simplex performing registration
 ```
 
-The derived layer may grow or shrink without changing the root if later applications falsify, split, or refine a derived operator.
+Domain/application vocabulary may specialize this layer:
+
+```text
+gradient    = domain-qualified state-metric structure where the domain defines one
+integration = application/theory name for emergence into a higher-scale whole
+```
+
+The derived layer may grow or shrink without changing the root if later applications falsify, split, or refine an operator.
 
 ## Result against the three frozen cases
 
 ### Quantum magnetism
 
-The synthesis retains v3 `state` and `scalar` separation while restoring `gradient` as a derived name for measured potential differences across relations.
+The synthesis retains v3 `state` and `scalar` separation. Physical potential gradients remain physics-defined gradients and map into METAPAT as measured state differences across declared relations.
 
-No return to primitive `energy-state` is required.
+No return to primitive `energy-state` or root `gradient` is required.
 
 **SURVIVED.**
 
 ### Three-phase electromagnetic pipe
 
-The synthesis preserves separately legible components (`distinction`), stateful ceramic/iron/gap boundaries (`boundary mediation`), measured field/phase/thermal differences (`gradient`), sequential transformation (`time`), sensor/log preservation (`registration`), and unresolved design bounds (`question`) without promoting any of them unnecessarily into root.
+The synthesis preserves separately legible components (`distinction`), stateful boundary participation (`boundary mediation`), measured field/phase/thermal differences, domain-defined magnetic gradients, sequential transformation (`time`), sensor/log preservation (`registration`), and unresolved design bounds (`question`) without promoting them unnecessarily into root.
 
 **SURVIVED.**
 
 ### Affixiation and time-agnostic harmonics
 
-The synthesis preserves participant identity, pre-temporal relation, tensor emergence, recursive closure, and higher-scale integration. Tensor need not be primitive for a relation to exist without temporal succession.
+The synthesis preserves participant identity, pre-temporal relation, tensor emergence, recursive closure, and higher-scale affixiation. Tensor need not be primitive for a relation to exist without temporal succession.
 
 **SURVIVED.**
 
@@ -263,7 +274,7 @@ superiority:    PROVISIONAL — stronger by reduced primitive load and preserved
                 not yet established against new independent domains
 ```
 
-The synthesis is preferable to either version alone **for these frozen cases** because it preserves v3's smaller root while recovering every v2 distinction the applications still use.
+The synthesis is preferable to either version alone **for these frozen cases** because it preserves v3's smaller root while recovering the useful v2 distinctions without re-promoting domain vocabulary into universal ontology.
 
 ## Falsification conditions
 
@@ -272,9 +283,9 @@ The synthesis fails if a new application demonstrates any of the following:
 1. `energy-state` is required as a root primitive and cannot be represented as state plus derived energy;
 2. relation must exist as a primitive independently of `relate` and produced structure;
 3. distinction is constitutive of boundary rather than merely required for legibility;
-4. gradient cannot be reconstructed from measured state differences across relations;
+4. generic state-metric difference is insufficient and some stronger non-domain-specific operator is required;
 5. tensor structure intrinsically requires sequence;
-6. integration cannot be represented as emergence plus recursive closure at scale;
+6. emergence plus recursive closure cannot carry the required higher-scale object structure;
 7. a derived operator must become root to prevent contradiction or information loss.
 
 Until such evidence appears, do not enlarge the root merely because v2 once placed a useful concept there.
@@ -283,4 +294,4 @@ Until such evidence appears, do not enlarge the root merely because v2 once plac
 
 The synthesis establishes placement against three existing applications, not completeness across all domains. A new independent application is the correct next adversary.
 
-`Gradient` is recovered as a derived measured relation. Whether any stronger cross-domain law connects gradient to vector direction remains unresolved and must not be imported from physics by analogy.
+The two existing uses of `gradient` are both physics/engineering uses. They support retaining gradient as domain vocabulary, not promoting it back into METAPAT's general ontology.
