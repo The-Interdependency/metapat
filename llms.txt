@@ -39,6 +39,5 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v4 pre
 - Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities. Consumer repositories own their local epoch names.
 - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
 - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
-- hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
 
 This file is the single source of truth. If something is not explicitly stated in the files listed above, it does not exist in this repository.
