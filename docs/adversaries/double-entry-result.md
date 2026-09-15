@@ -1,12 +1,12 @@
 # Independent adversary result — double-entry bookkeeping
 
-Status: **FALSIFIED / tested synthesis / not canon**
+Status: **UNRESOLVED / tested synthesis; universal energy mapping FALSIFIED / not canon**
 
 Preregistration: `docs/adversaries/double-entry-prereg.md`
 
 Target: `docs/v2-v3-synthesis.md` at exact METAPAT commit `a1724645b3fc5d246cf8b7a3f8200c2ca3aa61f5`, Git blob `1a2db847197d40112fc29ca4ed11ffa4bc74bf0c`.
 
-The preregistered decision rule is binding: the synthesis survives only if every frozen test passes, and a failed root claim makes the tested synthesis `FALSIFIED`. The refined candidate discussed below is post-result analysis; it does not replace or soften that outcome.
+The preregistered decision rule is binding: the synthesis survives only if every frozen test passes, and its allowed `FALSIFIED` outcome requires a failed root claim. The universal Energy mapping fails, but the synthesis places Energy under measurement/result while material root mappings remain unresolved. The honest overall standing is therefore `UNRESOLVED`; the synthesis did not survive, and its universal Energy mapping is independently `FALSIFIED`. The refined candidate discussed below is post-result analysis and does not repair either result.
 
 ## Domain facts used
 
@@ -33,13 +33,13 @@ These are domain constraints, not METAPAT claims.
 | No missing root primitive | SURVIVED | The accounting balance law can remain a domain invariant over related changes; it need not become a universal METAPAT primitive. |
 | Root/action separation | SURVIVED at the supported mappings | Accounting distinguishes entities/items and their properties from transactions/postings that alter recorded positions. Boundary-dependent structures remain unresolved below. |
 | Measurement separation | SURVIVED | The underlying recognised right, obligation, account position or other measured property is distinct from a numerical balance/carrying amount produced under a measurement basis. |
-| Sequence | SURVIVED | A statement-of-position snapshot need not replay sequence; ordered postings and reporting periods provide sequential transformation. |
+| Sequence | **UNRESOLVED** | Ordered postings support sequential transformation, but the selected evidence does not establish the frozen claim that time is unnecessary for the mere existence of the ledger structure; a statement-of-position snapshot is not the ledger. |
 | Boundary | **UNRESOLVED** | IFRS supplies a reporting boundary, but this test has not yet established the stronger METAPAT condition that the boundary itself is a thing between two identified things. |
 | Energy | **FALSIFIED** | Accounting licenses resources, claims, measures, transactions and changes; it does not license calling their abstract change composite `energy`. |
-| Domain invariant | SURVIVED | Debit/credit equality is a domain constraint over related changes and remains accounting-owned. |
+| Domain invariant | **UNRESOLVED** | Debit/credit equality is supported, but the selected bounded evidence and evaluation omit the accounting-equation half of the frozen criterion. |
 | Prediction/constraint | SURVIVED | A posting whose debits and credits do not balance violates double-entry bookkeeping. |
 
-Because the Energy test fails, the preregistered outcome for the tested synthesis is **FALSIFIED** regardless of the surviving sub-results.
+Because the Energy test fails, the tested synthesis does not survive and universal Energy naming is **FALSIFIED**. Because the allowed-outcome taxonomy reserves whole-synthesis `FALSIFIED` for a failed root claim while material root mappings remain unresolved, the whole-synthesis standing is **UNRESOLVED** rather than retroactively changing the frozen taxonomy.
 
 ## Mapping standing
 
@@ -93,9 +93,9 @@ Account balances, carrying amounts and other quantified amounts are scalar measu
 
 Transactions and recognised events change recorded rights, obligations, account positions, assets, liabilities, equity, income or expenses.
 
-### Time — SURVIVED
+### Time — SURVIVED at the evaluated mapping; frozen sequence test UNRESOLVED
 
-A statement of financial position can represent a state at one date. Ordered transactions and comparison of beginning/end reporting states instantiate sequential transformation.
+A statement of financial position can represent a state at one date. Ordered transactions and comparison of beginning/end reporting states instantiate sequential transformation. This does not settle whether time is unnecessary for the mere existence of the ledger structure, so the complete frozen sequence test remains unresolved.
 
 ### Energy — FALSIFIED as universal cross-domain ontology/name
 
@@ -117,7 +117,7 @@ would classify ordinary bookkeeping activity as energy solely because it matches
 
 ## Domain invariant
 
-Double entry supplies a strong domain constraint without adding a METAPAT primitive:
+Double entry supplies a bounded domain constraint without adding a METAPAT primitive:
 
 ```text
 transaction
@@ -127,6 +127,8 @@ transaction
 ```
 
 This remains an accounting law over related changes. Similarity to conservation laws elsewhere does not authorize universal promotion.
+
+The frozen invariant test also requires evaluation of the accounting equation. The selected evidence/evaluation does not establish that half, so the complete invariant test remains `UNRESOLVED`.
 
 ## Post-result refined candidate
 
@@ -186,7 +188,7 @@ Standing here: **UNRESOLVED**. A future falsifier must target the partial-proper
 ## Standing
 
 ```text
-tested v2->v3 synthesis: FALSIFIED
+tested v2->v3 synthesis: UNRESOLVED; it did not survive
 Thing / State / Relate / Scalar / Transformation / Time: SURVIVED at stated scopes
 Vector: SURVIVED only as state-altering transaction effect inferred from scalar changes
 Boundary / Simplex / Tensor / Emerge: UNRESOLVED at selected accounting scale
@@ -200,4 +202,4 @@ post-result refined candidate: PROPOSED, not the preregistered outcome
 
 Whether the project name **Meta Energy Theory** remains historical/scope-setting or changes with a future canon rotation is unresolved. Naming does not repair ontology.
 
-One independent adversary can falsify the tested universal `energy` mapping. It does not establish that the surviving/refined structure is complete, nor does it settle the weaker partial-property postulate.
+One independent adversary can falsify the tested universal `energy` mapping. It does not establish that the unresolved structure survived, does not complete the frozen sequence or invariant tests, and does not settle the weaker partial-property postulate.

@@ -110,7 +110,7 @@ python -m pip install -e .[dev,ucns]
 
 `metapat.canon_digest()` binds the exact importable canon surface and the exact Git blob identities of every canon-bearing Markdown file.
 
-The current canon epoch is `metapat-canon-v4`; identity schema `2.0.0` covers:
+The current canon epoch is `metapat-canon-v4`; identity schema `4.0.0` covers the exact v4 public identity shape and complete canon-file set:
 
 - `CHAPTER_ZERO.md`
 - `AXIOMS.md`
@@ -131,7 +131,7 @@ metapat.assert_canon_files_match(Path("."))
 
 A digest is identity evidence, not empirical validation or formal proof.
 
-Consumer migration is fail-closed. A consumer bound to any earlier canon or catalog, including v3, must reject v4 until it explicitly binds the v4 identities it uses.
+Consumer migration is fail-closed. A consumer bound to any earlier canon, identity schema, or catalog—including v3 schema `3.0.0`—must reject v4 until it explicitly binds identity schema `4.0.0` and the v4 identities it uses. Unknown top-level identity fields are not an implicit migration path.
 
 ## Immutable semantic module envelope
 

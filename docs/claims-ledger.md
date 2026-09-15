@@ -57,11 +57,13 @@ The double-entry bookkeeping adversary is evidence about the tested v2→v3 synt
 
 | Surface | Standing | Boundary |
 |---|---|---|
-| Tested v2→v3 synthesis | FALSIFIED | The frozen Energy test failed, so the preregistered whole-synthesis outcome is FALSIFIED. |
+| Tested v2→v3 synthesis | UNRESOLVED; did not survive | The universal Energy mapping failed, but the frozen taxonomy reserves whole-synthesis `FALSIFIED` for a failed root claim and the material root mappings remain unresolved. |
 | Energy as a universal cross-domain name for the abstract state-change composite | FALSIFIED | Accounting does not independently license that term. |
 | Thing / State / Relate / Scalar / Transformation / Time mappings | SURVIVED at stated scopes | These are bounded adversary mappings, not universal proof. |
 | Vector mapping | SURVIVED at bounded operational scope | State-altering transaction effect inferred from scalar change; notation itself has no semantic authority. |
 | Boundary / Simplex / Tensor / Emerge mappings | UNRESOLVED | The selected accounting evidence does not establish the exact METAPAT relations required at that scale. |
+| Complete frozen sequence test | UNRESOLVED | Ordered postings support time, but the evidence substitutes a statement-of-position snapshot for the required ledger-structure test. |
+| Complete frozen invariant test | UNRESOLVED | Debit/credit equality is supported; the required accounting-equation evaluation is absent. |
 | “Every domain exposes some properties of Platonic energy.” | UNRESOLVED | Failure of the universal `energy` name does not directly falsify this weaker existential proposition. v4 withdraws the claim rather than laundering an unresolved result into falsification. |
 
 ## Internal derivations and contract checks

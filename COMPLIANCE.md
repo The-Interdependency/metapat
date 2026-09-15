@@ -33,7 +33,7 @@ GitHub Actions is the standing execution evidence. A local run is supporting evi
 
 ## Canon identity status
 
-The current canon epoch is `metapat-canon-v4`. Identity schema `2.0.0` binds the exact importable canon and exact bytes of every canon-bearing Markdown file.
+The current canon epoch is `metapat-canon-v4`. Identity schema `4.0.0` binds the exact v4 importable shape and exact bytes of every canon-bearing Markdown file. Earlier consumers, including v3 schema `3.0.0`, reject this identity until explicitly migrated.
 
 The root is:
 

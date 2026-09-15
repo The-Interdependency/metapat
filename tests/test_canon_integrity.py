@@ -18,6 +18,12 @@ from __future__ import annotations
 #   call: self::test_canon_file_drift_is_reported
 #   mutates: tempdir
 #   cleanup: tempdir_teardown
+#
+# id: check_canon_identity_schema_current
+#   proves: metapat_canon_identity_schema_current
+#   call: self::test_v4_identity_schema_names_exact_public_shape
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 from pathlib import Path
@@ -27,17 +33,38 @@ import pytest
 import metapat.canon as canon_module
 from metapat import (
     CANON_FILE_BLOBS,
+    CANON_IDENTITY_SCHEMA_VERSION,
     ROOT_SPINE,
     CanonIntegrityError,
     assert_canon_files_match,
     canon_file_mismatches,
     canon_manifest_digest,
+    canonical_canon_data,
     canonical_canon_manifest_data,
     definitions,
     git_blob_sha1,
 )
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+
+def test_v4_identity_schema_names_exact_public_shape() -> None:
+    data = canonical_canon_data()
+    assert CANON_IDENTITY_SCHEMA_VERSION == "4.0.0"
+    assert data["identity_schema_version"] == "4.0.0"
+    assert set(data) == {
+        "identity_schema_version",
+        "canon_version",
+        "root_spine",
+        "primitive_extension",
+        "time_definition",
+        "domain_qualification_definition",
+        "energy_theory_question",
+        "definitions",
+        "canon_manifest_digest",
+        "canon_file_blobs",
+    }
+    assert "energy_definition" not in data
 
 
 def test_manifest_names_all_canon_files() -> None:

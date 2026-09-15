@@ -33,7 +33,7 @@ description: |
 #     - No implementation and no application domain owns the root.
 #
 # id: usage_rules
-#   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
+#   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 4.0.0, and canon_digest() as one complete identity boundary.
 #     - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
 #     - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
 #     - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.

@@ -1,4 +1,4 @@
-# LLM Instructions for METAPAT
+# LLM Instructions for metapat
 
 ## Project Overview
 METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v4 preserves the structure/action root through time and makes domain qualification explicit: structural resemblance does not transfer a domain term, mechanism, evidence standard, or conservation law. Catalog v4 makes the current root, axiom, postulate, theorem, and theory surfaces addressable without transferring domain, measurement, theorem, or UCNS validity.
@@ -30,14 +30,6 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v4 pre
 - No implementation and no application domain owns the root.
 
 ## How to Use This Repo with LLMs / Agents
-- Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
-- Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
-- Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
-- Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
-- Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
-- The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
-- Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities. Consumer repositories own their local epoch names.
-- Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
-- Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
+- Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 4.0.0, and canon_digest() as one complete identity boundary.
 
 This file is the single source of truth. If something is not explicitly stated in the files listed above, it does not exist in this repository.

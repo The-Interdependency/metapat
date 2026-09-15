@@ -2,9 +2,9 @@
 
 Status: **ADOPTED CANON ROTATION / evidence-bound**
 
-Adopted in METAPAT PR #32; current canon identity is `metapat-canon-v4`. Repository gates support implementation consistency but do not substitute for the explicit canon-rotation decision.
+Adopted by the explicit canon-rotation decision in METAPAT PR #32, merged as `2a55cebc0ba1cd77661688a6590c34c71c3ff705`; current canon identity is `metapat-canon-v4`. Repository gates support implementation consistency but do not substitute for that assent.
 
-Evidence trigger: `docs/adversaries/double-entry-result.md`.
+Evidence considered: `docs/adversaries/double-entry-result.md`.
 
 ## Evidence standing
 
@@ -24,7 +24,7 @@ Every domain exposes some properties of Platonic energy.
 
 Its standing in that adversary is `UNRESOLVED`. v4 withdraws the proposition from current canon rather than treating an unresolved result as falsification.
 
-The structural/action composite through Time remains available for cross-domain comparison. Domain-specific names do not transfer with the structure.
+The adversary leaves Boundary, Simplex, Tensor, Emerge, and parts of its frozen sequence/invariant tests `UNRESOLVED`; it does not establish that the complete spine survived. PR #32's explicit canon decision, rather than this adversary, preserves the v3 structure/action spine through Time while removing universal energy naming.
 
 ## Adopted change
 
@@ -67,6 +67,14 @@ v3 Axiom 12 `Energy` is deprecated and removed.
 v4 Axiom 12 is `Domain Qualification`.
 
 The former Theory 7 `Derived Energy` becomes `Domain Qualification` and constrains when a domain term may attach to the common structure.
+
+## Identity and migration
+
+- canon epoch: `metapat-canon-v4`
+- identity schema: `4.0.0`
+- catalog epoch: `metapat-semantic-catalog-v4`
+
+v3 added `energy_definition` and required schema `3.0.0`; v4 removes that field and adds `domain_qualification_definition`, requiring schema `4.0.0`. Consumers bound to v2, the historically mislabeled v3 wire shape, or schema `3.0.0` reject v4 until they explicitly bind schema `4.0.0` plus the v4 canon, catalog, application, and provenance identities. No shared field names or successful digest computation constitute assent or migration.
 
 ## Nonclaims
 

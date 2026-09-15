@@ -1,6 +1,6 @@
 # METAPAT canon v3
 
-Status: proposed canon rotation on `research/platonic-energy-operators` until all repository gates pass.
+Status: **SUPERSEDED HISTORICAL ROTATION**. v3 was merged in PR #29 and later replaced by v4 in PR #32. Repository gates were implementation evidence, not canon assent.
 
 ## Root change
 
@@ -40,12 +40,14 @@ Exact root definitions remain owned by `AXIOMS.md` and `CHAPTER_ZERO.md`.
 
 - canon epoch: `metapat-canon-v3`
 - catalog epoch: `metapat-semantic-catalog-v3`
-- identity schema remains `2.0.0`; its shape did not change.
+- identity schema: `3.0.0`; v3 added the top-level `energy_definition` field and therefore could not truthfully reuse v2 schema `2.0.0`.
+
+The merged v3 implementation incorrectly continued to emit `2.0.0`. This historical defect is recorded rather than treating the mislabeled wire identity as a supported schema. Current v4 consumers must not accept either label as v4.
 
 ## Migration rule
 
-v2 consumers must fail closed until they explicitly bind v3 module identities and digests. No v2 application binding is silently rebound.
+At the v3 boundary, v2 consumers had to fail closed until they explicitly bound v3 schema `3.0.0`, module identities, and digests. No v2 application binding was eligible for silent rebinding. Current consumers must use the v4 migration rule instead.
 
 ## hmmm
 
-Application migrations, regenerated fixtures, generated msdmd, and downstream consumer epochs remain incomplete until repository gates demonstrate them explicitly.
+The exact downstream effect of the short-lived mislabeled v3 schema remains `hmmm`; repository history preserves the defect, and no consumer may infer migration from the reused `2.0.0` label.
