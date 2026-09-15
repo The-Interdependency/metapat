@@ -42,7 +42,7 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. Canon v4 pre
 
 - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
 
-- Consumers pinned to any prior canon/catalog, envelope wire, or UCNS adaptation-record wire must fail closed until explicitly migrated to v4 identities, envelope schema 2.0.0, and adaptation-record wire 2.0.0. Consumer repositories own their local epoch names.
+- Consumers pinned to any prior canon/catalog, envelope wire, application-module wire, or UCNS adaptation-record wire must fail closed until explicitly migrated to v4 identities and the 2.0.0 envelope, application, and adaptation-record wires. Consumer repositories own their local epoch names.
 
 - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
 

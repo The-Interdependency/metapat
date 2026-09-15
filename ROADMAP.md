@@ -128,7 +128,7 @@ Status: implemented as a standing gate.
 
 ## Phase 5 — Application-module vertical slices
 
-Status: three vertical slices implemented at application schema `1.0.0` and v4-bound application identities.
+Status: three vertical slices implemented at application-module wire schema `2.0.0` and v4-bound application identities.
 
 The quantum-magnetism application now:
 

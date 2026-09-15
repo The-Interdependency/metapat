@@ -36,6 +36,12 @@
 #   call: self::test_application_and_binding_tamper_are_rejected
 #   mutates: none
 #   cleanup: none
+#
+# id: check_application_epoch_migration_fail_closed
+#   proves: metapat_application_epoch_migration_fail_closed
+#   call: self::test_v4_application_rejects_prior_wire_schema
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 from dataclasses import replace
@@ -110,3 +116,15 @@ def test_application_and_binding_tamper_are_rejected() -> None:
     binding = application.catalog_bindings[0]
     with pytest.raises(ValueError, match="binding_digest"):
         replace(binding, module_digest="f" * 64)
+
+
+def test_v4_application_rejects_prior_wire_schema() -> None:
+    application = metapat.quantum_magnetism_application_module()
+    assert metapat.APPLICATION_SCHEMA_VERSION == "2.0.0"
+    assert application.schema_version == "2.0.0"
+    assert application.application_version == "quantum-magnetism-application-v4"
+    assert application.catalog_version == "metapat-semantic-catalog-v4"
+    data = application.to_dict()
+    data["schema_version"] = "1.0.0"
+    with pytest.raises(ValueError, match="unsupported application module schema"):
+        MetapatApplicationModule.from_dict(data)

@@ -187,6 +187,8 @@ The current catalog epoch is `metapat-semantic-catalog-v4`. The packaged `fixtur
 
 Application modules bind domain uses to exact catalog modules while preserving domain evidence boundaries. They do not promote application claims into root truth.
 
+The v4 application-module wire schema is `2.0.0`; the prior `1.0.0` parser epoch must reject it until a consumer explicitly migrates to the v4 application and catalog identities.
+
 The quantum-magnetism vertical slice is currently:
 
 ```text

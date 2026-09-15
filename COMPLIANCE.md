@@ -78,7 +78,7 @@ Every module and relation carries exact source provenance, bounded status, unres
 
 ## Application status
 
-Application schema `1.0.0` binds domain applications to exact v4 catalog identities without changing canon.
+Application-module wire schema `2.0.0` binds domain applications to exact v4 catalog identities without changing canon and rejects the pre-v4 `1.0.0` parser epoch.
 
 Quantum magnetism remains `CROSS-DOMAIN-HYPOTHESIS`; the electromagnetic-pipe application remains `EMPIRICAL-FRONTIER`. Their evidence remains answerable to their physical domains.
 

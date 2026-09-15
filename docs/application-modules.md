@@ -20,6 +20,8 @@ A `MetapatApplicationModule` carries:
 - explicit false status-transfer and validation fields;
 - deterministic application digest.
 
+The current v4 application-module wire schema is `2.0.0`. It is incompatible with the pre-v4 `1.0.0` parser epoch so parsing alone cannot become implicit migration.
+
 ## Catalog bindings
 
 Each `ApplicationCatalogBinding` binds:

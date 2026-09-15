@@ -73,10 +73,11 @@ The former Theory 7 `Derived Energy` becomes `Domain Qualification` and constrai
 - canon epoch: `metapat-canon-v4`
 - identity schema: `4.0.0`
 - module-envelope wire schema: `2.0.0` (incompatible with the prior `1.2.0` epoch)
+- application-module wire schema: `2.0.0` (incompatible with the prior `1.0.0` epoch)
 - UCNS adaptation-record wire: `2.0.0` (incompatible with the prior `1.0.0` epoch)
 - catalog epoch: `metapat-semantic-catalog-v4`
 
-v3 added `energy_definition` and required schema `3.0.0`; v4 removes that field and adds `domain_qualification_definition`, requiring schema `4.0.0`. The module-envelope wire schema also rotates from `1.2.0` to `2.0.0`, preventing a prior parser from accepting a v4 envelope merely because its field shape is familiar. The outer UCNS adaptation-record wire rotates from `1.0.0` to `2.0.0` and validates its embedded current envelope, provenance, and canon identities, preventing that cross-repository wrapper from bypassing the envelope boundary. Consumers bound to v2, the historically mislabeled v3 wire shape, schema `3.0.0`, envelope schema `1.2.0`, or adaptation-record wire `1.0.0` reject v4 until they explicitly bind schema `4.0.0`, envelope schema `2.0.0`, adaptation-record wire `2.0.0`, and the v4 canon, catalog, application, and provenance identities. No shared field names or successful digest computation constitute assent or migration.
+v3 added `energy_definition` and required schema `3.0.0`; v4 removes that field and adds `domain_qualification_definition`, requiring schema `4.0.0`. The module-envelope wire schema also rotates from `1.2.0` to `2.0.0`, preventing a prior parser from accepting a v4 envelope merely because its field shape is familiar. The application-module and outer UCNS adaptation-record wires rotate from `1.0.0` to `2.0.0`; the latter also validates its embedded current envelope, provenance, and canon identities. These rotations prevent either cross-repository wrapper from bypassing the canon boundary. Consumers bound to v2, the historically mislabeled v3 wire shape, schema `3.0.0`, envelope schema `1.2.0`, application schema `1.0.0`, or adaptation-record wire `1.0.0` reject v4 until they explicitly bind identity schema `4.0.0`, each `2.0.0` wire, and the v4 canon, catalog, application, and provenance identities. No shared field names or successful digest computation constitute assent or migration.
 
 ## Nonclaims
 
