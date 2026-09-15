@@ -16,7 +16,7 @@ A simplex is a thing with boundary and state.
 A tensor is structure produced when simplexes relate.
 ```
 
-The current action, measurement, and result extension is:
+The current action, measurement, result, and domain-qualification extension is:
 
 ```text
 Relate is this to that.
@@ -29,7 +29,7 @@ Time is sequential transformation.
 Structural recurrence does not transfer a domain term.
 ```
 
-Energy is domain-qualified: METAPAT does not call every state transformation energy merely because energetic systems can share the same abstract structure.
+The final line is a semantic transfer constraint, not a measurement or transformation rule. Energy is domain-qualified: METAPAT does not call every state transformation energy merely because energetic systems can share the same abstract structure.
 
 ## Recursion
 
@@ -131,7 +131,7 @@ metapat.assert_canon_files_match(Path("."))
 
 A digest is identity evidence, not empirical validation or formal proof.
 
-Consumer migration is fail-closed. A consumer bound to an earlier canon or catalog must reject v3 until it explicitly binds the v3 identities it uses.
+Consumer migration is fail-closed. A consumer bound to any earlier canon or catalog, including v3, must reject v4 until it explicitly binds the v4 identities it uses.
 
 ## Immutable semantic module envelope
 
@@ -144,7 +144,7 @@ Consumer migration is fail-closed. A consumer bound to an earlier canon or catal
 - unresolved `hmmm`;
 - deterministic provenance identity.
 
-The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, energy, registration, observer, question, postulate, theorem, and theory.
+The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, domain-qualification, registration, observer, question, postulate, theorem, and theory. `energy` is not a universal module kind in v4; a domain may use the term only under its own applicable evidence and licensing.
 
 The packaged `fixtures/root-spine-envelope-v4.json` must remain byte-identical to the live constructor.
 
