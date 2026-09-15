@@ -39,6 +39,11 @@
 #   given: archived face-bit or universal composition behavior is requested
 #   then: the adapter fails closed
 #   class: safety
+#
+# id: metapat_ucns_adaptation_epoch_fail_closed
+#   given: a serialized adaptation record declares a prior outer wire epoch or non-current embedded envelope or canon identity
+#   then: reconstruction rejects the record before semantic or geometry use
+#   class: safety
 # === END CONTRACTS ===
 
 """Exact-profile METAPAT consumer for the post-reset UCNS ordered-occurrence bridge.
@@ -51,17 +56,23 @@ from __future__ import annotations
 import importlib
 import importlib.util
 import json
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, fields
 from types import ModuleType
 from typing import Any, Mapping
 
-from .envelope import MetapatModuleEnvelope, root_spine_module_envelope
+from .canon import CANON_VERSION, canon_digest as current_canon_digest
+from .envelope import (
+    MODULE_ENVELOPE_SCHEMA_ID,
+    MODULE_ENVELOPE_SCHEMA_VERSION,
+    MetapatModuleEnvelope,
+    root_spine_module_envelope,
+)
 
 GONOL_VERTEX_COUNT = 157
 SPACE_ANCHOR_VERTEX = 0
 ADDRESSABLE_GONOL_VERTICES = GONOL_VERTEX_COUNT - 1
 UCNS_ADAPTER_SCHEMA = "metapat-ucns-ordered-occurrence-consumer"
-UCNS_ADAPTER_VERSION = "1.0.0"
+UCNS_ADAPTER_VERSION = "2.0.0"
 SUPPORTED_PRODUCER_EPOCH = "ucns.post-reset.v1"
 SUPPORTED_PROFILE = ("ucns.profile.edcm-metapat-ordered-occurrence", "1.0.0")
 SUPPORTED_BRIDGE_SCHEMA = ("ucns.bridge.edcm-metapat-ordered-occurrence", "1.0.0")
@@ -134,6 +145,13 @@ class UCNSAdaptationRecord:
     def __post_init__(self) -> None:
         if (self.adapter_schema, self.adapter_version) != (UCNS_ADAPTER_SCHEMA, UCNS_ADAPTER_VERSION):
             raise ValueError("unsupported METAPAT UCNS adapter identity")
+        if (self.envelope_schema_id, self.envelope_schema_version) != (
+            MODULE_ENVELOPE_SCHEMA_ID,
+            MODULE_ENVELOPE_SCHEMA_VERSION,
+        ):
+            raise ValueError("embedded envelope schema identity mismatch")
+        if (self.canon_version, self.canon_digest) != (CANON_VERSION, current_canon_digest()):
+            raise ValueError("embedded canon identity mismatch")
         if self.producer_epoch != SUPPORTED_PRODUCER_EPOCH:
             raise ValueError("producer epoch mismatch")
         if (self.profile_id, self.profile_version) != SUPPORTED_PROFILE:
@@ -142,12 +160,37 @@ class UCNSAdaptationRecord:
             raise ValueError("bridge schema mismatch")
         if self.ucns_source_commit != PINNED_UCNS_COMMIT:
             raise ValueError("UCNS source commit mismatch")
+        if not isinstance(self.ucns_stable_identity, str) or not self.ucns_stable_identity:
+            raise ValueError("ucns_stable_identity must be a non-empty string")
+        if not isinstance(self.ucns_bridge_json, str) or not self.ucns_bridge_json:
+            raise ValueError("ucns_bridge_json must be a non-empty string")
         if self.semantic_mapping != "external-provenance":
             raise ValueError("semantic text must remain external provenance")
-        if self.theorem_status_transfer or self.measurement_validity_claim or self.metapat_validity_claim:
+        if any(
+            value is not False
+            for value in (
+                self.theorem_status_transfer,
+                self.measurement_validity_claim,
+                self.metapat_validity_claim,
+            )
+        ):
             raise ValueError("validity or theorem status cannot transfer")
         if len(self.source_statement_refs) != len(self.source_statements):
             raise ValueError("source references and statements must preserve ordered occurrence count")
+        MetapatModuleEnvelope(
+            schema_id=self.envelope_schema_id,
+            schema_version=self.envelope_schema_version,
+            module_id=self.module_id,
+            module_kind=self.module_kind,
+            canon_version=self.canon_version,
+            canon_digest=self.canon_digest,
+            source_statement_refs=self.source_statement_refs,
+            source_statements=self.source_statements,
+            constraints=self.constraints,
+            permitted_interpretations=self.permitted_interpretations,
+            unresolved_constraints=self.unresolved_constraints,
+            provenance_digest=self.envelope_provenance_digest,
+        )
 
     def to_dict(self) -> dict[str, Any]:
         data = asdict(self)
@@ -160,8 +203,19 @@ class UCNSAdaptationRecord:
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "UCNSAdaptationRecord":
+        if not isinstance(data, Mapping):
+            raise ValueError("adaptation record must be a mapping")
+        expected_fields = {field.name for field in fields(cls)}
+        unknown = set(data) - expected_fields
+        missing = expected_fields - set(data)
+        if unknown:
+            raise ValueError(f"unknown adaptation record fields: {sorted(unknown)!r}")
+        if missing:
+            raise ValueError(f"missing adaptation record fields: {sorted(missing)!r}")
         values = dict(data)
         for key in ("source_statement_refs", "source_statements", "constraints", "permitted_interpretations", "unresolved_constraints"):
+            if not isinstance(values[key], (list, tuple)):
+                raise ValueError(f"{key} must be an array of strings")
             values[key] = tuple(values[key])
         return cls(**values)
 

@@ -16,7 +16,7 @@
 #   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package version 0.8.0
 #   rollback: restore only with the matching canon epoch
-#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
+#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_validation_contracts, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-21
 #   unresolved: downstream consumers must bind module and fork authorizations to exact application and UCNS topology identities
 # === END MODULE_BUILD ===

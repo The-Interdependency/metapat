@@ -90,7 +90,7 @@ from .application import (
 )
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v3"
+AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v4"
 SOURCE_DOCUMENT = "docs/applications/affixiation-harmonics.md"
 
 AFFIXIATION_HARMONICS_BINDING_SPECS = (

@@ -33,7 +33,7 @@ GitHub Actions is the standing execution evidence. A local run is supporting evi
 
 ## Canon identity status
 
-The current canon epoch is `metapat-canon-v4`. Identity schema `2.0.0` binds the exact importable canon and exact bytes of every canon-bearing Markdown file.
+The current canon epoch is `metapat-canon-v4`. Identity schema `4.0.0` binds the exact v4 importable shape and exact bytes of every canon-bearing Markdown file. Earlier consumers, including v3 schema `3.0.0`, reject this identity until explicitly migrated.
 
 The root is:
 
@@ -78,7 +78,7 @@ Every module and relation carries exact source provenance, bounded status, unres
 
 ## Application status
 
-Application schema `1.0.0` binds domain applications to exact v4 catalog identities without changing canon.
+Application-module wire schema `2.0.0` binds domain applications to exact v4 catalog identities without changing canon and rejects the pre-v4 `1.0.0` parser epoch.
 
 Quantum magnetism remains `CROSS-DOMAIN-HYPOTHESIS`; the electromagnetic-pipe application remains `EMPIRICAL-FRONTIER`. Their evidence remains answerable to their physical domains.
 
@@ -96,7 +96,7 @@ Catalog binding establishes provenance, not domain validation, proof, measuremen
 
 ## Envelope, UCNS, and Phi status
 
-`MetapatModuleEnvelope` schema `1.2.0` rejects unknown, missing, or incorrectly typed fields. The actual-UCNS adapter retains exact semantic provenance while keeping representation authority in UCNS and default `external-provenance` mapping.
+`MetapatModuleEnvelope` schema `2.0.0` rejects unknown, missing, or incorrectly typed fields. The v4 envelope wire epoch is intentionally incompatible with the prior `1.2.0` epoch: neither parser epoch may silently accept the other, and migration requires an explicit rebind to the v4 canon and provenance identities. `UCNSAdaptationRecord` wire `2.0.0` also rejects its prior `1.0.0` epoch and validates the embedded envelope schema, provenance digest, and exact v4 canon identity, so the outer cross-repository record cannot bypass that boundary. The actual-UCNS adapter retains exact semantic provenance while keeping representation authority in UCNS and default `external-provenance` mapping.
 
 `UCNSPhiPolicy` permits only explicit `constitutive-simultaneous` authorization. Application bindings, catalog ancestry, temporal succession, adjacency, provenance, alternatives, external symmetry action, and arbitrary association remain insufficient to establish containment.
 

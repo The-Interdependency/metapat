@@ -16,7 +16,7 @@ A simplex is a thing with boundary and state.
 A tensor is structure produced when simplexes relate.
 ```
 
-The current action, measurement, and result extension is:
+The current action, measurement, result, and domain-qualification extension is:
 
 ```text
 Relate is this to that.
@@ -29,7 +29,7 @@ Time is sequential transformation.
 Structural recurrence does not transfer a domain term.
 ```
 
-Energy is domain-qualified: METAPAT does not call every state transformation energy merely because energetic systems can share the same abstract structure.
+The final line is a semantic transfer constraint, not a measurement or transformation rule. Energy is domain-qualified: METAPAT does not call every state transformation energy merely because energetic systems can share the same abstract structure.
 
 ## Recursion
 
@@ -103,14 +103,15 @@ python -m twine check dist/*
 The base package has no third-party runtime dependency. Install the actual UCNS adapter dependency explicitly when needed:
 
 ```bash
-python -m pip install -e .[dev,ucns]
+python -m pip install "git+https://github.com/The-Interdependency/ucns.git@19f1afddb993f7d933ac8727627e7d5e1c3b88fc"
+python -m pip install -e .[dev]
 ```
 
 ## Byte-complete canon identity
 
 `metapat.canon_digest()` binds the exact importable canon surface and the exact Git blob identities of every canon-bearing Markdown file.
 
-The current canon epoch is `metapat-canon-v4`; identity schema `2.0.0` covers:
+The current canon epoch is `metapat-canon-v4`; identity schema `4.0.0` covers the exact v4 public identity shape and complete canon-file set:
 
 - `CHAPTER_ZERO.md`
 - `AXIOMS.md`
@@ -131,7 +132,7 @@ metapat.assert_canon_files_match(Path("."))
 
 A digest is identity evidence, not empirical validation or formal proof.
 
-Consumer migration is fail-closed. A consumer bound to an earlier canon or catalog must reject v3 until it explicitly binds the v3 identities it uses.
+Consumer migration is fail-closed. A consumer bound to any earlier canon, identity schema, or catalog—including v3 schema `3.0.0`—must reject v4 until it explicitly binds identity schema `4.0.0` and the v4 identities it uses. Unknown top-level identity fields are not an implicit migration path.
 
 ## Immutable semantic module envelope
 
@@ -144,7 +145,9 @@ Consumer migration is fail-closed. A consumer bound to an earlier canon or catal
 - unresolved `hmmm`;
 - deterministic provenance identity.
 
-The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, energy, registration, observer, question, postulate, theorem, and theory.
+The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, domain-qualification, registration, observer, question, postulate, theorem, and theory. `energy` is not a universal module kind in v4; a domain may use the term only under its own applicable evidence and licensing.
+
+The v4 envelope wire schema is `2.0.0`. It is deliberately incompatible with the prior `1.2.0` epoch, so old and current parsers fail closed across the boundary until a consumer explicitly rebinds the v4 canon and provenance identities.
 
 The packaged `fixtures/root-spine-envelope-v4.json` must remain byte-identical to the live constructor.
 
@@ -184,6 +187,8 @@ The current catalog epoch is `metapat-semantic-catalog-v4`. The packaged `fixtur
 
 Application modules bind domain uses to exact catalog modules while preserving domain evidence boundaries. They do not promote application claims into root truth.
 
+The v4 application-module wire schema is `2.0.0`; the prior `1.0.0` parser epoch must reject it until a consumer explicitly migrates to the v4 application and catalog identities.
+
 The quantum-magnetism vertical slice is currently:
 
 ```text
@@ -201,6 +206,8 @@ The application remains answerable to physics. Passing METAPAT contract checks d
 METAPAT defines no local UCNS algebra. `metapat.ucns` lazily imports the actual `ucns` package only when adaptation is requested.
 
 The default semantic mapping is `external-provenance`: METAPAT semantics remain in the adaptation record while UCNS owns its representation and geometry.
+
+`UCNSAdaptationRecord` wire version `2.0.0` validates its embedded envelope schema `2.0.0` and exact v4 canon identity. The prior adaptation wire `1.0.0` and current wire reject one another; an outer record cannot be used to bypass explicit v4 migration.
 
 One explicit semantic exception remains available through canon-bound `UCNSForkAuthorization` for `constitutive-simultaneous` children. Authorization supplies semantic permission only; downstream UCNS topology still has to be verified independently.
 

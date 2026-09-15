@@ -79,6 +79,11 @@
 #   given: application content, binding content, catalog identity, or evidence boundary changes without digest rotation
 #   then: reconstruction fails closed
 #   class: safety
+#
+# id: metapat_application_epoch_migration_fail_closed
+#   given: a v4 application module or a record declaring the prior application wire schema
+#   then: the v4 and pre-v4 parser epochs cannot silently accept one another
+#   class: safety
 # === END CONTRACTS ===
 
 from __future__ import annotations
@@ -93,7 +98,7 @@ from typing import Any, Iterable, Mapping
 from .catalog import MetapatSemanticCatalog, SemanticCatalogModule
 
 APPLICATION_SCHEMA_ID = "metapat.application-module"
-APPLICATION_SCHEMA_VERSION = "1.0.0"
+APPLICATION_SCHEMA_VERSION = "2.0.0"
 APPLICATION_BINDING_SCHEMA_ID = "metapat.application-catalog-binding"
 APPLICATION_BINDING_SCHEMA_VERSION = "1.0.0"
 APPLICATION_CLAIM_STATUSES = frozenset({"CROSS-DOMAIN-HYPOTHESIS", "EMPIRICAL-FRONTIER"})

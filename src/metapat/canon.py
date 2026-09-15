@@ -79,6 +79,11 @@ repository; the aggregate public identity remains SHA-256.
 #   then: canonical data and the sha256 digest remain byte-for-byte stable
 #   class: canon_contract
 #
+# id: metapat_canon_identity_schema_current
+#   given: the public canon identity shape is inspected
+#   then: schema version 4.0.0 names the v4 field set and no earlier schema version is reused
+#   class: safety
+#
 # id: metapat_canon_manifest_complete
 #   given: the public canon file manifest is inspected
 #   then: every canon-bearing Markdown file is named exactly once with an exact Git blob identity
@@ -103,7 +108,7 @@ from pathlib import Path
 from typing import Any, Mapping
 
 CANON_VERSION = "metapat-canon-v4"
-CANON_IDENTITY_SCHEMA_VERSION = "2.0.0"
+CANON_IDENTITY_SCHEMA_VERSION = "4.0.0"
 
 ROOT_SPINE: tuple[str, ...] = (
     "Thing is that which is.",

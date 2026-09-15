@@ -19,7 +19,7 @@ missing, or incorrectly typed fields rather than coercing malformed values.
 #   admin_only: false
 #   tests: tests.test_envelope, tests.test_catalog, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
-#   rollback: restore the prior canon-bound vocabulary
+#   rollback: restore the prior canon and its matching envelope wire schema together
 #   requires: metapat_canon_core
 #   since: 2026-07-12
 #   unresolved: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved
@@ -93,6 +93,11 @@ missing, or incorrectly typed fields rather than coercing malformed values.
 #   given: serialized envelope fields have incorrect scalar or sequence types
 #   then: reconstruction rejects them rather than coercing them
 #   class: safety
+#
+# id: metapat_envelope_epoch_migration_fail_closed
+#   given: a v4 envelope or an envelope declaring the prior v3 wire schema
+#   then: the v4 and v3 parser epochs cannot silently accept one another
+#   class: safety
 # === END CONTRACTS ===
 
 from __future__ import annotations
@@ -105,7 +110,7 @@ from typing import Any, Iterable, Mapping
 from .canon import CANON_VERSION, ROOT_SPINE, canon_digest
 
 MODULE_ENVELOPE_SCHEMA_ID = "metapat.module-envelope"
-MODULE_ENVELOPE_SCHEMA_VERSION = "1.2.0"
+MODULE_ENVELOPE_SCHEMA_VERSION = "2.0.0"
 MODULE_KINDS = frozenset(
     {
         "canon-module",

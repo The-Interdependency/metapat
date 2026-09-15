@@ -78,6 +78,21 @@ jobs:
         run: python -m pytest -q tests/test_ucns_phi.py
       - name: Verify generated msdmd collection
         run: python tools/generate_msdmd.py --check
+      - name: Snapshot METAPAT source for llms drift check
+        run: |
+          mkdir -p "$RUNNER_TEMP/metapat"
+          rsync -a --exclude '.git' --exclude '.ci' ./ "$RUNNER_TEMP/metapat/"
+      - name: Check out pinned skill-lib llms runner
+        uses: actions/checkout@v7.0.1
+        with:
+          repository: The-Interdependency/skill-lib
+          ref: c14ee9d500579a4b5d6821f62c9d82ca96e73608
+          path: .ci/skill-lib
+          persist-credentials: false
+      - name: Verify generated llms projection
+        env:
+          PYTHONPATH: ${{ github.workspace }}/.ci/skill-lib
+        run: python -m llms.build --root "$RUNNER_TEMP/metapat" --out llms.txt --check
       - name: Verify every canon-bearing file byte identity
         run: python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"
       - name: Verify packaged root-spine fixture
@@ -173,6 +188,11 @@ jobs:
           from importlib.resources import files
           import metapat
           assert version("metapat") == metapat.__version__ == "0.8.0"
+          assert metapat.CANON_IDENTITY_SCHEMA_VERSION == "4.0.0"
+          assert metapat.MODULE_ENVELOPE_SCHEMA_VERSION == "2.0.0"
+          assert metapat.APPLICATION_SCHEMA_VERSION == "2.0.0"
+          assert metapat.UCNS_ADAPTER_VERSION == "2.0.0"
+          assert metapat.canonical_canon_data()["identity_schema_version"] == "4.0.0"
           assert files("metapat").joinpath("py.typed").is_file()
           root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v4.json")
           catalog_fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v4.json")

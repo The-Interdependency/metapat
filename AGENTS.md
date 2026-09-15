@@ -33,16 +33,34 @@ description: |
 #     - No implementation and no application domain owns the root.
 #
 # id: usage_rules
-#   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 2.0.0, and canon_digest() as one complete identity boundary.
-#     - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
-#     - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
-#     - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
-#     - Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
-#     - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
-#     - Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities. Consumer repositories own their local epoch names.
-#     - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
-#     - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
-#     - hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
+#   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 4.0.0, and canon_digest() as one complete identity boundary.
+#
+# id: usage_rules
+#   content: - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
+#
+# id: usage_rules
+#   content: - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
+#
+# id: usage_rules
+#   content: - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
+#
+# id: usage_rules
+#   content: - Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
+#
+# id: usage_rules
+#   content: - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
+#
+# id: usage_rules
+#   content: - Consumers pinned to any prior canon/catalog, envelope wire, application-module wire, or UCNS adaptation-record wire must fail closed until explicitly migrated to v4 identities and the 2.0.0 envelope, application, and adaptation-record wires. Consumer repositories own their local epoch names.
+#
+# id: usage_rules
+#   content: - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
+#
+# id: usage_rules
+#   content: - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
+#
+# id: usage_rules
+#   content: - hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
 # === END LLMS ===
 
 # METAPAT agent entrypoint
@@ -124,20 +142,20 @@ Do not restore the superseded single arrow `UCNS -> METAPAT -> EDCM`.
 - `CANON_VERSION`, `CANON_IDENTITY_SCHEMA_VERSION`, `CANON_FILE_BLOBS`, and `canon_digest()` jointly identify the complete canon surface.
 - Run `metapat.assert_canon_files_match(Path('.'))` from repository root.
 - Any authorized canon rotation requires explicit versioning, manifest rotation, catalog rotation, application invalidation or migration, documentation, tests, generated artifacts, and consumer epoch consequences.
-- Consumers pinned to prior epochs reject v3 until explicitly migrated. Do not alias deprecated semantic IDs to new meanings.
+- Consumers pinned to any prior epoch, including v3, reject v4 until explicitly migrated. Do not alias deprecated semantic IDs to new meanings.
 - Unknown status is `hmmm`, not guessed closure.
 
 ## Semantic envelope
 
 Use `MetapatModuleEnvelope` for cross-repository semantic authority. Preserve schema identity, module identity, canon identity, exact references and statements, constraints, permitted interpretations, unresolved constraints, and provenance digest. Deserialization rejects malformed types rather than coercing them. An envelope contains no calculated EDCM measurements.
 
-The packaged `fixtures/root-spine-envelope-v3.json` must equal the live canonical constructor.
+The packaged `fixtures/root-spine-envelope-v4.json` must equal the live canonical constructor.
 
 ## Semantic catalog
 
 Use `canonical_semantic_catalog()` and exact module IDs rather than free-form reconstruction.
 
-Catalog v3 is:
+Catalog v4 is:
 
 ```text
 1 root
@@ -156,7 +174,7 @@ Catalog v3 is:
 - Addressability does not transfer claim status into an application, UCNS object, EDCM value, or downstream proof.
 - Catalog relations reproduce declared ancestry only; do not infer edges from analogy, repeated words, order, geometry, carrier size, or symmetry.
 - Ordinary catalog construction rejects `constitutive-simultaneous` relations without explicit Phi authorization.
-- `fixtures/semantic-module-catalog-v3.json` must equal the live catalog constructor plus one trailing newline.
+- `fixtures/semantic-module-catalog-v4.json` must equal the live catalog constructor plus one trailing newline.
 
 ## Application modules
 
@@ -206,7 +224,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-Actual UCNS integration is a separate required job against the pinned producer.
+The root `llms.txt` must also be regenerated from the source `LLMS` block with the pinned `skill-lib` `llms-build` runner and checked for drift in CI. Actual UCNS integration is a separate required job against the pinned producer.
 
 ## skill-lib
 
