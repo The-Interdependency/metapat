@@ -14,7 +14,11 @@ Registered differentiation.
 
 ## domain
 
-A field of application or explication. Every domain exposes some properties of Platonic energy; no domain exposes all.
+A field of application or explication. Different domains may independently expose common structures and actions without sharing names, mechanisms, evidence standards, or laws.
+
+## domain qualification
+
+The rule that structural recurrence does not transfer a domain-specific term. A domain term applies only where that domain independently licenses it.
 
 ## emerge
 
@@ -22,9 +26,7 @@ Tensors emerge from simplexes.
 
 ## energy
 
-Vectors altering state through transformation across time.
-
-Energy is derived rather than primitive.
+A domain-qualified term. METAPAT may compare structures involving state, vector, transformation, and time with energetic structures where the applicable domain independently licenses energy; it does not call every such structure energy.
 
 ## explicationary tool
 
@@ -33,10 +35,6 @@ A domain term or formalism used to clarify METAPAT without redefining the root.
 ## observer
 
 A simplex performing registration.
-
-## Platonic energy
-
-The fuller energetic structure of which domains expose partial properties and implementations.
 
 ## question
 
