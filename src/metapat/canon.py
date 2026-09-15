@@ -21,7 +21,7 @@ repository; the aggregate public identity remains SHA-256.
 #   admin_only: false
 #   tests: tests.test_contracts, tests.test_envelope, tests.test_canon_integrity
 #   rollout: importable_package
-#   rollback: restore the prior identity schema while preserving exact canon constants and Markdown files
+#   rollback: restore the prior canon epoch while preserving exact historical identities
 #   requires: none
 #   since: 2026-07-12
 #   unresolved: formal governance process for future authorized canon rotations
@@ -66,7 +66,7 @@ repository; the aggregate public identity remains SHA-256.
 # === CONTRACTS ===
 # id: metapat_root_spine_exact
 #   given: canon definitions are imported
-#   then: root spine contains the current five load-bearing root lines in order
+#   then: root spine contains the current five load-bearing structural lines in order
 #   class: canon_contract
 #
 # id: metapat_time_not_registration
@@ -102,37 +102,42 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
-CANON_VERSION = "metapat-canon-v2"
+CANON_VERSION = "metapat-canon-v3"
 CANON_IDENTITY_SCHEMA_VERSION = "2.0.0"
 
 ROOT_SPINE: tuple[str, ...] = (
-    "Legible difference is distinction.",
-    "Distinction defines boundaries.",
-    "Boundaries define simplex.",
-    "Boundary is simplex of distinction.",
-    "Simplex holds or modifies energy in a state of being.",
+    "Thing is that which is.",
+    "Boundary is the thing between things.",
+    "State is a metricable property of a thing.",
+    "A simplex is a thing with boundary and state.",
+    "A tensor is structure produced when simplexes relate.",
 )
 
 PRIMITIVE_EXTENSION: tuple[str, ...] = (
-    "Tensor is primitive simultaneous arrangement of energy-states.",
-    "Energy-state held is scalar.",
-    "Energy-state motioned is vector.",
-    "Energy-state vectors alter energy-state scalars.",
+    "Relate is this to that.",
+    "Tensors emerge from simplexes.",
+    "Vector alters state.",
+    "Vector is inferred by scalar measurement.",
+    "Scalar is a state metric.",
+    "Transformation is resulting state change.",
+    "Time is sequential transformation.",
+    "Energy is vectors altering state through transformation across time.",
 )
 
-TIME_DEFINITION = "Time is sequential tensor alteration."
+TIME_DEFINITION = "Time is sequential transformation."
+ENERGY_DEFINITION = "Energy is vectors altering state through transformation across time."
 ENERGY_THEORY_QUESTION = "What questions do I ask?"
 
 # Exact Git blob SHA-1 identities of the canon-bearing Markdown files on the
-# canon-v2 source epoch. Git blob identities bind file bytes including length.
+# canon-v3 source epoch. Git blob identities bind file bytes including length.
 CANON_FILE_BLOBS: Mapping[str, str] = {
-    "AXIOMS.md": "c7bd186da7e437c691dc3d3bfd305e843f0f149b",
-    "CHAPTER_ZERO.md": "2af21ec8286238e14456e94bb906799fdf0b6b67",
-    "DOMAIN_RESTRAINT.md": "d36a46037fa7bd9b3776b47372eab2ced402fd1e",
-    "GLOSSARY.md": "0fcc30c6400dde78aa85a34c3082741790273716",
-    "POSTULATES.md": "a0d8e6aa5069e366562ef09796424f9812a231f3",
-    "THEOREMS.md": "e2efa9038f8ef8f951637906fc2586b19b0832f5",
-    "THEORIES.md": "3cf10ab07c74bdf447dd4f5e0a99a06142af0466",
+    "AXIOMS.md": "c658354f45648ef6bcb73bbfc93d75b1545afea0",
+    "CHAPTER_ZERO.md": "9aee7c4b836fbe20dc035effc20b81fb35788382",
+    "DOMAIN_RESTRAINT.md": "057407b8c62ea42680e047650760f7076d514317",
+    "GLOSSARY.md": "f6d528638f7853e32baa164af61d77cbc06d65ae",
+    "POSTULATES.md": "3af3fbaa1a947bbc2240deb337c3ca4da660f26c",
+    "THEOREMS.md": "540fa32c5f5c98acdebcd3d49f3e5bde9dde072f",
+    "THEORIES.md": "94ca3dcd3103ab2d9281c7935ffc9ca80ca8e31b",
 }
 
 
@@ -141,12 +146,7 @@ class CanonIntegrityError(ValueError):
 
 
 def _canonical_json_bytes(data: Mapping[str, Any]) -> bytes:
-    return json.dumps(
-        data,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode("utf-8")
+    return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
 
 
 def git_blob_sha1(data: bytes) -> str:
@@ -157,13 +157,13 @@ def git_blob_sha1(data: bytes) -> str:
 
 
 def root_spine() -> tuple[str, ...]:
-    """Return the exact current root spine."""
+    """Return the exact current structural root spine."""
 
     return tuple(ROOT_SPINE)
 
 
 def primitive_extension() -> tuple[str, ...]:
-    """Return the exact current primitive extension."""
+    """Return the exact current action, measurement, and result extension."""
 
     return tuple(PRIMITIVE_EXTENSION)
 
@@ -173,11 +173,21 @@ def definitions() -> dict[str, str]:
 
     return {
         "METAPAT": "Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.",
-        "tensor": "Primitive simultaneous arrangement of energy-states.",
+        "thing": "That which is.",
+        "boundary": "The thing between things.",
+        "state": "A metricable property of a thing.",
+        "simplex": "A thing with boundary and state.",
+        "tensor": "Structure produced when simplexes relate.",
+        "relate": "This to that.",
+        "emerge": "Tensors emerge from simplexes.",
+        "scalar": "A state metric.",
+        "vector": "Alters state; inferred by scalar measurement.",
+        "transformation": "Resulting state change.",
         "time": TIME_DEFINITION,
-        "registration": "Capacity of a simplex to preserve, express, or transmit sequential tensor alteration.",
+        "energy": ENERGY_DEFINITION,
+        "registration": "Capacity of a simplex to preserve, express, or transmit transformation.",
         "observer": "A simplex performing registration; observer does not necessarily mean mind.",
-        "question": "A bounded unresolved energy-state.",
+        "question": "A bounded unresolved state or relation available to transformation.",
     }
 
 
@@ -199,12 +209,7 @@ def canon_manifest_digest() -> str:
 
 
 def canonical_canon_data() -> dict[str, Any]:
-    """Return the deterministic public canon surface used for identity binding.
-
-    The structure contains exact strings already declared by this module plus
-    the byte identities of every canon-bearing Markdown file. It adds no new
-    interpretation and does not rewrite the doctrine.
-    """
+    """Return the deterministic public canon surface used for identity binding."""
 
     return {
         "identity_schema_version": CANON_IDENTITY_SCHEMA_VERSION,
@@ -212,6 +217,7 @@ def canonical_canon_data() -> dict[str, Any]:
         "root_spine": list(ROOT_SPINE),
         "primitive_extension": list(PRIMITIVE_EXTENSION),
         "time_definition": TIME_DEFINITION,
+        "energy_definition": ENERGY_DEFINITION,
         "energy_theory_question": ENERGY_THEORY_QUESTION,
         "definitions": definitions(),
         "canon_manifest_digest": canon_manifest_digest(),
@@ -226,8 +232,6 @@ def canon_digest() -> str:
 
 
 def observed_canon_file_blobs(root: Path) -> dict[str, str | None]:
-    """Read declared canon files under ``root`` and return observed blob ids."""
-
     observed: dict[str, str | None] = {}
     for name in sorted(CANON_FILE_BLOBS):
         path = root / name
@@ -239,8 +243,6 @@ def observed_canon_file_blobs(root: Path) -> dict[str, str | None]:
 
 
 def canon_file_mismatches(root: Path) -> dict[str, dict[str, str | None]]:
-    """Return expected/observed identities for missing or changed canon files."""
-
     observed = observed_canon_file_blobs(root)
     return {
         name: {"expected": expected, "observed": observed[name]}
@@ -250,8 +252,6 @@ def canon_file_mismatches(root: Path) -> dict[str, dict[str, str | None]]:
 
 
 def assert_canon_files_match(root: Path) -> None:
-    """Fail closed when any canon-bearing file differs from the manifest."""
-
     mismatches = canon_file_mismatches(root)
     if mismatches:
         detail = "; ".join(
@@ -266,6 +266,7 @@ __all__ = [
     "CANON_IDENTITY_SCHEMA_VERSION",
     "CANON_VERSION",
     "CanonIntegrityError",
+    "ENERGY_DEFINITION",
     "ENERGY_THEORY_QUESTION",
     "PRIMITIVE_EXTENSION",
     "ROOT_SPINE",

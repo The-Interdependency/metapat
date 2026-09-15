@@ -2,72 +2,50 @@
 
 Theorems are derived statements. They are not root. They must reduce back to the axioms without importing a domain as owner.
 
-## First Theorem: Boundary Earns Its Keep
+## First Theorem: Boundary Requires Multiplicity
 
-If boundary is simplex, then boundary can modify transformation.
+If boundary is the thing between things, one thing alone has no boundary.
 
-If boundary can modify transformation, then gradient dynamics cannot be reduced to simple distance values or difference alone.
+Therefore boundary requires more than one thing.
 
-Therefore, vector direction is selected through gradient dynamics that explicitly include the current state of the boundary-simplex.
+## Second Theorem: Simplex Closure
 
-### Validation condition
+If a thing has boundary and state, it satisfies the simplex definition.
 
-Hold source energy-state constant.
+Therefore thing + boundary + state closes as simplex.
 
-Hold target energy-state constant.
+## Third Theorem: Tensor Emergence
 
-Change only boundary-simplex state.
+If simplexes relate and tensor is the structure produced when simplexes relate, a tensor emerges from related simplexes.
 
-Observe changed vector direction, delay, filtering, propagation, or transformation outcome.
+## Fourth Theorem: Recursive Closure
 
-## Second Theorem: Tensor Precedes Time
+If a tensor is a thing, then a tensor with boundary and state satisfies the simplex definition.
 
-If tensor is simultaneous arrangement of energy-states, and time is sequential tensor alteration, then tensor precedes time in Energy Theory.
+Therefore tensor construction may recurse through simplex closure.
 
-Therefore, without sequence there is not nothingness.
+## Fifth Theorem: Scalar and Vector Are Distinct
 
-Without sequence, there is tensor.
+If scalar is a state metric and vector alters state, scalar measures what vector alters.
 
-## Third Theorem: Question as Energy-State
+Therefore scalar and vector are not the same kind of thing.
 
-If a question is bounded and unresolved, and simplex holds energy in a state of being, then a question is a simplex holding unresolved energy-state.
+Vector is inferred through scalar measurement of state change.
 
-Therefore, questions are Energy Theory.
+## Sixth Theorem: Transformation Produces Time by Sequence
 
-## Fourth Theorem: Object Instantiation
+If vector alters state, the resulting state change is transformation.
 
-If a formed object is a tensor of simplexes integrated at a scale, then object-instantiation does not require a human mind.
+If transformations occur sequentially, there is time.
 
-Therefore, the physical cup is not created by cognition.
+## Seventh Theorem: Energy Is Derived
 
-Cognition may register cup-whole as a gestalt simplex.
+If vectors alter state through transformation across time, energy requires vector, state, transformation, and time.
 
-## Fifth Theorem: Root and Tool Separation
+Therefore energy is composite at this level rather than primitive.
 
-If domains influence tools but cannot alter the root, then Energy Theory can grow without root-drift.
+## Eighth Theorem: Root and Tool Separation
 
-Therefore, Energy Theory is a magpie, not a mimic.
+If every domain exposes some properties and no domain exposes all, no single domain may own the root.
 
-It may take the shiny shape of a question from any domain.
-
-It may not surrender its root to any domain.
-
-## Sixth Theorem: Registration Is Not Time
-
-If time is sequential tensor alteration, and registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration, then registration is not the parent of time.
-
-Therefore, time can occur without being consciously narrated, and registration can occur without consciousness.
-
-Story is one conscious registration of time, not time itself.
-
-## Seventh Theorem: Observer Role Is Earned by Registration
-
-If observer is a simplex performing registration, then a simplex is not an observer merely by being present in a tensor.
-
-Therefore, observer is a role performed by a simplex when it preserves, expresses, or transmits sequential tensor alteration.
-
-## Eighth Theorem: Consciousness Is Optional
-
-If observer is any simplex performing registration, and consciousness is one observer-mode, then consciousness is not required for registration.
-
-Therefore, non-conscious registration and conscious story can both be observer-mode expressions, but only story is conscious registration of time.
+Therefore domain implementations may reveal METAPAT structure without becoming METAPAT structure by identity.

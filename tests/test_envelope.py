@@ -93,29 +93,31 @@ def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
     assert envelope.module_id == "metapat.root_spine"
     assert envelope.module_kind == "canon-module"
     assert envelope.source_statement_refs == (
-        "AXIOMS.md#1-legible-difference::statement-1",
+        "AXIOMS.md#1-thing::statement-1",
         "AXIOMS.md#2-boundary::statement-1",
-        "AXIOMS.md#3-simplex::statement-1",
-        "AXIOMS.md#2-boundary::statement-2",
-        "AXIOMS.md#3-simplex::statement-3",
+        "AXIOMS.md#3-state::statement-1",
+        "AXIOMS.md#4-simplex::statement-1",
+        "AXIOMS.md#5-tensor::statement-1",
     )
     assert envelope.source_statements == ROOT_SPINE
     assert len(envelope.source_statement_refs) == len(ROOT_SPINE)
     assert {
         "canon-module",
-        "distinction",
+        "thing",
+        "boundary",
+        "state",
         "simplex",
-        "boundary-simplex",
         "tensor",
-        "energy-state",
+        "relate",
+        "relation",
+        "emergence",
         "scalar",
         "vector",
-        "relation",
-        "gradient",
         "transformation",
+        "time",
+        "energy",
         "registration",
         "observer",
-        "time",
         "question",
         "postulate",
         "theorem",
@@ -146,7 +148,7 @@ def test_canon_or_constraint_rotation_changes_provenance() -> None:
         constraints=original.constraints,
         permitted_interpretations=original.permitted_interpretations,
         unresolved_constraints=original.unresolved_constraints,
-        canon_version="metapat-canon-v2-test",
+        canon_version="metapat-canon-v4-test",
         canon_identity="0" * 64,
     )
     changed_constraint = build_module_envelope(

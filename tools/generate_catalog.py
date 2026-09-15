@@ -9,7 +9,7 @@ constructor. ``--out`` remains a catalog-only compatibility option.
 # id: metapat_catalog_generator
 #   module_name: tools.generate_catalog
 #   module_kind: instrument
-#   summary: generates or verifies byte-current root-spine-envelope-v2 and semantic-module-catalog-v2 fixtures from their live constructors
+#   summary: generates or verifies byte-current root-spine-envelope-v3 and semantic-module-catalog-v3 fixtures from their live constructors
 #   owner: The Interdependency
 #   public_surface: render_root_spine_envelope, render_catalog, write_semantic_fixtures, write_catalog, main
 #   internal_surface: FIXTURES
@@ -56,8 +56,8 @@ from pathlib import Path
 from metapat.catalog import canonical_semantic_catalog
 from metapat.envelope import root_spine_module_envelope
 
-ROOT_SPINE_OUTPUT = Path("src/metapat/fixtures/root-spine-envelope-v2.json")
-OUTPUT = Path("src/metapat/fixtures/semantic-module-catalog-v2.json")
+ROOT_SPINE_OUTPUT = Path("src/metapat/fixtures/root-spine-envelope-v3.json")
+OUTPUT = Path("src/metapat/fixtures/semantic-module-catalog-v3.json")
 
 
 def render_root_spine_envelope() -> str:
@@ -98,11 +98,7 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args(argv)
     root = args.root.resolve()
-    selected = (
-        {args.out: render_catalog}
-        if args.out is not None
-        else FIXTURES
-    )
+    selected = {args.out: render_catalog} if args.out is not None else FIXTURES
     failures = 0
     for relative, renderer in selected.items():
         target = root / relative

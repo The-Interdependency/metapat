@@ -35,19 +35,13 @@ binding digest
 
 A binding states how an application uses a module. It does not change the module, inherit its status, prove the application, or establish UCNS topology.
 
-Catalog validation requires exact agreement on:
-
-- catalog version;
-- catalog digest;
-- every module ID;
-- every module digest;
-- every module claim status.
+Catalog validation requires exact agreement on catalog version/digest and every bound module ID, digest, and claim status.
 
 A catalog rotation therefore invalidates stale application fixtures rather than silently relabeling them.
 
 ## Evidence firewall
 
-Application modules currently permit only:
+Application modules currently permit:
 
 ```text
 CROSS-DOMAIN-HYPOTHESIS
@@ -65,7 +59,7 @@ ucns_theorem_status_transfer = false
 ucns_topology_claim = false
 ```
 
-The schema records a bounded application hypothesis and its provenance. It does not supply external evidence.
+The schema records a bounded application hypothesis and provenance. It does not supply external evidence.
 
 ## Source integrity
 
@@ -75,31 +69,23 @@ Application source references use:
 path/to/document.md#heading-slug::statement-N
 ```
 
-`assert_application_sources_match()` fails if:
+`assert_application_sources_match()` fails if a source document, heading, exact statement, or source identity drifts.
 
-- the source document is absent;
-- a declared heading is absent;
-- an exact identity, binding, mapping, transfer, evidence, or `hmmm` statement drifts;
-- a reference points to a different source document.
+The source Markdown remains the human-readable application surface. The fixture is its strict machine-readable identity-bearing representation.
 
-The source Markdown remains the human-readable application surface. The fixture is a strict machine-readable identity-bearing representation.
-
-## First vertical slice
-
-The first implementation is:
+## Quantum-magnetism vertical slice
 
 ```text
-metapat.application.quantum_magnetism
+application: metapat.application.quantum_magnetism
+version: quantum-magnetism-application-v3
+status: CROSS-DOMAIN-HYPOTHESIS
+catalog bindings: 12
+root impact: none
 ```
 
-It binds twelve exact catalog modules while preserving:
+It preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions and keeps physics as the governing evidence domain. The current v3 bindings include root restraint, partial domains, tensor, relate, scalar/state measurement, boundary, state, transformation, and cross-domain reconstruction.
 
-- `CROSS-DOMAIN-HYPOTHESIS` status;
-- root impact `none`;
-- nuclear, atomic, crystalline, and magnetic-domain scale distinctions;
-- physics evidence as the governing domain evidence;
-- Theory 10 as explicitly excluded;
-- unresolved “field-space” meaning as `hmmm`.
+Unresolved “field-space” meaning remains `hmmm`.
 
 Package usage:
 
@@ -118,7 +104,17 @@ print(application.application_digest)
 Packaged fixture:
 
 ```text
-metapat/fixtures/quantum-magnetism-application-v2.json
+metapat/fixtures/quantum-magnetism-application-v3.json
+```
+
+## Electromagnetic-pipe vertical slice
+
+The engineering application is separately bound as `EMPIRICAL-FRONTIER`. Its exact design identity and source bindings do not establish claimed electromagnetic, materials, thermal, insulation, mechanical, or fault performance; those remain answerable to engineering evidence.
+
+Packaged fixture:
+
+```text
+metapat/fixtures/three-phase-electromagnetic-pipe-v3.json
 ```
 
 ## Regeneration
@@ -128,11 +124,11 @@ python tools/generate_application_fixtures.py
 python tools/generate_application_fixtures.py --check
 python tools/generate_msdmd.py --check
 python tools/check_contract_graph.py
-python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py
+python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py
 ```
 
 Generated application fixtures must not be edited by hand.
 
 ## hmmm
 
-The application schema preserves declared domain evidence requirements but does not execute physical simulations, derive Hamiltonians, collect measurements, or decide whether the mapping predicts anything beyond established physics. Those remain the evidence required to advance the application beyond a cross-domain hypothesis.
+Application schemas preserve declared evidence requirements but do not execute simulations, derive physical laws, collect measurements, or promote domain claims. Those remain evidence required from the owning domain.

@@ -85,17 +85,17 @@ from .application import (
 )
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-QUANTUM_MAGNETISM_APPLICATION_VERSION = "quantum-magnetism-application-v2"
+QUANTUM_MAGNETISM_APPLICATION_VERSION = "quantum-magnetism-application-v3"
 SOURCE_DOCUMENT = "docs/applications/quantum-magnetism.md"
 
 QUANTUM_MAGNETISM_BINDING_SPECS = (
     (
-        "metapat.axiom.0.root_untouchable",
+        "metapat.root_spine",
         "domain-restraint",
         "METAPAT supplies a bounded question-form and does not replace physical theory.",
     ),
     (
-        "metapat.postulate.1.domain_similarity",
+        "metapat.postulate.1.partial_domains",
         "shared-question-form",
         "Similarly shaped transformations may be compared while the physical scales and domains remain distinct.",
     ),
@@ -105,19 +105,19 @@ QUANTUM_MAGNETISM_BINDING_SPECS = (
         "METAPAT terminology clarifies the application and does not replace equations, measurements, or physics evidence.",
     ),
     (
-        "metapat.axiom.4.tensor",
+        "metapat.axiom.5.tensor",
         "tensor",
         "The simultaneous nuclear, electronic, lattice, and field-state arrangement at the selected scale.",
     ),
     (
-        "metapat.axiom.6.relation",
+        "metapat.axiom.6.relate",
         "relation",
         "Configured charge, position, spin, coupling, and material context within that tensor.",
     ),
     (
-        "metapat.axiom.7.gradient",
-        "gradient",
-        "Readable potential difference within those relations.",
+        "metapat.axiom.9.scalar",
+        "state-metric-difference",
+        "Readable potential difference is treated as a measured difference among related states.",
     ),
     (
         "metapat.axiom.2.boundary",
@@ -125,27 +125,27 @@ QUANTUM_MAGNETISM_BINDING_SPECS = (
         "A nuclear, atomic, crystalline, or magnetic-domain configuration that modifies passage, state selection, or transformation outcome.",
     ),
     (
-        "metapat.axiom.5.energy_state",
-        "energy-state",
+        "metapat.axiom.3.state",
+        "state",
         "An allowed electronic state or collective magnetic state within the application model.",
     ),
     (
-        "metapat.axiom.8.transformation",
+        "metapat.axiom.10.transformation",
         "transformation",
         "Alteration of electronic occupation, spin organization, or magnetic-domain configuration.",
     ),
     (
-        "metapat.theory.2.boundary_mediated_transformation",
-        "boundary-mediated-transformation",
-        "Changing a modeled boundary state may change passage, permitted state selection, delay, filtering, propagation, or transformation outcome.",
+        "metapat.theory.1.thing_boundary_state",
+        "thing-boundary-state",
+        "Modeled physical boundaries participate in defining the selected physical things and states; their physical effects remain domain evidence.",
     ),
     (
-        "metapat.theory.5.relational_gradient_selection",
-        "relational-gradient-selection",
-        "Direction and state selection are asked through the complete relation, boundary state, and tensor arrangement rather than difference alone.",
+        "metapat.theory.4.state_measurement",
+        "state-measurement",
+        "Direction and state selection are tested through measured state change rather than inferred from one unmeasured difference alone.",
     ),
     (
-        "metapat.theory.11.cross_domain_question_forms",
+        "metapat.theory.11.cross_domain_reconstruction",
         "cross-domain-question-form",
         "The application asks one shared question-form across nuclear, atomic, crystalline, and magnetic-domain scales without making those scales identical.",
     ),

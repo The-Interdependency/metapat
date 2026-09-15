@@ -65,8 +65,9 @@ def test_quantum_application_status_and_exclusions() -> None:
     bound_ids = {binding.module_id for binding in application.catalog_bindings}
     assert application.claim_status == "CROSS-DOMAIN-HYPOTHESIS"
     assert application.root_impact == "none"
-    assert "metapat.theory.10.symbolic_and_memetic_transfer" not in bound_ids
-    assert "metapat.theory.11.cross_domain_question_forms" in bound_ids
+    assert "metapat.theory.11.cross_domain_reconstruction" in bound_ids
+    assert not any("symbolic_and_memetic_transfer" in module_id for module_id in bound_ids)
+    assert not any("cross_domain_question_forms" in module_id for module_id in bound_ids)
 
 
 def test_quantum_application_preserves_scale_distinctions() -> None:
@@ -112,11 +113,7 @@ def test_quantum_fixture_render_is_deterministic() -> None:
 
 
 def test_packaged_quantum_fixture_is_current() -> None:
-    fixture = files("metapat").joinpath(
-        "fixtures/quantum-magnetism-application-v2.json"
-    )
+    fixture = files("metapat").joinpath("fixtures/quantum-magnetism-application-v3.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_quantum_magnetism_fixture()
-    assert not files("metapat").joinpath(
-        "fixtures/quantum-magnetism-application-v1.json"
-    ).is_file()
+    assert not files("metapat").joinpath("fixtures/quantum-magnetism-application-v2.json").is_file()

@@ -4,429 +4,199 @@ Theories are organized derivation families.
 
 A theory is not root.
 
-A theory may combine axioms, postulates, and theorems into a stable application lens.
-
-A theory must remain reducible to Chapter Zero.
-
-A theory must answer:
-
-```text
-What questions does this teach me to ask?
-```
-
-## Theory Layer Rule
-
 A theory may organize use.
 
-A theory may not amend the axioms.
+A theory may not amend the axioms or import a domain as owner.
 
-A theory may not import a domain as owner.
+## Theory 0: Root-Prior Restraint
 
-A theory remains demotable if it fails to clarify, fails to predict useful distinctions, or causes domain capture.
-
-## 0. Theory of Root-Prior Restraint
-
-Derived from: Axiom 0; Postulates 1-2; Fifth Theorem.
+Derived from: root restraint; Postulates 1, 2, and 6; Theorem 8.
 
 ### Claim
 
-Energy Theory can learn from any domain without being owned by that domain.
-
-Domains may supply tools, examples, metaphors, measurements, and question-forms.
-
-Domains may not redefine the root.
+Every domain may reveal part of Platonic energy without owning the root.
 
 ### Working question
 
 ```text
-What tool clarifies the relation without making its domain root?
+What transfers after the domain-specific implementation is removed?
 ```
 
-### Validation pressure
+## Theory 1: Thing-Boundary-State Construction
 
-An imported term must state:
-
-1. what transfers;
-2. what does not transfer;
-3. whether root impact is none.
-
-### Failure mode
-
-Physics, mathematics, language, psychology, computation, mysticism, or any other domain becomes the hidden parent ontology.
-
-## 1. Theory of Distinction Formation
-
-Derived from: Axioms 1-3.
+Derived from: Axioms 1-4; Theorems 1-2.
 
 ### Claim
 
-Legible difference generates distinction.
-
-Distinction defines boundary.
-
-Boundary defines simplex.
-
-A simplex is therefore not merely an object already sitting in a domain. A simplex is the bounded state-bearing result of legible distinction.
+Thing, boundary, and state are sufficient to close simplex.
 
 ### Working question
 
 ```text
-What difference is legible enough to define the boundary?
+What is the thing, what is between it and another thing, and what property is its state?
 ```
 
-### Validation pressure
+## Theory 2: Relational Tensor Formation
 
-If no boundary can be specified, no simplex has been established.
-
-If a claimed simplex has no bounded state-bearing role, the claim is premature.
-
-### Failure mode
-
-Objecthood is assumed before distinction and boundary are named.
-
-## 2. Theory of Boundary-Mediated Transformation
-
-Derived from: Axioms 2-3, 7-8; Postulate 6; First Theorem.
+Derived from: Axioms 5-7; Theorem 3.
 
 ### Claim
 
-Boundary is not passive edge.
-
-Boundary is a state-bearing simplex whose configuration may alter passage, relation, gradient dynamics, vector direction, delay, filtering, propagation, or transformation outcome.
+Simplexes relate; tensor is the structure that emerges from their relation.
 
 ### Working question
 
 ```text
-What changes when only the boundary changes?
+What simplexes relate, and what structure appears because they do?
 ```
 
-### Validation pressure
+## Theory 3: Recursive Closure
 
-Hold source energy-state constant.
-
-Hold target energy-state constant.
-
-Change boundary-simplex state.
-
-If vector direction, propagation, delay, filtering, or transformation outcome changes, the boundary earns ontological force in the model.
-
-### Failure mode
-
-Gradient is reduced to distance or difference alone, while the boundary state that selects direction is ignored.
-
-## 3. Theory of Tensor-First Arrangement
-
-Derived from: Axiom 4; Axiom 9; Second Theorem.
+Derived from: Axiom 5; Postulate 3; Theorem 4.
 
 ### Claim
 
-Tensor is primitive simultaneous arrangement of energy-states.
-
-Time is not the first condition.
-
-Time appears when tensor alteration becomes sequential.
-
-Without sequence, there is not nothingness.
-
-Without sequence, there is tensor.
+A tensor is a thing and may close as simplex when it has boundary and state.
 
 ### Working question
 
 ```text
-What is arranged before alteration is sequenced?
+When does the produced structure participate as one thing?
 ```
 
-### Validation pressure
+## Theory 4: State Measurement
 
-A time claim must be traceable to sequential tensor alteration.
-
-A pre-time claim must not collapse into nothingness merely because no sequence is present.
-
-### Failure mode
-
-Sequence is mistaken for existence itself.
-
-## 4. Theory of Energy-State Motion
-
-Derived from: Axiom 5; Axiom 8.
+Derived from: Axioms 3, 8, and 9; Theorem 5.
 
 ### Claim
 
-Energy appears as state of being.
-
-Energy-state held is scalar.
-
-Energy-state motioned is vector.
-
-Energy-state vectors alter energy-state scalars.
-
-Transformation is vector-compelled alteration of energy-state.
+State exists independently of its metric; scalar measures state, while vector is inferred from measured state change.
 
 ### Working question
 
 ```text
-Is the energy-state held, motioned, or altered?
+What state is being measured, and what change does the measurement support inferring?
 ```
 
-### Validation pressure
+## Theory 5: Transformation
 
-A scalar claim must identify what is held.
-
-A vector claim must identify motion or directionality.
-
-A transformation claim must identify the alteration compelled by vector motion.
-
-### Failure mode
-
-Energy is spoken of as vague intensity without state, hold, motion, or alteration.
-
-## 5. Theory of Relational Gradient Selection
-
-Derived from: Axioms 6-8; First Theorem.
+Derived from: Axioms 8 and 10; Theorem 6.
 
 ### Claim
 
-Relation is readable configuration within tensor.
-
-Gradient is readable difference within relation.
-
-Gradient dynamics select vector direction through tensor arrangement, simplex relations, and boundary-simplex states.
-
-A vector does not select direction from difference alone.
+Vector alters state; the resulting state change is transformation.
 
 ### Working question
 
 ```text
-What relation makes this difference directional?
+What state changed, and what directed alteration produced the change?
 ```
 
-### Validation pressure
+## Theory 6: Time
 
-A gradient claim must identify relation.
-
-A direction claim must identify boundary-simplex state or tensor arrangement sufficient to explain selection.
-
-### Failure mode
-
-A difference is treated as direction without explaining how the tensor configures motion.
-
-## 6. Theory of Time as Sequential Tensor Alteration
-
-Derived from: Axiom 4; Axiom 9; Sixth Theorem.
+Derived from: Axiom 11; Theorem 6.
 
 ### Claim
 
-Time is sequential tensor alteration.
-
-Registration is not the parent of time.
-
-A sequence can occur without being preserved, narrated, or consciously observed.
+Time is sequential transformation.
 
 ### Working question
 
 ```text
-What tensor alteration is being sequenced?
+What transformations occur in sequence?
 ```
 
-### Validation pressure
+## Theory 7: Derived Energy
 
-A time claim must show alteration across ordered tensor states.
-
-A registration claim must not be mistaken for the existence of time itself.
-
-### Failure mode
-
-Recorded time, remembered time, narrated time, and time itself are conflated.
-
-## 7. Theory of Registration and Observer Roles
-
-Derived from: Axiom 10; Theorems 6-8; Postulate 5.
+Derived from: Axiom 12; Theorem 7.
 
 ### Claim
 
-Registration is the capacity of a simplex to preserve, express, or transmit sequential tensor alteration.
-
-An observer is a simplex performing registration.
-
-An observer need not be conscious.
-
-Consciousness is one possible observer-mode.
-
-Story is conscious registration of time.
+Energy is composite: vectors altering state through transformation across time.
 
 ### Working question
 
 ```text
-What simplex is preserving, expressing, or transmitting the sequence?
+What vectors alter what states through which transformations across what sequence?
 ```
 
-### Validation pressure
+## Theory 8: Emergence
 
-A claimed observer must perform registration.
-
-Mere presence in a tensor is not enough.
-
-A conscious story must be distinguished from non-conscious registration.
-
-### Failure mode
-
-Observer is smuggled in as mind, witness, consciousness, or narrative when only registration is required.
-
-## 8. Theory of Questions as Bounded Unresolved Energy-State
-
-Derived from: Axiom 11; Third Theorem.
+Derived from: Axioms 5-7; Theorems 3-4.
 
 ### Claim
 
-A question is a bounded unresolved energy-state.
-
-Energy Theory is not first an answer-machine.
-
-Energy Theory is a question-finder.
+Tensors emerge from simplexes and may become simplexes in recursive construction.
 
 ### Working question
 
 ```text
-What unresolved energy-state is bounded by this question?
+What new structure requires the relation of the contributing simplexes?
 ```
 
-### Validation pressure
+## Theory 9: Registration and Observer Roles
 
-A question must show its boundary.
-
-A useful question should reveal relation, gradient, boundary, transformation, registration, or domain restraint.
-
-### Failure mode
-
-The answer is pursued before the unresolved state is correctly bounded.
-
-## 9. Theory of Native-Scale Object Integration
-
-Derived from: Axioms 2-6; Postulates 3-4; Fourth Theorem.
+Derived from: Postulates 4-5.
 
 ### Claim
 
-A formed object is a tensor of simplexes integrated at a scale.
-
-Object-instantiation requires integration at its native scale, not consciousness.
-
-A physical object may require physical and spatial simplexes.
-
-A mental object may require archetype, concept, idea, and gestalt simplexes.
-
-A cognitive gestalt may register object-whole without creating physical objecthood.
+Registration preserves, expresses, or transmits transformation; observation does not create the structure registered.
 
 ### Working question
 
 ```text
-At what scale does this tensor configuration become object-whole?
+What simplex registers what transformation?
 ```
 
-### Validation pressure
+## Theory 10: Questions as Unresolved Structure
 
-Name the simplexes.
-
-Name the native scale.
-
-Name the integration role.
-
-Distinguish physical integration from cognitive registration.
-
-### Failure mode
-
-Cognition is treated as creator of objecthood rather than one possible registrar of object-whole.
-
-## 10. Theory of Symbolic and Memetic Transfer
-
-Derived from: Axioms 5-6, 8, 10-11; Theory 7; Theory 8.
+Derived from: Postulates 5-7.
 
 ### Claim
 
-Thought does not transfer thought directly.
+A question is a bounded unresolved state or relation available to transformation.
 
-Thought emits symbolic form.
-
-Symbolic form perturbs a receiver.
-
-A reconstructed thought appears only if the receiving simplex or tensor can register, relate, and resolve the pattern.
-
-Words, marks, gestures, numerals, operators, spacing, rhythm, and silence may function as symbolic boundary-simplexes.
+Energy Theory is a question-finder before it is an answer-machine.
 
 ### Working question
 
 ```text
-What symbolic boundary carries the perturbation, and what receiver registration is required for reconstruction?
+What unresolved state or relation is actually being asked about?
 ```
 
-### Validation pressure
+## Theory 11: Cross-Domain Reconstruction
 
-Separate source thought, symbolic emission, transmission medium, receiver perturbation, and reconstructed thought.
-
-Do not treat association as proof.
-
-Do not treat resonance as identity.
-
-Do not conflate glyph zero with space-anchor.
-
-### Failure mode
-
-Symbol is mistaken for thought itself, or successful reconstruction is assumed without testing receiver registration.
-
-## 11. Theory of Cross-Domain Question Forms
-
-Derived from: Axiom 0; Axiom 11; Postulates 1-2; Fifth Theorem.
+Derived from: Postulates 1, 2, and 6; Theorem 8.
 
 ### Claim
 
-Different domains may show similarly shaped transformations.
+Independent domain implementations may expose the same candidate structure or action without making the domains identical.
 
-Energy Theory may compare those shapes to find shared question-forms.
-
-The comparison does not make the domains identical.
+The candidate survives only while later domains fail to falsify, split, or refine it.
 
 ### Working question
 
 ```text
-What is the shared question-form, and what remains domain-specific?
+Does this domain require a new primitive, split an existing one, refine one, or falsify one?
 ```
-
-### Validation pressure
-
-A cross-domain comparison must preserve difference.
-
-It must state what transfers.
-
-It must state what does not transfer.
-
-It must leave root impact at none.
-
-### Failure mode
-
-Analogy becomes identity, metaphor becomes law, or imported notation becomes ontology.
 
 ## Theory Index
 
 ```text
 0. Root-Prior Restraint
-1. Distinction Formation
-2. Boundary-Mediated Transformation
-3. Tensor-First Arrangement
-4. Energy-State Motion
-5. Relational Gradient Selection
-6. Time as Sequential Tensor Alteration
-7. Registration and Observer Roles
-8. Questions as Bounded Unresolved Energy-State
-9. Native-Scale Object Integration
-10. Symbolic and Memetic Transfer
-11. Cross-Domain Question Forms
+1. Thing-Boundary-State Construction
+2. Relational Tensor Formation
+3. Recursive Closure
+4. State Measurement
+5. Transformation
+6. Time
+7. Derived Energy
+8. Emergence
+9. Registration and Observer Roles
+10. Questions as Unresolved Structure
+11. Cross-Domain Reconstruction
 ```
 
-## Current hmmm
+## hmmm
 
-The theory layer is organized but not closed.
-
-Theories 0-9 are directly grounded in current axioms, postulates, and theorems.
-
-Theory 10 is the live bridge from memetic energy into METAPAT and should remain application-layer until symbolic vertex tables, receiver registration tests, and UCNS-gonol mappings are specified.
-
-Theory 11 is valid only while domain restraint remains explicit.
+The theory layer is intentionally open. Completeness is never presumed.

@@ -19,7 +19,7 @@ missing, or incorrectly typed fields rather than coercing malformed values.
 #   admin_only: false
 #   tests: tests.test_envelope, tests.test_catalog, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package
-#   rollback: remove envelope exports and cross-repository adapter fixtures
+#   rollback: restore the prior canon-bound vocabulary
 #   requires: metapat_canon_core
 #   since: 2026-07-12
 #   unresolved: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved
@@ -29,7 +29,7 @@ missing, or incorrectly typed fields rather than coercing malformed values.
 # id: metapat_module_envelope_docs
 #   summary: defines the METAPAT-to-consumer semantic authority boundary
 #   audience: developer, agent
-#   source: codex-handoff/2026-07-12-stack-repair/REQUIRED_CHANGES.md
+#   source: CHAPTER_ZERO.md
 #   covers: MetapatModuleEnvelope, strict schema validation, provenance digest, canon identity, unresolved hmmm preservation
 #   status: current
 # === END DOCS ===
@@ -109,19 +109,21 @@ MODULE_ENVELOPE_SCHEMA_VERSION = "1.2.0"
 MODULE_KINDS = frozenset(
     {
         "canon-module",
-        "distinction",
+        "thing",
+        "boundary",
+        "state",
         "simplex",
-        "boundary-simplex",
         "tensor",
-        "energy-state",
+        "relate",
+        "relation",
+        "emergence",
         "scalar",
         "vector",
-        "relation",
-        "gradient",
         "transformation",
+        "time",
+        "energy",
         "registration",
         "observer",
-        "time",
         "question",
         "postulate",
         "theorem",
@@ -160,12 +162,7 @@ def _require_string_sequence(data: Mapping[str, Any], name: str) -> tuple[str, .
 
 
 def _canonical_payload(data: Mapping[str, Any]) -> bytes:
-    return json.dumps(
-        data,
-        ensure_ascii=False,
-        sort_keys=True,
-        separators=(",", ":"),
-    ).encode("utf-8")
+    return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
 
 
 def _digest_payload(data: Mapping[str, Any]) -> str:
@@ -194,8 +191,7 @@ class MetapatModuleEnvelope:
             raise ValueError("module_id must be a non-empty string")
         if not isinstance(self.module_kind, str) or self.module_kind not in MODULE_KINDS:
             raise ValueError(
-                f"unsupported module_kind {self.module_kind!r}; "
-                f"expected one of {sorted(MODULE_KINDS)!r}"
+                f"unsupported module_kind {self.module_kind!r}; expected one of {sorted(MODULE_KINDS)!r}"
             )
         if self.schema_id != MODULE_ENVELOPE_SCHEMA_ID:
             raise ValueError(f"unsupported schema_id {self.schema_id!r}")
@@ -260,18 +256,9 @@ class MetapatModuleEnvelope:
         if not isinstance(data, Mapping):
             raise ValueError("module envelope must be a mapping")
         expected_fields = {
-            "schema_id",
-            "schema_version",
-            "module_id",
-            "module_kind",
-            "canon_version",
-            "canon_digest",
-            "source_statement_refs",
-            "source_statements",
-            "constraints",
-            "permitted_interpretations",
-            "unresolved_constraints",
-            "provenance_digest",
+            "schema_id", "schema_version", "module_id", "module_kind", "canon_version",
+            "canon_digest", "source_statement_refs", "source_statements", "constraints",
+            "permitted_interpretations", "unresolved_constraints", "provenance_digest",
         }
         unknown = set(data) - expected_fields
         missing = expected_fields - set(data)
@@ -331,11 +318,11 @@ def build_module_envelope(
 
 def root_spine_module_envelope() -> MetapatModuleEnvelope:
     refs = (
-        "AXIOMS.md#1-legible-difference::statement-1",
+        "AXIOMS.md#1-thing::statement-1",
         "AXIOMS.md#2-boundary::statement-1",
-        "AXIOMS.md#3-simplex::statement-1",
-        "AXIOMS.md#2-boundary::statement-2",
-        "AXIOMS.md#3-simplex::statement-3",
+        "AXIOMS.md#3-state::statement-1",
+        "AXIOMS.md#4-simplex::statement-1",
+        "AXIOMS.md#5-tensor::statement-1",
     )
     return build_module_envelope(
         module_id="metapat.root_spine",

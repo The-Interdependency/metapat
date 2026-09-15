@@ -162,30 +162,30 @@ The ideal alloy cannot be selected from elemental properties alone. It depends o
 
 | Catalog module | Application role | Bounded application statement |
 |---|---|---|
-| `metapat.axiom.0.root_untouchable` | domain-restraint | METAPAT organizes the question and does not replace electromagnetic, materials, thermal, insulation, or spacecraft evidence. |
-| `metapat.axiom.1.legible_difference` | distinction | Every phase circuit, handedness, radial layer, iron pipe, ceramic boundary, attractor, gap, and field state remains separately legible. |
+| `metapat.root_spine` | domain-restraint | METAPAT organizes the question and does not replace electromagnetic, materials, thermal, insulation, or spacecraft evidence. |
+| `metapat.axiom.1.thing` | distinction | Every phase circuit, handedness, radial layer, iron pipe, ceramic boundary, attractor, gap, and field state remains separately legible. |
 | `metapat.axiom.2.boundary` | boundary-simplex | Ceramic shells, iron pipes, gaps, winding geometry, end geometry, and attractor constraints alter passage, delay, filtering, phase, direction, and transformation. |
-| `metapat.axiom.4.tensor` | control-tensor | The simultaneous arrangement contains six three-phase vectors, direct-current biases, frequency, current limits, voltage compliance, winding handedness, radial layer, attractor positions, alloy state, temperature, magnetic history, and mechanical gaps. |
-| `metapat.axiom.5.energy_state` | energy-state | Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct energy-state surfaces. |
-| `metapat.axiom.6.relation` | relation | Layer, handedness, phase order, spatial displacement, pipe geometry, attractor position, and material state configure which transformations are possible. |
-| `metapat.axiom.7.gradient` | gradient | Readable differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |
-| `metapat.axiom.8.transformation` | feedback-transformation | Current changes field; field changes attractor magnetization and motion; attractor redistribution changes the boundary and therefore the next field cycle. |
-| `metapat.axiom.9.time` | sequential-field-state | Alternating phase progression, settling, hysteresis, magnetic history, and fault evolution are sequential tensor alterations. |
-| `metapat.axiom.10.registration` | instrumentation | Registration measures electrical, magnetic, thermal, mechanical, distribution, hysteresis, settling, and leakage states. |
-| `metapat.axiom.11.question` | unresolved-design-state | Frequency, current, target field, shielding, phase shift, attractor geometry, temperature, and protection distance remain bounded unresolved states. |
+| `metapat.axiom.5.tensor` | control-tensor | The simultaneous arrangement contains six three-phase vectors, direct-current biases, frequency, current limits, voltage compliance, winding handedness, radial layer, attractor positions, alloy state, temperature, magnetic history, and mechanical gaps. |
+| `metapat.axiom.3.state` | state | Phase-current, magnetic-field, magnetization, motion, eddy-current, and thermal conditions are distinct state surfaces. |
+| `metapat.axiom.6.relate` | relation | Layer, handedness, phase order, spatial displacement, pipe geometry, attractor position, and material state configure which transformations are possible. |
+| `metapat.axiom.9.scalar` | state-metrics | Measured differences include field amplitude, field phase, position, temperature, magnetization, force, leakage, and shielding response. |
+| `metapat.axiom.10.transformation` | feedback-transformation | Current changes field; field changes attractor magnetization and motion; attractor redistribution changes the boundary and therefore the next field cycle. |
+| `metapat.axiom.11.time` | sequential-field-state | Alternating phase progression, settling, hysteresis, magnetic history, and fault evolution are sequential transformations. |
+| `metapat.postulate.4.registration_plurality` | instrumentation | Registration measures electrical, magnetic, thermal, mechanical, distribution, hysteresis, settling, and leakage states. |
+| `metapat.theory.10.questions_unresolved_structure` | unresolved-design-state | Frequency, current, target field, shielding, phase shift, attractor geometry, temperature, and protection distance remain bounded unresolved states. |
 | `metapat.postulate.2.explicationary_use` | engineering-restraint | METAPAT vocabulary clarifies the device but does not replace Maxwell-field simulation, circuit models, materials measurements, or qualification tests. |
-| `metapat.postulate.6.validation_by_boundary_change` | boundary-test | A claimed boundary effect must be tested by changing boundary state while holding declared source and target conditions as constant as practicable. |
-| `metapat.theorem.1.boundary_earns_its_keep` | boundary-evidence | Ceramic, iron, gap, end-return, and attractor boundaries earn model force only when their controlled change alters measured direction, delay, filtering, propagation, shielding, or transformation. |
-| `metapat.theory.2.boundary_mediated_transformation` | boundary-mediated-transformation | Mobile attractor redistribution is treated as a changing boundary state that may alter shielding amplitude, phase delay, loss, and force gradients. |
-| `metapat.theory.5.relational_gradient_selection` | force-selection | Direction and motion are asked through the full relation among phase order, winding displacement, pipe state, attractor state, and magnetic gradient rather than field difference alone. |
-| `metapat.theory.6.time_as_sequential_tensor_alteration` | cycle-history | Phase progression, hysteresis, settling, and thermal accumulation are distinct sequential alterations rather than mere timestamps. |
-| `metapat.theory.7.registration_and_observer_roles` | sensor-registration | Sensors and logs earn observer role only by preserving, expressing, or transmitting the relevant sequence. |
-| `metapat.theory.8.questions_as_bounded_unresolved_energy_state` | optimization-question | Each unresolved operating bound is retained as a named question rather than silently guessed into the design. |
-| `metapat.theory.11.cross_domain_question_forms` | cross-domain-question-form | Electromagnetics, power electronics, magnetic materials, thermal behavior, mechanics, insulation, and spacecraft integration may share a question-form without becoming one domain. |
+| `metapat.postulate.6.cross_domain_falsification` | boundary-test | A claimed boundary effect must be tested by changing boundary state while holding declared source and target conditions as constant as practicable. |
+| `metapat.theorem.8.root_tool_separation` | boundary-evidence | Ceramic, iron, gap, end-return, and attractor boundaries earn model force only when their controlled change alters measured direction, delay, filtering, propagation, shielding, or transformation. |
+| `metapat.theory.1.thing_boundary_state` | boundary-mediated-transformation | Mobile attractor redistribution is treated as a changing boundary state that may alter shielding amplitude, phase delay, loss, and force gradients. |
+| `metapat.theory.4.state_measurement` | force-selection | Direction and motion are asked through the full relation among phase order, winding displacement, pipe state, attractor state, and magnetic gradient rather than field difference alone. |
+| `metapat.theory.6.time` | cycle-history | Phase progression, hysteresis, settling, and thermal accumulation are distinct sequential alterations rather than mere timestamps. |
+| `metapat.theory.9.registration_observer` | sensor-registration | Sensors and logs earn observer role only by preserving, expressing, or transmitting the relevant sequence. |
+| `metapat.postulate.7.discovery_before_recovery` | optimization-question | Each unresolved operating bound is retained as a named question rather than silently guessed into the design. |
+| `metapat.theory.11.cross_domain_reconstruction` | cross-domain-question-form | Electromagnetics, power electronics, magnetic materials, thermal behavior, mechanics, insulation, and spacecraft integration may share a question-form without becoming one domain. |
 
 ## METAPAT application
 
-The device is modeled as a boundary-mediated energy-state system.
+The device is modeled as a related state-and-transformation system.
 
 **Distinction:** each phase circuit, pipe, ceramic layer, attractor, gap, and field state must remain separately legible.
 

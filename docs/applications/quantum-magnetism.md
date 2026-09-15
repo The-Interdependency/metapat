@@ -2,38 +2,28 @@
 
 ## Application identity
 
-Status: **CROSS-DOMAIN-HYPOTHESIS / worked physics application**  
-Domain: atomic physics, quantum mechanics, condensed-matter physics, magnetism  
+Status: **CROSS-DOMAIN-HYPOTHESIS / worked physics application**
+
 Root impact: **none**
 
-This note is the first catalog-bound METAPAT application module. It applies METAPAT as a question-form and semantic mapping. It does not amend the root, replace physical theory, independently validate a physics claim, inherit theorem status, or claim UCNS topology. See [`DOMAIN_RESTRAINT.md`](../../DOMAIN_RESTRAINT.md), [`docs/semantic-module-catalog.md`](../semantic-module-catalog.md), [Theory 11 in `THEORIES.md`](../../THEORIES.md#11-theory-of-cross-domain-question-forms), and the [claims ledger](../claims-ledger.md).
-
-The packaged application fixture is:
-
-```text
-metapat/fixtures/quantum-magnetism-application-v2.json
-```
+This application asks whether the same bounded METAPAT question-form can organize several distinct physical scales without collapsing them into one mechanism.
 
 ## Catalog bindings
 
-Each row binds an application use to the exact catalog module identity, module digest, and declared claim status at construction time. The table describes application meaning; it does not change the bound module or promote this application into canon.
-
-| Catalog module ID | Application role | Application statement |
+| METAPAT module | Application role | Application statement |
 |---|---|---|
-| `metapat.axiom.0.root_untouchable` | domain-restraint | METAPAT supplies a bounded question-form and does not replace physical theory. |
-| `metapat.postulate.1.domain_similarity` | shared-question-form | Similarly shaped transformations may be compared while the physical scales and domains remain distinct. |
+| `metapat.root_spine` | domain-restraint | METAPAT supplies a bounded question-form and does not replace physical theory. |
+| `metapat.postulate.1.partial_domains` | shared-question-form | Similarly shaped transformations may be compared while the physical scales and domains remain distinct. |
 | `metapat.postulate.2.explicationary_use` | explicationary-restraint | METAPAT terminology clarifies the application and does not replace equations, measurements, or physics evidence. |
-| `metapat.axiom.4.tensor` | tensor | The simultaneous nuclear, electronic, lattice, and field-state arrangement at the selected scale. |
-| `metapat.axiom.6.relation` | relation | Configured charge, position, spin, coupling, and material context within that tensor. |
-| `metapat.axiom.7.gradient` | gradient | Readable potential difference within those relations. |
+| `metapat.axiom.5.tensor` | tensor | The simultaneous nuclear, electronic, lattice, and field-state arrangement at the selected scale. |
+| `metapat.axiom.6.relate` | relation | Configured charge, position, spin, coupling, and material context within that tensor. |
+| `metapat.axiom.9.scalar` | state-metric-difference | Readable potential difference is treated as a measured difference among related states. |
 | `metapat.axiom.2.boundary` | boundary-simplex | A nuclear, atomic, crystalline, or magnetic-domain configuration that modifies passage, state selection, or transformation outcome. |
-| `metapat.axiom.5.energy_state` | energy-state | An allowed electronic state or collective magnetic state within the application model. |
-| `metapat.axiom.8.transformation` | transformation | Alteration of electronic occupation, spin organization, or magnetic-domain configuration. |
-| `metapat.theory.2.boundary_mediated_transformation` | boundary-mediated-transformation | Changing a modeled boundary state may change passage, permitted state selection, delay, filtering, propagation, or transformation outcome. |
-| `metapat.theory.5.relational_gradient_selection` | relational-gradient-selection | Direction and state selection are asked through the complete relation, boundary state, and tensor arrangement rather than difference alone. |
-| `metapat.theory.11.cross_domain_question_forms` | cross-domain-question-form | The application asks one shared question-form across nuclear, atomic, crystalline, and magnetic-domain scales without making those scales identical. |
-
-Theory 10, Symbolic and Memetic Transfer, is deliberately not imported into this physics application.
+| `metapat.axiom.3.state` | state | An allowed electronic state or collective magnetic state within the application model. |
+| `metapat.axiom.10.transformation` | transformation | Alteration of electronic occupation, spin organization, or magnetic-domain configuration. |
+| `metapat.theory.1.thing_boundary_state` | thing-boundary-state | Modeled physical boundaries participate in defining the selected physical things and states; their physical effects remain domain evidence. |
+| `metapat.theory.4.state_measurement` | state-measurement | Direction and state selection are tested through measured state change rather than inferred from one unmeasured difference alone. |
+| `metapat.theory.11.cross_domain_reconstruction` | cross-domain-question-form | The application asks one shared question-form across nuclear, atomic, crystalline, and magnetic-domain scales without making those scales identical. |
 
 ## Domain statement
 
@@ -55,15 +45,15 @@ configured source
 -> transformation
 ```
 
-The useful cross-domain observation is not that METAPAT and quantum mechanics are identical. It is that a configured source may establish relations and gradients that constrain possible downstream energy-state behavior.
+The useful cross-domain observation is not that METAPAT and quantum mechanics are identical. It is that a configured source may establish relations and measured state differences that constrain possible downstream state behavior.
 
 ## METAPAT mapping
 
 - **Tensor:** The simultaneous nuclear, electronic, lattice, and field-state arrangement at the selected scale.
 - **Relation:** Configured charge, position, spin, coupling, and material context within that tensor.
-- **Gradient:** Readable potential difference within those relations.
+- **State Metric Difference:** Readable potential difference is treated as a measured difference among related states.
 - **Boundary Simplex:** A nuclear, atomic, crystalline, or magnetic-domain configuration that modifies passage, state selection, or transformation outcome.
-- **Energy State:** An allowed electronic state or collective magnetic state within the application model.
+- **State:** An allowed electronic state or collective magnetic state within the application model.
 - **Transformation:** Alteration of electronic occupation, spin organization, or magnetic-domain configuration.
 
 These mappings are scale-dependent. A proton, nucleus, atom, crystal region, and magnetic domain must not be treated as interchangeable merely because each can be described through METAPAT vocabulary.
