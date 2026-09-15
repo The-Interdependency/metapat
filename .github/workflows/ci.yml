@@ -80,8 +80,8 @@ jobs:
         run: python tools/generate_msdmd.py --check
       - name: Snapshot METAPAT source for llms drift check
         run: |
-          mkdir -p "$RUNNER_TEMP/METAPAT"
-          rsync -a --exclude '.git' --exclude '.ci' ./ "$RUNNER_TEMP/METAPAT/"
+          mkdir -p "$RUNNER_TEMP/metapat"
+          rsync -a --exclude '.git' --exclude '.ci' ./ "$RUNNER_TEMP/metapat/"
       - name: Check out pinned skill-lib llms runner
         uses: actions/checkout@v7.0.1
         with:
@@ -92,7 +92,7 @@ jobs:
       - name: Verify generated llms projection
         env:
           PYTHONPATH: ${{ github.workspace }}/.ci/skill-lib
-        run: python -m llms.build --root "$RUNNER_TEMP/METAPAT" --out llms.txt --check
+        run: python -m llms.build --root "$RUNNER_TEMP/metapat" --out llms.txt --check
       - name: Verify every canon-bearing file byte identity
         run: python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"
       - name: Verify packaged root-spine fixture
