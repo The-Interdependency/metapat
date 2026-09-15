@@ -121,7 +121,7 @@ MODULE_KINDS = frozenset(
         "vector",
         "transformation",
         "time",
-        "energy",
+        "domain-qualification",
         "registration",
         "observer",
         "question",

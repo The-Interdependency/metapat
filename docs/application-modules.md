@@ -77,13 +77,13 @@ The source Markdown remains the human-readable application surface. The fixture 
 
 ```text
 application: metapat.application.quantum_magnetism
-version: quantum-magnetism-application-v3
+version: quantum-magnetism-application-v4
 status: CROSS-DOMAIN-HYPOTHESIS
 catalog bindings: 12
 root impact: none
 ```
 
-It preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions and keeps physics as the governing evidence domain. The current v3 bindings include root restraint, partial domains, tensor, relate, scalar/state measurement, boundary, state, transformation, and cross-domain reconstruction.
+It preserves nuclear, atomic, crystalline, and magnetic-domain scale distinctions and keeps physics as the governing evidence domain. The current v4 bindings include root restraint, partial domains, tensor, relate, scalar/state measurement, boundary, state, transformation, and cross-domain reconstruction.
 
 Unresolved “field-space” meaning remains `hmmm`.
 
@@ -104,7 +104,7 @@ print(application.application_digest)
 Packaged fixture:
 
 ```text
-metapat/fixtures/quantum-magnetism-application-v3.json
+metapat/fixtures/quantum-magnetism-application-v4.json
 ```
 
 ## Electromagnetic-pipe vertical slice
@@ -114,7 +114,7 @@ The engineering application is separately bound as `EMPIRICAL-FRONTIER`. Its exa
 Packaged fixture:
 
 ```text
-metapat/fixtures/three-phase-electromagnetic-pipe-v3.json
+metapat/fixtures/three-phase-electromagnetic-pipe-v4.json
 ```
 
 ## Regeneration

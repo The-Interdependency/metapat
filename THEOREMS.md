@@ -38,14 +38,14 @@ If vector alters state, the resulting state change is transformation.
 
 If transformations occur sequentially, there is time.
 
-## Seventh Theorem: Energy Is Derived
+## Seventh Theorem: Domain Terms Do Not Transfer by Structure Alone
 
-If vectors alter state through transformation across time, energy requires vector, state, transformation, and time.
+If a structure or action can recur in domains with different native terms and mechanisms, structural recurrence alone cannot establish that one domain's term names the others.
 
-Therefore energy is composite at this level rather than primitive.
+Therefore energy applies only where the applicable domain independently licenses energy; a common state-transformation pattern need not itself be energy.
 
 ## Eighth Theorem: Root and Tool Separation
 
-If every domain exposes some properties and no domain exposes all, no single domain may own the root.
+If different domains may expose common structures without transferring domain identity, no single domain may own the root.
 
 Therefore domain implementations may reveal METAPAT structure without becoming METAPAT structure by identity.

@@ -102,7 +102,7 @@ import json
 from pathlib import Path
 from typing import Any, Mapping
 
-CANON_VERSION = "metapat-canon-v3"
+CANON_VERSION = "metapat-canon-v4"
 CANON_IDENTITY_SCHEMA_VERSION = "2.0.0"
 
 ROOT_SPINE: tuple[str, ...] = (
@@ -121,23 +121,23 @@ PRIMITIVE_EXTENSION: tuple[str, ...] = (
     "Scalar is a state metric.",
     "Transformation is resulting state change.",
     "Time is sequential transformation.",
-    "Energy is vectors altering state through transformation across time.",
+    "Structural recurrence does not transfer a domain term.",
 )
 
 TIME_DEFINITION = "Time is sequential transformation."
-ENERGY_DEFINITION = "Energy is vectors altering state through transformation across time."
+DOMAIN_QUALIFICATION_DEFINITION = "Structural recurrence does not transfer a domain term."
 ENERGY_THEORY_QUESTION = "What questions do I ask?"
 
 # Exact Git blob SHA-1 identities of the canon-bearing Markdown files on the
-# canon-v3 source epoch. Git blob identities bind file bytes including length.
+# canon-v4 source epoch. Git blob identities bind file bytes including length.
 CANON_FILE_BLOBS: Mapping[str, str] = {
-    "AXIOMS.md": "c658354f45648ef6bcb73bbfc93d75b1545afea0",
-    "CHAPTER_ZERO.md": "9aee7c4b836fbe20dc035effc20b81fb35788382",
-    "DOMAIN_RESTRAINT.md": "057407b8c62ea42680e047650760f7076d514317",
-    "GLOSSARY.md": "f6d528638f7853e32baa164af61d77cbc06d65ae",
-    "POSTULATES.md": "3af3fbaa1a947bbc2240deb337c3ca4da660f26c",
-    "THEOREMS.md": "540fa32c5f5c98acdebcd3d49f3e5bde9dde072f",
-    "THEORIES.md": "94ca3dcd3103ab2d9281c7935ffc9ca80ca8e31b",
+    "AXIOMS.md": "90b7fea71369f08bee09d4fa100491a66e0c498e",
+    "CHAPTER_ZERO.md": "d820a5855867569e97f46bdd15bbd9ff3a67706c",
+    "DOMAIN_RESTRAINT.md": "8d3626384c55350832767ba6f4fa913f48a5afd0",
+    "GLOSSARY.md": "4976050700ccf538400f02d78e4cdf9082331a58",
+    "POSTULATES.md": "e6003140a569e26fbe22ac63f34c0525b27cab48",
+    "THEOREMS.md": "1cc788af8549ec6e84391ad1a6a8fe53a26610cb",
+    "THEORIES.md": "9b351be6273872c6243898ae3aa6c38bcbef301b",
 }
 
 
@@ -163,7 +163,7 @@ def root_spine() -> tuple[str, ...]:
 
 
 def primitive_extension() -> tuple[str, ...]:
-    """Return the exact current action, measurement, and result extension."""
+    """Return the exact current action, measurement, result, and qualification extension."""
 
     return tuple(PRIMITIVE_EXTENSION)
 
@@ -184,7 +184,8 @@ def definitions() -> dict[str, str]:
         "vector": "Alters state; inferred by scalar measurement.",
         "transformation": "Resulting state change.",
         "time": TIME_DEFINITION,
-        "energy": ENERGY_DEFINITION,
+        "domain_qualification": DOMAIN_QUALIFICATION_DEFINITION,
+        "energy": "A domain-qualified term; METAPAT does not call every state transformation energy.",
         "registration": "Capacity of a simplex to preserve, express, or transmit transformation.",
         "observer": "A simplex performing registration; observer does not necessarily mean mind.",
         "question": "A bounded unresolved state or relation available to transformation.",
@@ -217,7 +218,7 @@ def canonical_canon_data() -> dict[str, Any]:
         "root_spine": list(ROOT_SPINE),
         "primitive_extension": list(PRIMITIVE_EXTENSION),
         "time_definition": TIME_DEFINITION,
-        "energy_definition": ENERGY_DEFINITION,
+        "domain_qualification_definition": DOMAIN_QUALIFICATION_DEFINITION,
         "energy_theory_question": ENERGY_THEORY_QUESTION,
         "definitions": definitions(),
         "canon_manifest_digest": canon_manifest_digest(),
@@ -266,7 +267,7 @@ __all__ = [
     "CANON_IDENTITY_SCHEMA_VERSION",
     "CANON_VERSION",
     "CanonIntegrityError",
-    "ENERGY_DEFINITION",
+    "DOMAIN_QUALIFICATION_DEFINITION",
     "ENERGY_THEORY_QUESTION",
     "PRIMITIVE_EXTENSION",
     "ROOT_SPINE",

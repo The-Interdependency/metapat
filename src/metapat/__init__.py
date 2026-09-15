@@ -14,7 +14,7 @@
 #   user_data_boundary: none
 #   admin_only: false
 #   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
-#   rollout: importable_package version 0.7.0
+#   rollout: importable_package version 0.8.0
 #   rollback: restore only with the matching canon epoch
 #   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_canon_contract_checks, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-21
@@ -63,7 +63,7 @@
 #   class: packaging
 # === END CONTRACTS ===
 
-__version__ = "0.7.0"
+__version__ = "0.8.0"
 
 from .application import (
     APPLICATION_BINDING_SCHEMA_ID,
@@ -83,7 +83,7 @@ from .canon import (
     CANON_IDENTITY_SCHEMA_VERSION,
     CANON_VERSION,
     CanonIntegrityError,
-    ENERGY_DEFINITION,
+    DOMAIN_QUALIFICATION_DEFINITION,
     ENERGY_THEORY_QUESTION,
     PRIMITIVE_EXTENSION,
     ROOT_SPINE,
@@ -194,7 +194,7 @@ from .ucns_phi import (
 )
 from .validation import (
     boundary_requires_multiplicity,
-    energy_is_derived,
+    domain_term_is_qualified,
     recursive_closure,
     simplex_closes,
     tensor_emerges,
@@ -226,8 +226,8 @@ __all__ = [
     "CanonIntegrityError",
     "DEFAULT_UCNS_PHI_POLICY",
     "DOCTRINE_CLASSES",
+    "DOMAIN_QUALIFICATION_DEFINITION",
     "EDCM_SIDE_STATUS",
-    "ENERGY_DEFINITION",
     "ENERGY_THEORY_QUESTION",
     "EXPECTED_MODULE_COUNT",
     "EXPECTED_MODULE_COUNTS",
@@ -296,10 +296,10 @@ __all__ = [
     "catalog_source_mismatches",
     "compose",
     "definitions",
+    "domain_term_is_qualified",
     "electromagnetic_pipe_application_module",
     "electromagnetic_pipe_design",
     "electromagnetic_pipe_design_digest",
-    "energy_is_derived",
     "git_blob_sha1",
     "observed_canon_file_blobs",
     "primitive_extension",

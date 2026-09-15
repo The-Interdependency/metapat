@@ -41,7 +41,7 @@ RETRACTED_OR_SUPERSEDED
 
 | Claim | Status | Boundary |
 |---|---|---|
-| Every domain exposes some properties of Platonic energy. | WORKING-POSTULATE | Does not imply every domain exposes the same properties. |
+| Different domains may independently expose common structures and actions. | WORKING-POSTULATE | Structural recurrence does not transfer domain-specific names or mechanisms. |
 | No domain exposes all properties of Platonic energy. | WORKING-POSTULATE | Keeps the search open; completeness is never presumed. |
 | A shared candidate may be compared after domain implementation is removed. | WORKING-POSTULATE | Similarity alone is insufficient. |
 | A later domain may add, split, refine, or falsify a candidate. | WORKING-POSTULATE | No current primitive/operator set is certified complete. |
@@ -57,13 +57,13 @@ RETRACTED_OR_SUPERSEDED
 | `recursive_closure` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | A tensor with boundary and state satisfies simplex closure. | That any specific real system closes this way. |
 | `vector_inferred_by_scalar` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | Changed scalar measurements permit the encoded inference condition. | Complete physical vector reconstruction. |
 | `transformation_produces_time` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | Multiple ordered transformations satisfy the encoded sequence condition. | External theory of physical time. |
-| `energy_is_derived` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | Vector, state, transformation, and time are present. | Empirical conservation law or physical-energy theory. |
+| `domain_term_is_qualified` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | Vector, state, transformation, and time are present. | Empirical conservation law or physical-energy theory. |
 
 ## Implemented architecture contracts
 
 | Surface | Status | Contract |
 |---|---|---|
-| `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable v3 canon and complete canon-file manifest. |
+| `metapat.canon.canon_digest()` | IMPLEMENTED-CONTRACT | Deterministically identifies the exact importable v4 canon and complete canon-file manifest. |
 | `CANON_FILE_BLOBS` / `assert_canon_files_match()` | IMPLEMENTED-CONTRACT | Bind all canon Markdown byte-for-byte and fail closed on drift. |
 | `MetapatModuleEnvelope` | IMPLEMENTED-CONTRACT | Strict semantic/provenance envelope preserving exact source, constraints, `hmmm`, canon identity, and digest. |
 | `MetapatModuleRelation` | IMPLEMENTED-CONTRACT | Strict relation record with exact endpoints/source and no theorem/measurement transfer. |

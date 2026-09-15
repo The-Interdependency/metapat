@@ -1,4 +1,4 @@
-# METAPAT semantic module catalog v3
+# METAPAT semantic module catalog v4
 
 ## Purpose
 
@@ -20,7 +20,7 @@ Each entry carries a strict `MetapatModuleEnvelope`, doctrine class, claim statu
 
 ## Current canon relationship
 
-Catalog v3 is bound to `metapat-canon-v3`.
+Catalog v4 is bound to `metapat-canon-v4`.
 
 The root begins:
 
@@ -41,10 +41,10 @@ Vector
 Scalar
 Transformation
 Time
-Energy
+Domain Qualification
 ```
 
-Tensor is constructed from related simplexes. Scalar is a state metric. Vector alters state and is inferred by scalar measurement. Energy is derived rather than primitive.
+Tensor is constructed from related simplexes. Scalar is a state metric. Vector alters state and is inferred by scalar measurement. Domain-specific terms, including energy, require independent domain license.
 
 ## Identity layers
 
@@ -93,7 +93,7 @@ applies
 constitutive-simultaneous
 ```
 
-Catalog v3 materializes only exact `Derived from:` declarations present in `THEORIES.md`. It does not infer ancestry from similar wording, analogy, ordering, geometry, carrier size, or repeated terms.
+Catalog v4 materializes only exact `Derived from:` declarations present in `THEORIES.md`. It does not infer ancestry from similar wording, analogy, ordering, geometry, carrier size, or repeated terms.
 
 `constitutive-simultaneous` is recognized by the shared vocabulary but is prohibited inside an ordinary catalog unless separately backed by explicit canon-bound `UCNSForkAuthorization`. Theory ancestry is not payload containment.
 
@@ -128,7 +128,7 @@ print(catalog.catalog_digest)
 The installed package includes:
 
 ```text
-metapat/fixtures/semantic-module-catalog-v3.json
+metapat/fixtures/semantic-module-catalog-v4.json
 ```
 
 It must remain byte-identical to `canonical_semantic_catalog().to_json()` plus one trailing newline.

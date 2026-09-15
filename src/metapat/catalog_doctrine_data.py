@@ -64,14 +64,15 @@ DOCTRINE_SPECS = (
         "Registration may preserve time.",
         "Registration does not produce time.",
     ), ()),
-    ("metapat.axiom.12.energy", "energy", "axiom", "DEFINITION", "AXIOMS.md", "12-energy", (
-        "Energy is vectors altering state through transformation across time.",
-        "Energy is derived rather than primitive.",
+    ("metapat.axiom.12.domain_qualification", "domain-qualification", "axiom", "DEFINITION", "AXIOMS.md", "12-domain-qualification", (
+        "Structural recurrence does not transfer a domain term.",
+        "A domain term applies only where that domain independently licenses it.",
+        "Energy is domain-qualified. METAPAT does not call every state transformation energy merely because state, vector, transformation, and time are present.",
     ), ()),
     ("metapat.postulate.1.partial_domains", "postulate", "postulate", "WORKING-POSTULATE", "POSTULATES.md", "first-postulate-partial-domains", (
-        "Every domain exposes some properties of Platonic energy.",
-        "No domain exposes all properties of Platonic energy.",
+        "Different domains may independently expose common structures and actions.",
         "Cross-domain comparison may recover shared structure without making domains identical.",
+        "Similarity does not transfer domain-specific names, mechanisms, evidence standards, or conservation laws.",
     ), ()),
     ("metapat.postulate.2.explicationary_use", "postulate", "postulate", "WORKING-POSTULATE", "POSTULATES.md", "second-postulate-explicationary-use", (
         "A domain term may clarify the root.",
@@ -124,12 +125,12 @@ DOCTRINE_SPECS = (
         "If vector alters state, the resulting state change is transformation.",
         "If transformations occur sequentially, there is time.",
     ), ()),
-    ("metapat.theorem.7.energy_is_derived", "theorem", "theorem", "INTERNAL-DERIVATION", "THEOREMS.md", "seventh-theorem-energy-is-derived", (
-        "If vectors alter state through transformation across time, energy requires vector, state, transformation, and time.",
-        "Therefore energy is composite at this level rather than primitive.",
+    ("metapat.theorem.7.domain_terms_do_not_transfer", "theorem", "theorem", "INTERNAL-DERIVATION", "THEOREMS.md", "seventh-theorem-domain-terms-do-not-transfer-by-structure-alone", (
+        "If a structure or action can recur in domains with different native terms and mechanisms, structural recurrence alone cannot establish that one domain's term names the others.",
+        "Therefore energy applies only where the applicable domain independently licenses energy; a common state-transformation pattern need not itself be energy.",
     ), ()),
     ("metapat.theorem.8.root_tool_separation", "theorem", "theorem", "INTERNAL-DERIVATION", "THEOREMS.md", "eighth-theorem-root-and-tool-separation", (
-        "If every domain exposes some properties and no domain exposes all, no single domain may own the root.",
+        "If different domains may expose common structures without transferring domain identity, no single domain may own the root.",
         "Therefore domain implementations may reveal METAPAT structure without becoming METAPAT structure by identity.",
     ), ()),
 )

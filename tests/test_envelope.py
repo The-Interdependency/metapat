@@ -115,7 +115,7 @@ def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
         "vector",
         "transformation",
         "time",
-        "energy",
+        "domain-qualification",
         "registration",
         "observer",
         "question",

@@ -34,7 +34,7 @@
 # id: metapat_affixiation_harmonics_semantics
 #   summary: emits one deterministic catalog-bound application record for affixiation and time-agnostic harmonic relation
 #   exposes: metapat.affixiation_harmonics.affixiation_harmonics_application_module
-#   inputs: canonical semantic catalog v2
+#   inputs: canonical semantic catalog v4
 #   outputs: strict cross-domain application module and deterministic digest
 #   boundaries: auth:none, storage:serialization-only, network:none, user_data:public conceptual text only
 # === END CAPABILITIES ===
@@ -90,7 +90,7 @@ from .application import (
 )
 from .catalog import MetapatSemanticCatalog, canonical_semantic_catalog, semantic_module_by_id
 
-AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v2"
+AFFIXIATION_HARMONICS_APPLICATION_VERSION = "affixiation-harmonics-application-v3"
 SOURCE_DOCUMENT = "docs/applications/affixiation-harmonics.md"
 
 AFFIXIATION_HARMONICS_BINDING_SPECS = (

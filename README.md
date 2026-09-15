@@ -2,9 +2,9 @@
 
 **Meta Energy Theory — Axioms, Postulates, Theorems, and Theories.**
 
-METAPAT is the canonical semantic authority for Meta Energy Theory. It reconstructs Platonic energy from structures and actions exposed across domains without allowing any one domain to own the root.
+METAPAT is the canonical semantic authority for Meta Energy Theory. It compares structures and actions independently exposed across domains without allowing any one domain to own the root or transfer its vocabulary by resemblance alone.
 
-Every domain exposes some properties of Platonic energy. No domain exposes all of them.
+Different domains may expose common structures and actions. Domain-specific names, mechanisms, evidence standards, and conservation laws remain domain-owned unless the target domain independently licenses them.
 
 ## Root spine
 
@@ -26,10 +26,10 @@ Vector is inferred by scalar measurement.
 Scalar is a state metric.
 Transformation is resulting state change.
 Time is sequential transformation.
-Energy is vectors altering state through transformation across time.
+Structural recurrence does not transfer a domain term.
 ```
 
-Energy is therefore derived rather than primitive at this level.
+Energy is domain-qualified: METAPAT does not call every state transformation energy merely because energetic systems can share the same abstract structure.
 
 ## Recursion
 
@@ -110,7 +110,7 @@ python -m pip install -e .[dev,ucns]
 
 `metapat.canon_digest()` binds the exact importable canon surface and the exact Git blob identities of every canon-bearing Markdown file.
 
-The current canon epoch is `metapat-canon-v3`; identity schema `2.0.0` covers:
+The current canon epoch is `metapat-canon-v4`; identity schema `2.0.0` covers:
 
 - `CHAPTER_ZERO.md`
 - `AXIOMS.md`
@@ -146,7 +146,7 @@ Consumer migration is fail-closed. A consumer bound to an earlier canon or catal
 
 The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, energy, registration, observer, question, postulate, theorem, and theory.
 
-The packaged `fixtures/root-spine-envelope-v3.json` must remain byte-identical to the live constructor.
+The packaged `fixtures/root-spine-envelope-v4.json` must remain byte-identical to the live constructor.
 
 ## Addressable semantic catalog
 
@@ -178,7 +178,7 @@ print(tensor.envelope.source_statements)
 print(catalog.catalog_digest)
 ```
 
-The current catalog epoch is `metapat-semantic-catalog-v3`. The packaged `fixtures/semantic-module-catalog-v3.json` must remain byte-identical to the live constructor plus one trailing newline.
+The current catalog epoch is `metapat-semantic-catalog-v4`. The packaged `fixtures/semantic-module-catalog-v4.json` must remain byte-identical to the live constructor plus one trailing newline.
 
 ## Catalog-bound applications
 
@@ -188,7 +188,7 @@ The quantum-magnetism vertical slice is currently:
 
 ```text
 application: metapat.application.quantum_magnetism
-version: quantum-magnetism-application-v3
+version: quantum-magnetism-application-v4
 claim status: CROSS-DOMAIN-HYPOTHESIS
 catalog bindings: 12
 root impact: none

@@ -1,4 +1,4 @@
-"""Executable canon contract tests for the installed METAPAT v3 surface."""
+"""Executable canon contract tests for the installed METAPAT v4 surface."""
 
 # === CHECKS ===
 # id: check_root_spine_exact
@@ -49,9 +49,9 @@
 #   mutates: none
 #   cleanup: none
 #
-# id: check_energy_derived
-#   proves: energy_requires_dynamic_components
-#   call: self::test_energy_is_derived
+# id: check_domain_term_qualification
+#   proves: domain_term_requires_domain_license
+#   call: self::test_domain_term_is_qualified
 #   mutates: none
 #   cleanup: none
 # === END CHECKS ===
@@ -61,7 +61,7 @@ import unittest
 from metapat import TIME_DEFINITION, definitions, root_spine
 from metapat.validation import (
     boundary_requires_multiplicity,
-    energy_is_derived,
+    domain_term_is_qualified,
     recursive_closure,
     simplex_closes,
     tensor_emerges,
@@ -120,9 +120,13 @@ def test_transformation_produces_time() -> None:
     assert not transformation_produces_time(("t1",))
 
 
-def test_energy_is_derived() -> None:
-    assert energy_is_derived("vector", "state", "transformation", "time")
-    assert not energy_is_derived(None, "state", "transformation", "time")
+def test_domain_term_is_qualified() -> None:
+    assert domain_term_is_qualified(domain_licenses_term=True)
+    assert not domain_term_is_qualified(domain_licenses_term=False)
+    assert not domain_term_is_qualified(
+        domain_licenses_term=False,
+        structurally_similar=True,
+    )
 
 
 class MetapatContractTests(unittest.TestCase):
@@ -150,5 +154,5 @@ class MetapatContractTests(unittest.TestCase):
     def test_06_transformation_produces_time(self) -> None:
         test_transformation_produces_time()
 
-    def test_07_energy_is_derived(self) -> None:
-        test_energy_is_derived()
+    def test_07_domain_term_is_qualified(self) -> None:
+        test_domain_term_is_qualified()

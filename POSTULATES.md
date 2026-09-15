@@ -4,11 +4,11 @@ Postulates are working commitments that organize application. They may be revise
 
 ## First Postulate: Partial Domains
 
-Every domain exposes some properties of Platonic energy.
-
-No domain exposes all properties of Platonic energy.
+Different domains may independently expose common structures and actions.
 
 Cross-domain comparison may recover shared structure without making domains identical.
+
+Similarity does not transfer domain-specific names, mechanisms, evidence standards, or conservation laws.
 
 ## Second Postulate: Explicationary Use
 

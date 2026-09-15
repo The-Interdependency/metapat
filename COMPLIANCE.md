@@ -1,6 +1,6 @@
 # METAPAT compliance surface
 
-Date: 2026-09-13
+Date: 2026-09-15
 
 ## Authority
 
@@ -18,22 +18,22 @@ If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the 
 | Generated metadata | `python tools/generate_msdmd.py --check` | committed `metapat_msdmd.ts` is byte-current |
 | Complete canon bytes | `python -c "from pathlib import Path; import metapat; metapat.assert_canon_files_match(Path('.'))"` | every canon-bearing file matches its declared Git blob identity |
 | Semantic catalog tests | `python -m pytest -q tests/test_catalog.py tests/test_relations.py` | 40 modules, 43 declared relations, strict identity, bounded status, exact sources, no inferred constitutive meaning |
-| Canon semantic fixtures | `python tools/generate_catalog.py --check` | `root-spine-envelope-v3.json` and `semantic-module-catalog-v3.json` are current |
+| Canon semantic fixtures | `python tools/generate_catalog.py --check` | `root-spine-envelope-v4.json` and `semantic-module-catalog-v4.json` are current |
 | Catalog source integrity | `python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"` | every module and relation resolves to exact canon text |
 | Application tests | `python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py` | catalog bindings, source integrity, evidence firewalls, and fixture identity pass |
-| Application fixtures | `python tools/generate_application_fixtures.py --check` | packaged v3 application fixtures are current |
+| Application fixtures | `python tools/generate_application_fixtures.py --check` | packaged v4 application fixtures are current |
 | Canon contracts | `python -m unittest discover -s tests` | pass |
 | Full base suite | `python -m pytest -q` | pass; actual-UCNS tests may skip only when optional dependency is absent |
 | Explicit Phi policy | `python -m pytest -q tests/test_ucns_phi.py` | explicit-only constitutive authorization and no status transfer pass |
 | Actual UCNS integration | CI pinned-producer job | actual UCNS object, exact provenance, strict roundtrip, no theorem/validity transfer |
 | Distribution | `python -m build && python -m twine check dist/*` | source and wheel artifacts valid |
-| Clean wheel | install `dist/*.whl` in a clean environment | version, typing marker, v3 fixtures, identity, and dependency-free base import pass |
+| Clean wheel | install `dist/*.whl` in a clean environment | version, typing marker, v4 fixtures, identity, and dependency-free base import pass |
 
 GitHub Actions is the standing execution evidence. A local run is supporting evidence only and does not supersede a later failing run of the same command.
 
 ## Canon identity status
 
-The current canon epoch is `metapat-canon-v3`. Identity schema `2.0.0` binds the exact importable canon and exact bytes of every canon-bearing Markdown file.
+The current canon epoch is `metapat-canon-v4`. Identity schema `2.0.0` binds the exact importable canon and exact bytes of every canon-bearing Markdown file.
 
 The root is:
 
@@ -55,14 +55,14 @@ Vector is inferred by scalar measurement.
 Scalar is a state metric.
 Transformation is resulting state change.
 Time is sequential transformation.
-Energy is vectors altering state through transformation across time.
+Structural recurrence does not transfer a domain term.
 ```
 
-Tensor is not primitive before simplex in v3. Scalar is not state. Energy-state is not a root primitive. Energy is derived.
+Tensor is not primitive before simplex in v4. Scalar is not state. Energy-state is not a root primitive. Energy is domain-qualified rather than a universal name for state transformation.
 
 ## Semantic catalog status
 
-Catalog schema `1.0.0`, version `metapat-semantic-catalog-v3`, materializes:
+Catalog schema `1.0.0`, version `metapat-semantic-catalog-v4`, materializes:
 
 ```text
 1 root
@@ -78,7 +78,7 @@ Every module and relation carries exact source provenance, bounded status, unres
 
 ## Application status
 
-Application schema `1.0.0` binds domain applications to exact v3 catalog identities without changing canon.
+Application schema `1.0.0` binds domain applications to exact v4 catalog identities without changing canon.
 
 Quantum magnetism remains `CROSS-DOMAIN-HYPOTHESIS`; the electromagnetic-pipe application remains `EMPIRICAL-FRONTIER`. Their evidence remains answerable to their physical domains.
 
@@ -102,9 +102,7 @@ Catalog binding establishes provenance, not domain validation, proof, measuremen
 
 ## Cross-domain falsification
 
-Every domain exposes some properties of Platonic energy. No domain exposes all.
-
-A candidate shared structure/action survives only while independent domain comparisons fail to add, split, refine, or falsify it. Similarity alone is insufficient; domain-specific implementation must be removed before transfer is claimed.
+Different domains may independently expose common structures and actions. A candidate survives only while independent domain comparisons fail to add, split, refine, or falsify it. Similarity alone is insufficient; domain-specific implementation and vocabulary must be removed before structural transfer is claimed, and domain terms require independent target-domain license.
 
 ## Explicit exclusions
 
