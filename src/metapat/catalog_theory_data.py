@@ -23,7 +23,7 @@
 
 THEORY_SPECS = (
     ("metapat.theory.0.root_prior_restraint", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-0-root-prior-restraint", (
-        "Every domain may reveal part of Platonic energy without owning the root.",
+        "Different domains may independently expose common structures and actions without transferring domain identity, names, mechanisms, evidence standards, or conservation laws.",
     ), ()),
     ("metapat.theory.1.thing_boundary_state", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-1-thing-boundary-state-construction", (
         "Thing, boundary, and state are sufficient to close simplex.",
@@ -43,8 +43,9 @@ THEORY_SPECS = (
     ("metapat.theory.6.time", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-6-time", (
         "Time is sequential transformation.",
     ), ()),
-    ("metapat.theory.7.derived_energy", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-7-derived-energy", (
-        "Energy is composite: vectors altering state through transformation across time.",
+    ("metapat.theory.7.domain_qualification", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-7-domain-qualification", (
+        "A recurring structure does not inherit a domain term merely because the structure is similar.",
+        "Energy is one domain-qualified realization where the applicable domain independently licenses energy; METAPAT does not call every vector-mediated state transformation energy.",
     ), ()),
     ("metapat.theory.8.emergence", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-8-emergence", (
         "Tensors emerge from simplexes and may become simplexes in recursive construction.",
@@ -59,6 +60,7 @@ THEORY_SPECS = (
     ("metapat.theory.11.cross_domain_reconstruction", "theory", "theory", "INTERNAL-DERIVATION", "THEORIES.md", "theory-11-cross-domain-reconstruction", (
         "Independent domain implementations may expose the same candidate structure or action without making the domains identical.",
         "The candidate survives only while later domains fail to falsify, split, or refine it.",
+        "A shared structure does not transfer a source-domain name or mechanism into another domain without independent domain evidence.",
     ), ("hmmm: completeness is never presumed.",)),
 )
 
@@ -70,7 +72,7 @@ CATALOG_DERIVATIONS = {
     "metapat.theory.4.state_measurement": ("metapat.axiom.3.state", "metapat.axiom.8.vector", "metapat.axiom.9.scalar", "metapat.theorem.5.scalar_vector_distinct"),
     "metapat.theory.5.transformation": ("metapat.axiom.8.vector", "metapat.axiom.10.transformation", "metapat.theorem.6.transformation_produces_time"),
     "metapat.theory.6.time": ("metapat.axiom.11.time", "metapat.theorem.6.transformation_produces_time"),
-    "metapat.theory.7.derived_energy": ("metapat.axiom.12.energy", "metapat.theorem.7.energy_is_derived"),
+    "metapat.theory.7.domain_qualification": ("metapat.axiom.12.domain_qualification", "metapat.theorem.7.domain_terms_do_not_transfer"),
     "metapat.theory.8.emergence": ("metapat.axiom.5.tensor", "metapat.axiom.6.relate", "metapat.axiom.7.emerge", "metapat.theorem.3.tensor_emergence", "metapat.theorem.4.recursive_closure"),
     "metapat.theory.9.registration_observer": ("metapat.postulate.4.registration_plurality", "metapat.postulate.5.observation_does_not_create_structure"),
     "metapat.theory.10.questions_unresolved_structure": ("metapat.postulate.5.observation_does_not_create_structure", "metapat.postulate.6.cross_domain_falsification", "metapat.postulate.7.discovery_before_recovery"),
@@ -85,7 +87,7 @@ CATALOG_DERIVED_TEXT = {
     "metapat.theory.4.state_measurement": "Derived from: Axioms 3, 8, and 9; Theorem 5.",
     "metapat.theory.5.transformation": "Derived from: Axioms 8 and 10; Theorem 6.",
     "metapat.theory.6.time": "Derived from: Axiom 11; Theorem 6.",
-    "metapat.theory.7.derived_energy": "Derived from: Axiom 12; Theorem 7.",
+    "metapat.theory.7.domain_qualification": "Derived from: Axiom 12; Theorem 7.",
     "metapat.theory.8.emergence": "Derived from: Axioms 5-7; Theorems 3-4.",
     "metapat.theory.9.registration_observer": "Derived from: Postulates 4-5.",
     "metapat.theory.10.questions_unresolved_structure": "Derived from: Postulates 5-7.",
