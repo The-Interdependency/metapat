@@ -17,9 +17,11 @@ Domains may not redefine the root.
 
 No domain owns Energy Theory.
 
-Every domain exposes some properties of Platonic energy.
+Different domains may independently expose common structures and actions.
 
-No domain exposes all properties of Platonic energy.
+Structural resemblance does not transfer a domain term, mechanism, evidence standard, or conservation law.
+
+A domain term applies only where that domain independently licenses it.
 
 ## 1. Structure
 
@@ -89,11 +91,13 @@ Registration may preserve time.
 
 Registration does not produce time.
 
-### Twelfth Axiom: Energy
+### Twelfth Axiom: Domain Qualification
 
-Energy is vectors altering state through transformation across time.
+Structural recurrence does not transfer a domain term.
 
-Energy is derived rather than primitive.
+A domain term applies only where that domain independently licenses it.
+
+Energy is domain-qualified. A domain may identify energy in structures involving state, vector, transformation, and time, but METAPAT does not call all such structures energy.
 
 ## 4. Recursion
 
@@ -112,11 +116,11 @@ Construction history does not prevent a thing from participating as primitive wh
 
 ### First Postulate: Partial Domains
 
-Every domain exposes some properties of Platonic energy.
-
-No domain exposes all properties of Platonic energy.
+Different domains may independently expose common structures and actions.
 
 Cross-domain comparison may recover shared structure without making domains identical.
+
+Similarity does not transfer domain-specific names or mechanisms.
 
 ### Second Postulate: Explicationary Use
 
@@ -196,15 +200,15 @@ If vector alters state, the resulting state change is transformation.
 
 If transformations occur sequentially, there is time.
 
-### Seventh Theorem: Energy Is Derived
+### Seventh Theorem: Domain Terms Do Not Transfer by Structure Alone
 
-If vectors alter state through transformation across time, energy requires vector, state, transformation, and time.
+If a structure or action can recur in domains with different native terms and mechanisms, structural recurrence alone cannot establish that one domain's term names the others.
 
-Therefore energy is composite at this level rather than primitive.
+Therefore energy applies only where the applicable domain independently licenses energy; a common state-transformation pattern need not itself be energy.
 
 ### Eighth Theorem: Root and Tool Separation
 
-If every domain exposes some properties and no domain exposes all, no single domain may own the root.
+If different domains may expose common structures without transferring domain identity, no single domain may own the root.
 
 Therefore domain implementations may reveal METAPAT structure without becoming METAPAT structure by identity.
 
@@ -248,14 +252,16 @@ Transformation is resulting state change.
 
 Time is sequential transformation.
 
-Energy is vectors altering state through transformation across time.
+Different domains may independently expose common structures and actions.
 
-Every domain exposes some properties of Platonic energy.
+Structural resemblance does not transfer a domain term, mechanism, evidence standard, or conservation law.
 
-No domain exposes all properties of Platonic energy.
+Energy is domain-qualified rather than the universal name for state transformation.
 
 Energy Theory answers: What questions do I ask?
 
 ## hmmm
 
 The root is intentionally open to falsification. A later domain may require a new primitive, split a presently conflated primitive, refine a definition, or falsify part of this construction.
+
+Whether the historical project name `Meta Energy Theory` remains the best name for a substrate whose universal layer no longer names every transformation as energy is unresolved. Naming may not repair ontology.
