@@ -90,13 +90,14 @@ Remaining:
 
 ## Phase 3 — Actual UCNS geometry adapter and Phi authority
 
-Status: adapter implemented for ordered statement-count geometry; semantic authorization implemented at policy `1.0.0`.
+Status: adapter implemented for ordered statement-count geometry at adaptation-record wire `2.0.0`; semantic authorization implemented at policy `1.0.0`.
 
 - Base METAPAT remains importable without UCNS.
 - Adapter calls without UCNS raise a clear dependency error.
 - Adaptation constructs actual `ucns.UCNSObject` instances.
 - Stable hash and UCNS serialization version are recorded.
 - Exact statements, references, constraints, permitted interpretations, and unresolved `hmmm` survive in a strict serializable record.
+- Adaptation-record wire `2.0.0` validates the embedded v4 envelope, provenance, and canon identities and rejects the prior outer wire `1.0.0`.
 - The adapter default remains `external-provenance`; METAPAT statements remain outside UCNS payloads and UCNS payloads remain unit.
 - METAPAT contains no local normalization, product, factorization, star/disk-flip, or theorem-status algebra.
 - `UCNSPhiPolicy` requires explicit authorization and permits only the `constitutive-simultaneous` relation.

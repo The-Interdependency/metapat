@@ -22,6 +22,12 @@
 #   call: self::test_record_round_trip_and_legacy_boundaries
 #   mutates: process_import_state
 #   cleanup: monkeypatch_restore
+#
+# id: check_metapat_ucns_adaptation_epoch
+#   proves: metapat_ucns_adaptation_epoch_fail_closed
+#   call: self::test_adaptation_record_epoch_and_embedded_identity_fail_closed
+#   mutates: process_import_state
+#   cleanup: monkeypatch_restore
 # === END CHECKS ===
 
 from __future__ import annotations
@@ -141,3 +147,53 @@ def test_record_round_trip_and_legacy_boundaries(monkeypatch: pytest.MonkeyPatch
         adapter_module.compose(object(), object())
     with pytest.raises(adapter_module.UCNSAdapterError, match="archived adapter"):
         adapter_module.adapt_envelope_to_ucns(root_spine_module_envelope(), face_bits=(0,))
+
+
+def test_adaptation_record_epoch_and_embedded_identity_fail_closed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    module = _fake_exact_ucns()
+    monkeypatch.setattr(adapter_module.importlib, "import_module", lambda name: module)
+    record = adapter_module.adapt_envelope_to_ucns(root_spine_module_envelope()).record
+    assert adapter_module.UCNS_ADAPTER_VERSION == "2.0.0"
+    assert record.adapter_version == "2.0.0"
+    assert record.envelope_schema_version == metapat.MODULE_ENVELOPE_SCHEMA_VERSION == "2.0.0"
+    assert record.canon_version == metapat.CANON_VERSION == "metapat-canon-v4"
+    assert record.canon_digest == metapat.canon_digest()
+
+    invalid_identities = (
+        ("adapter_version", "1.0.0", "adapter identity"),
+        ("envelope_schema_version", "1.2.0", "envelope schema identity"),
+        ("canon_version", "metapat-canon-v3", "canon identity"),
+        ("canon_digest", "0" * 64, "canon identity"),
+    )
+    for field_name, prior_value, message in invalid_identities:
+        data = record.to_dict()
+        data[field_name] = prior_value
+        with pytest.raises(ValueError, match=message):
+            adapter_module.UCNSAdaptationRecord.from_dict(data)
+
+    tampered = record.to_dict()
+    tampered["constraints"] = [*tampered["constraints"], "tampered"]
+    with pytest.raises(ValueError, match="provenance_digest"):
+        adapter_module.UCNSAdaptationRecord.from_dict(tampered)
+
+    malformed = record.to_dict()
+    malformed["constraints"] = "not-an-array"
+    with pytest.raises(ValueError, match="constraints must be an array"):
+        adapter_module.UCNSAdaptationRecord.from_dict(malformed)
+
+    malformed_scalar = record.to_dict()
+    malformed_scalar["ucns_stable_identity"] = 7
+    with pytest.raises(ValueError, match="ucns_stable_identity"):
+        adapter_module.UCNSAdaptationRecord.from_dict(malformed_scalar)
+
+    non_boolean_firewall = record.to_dict()
+    non_boolean_firewall["theorem_status_transfer"] = 0
+    with pytest.raises(ValueError, match="validity or theorem status"):
+        adapter_module.UCNSAdaptationRecord.from_dict(non_boolean_firewall)
+
+    unknown = record.to_dict()
+    unknown["implicit_migration"] = True
+    with pytest.raises(ValueError, match="unknown adaptation record fields"):
+        adapter_module.UCNSAdaptationRecord.from_dict(unknown)

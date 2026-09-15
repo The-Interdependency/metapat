@@ -13,13 +13,13 @@ Base METAPAT remains importable without UCNS installed. Adapter calls without th
 ## Implemented adapter behavior
 
 1. Validate the actual UCNS public surface.
-2. Derive deterministic geometry from ordered source-statement count.
+2. Create one unit-payload UCNS cell per ordered source-statement occurrence and retain each source reference as cell provenance.
 3. Construct a real `ucns.UCNSObject`.
 4. Keep all UCNS payloads unit (`None`).
-5. Record the actual UCNS stable hash and serialization version.
+5. Record the exact producer epoch, profile, bridge schema, source commit, bridge JSON, and bridge stable identity.
 6. Preserve module id, kind, canon identity, envelope provenance digest, exact source references, exact statements, constraints, permitted interpretations, and unresolved `hmmm` fields in a separate strict adaptation record.
 7. Serialize and reconstruct that record without coercing malformed fields.
-8. Delegate composition only to actual `ucns.multiply`.
+8. Reject archived face-bit inputs and universal composition requests under this ordered-occurrence profile.
 9. Mark theorem-status transfer and METAPAT-validity claims as false.
 
 ## Usage
@@ -30,9 +30,14 @@ import ucns
 
 envelope = metapat.root_spine_module_envelope()
 adaptation = metapat.adapt_envelope_to_ucns(envelope)
+bridge = ucns.EdcmMetapatBridgeRecord.from_json_bytes(
+    adaptation.record.ucns_bridge_json.encode("utf-8")
+)
 
 assert isinstance(adaptation.ucns_object, ucns.UCNSObject)
-assert adaptation.record.ucns_object_hash == ucns.stable_hash(adaptation.ucns_object)
+assert adaptation.record.ucns_stable_identity == bridge.stable_identity
+assert adaptation.record.adapter_version == "2.0.0"
+assert adaptation.record.envelope_schema_version == "2.0.0"
 assert adaptation.record.canon_digest == envelope.canon_digest
 assert adaptation.record.envelope_provenance_digest == envelope.provenance_digest
 assert adaptation.record.constraints == envelope.constraints
@@ -43,18 +48,20 @@ assert metapat.UCNSAdaptationRecord.from_json(adaptation.record.to_json()) == ad
 Install the optional integration with:
 
 ```bash
-python -m pip install -e .[ucns]
+python -m pip install "git+https://github.com/The-Interdependency/ucns.git@19f1afddb993f7d933ac8727627e7d5e1c3b88fc"
+python -m pip install -e .[dev]
 ```
 
-## Geometry convention
+## Ordered-occurrence convention
 
-For an envelope containing `n` ordered source statements, the adapter constructs `n` evenly spaced anchors using UCNS half-turn angles:
+For an envelope containing `n` ordered source statements, the adapter constructs `n` `ucns.Cell` values in the same order:
 
 ```text
-angle_i = 2i / n
+payload = None
+provenance = {"source_ref": matching_source_statement_ref}
 ```
 
-It declares `n_dec = n_min = n`, supplies unit payloads, and defaults every face bit to `0` unless the caller explicitly supplies a same-length sequence of integer binary values. Boolean values are rejected rather than silently accepted as integers.
+Those cells are passed to the pinned producer's `make_carrier` and ordered-occurrence profile. Face bits and universal composition belong to archived adapters and are rejected.
 
 This is an adapter contract, not a METAPAT claim that statement order or count exhausts semantic geometry.
 
@@ -75,6 +82,8 @@ The envelope and adaptation record retain:
 - unresolved constraints;
 - canon version and digest;
 - envelope provenance digest.
+
+Adaptation-record wire `2.0.0` validates all of those embedded envelope identities against the current v4 parser epoch. It rejects outer wire `1.0.0`, envelope schema `1.2.0`, non-current canon identity, provenance tampering, unknown fields, and malformed sequence fields rather than treating any of them as implicit migration.
 
 None of these fields are silently placed into UCNS payloads or assigned UCNS mathematical meaning. The adapter does not infer semantic meaning from a payload, tag, cell, path, carrier, symmetry, or object shape.
 
@@ -132,9 +141,9 @@ They do not define a local UCNS vertex algebra or symbolic table.
 
 Successful adaptation establishes only that:
 
-- the envelope passed strict schema checks;
+- the envelope and adaptation record passed strict current-epoch schema, canon, and provenance checks;
 - actual UCNS constructed the object;
-- the stable hash and complete provenance were recorded.
+- the bridge stable identity and complete provenance were recorded.
 
 A valid Phi authorization establishes only that METAPAT explicitly declared one ordered constitutive-simultaneous semantic relation under the named canon and policy.
 

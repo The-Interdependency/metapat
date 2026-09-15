@@ -103,7 +103,8 @@ python -m twine check dist/*
 The base package has no third-party runtime dependency. Install the actual UCNS adapter dependency explicitly when needed:
 
 ```bash
-python -m pip install -e .[dev,ucns]
+python -m pip install "git+https://github.com/The-Interdependency/ucns.git@19f1afddb993f7d933ac8727627e7d5e1c3b88fc"
+python -m pip install -e .[dev]
 ```
 
 ## Byte-complete canon identity
@@ -203,6 +204,8 @@ The application remains answerable to physics. Passing METAPAT contract checks d
 METAPAT defines no local UCNS algebra. `metapat.ucns` lazily imports the actual `ucns` package only when adaptation is requested.
 
 The default semantic mapping is `external-provenance`: METAPAT semantics remain in the adaptation record while UCNS owns its representation and geometry.
+
+`UCNSAdaptationRecord` wire version `2.0.0` validates its embedded envelope schema `2.0.0` and exact v4 canon identity. The prior adaptation wire `1.0.0` and current wire reject one another; an outer record cannot be used to bypass explicit v4 migration.
 
 One explicit semantic exception remains available through canon-bound `UCNSForkAuthorization` for `constitutive-simultaneous` children. Authorization supplies semantic permission only; downstream UCNS topology still has to be verified independently.
 
