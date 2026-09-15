@@ -1,4 +1,4 @@
-"""Deterministic METAPAT v3 canon contract checks.
+"""Deterministic METAPAT v4 canon contract checks.
 
 These helpers test encoded conditions associated with current METAPAT
 statements. A ``True`` result means only that supplied Python values satisfy
@@ -10,9 +10,9 @@ transfer proof status from any domain.
 # id: metapat_canon_contract_checks
 #   module_name: metapat.validation
 #   module_kind: service
-#   summary: deterministic v3 canon contract checks; not theorem verification or empirical validation
+#   summary: deterministic v4 canon contract checks; not theorem verification or empirical validation
 #   owner: The Interdependency
-#   public_surface: boundary_requires_multiplicity, simplex_closes, tensor_emerges, recursive_closure, vector_inferred_by_scalar, transformation_produces_time, energy_is_derived
+#   public_surface: boundary_requires_multiplicity, simplex_closes, tensor_emerges, recursive_closure, vector_inferred_by_scalar, transformation_produces_time, domain_term_is_qualified
 #   internal_surface: none
 #   auth_boundary: none
 #   storage_boundary: none
@@ -58,9 +58,9 @@ transfer proof status from any domain.
 #   then: encoded time condition requires at least two ordered transformations
 #   class: canon_contract
 #
-# id: energy_requires_dynamic_components
-#   given: vector, state, transformation, and time are supplied
-#   then: encoded derived-energy condition requires every component
+# id: domain_term_requires_domain_license
+#   given: structural similarity and an explicit domain-license flag are supplied
+#   then: the domain term is qualified only when the applicable domain independently licenses it; structural similarity alone is insufficient
 #   class: canon_contract
 # === END CONTRACTS ===
 
@@ -89,18 +89,20 @@ def transformation_produces_time(transformations: tuple[object, ...]) -> bool:
     return len(transformations) >= 2
 
 
-def energy_is_derived(
-    vector: object,
-    state: object,
-    transformation: object,
-    time: object,
-) -> bool:
-    return all(value is not None for value in (vector, state, transformation, time))
+def domain_term_is_qualified(*, domain_licenses_term: bool, structurally_similar: bool = False) -> bool:
+    """Return whether a source-domain term may be applied in the target domain.
+
+    ``structurally_similar`` is accepted explicitly so callers cannot mistake
+    similarity for authorization; it never substitutes for domain license.
+    """
+
+    _ = structurally_similar
+    return domain_licenses_term is True
 
 
 __all__ = [
     "boundary_requires_multiplicity",
-    "energy_is_derived",
+    "domain_term_is_qualified",
     "recursive_closure",
     "simplex_closes",
     "tensor_emerges",
