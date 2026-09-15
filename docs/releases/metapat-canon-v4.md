@@ -1,21 +1,34 @@
 # METAPAT canon v4 — domain-qualified energy
 
-Status: **PROPOSED CANON ROTATION / evidence-bound**
+Status: **ADOPTED CANON ROTATION / evidence-bound**
+
+Adopted in METAPAT PR #32; current canon identity is `metapat-canon-v4`. Repository gates support implementation consistency but do not substitute for the explicit canon-rotation decision.
 
 Evidence trigger: `docs/adversaries/double-entry-result.md`.
 
-## Required change
+## Evidence standing
 
-The independent double-entry adversary falsified two universal v3 claims:
+The independent double-entry adversary falsified the tested universal v3 use of `energy`:
 
 ```text
 Energy is vectors altering state through transformation across time.
+```
+
+as a cross-domain name that would attach merely because an abstract state-change pattern recurs. The accounting domain did not independently license that term.
+
+The same adversary did **not** directly falsify the weaker historical proposition:
+
+```text
 Every domain exposes some properties of Platonic energy.
 ```
 
-The structural composite survives. The universal transfer of the domain term `energy` does not.
+Its standing in that adversary is `UNRESOLVED`. v4 withdraws the proposition from current canon rather than treating an unresolved result as falsification.
 
-v4 therefore preserves the v3 structure/action spine through Time and replaces universal energy with domain qualification:
+The structural/action composite through Time remains available for cross-domain comparison. Domain-specific names do not transfer with the structure.
+
+## Adopted change
+
+v4 preserves the v3 structure/action spine through Time and replaces universal energy naming with domain qualification:
 
 ```text
 A structural recurrence does not transfer a domain term, mechanism, evidence standard, or conservation law.
@@ -23,7 +36,7 @@ A domain term applies only where that domain independently licenses it.
 Energy is domain-qualified: a domain may identify energy in structures involving state, vector, transformation, and time, but METAPAT does not call all such structures energy.
 ```
 
-The cross-domain rule becomes:
+The cross-domain rule is:
 
 ```text
 Different domains may independently expose common structures and actions.
@@ -61,6 +74,7 @@ The former Theory 7 `Derived Energy` becomes `Domain Qualification` and constrai
 - This does not deny physical energy.
 - This does not make debit/credit balance a universal conservation law.
 - This does not rename every state change as energy.
+- This does not claim the double-entry adversary falsified every weaker partial-property proposition about energy.
 - This does not establish completeness of the remaining root.
 
 ## hmmm
