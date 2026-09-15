@@ -96,7 +96,7 @@ Catalog binding establishes provenance, not domain validation, proof, measuremen
 
 ## Envelope, UCNS, and Phi status
 
-`MetapatModuleEnvelope` schema `1.2.0` rejects unknown, missing, or incorrectly typed fields. The actual-UCNS adapter retains exact semantic provenance while keeping representation authority in UCNS and default `external-provenance` mapping.
+`MetapatModuleEnvelope` schema `2.0.0` rejects unknown, missing, or incorrectly typed fields. The v4 envelope wire epoch is intentionally incompatible with the prior `1.2.0` epoch: neither parser epoch may silently accept the other, and migration requires an explicit rebind to the v4 canon and provenance identities. The actual-UCNS adapter retains exact semantic provenance while keeping representation authority in UCNS and default `external-provenance` mapping.
 
 `UCNSPhiPolicy` permits only explicit `constitutive-simultaneous` authorization. Application bindings, catalog ancestry, temporal succession, adjacency, provenance, alternatives, external symmetry action, and arbitrary association remain insufficient to establish containment.
 

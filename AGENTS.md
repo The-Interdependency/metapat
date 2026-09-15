@@ -34,15 +34,33 @@ description: |
 #
 # id: usage_rules
 #   content: - Preserve canon text exactly unless a canon change is separately authorized. Treat CANON_VERSION, CANON_FILE_BLOBS, identity schema 4.0.0, and canon_digest() as one complete identity boundary.
-#     - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
-#     - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
-#     - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
-#     - Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
-#     - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
-#     - Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities. Consumer repositories own their local epoch names.
-#     - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
-#     - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
-#     - hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
+#
+# id: usage_rules
+#   content: - Do not restore v2 doctrine: Tensor is not primitive in v4; scalar is not state; energy-state is not a root primitive; time is sequential transformation.
+#
+# id: usage_rules
+#   content: - Use exact v4 catalog module IDs, MetapatModuleEnvelope, MetapatModuleRelation, ApplicationCatalogBinding, MetapatApplicationModule, and current packaged fixtures for semantic authority and provenance.
+#
+# id: usage_rules
+#   content: - Catalog v4 remains exactly one root, twelve axioms, seven postulates, eight theorems, twelve theories, and forty-three source-declared relations unless a separately authorized rotation changes it.
+#
+# id: usage_rules
+#   content: - Application modules bind exact catalog identities and preserve domains, transfer/non-transfer statements, evidence requirements, source references, and unresolved hmmm. Root impact and METAPAT, domain, measurement, theorem-transfer, and UCNS-topology validity claims remain false unless separately established by their owning evidence.
+#
+# id: usage_rules
+#   content: - The actual UCNS adapter defaults to external-provenance. Only explicit canon-bound constitutive-simultaneous authorization may alter semantic meaning; downstream topology verification remains required.
+#
+# id: usage_rules
+#   content: - Consumers pinned to any prior canon/catalog or envelope wire schema must fail closed until explicitly migrated to v4 identities and envelope schema 2.0.0. Consumer repositories own their local epoch names.
+#
+# id: usage_rules
+#   content: - Never turn semantic labels into EDCM metric values or transfer UCNS theorem status. Source modules own CONTRACTS; tests own CHECKS.
+#
+# id: usage_rules
+#   content: - Generated fixtures, metapat_msdmd.ts, and llms.txt are regenerated from constructors/source blocks; do not hand-maintain them.
+#
+# id: usage_rules
+#   content: - hmmm: Completeness is never presumed. Later domains may add, split, refine, or falsify current candidates.
 # === END LLMS ===
 
 # METAPAT agent entrypoint

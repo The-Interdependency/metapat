@@ -60,6 +60,12 @@ from __future__ import annotations
 #   call: self::test_from_dict_rejects_string_for_sequence_fields
 #   mutates: none
 #   cleanup: none
+#
+# id: check_envelope_epoch_migration_fail_closed
+#   proves: metapat_envelope_epoch_migration_fail_closed
+#   call: self::test_v4_envelope_rejects_prior_wire_schema
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 import json
@@ -89,7 +95,7 @@ def test_canon_digest_is_deterministic() -> None:
 
 def test_root_spine_envelope_preserves_exact_sources_and_constraints() -> None:
     envelope = root_spine_module_envelope()
-    assert MODULE_ENVELOPE_SCHEMA_VERSION == "1.2.0"
+    assert MODULE_ENVELOPE_SCHEMA_VERSION == "2.0.0"
     assert envelope.module_id == "metapat.root_spine"
     assert envelope.module_kind == "canon-module"
     assert envelope.source_statement_refs == (
@@ -207,4 +213,13 @@ def test_from_dict_rejects_string_for_sequence_fields() -> None:
     data = root_spine_module_envelope().to_dict()
     data["constraints"] = "not-an-array"
     with pytest.raises(ValueError, match="constraints must be an array"):
+        MetapatModuleEnvelope.from_dict(data)
+
+
+def test_v4_envelope_rejects_prior_wire_schema() -> None:
+    data = root_spine_module_envelope().to_dict()
+    assert data["schema_version"] == "2.0.0"
+    assert data["schema_version"] != "1.2.0"
+    data["schema_version"] = "1.2.0"
+    with pytest.raises(ValueError, match="unsupported schema_version"):
         MetapatModuleEnvelope.from_dict(data)

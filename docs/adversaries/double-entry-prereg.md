@@ -16,7 +16,7 @@ Primary authority for domain concepts:
 
 Supporting mechanics source:
 
-- Mitchell Franklin, Patty Graybeal, and Dixon Cooper, OpenStax, *Principles of Accounting, Volume 1: Financial Accounting*, published April 11, 2019, §3.1 “Double-Entry Bookkeeping”: <https://openstax.org/books/principles-financial-accounting/pages/3-1-describe-principles-assumptions-and-concepts-of-accounting-and-their-relationship-to-financial-statements>. This is the bounded source for the mechanics claims that a transaction changes at least two accounts, includes at least one debit and one credit, and has equal total debits and credits.
+- Mitchell Franklin, Patty Graybeal, and Dixon Cooper, OpenStax, *Principles of Accounting, Volume 1: Financial Accounting*, published April 11, 2019, §3.1 “Describe Principles, Assumptions, and Concepts of Accounting and Their Relationship to Financial Statements,” subsection “Double-Entry Bookkeeping”: <https://openstax.org/books/principles-financial-accounting/pages/3-1-describe-principles-assumptions-and-concepts-of-accounting-and-their-relationship-to-financial-statements>. This is the bounded source for the mechanics claims that a transaction changes at least two accounts, includes at least one debit and one credit, and has equal total debits and credits.
 
 These identities are a post-freeze provenance addendum only. They do not alter the frozen tests, allowed outcomes, or rescue rules below.
 

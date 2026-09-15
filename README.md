@@ -146,6 +146,8 @@ Consumer migration is fail-closed. A consumer bound to any earlier canon, identi
 
 The root spine is represented as `module_kind="canon-module"`. Current module vocabulary includes thing, boundary, state, simplex, tensor, relate, relation, emergence, scalar, vector, transformation, time, domain-qualification, registration, observer, question, postulate, theorem, and theory. `energy` is not a universal module kind in v4; a domain may use the term only under its own applicable evidence and licensing.
 
+The v4 envelope wire schema is `2.0.0`. It is deliberately incompatible with the prior `1.2.0` epoch, so old and current parsers fail closed across the boundary until a consumer explicitly rebinds the v4 canon and provenance identities.
+
 The packaged `fixtures/root-spine-envelope-v4.json` must remain byte-identical to the live constructor.
 
 ## Addressable semantic catalog

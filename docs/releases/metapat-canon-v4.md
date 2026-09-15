@@ -72,9 +72,10 @@ The former Theory 7 `Derived Energy` becomes `Domain Qualification` and constrai
 
 - canon epoch: `metapat-canon-v4`
 - identity schema: `4.0.0`
+- module-envelope wire schema: `2.0.0` (incompatible with the prior `1.2.0` epoch)
 - catalog epoch: `metapat-semantic-catalog-v4`
 
-v3 added `energy_definition` and required schema `3.0.0`; v4 removes that field and adds `domain_qualification_definition`, requiring schema `4.0.0`. Consumers bound to v2, the historically mislabeled v3 wire shape, or schema `3.0.0` reject v4 until they explicitly bind schema `4.0.0` plus the v4 canon, catalog, application, and provenance identities. No shared field names or successful digest computation constitute assent or migration.
+v3 added `energy_definition` and required schema `3.0.0`; v4 removes that field and adds `domain_qualification_definition`, requiring schema `4.0.0`. The module-envelope wire schema also rotates from `1.2.0` to `2.0.0`, preventing a prior parser from accepting a v4 envelope merely because its field shape is familiar. Consumers bound to v2, the historically mislabeled v3 wire shape, schema `3.0.0`, or envelope schema `1.2.0` reject v4 until they explicitly bind schema `4.0.0`, envelope schema `2.0.0`, and the v4 canon, catalog, application, and provenance identities. No shared field names or successful digest computation constitute assent or migration.
 
 ## Nonclaims
 

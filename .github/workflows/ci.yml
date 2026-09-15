@@ -189,6 +189,7 @@ jobs:
           import metapat
           assert version("metapat") == metapat.__version__ == "0.8.0"
           assert metapat.CANON_IDENTITY_SCHEMA_VERSION == "4.0.0"
+          assert metapat.MODULE_ENVELOPE_SCHEMA_VERSION == "2.0.0"
           assert metapat.canonical_canon_data()["identity_schema_version"] == "4.0.0"
           assert files("metapat").joinpath("py.typed").is_file()
           root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v4.json")
