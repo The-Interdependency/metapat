@@ -124,20 +124,20 @@ Do not restore the superseded single arrow `UCNS -> METAPAT -> EDCM`.
 - `CANON_VERSION`, `CANON_IDENTITY_SCHEMA_VERSION`, `CANON_FILE_BLOBS`, and `canon_digest()` jointly identify the complete canon surface.
 - Run `metapat.assert_canon_files_match(Path('.'))` from repository root.
 - Any authorized canon rotation requires explicit versioning, manifest rotation, catalog rotation, application invalidation or migration, documentation, tests, generated artifacts, and consumer epoch consequences.
-- Consumers pinned to prior epochs reject v3 until explicitly migrated. Do not alias deprecated semantic IDs to new meanings.
+- Consumers pinned to any prior epoch, including v3, reject v4 until explicitly migrated. Do not alias deprecated semantic IDs to new meanings.
 - Unknown status is `hmmm`, not guessed closure.
 
 ## Semantic envelope
 
 Use `MetapatModuleEnvelope` for cross-repository semantic authority. Preserve schema identity, module identity, canon identity, exact references and statements, constraints, permitted interpretations, unresolved constraints, and provenance digest. Deserialization rejects malformed types rather than coercing them. An envelope contains no calculated EDCM measurements.
 
-The packaged `fixtures/root-spine-envelope-v3.json` must equal the live canonical constructor.
+The packaged `fixtures/root-spine-envelope-v4.json` must equal the live canonical constructor.
 
 ## Semantic catalog
 
 Use `canonical_semantic_catalog()` and exact module IDs rather than free-form reconstruction.
 
-Catalog v3 is:
+Catalog v4 is:
 
 ```text
 1 root
@@ -156,7 +156,7 @@ Catalog v3 is:
 - Addressability does not transfer claim status into an application, UCNS object, EDCM value, or downstream proof.
 - Catalog relations reproduce declared ancestry only; do not infer edges from analogy, repeated words, order, geometry, carrier size, or symmetry.
 - Ordinary catalog construction rejects `constitutive-simultaneous` relations without explicit Phi authorization.
-- `fixtures/semantic-module-catalog-v3.json` must equal the live catalog constructor plus one trailing newline.
+- `fixtures/semantic-module-catalog-v4.json` must equal the live catalog constructor plus one trailing newline.
 
 ## Application modules
 
@@ -206,7 +206,7 @@ python -m build
 python -m twine check dist/*
 ```
 
-Actual UCNS integration is a separate required job against the pinned producer.
+The root `llms.txt` must also be regenerated from the source `LLMS` block with the pinned `skill-lib` `llms-build` runner and checked for drift in CI. Actual UCNS integration is a separate required job against the pinned producer.
 
 ## skill-lib
 
