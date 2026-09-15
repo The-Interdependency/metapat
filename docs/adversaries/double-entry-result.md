@@ -1,26 +1,26 @@
 # Independent adversary result — double-entry bookkeeping
 
-Status: **FALSIFIED_IN_PART / SYNTHESIS REFINED / not canon**
+Status: **FALSIFIED / tested synthesis / not canon**
 
 Preregistration: `docs/adversaries/double-entry-prereg.md`
 
-Target: the frozen v2→v3 synthesis on `main`.
+Target: `docs/v2-v3-synthesis.md` at exact METAPAT commit `a1724645b3fc5d246cf8b7a3f8200c2ca3aa61f5`, Git blob `1a2db847197d40112fc29ca4ed11ffa4bc74bf0c`.
+
+The preregistered decision rule is binding: the synthesis survives only if every frozen test passes, and a failed root claim makes the tested synthesis `FALSIFIED`. The refined candidate discussed below is post-result analysis; it does not replace or soften that outcome.
 
 ## Domain facts used
 
-The test uses two source classes without importing METAPAT assumptions into them:
+The source identities and bounded paragraphs are recorded in the preregistration. The test uses them without importing METAPAT assumptions into accounting:
 
 1. IFRS Conceptual Framework for Financial Reporting:
-   - a reporting entity may be one entity, part of one entity, or multiple entities;
-   - the reporting entity has a determined boundary;
-   - financial statements depict assets, liabilities, equity, income, expenses and changes in them;
-   - recognition links beginning state, financial performance, owner contributions/distributions, and ending state;
+   - a reporting entity has a determined reporting boundary;
+   - financial statements depict economic resources, claims and changes in them;
+   - recognition links depicted elements across statements and periods;
    - recognised elements are quantified using declared measurement bases.
 2. Double-entry bookkeeping mechanics:
-   - each transaction is recorded in at least two general-ledger accounts;
+   - a transaction changes at least two accounts;
    - at least one debit and one credit are recorded;
-   - total debits equal total credits;
-   - the accounting equation remains balanced.
+   - total debits equal total credits.
 
 These are domain constraints, not METAPAT claims.
 
@@ -28,74 +28,76 @@ These are domain constraints, not METAPAT claims.
 
 | Test | Result | Reason |
 |---|---|---|
-| Native-language recoverability | SURVIVED except `energy` | Reporting entity, boundary, state, measurement, transaction, sequence and invariant map without redefining accounting; `energy` does not. |
-| No metaphor substitution | FALSIFIED for universal `energy` | Calling a financial transaction or monetary value change `energy` adds a foreign claim solely because state changes. |
-| No missing root primitive | SURVIVED | The accounting-specific balance law is a domain invariant over related state changes; it need not become a universal METAPAT primitive. |
-| Root/action separation | SURVIVED | Accounts/items/reporting entities are distinguishable from transactions/postings that alter their recorded state. |
-| Measurement separation | SURVIVED strongly | IFRS explicitly separates the item being measured, the measurement basis, and the resulting measure. |
-| Sequence | SURVIVED | Ledger structure and a statement-of-position snapshot do not require sequence; transactions and reporting periods introduce ordered state transformation. |
-| Boundary | SURVIVED | IFRS explicitly defines and reasons about the reporting entity boundary; it is conceptual rather than physical. |
-| Energy | **FALSIFIED** | Accounting licenses economic resources, monetary measures, transactions and changes; it does not license the claim that these are energy. |
-| Domain invariant | SURVIVED | Debit/credit equality and the accounting equation are representable as constraints on domain state/transformation without universal promotion. |
-| Prediction/constraint | SURVIVED | A one-sided or debit/credit-unbalanced posting is invalid under double entry; a valid posting preserves the accounting balance relation. |
+| Native-language recoverability | **FALSIFIED for the tested synthesis** | Several structural mappings are supportable, but `energy` is not recoverable in native accounting language without adding a foreign claim. |
+| No metaphor substitution | **FALSIFIED for universal `energy`** | Calling a financial transaction or monetary change `energy` merely because it changes state is the prohibited rescue move. |
+| No missing root primitive | SURVIVED | The accounting balance law can remain a domain invariant over related changes; it need not become a universal METAPAT primitive. |
+| Root/action separation | SURVIVED at the supported mappings | Accounting distinguishes entities/items and their properties from transactions/postings that alter recorded positions. Boundary-dependent structures remain unresolved below. |
+| Measurement separation | SURVIVED | The underlying recognised right, obligation, account position or other measured property is distinct from a numerical balance/carrying amount produced under a measurement basis. |
+| Sequence | SURVIVED | A statement-of-position snapshot need not replay sequence; ordered postings and reporting periods provide sequential transformation. |
+| Boundary | **UNRESOLVED** | IFRS supplies a reporting boundary, but this test has not yet established the stronger METAPAT condition that the boundary itself is a thing between two identified things. |
+| Energy | **FALSIFIED** | Accounting licenses resources, claims, measures, transactions and changes; it does not license calling their abstract change composite `energy`. |
+| Domain invariant | SURVIVED | Debit/credit equality is a domain constraint over related changes and remains accounting-owned. |
+| Prediction/constraint | SURVIVED | A posting whose debits and credits do not balance violates double-entry bookkeeping. |
 
-## Root mapping
+Because the Energy test fails, the preregistered outcome for the tested synthesis is **FALSIFIED** regardless of the surviving sub-results.
+
+## Mapping standing
 
 ### Thing — SURVIVED
 
-Accounting supplies explicit addressable things: reporting entities, units of account, assets, liabilities, rights, obligations, accounts, and recognised items.
+Accounting supplies addressable things such as reporting entities, economic resources, claims, rights, obligations and accounts. No tautological rescue is needed for this bounded mapping.
 
-No appeal to `thing is that which is` is needed to rescue the mapping.
+### Boundary — UNRESOLVED
 
-### Boundary — SURVIVED
+IFRS supplies a declared reporting-entity boundary that determines what is included in the reporting entity. That establishes a domain boundary concept, but not yet METAPAT's stronger root statement:
 
-The IFRS reporting entity has an explicit boundary determining which economic activities are included in the reporting entity.
+```text
+Boundary is the thing between things.
+```
 
-This is useful evidence that METAPAT boundary need not be physical geometry.
+This adversary has not independently established which accounting object is the boundary thing and which two things it lies between. Treating a scope delimiter as sufficient would weaken the tested root after seeing the evidence.
 
 ### State — SURVIVED
 
-Examples include an account balance, an asset or liability carrying amount, recognition status, and the reporting entity's financial position.
+State is mapped to a metricable property or condition of the accounting thing: for example, recognition status, the existence/extent of a right or obligation, or the account's underlying recorded position before numerical measurement.
 
-These are properties of domain things that may be measured.
+A numerical account balance or carrying amount is **not** used as state evidence in this mapping; it belongs on the scalar side below.
 
-### Simplex — SURVIVED
+### Simplex — UNRESOLVED
 
-A reporting entity is bounded and has measurable state. A unit of account likewise has a declared scope and measurable/accountable state.
+Simplex requires a thing with boundary and state. State has support, but Boundary remains unresolved under the exact METAPAT definition, so this dependent mapping cannot be promoted to survived.
 
-The domain does not require every accounting thing to be a simplex; it supplies valid simplex instances.
+### Tensor — UNRESOLVED
 
-### Tensor — SURVIVED
+A ledger is structured from related accounts/items, but METAPAT defines tensor as structure produced when **simplexes** relate. The selected accounting components have not yet been independently shown to satisfy Simplex at the tested scale. Generic structured relation is insufficient.
 
-A ledger or financial statement is structured from related addressable items/accounts. Its snapshot configuration exists as structure without requiring that the reader replay every transaction in sequence.
+### Relate — SURVIVED
 
-### Relate — SURVIVED strongly
+Double entry makes relation explicit: one transaction changes at least two accounts, and the balanced posting constrains the combined changes rather than one isolated account.
 
-Double entry makes relation unavoidable: one transaction affects at least two accounts. The balanced posting is a relation among account-state changes, not a property of one isolated account.
+### Emerge — UNRESOLVED at this scale
 
-### Emerge — SURVIVED with restraint
+Higher-order financial structures are produced from related elements, but the tested METAPAT emergence path depends on the unresolved Simplex/Tensor mapping. No independent pass is claimed here.
 
-Financial position and performance are constructed from recognised and related elements. `Emerge` is acceptable only as METAPAT's name for produced higher-order structure; it must not imply spontaneous physical emergence.
+### Vector — SURVIVED at a bounded operational mapping
 
-### Vector — SURVIVED as exact representation
+The evidence is the **state-altering transaction/posting effect**, not vector notation. A transaction changes the recorded position of affected accounts. Comparing scalar measurements before and after the posting exposes the signed/typed state changes from which that state-altering operation is inferred.
 
-A transaction can be represented as a sparse directed change over an ordered set of account states. Its debit/credit entries specify signed/typed changes to those states.
+A sparse mathematical vector is a convenient representation of those coordinated changes; the notation itself supplies no semantic authority.
 
-Accounting need not use the word `vector`; the mapping is valid because it is an exact mathematical representation of multiple coordinated state changes, not a metaphor.
+### Scalar — SURVIVED
 
-### Scalar — SURVIVED strongly
-
-Balances, carrying amounts, and other monetary measures are scalar state metrics under a declared measurement basis.
+Account balances, carrying amounts and other quantified amounts are scalar measurements of accounting properties under declared measurement bases. They remain measurements, not the underlying state itself.
 
 ### Transformation — SURVIVED
 
-Transactions and other recognised events change account balances, assets, liabilities, equity, income or expenses.
+Transactions and recognised events change recorded rights, obligations, account positions, assets, liabilities, equity, income or expenses.
 
 ### Time — SURVIVED
 
-A statement of financial position can be a state at one date; ordered transactions and comparison between beginning/end reporting states instantiate sequential transformation.
+A statement of financial position can represent a state at one date. Ordered transactions and comparison of beginning/end reporting states instantiate sequential transformation.
 
-### Energy — FALSIFIED as universal ontology
+### Energy — FALSIFIED as universal cross-domain ontology/name
 
 The domain supplies no accounting fact that licenses:
 
@@ -105,104 +107,62 @@ monetary value = energy
 state change = energy
 ```
 
-The v3 definition
+The tested v3 definition
 
 ```text
 Energy is vectors altering state through transformation across time.
 ```
 
-would classify ordinary bookkeeping activity as energy solely because it matches an abstract change pattern. That violates the preregistered no-metaphor rule.
-
-The structural composite survives. The universal name `energy` does not.
+would classify ordinary bookkeeping activity as energy solely because it matches an abstract change pattern. That violates the preregistered no-metaphor rule. The supported structural relations do not transfer the domain term `energy` into accounting.
 
 ## Domain invariant
 
-Double-entry adds a strong constraint without adding a METAPAT primitive:
+Double entry supplies a strong domain constraint without adding a METAPAT primitive:
 
 ```text
 transaction
--> postings to at least two accounts
+-> changes at least two accounts
+-> at least one debit and one credit
 -> total debits = total credits
--> accounting equation remains balanced
 ```
 
-This is a domain law over related transformations.
+This remains an accounting law over related changes. Similarity to conservation laws elsewhere does not authorize universal promotion.
 
-METAPAT can represent the accounts, states, relation, measures and transformations while accounting owns the balancing law.
+## Post-result refined candidate
 
-The law must not be promoted into a universal conservation theorem merely because it resembles conservation laws elsewhere.
-
-## Refined synthesis
-
-The independent domain supports this universal layer:
+The adversary supports retaining these mappings at their stated scopes:
 
 ```text
-STRUCTURE
+SURVIVED
 Thing
-Boundary
 State
-Simplex
-Tensor
-
-ACTION
 Relate
-Emerge
-Vector
-
-MEASUREMENT / RESULT
+Vector        # state-altering transaction effect inferred from scalar changes
 Scalar
 Transformation
 Time
 ```
 
-Useful derived operators remain:
+It leaves these mappings unresolved at the selected accounting scale:
 
 ```text
-Distinction
-Relation/configuration
-State-metric difference
-Boundary mediation
-Tensor simultaneity
-Registration
-Question
-Observer
+UNRESOLVED
+Boundary
+Simplex
+Tensor
+Emerge
 ```
 
-Domain-qualified terms remain outside universal ontology unless independently recovered:
+It falsifies this tested universal mapping:
 
 ```text
-Gradient
-Integration criteria
-Energy
-Domain invariants such as debit/credit balance
+FALSIFIED
+Energy as the cross-domain name for the abstract state-change composite
 ```
 
-## Consequence for Meta Energy Theory
+This is a **candidate refinement after falsification**, not a preregistered outcome and not canon.
 
-The accounting adversary does **not** show that the structures used to study energy are wrong.
-
-It falsifies the stronger claim that every domain-instantiated state transformation should itself be called energy.
-
-A defensible synthesis is therefore:
-
-```text
-Common structures/actions may recur across domains.
-Energy is one domain-qualified realization of those structures where the domain itself licenses energy.
-Structural recurrence does not transfer the name, mechanism, evidence, or conservation law of energy into another domain.
-```
-
-This preserves METAPAT as a project that began from energy and compares recurrent structure across domains, while preventing `energy` from swallowing every form of change.
-
-The current v3 statements
-
-```text
-Every domain exposes some properties of Platonic energy.
-No domain exposes all properties of Platonic energy.
-```
-
-are therefore **FALSIFIED AS UNIVERSAL CLAIMS** by this adversary unless `Platonic energy` is explicitly redefined as a non-energy structural abstraction. Such a redefinition would be semantic rescue and is rejected by this test.
-
-A candidate replacement is:
+A domain-respecting replacement direction remains:
 
 ```text
 Different domains may independently expose common structures and actions.
@@ -210,19 +170,34 @@ No domain owns those common structures by name or mechanism.
 A domain term transfers only when the target domain independently licenses it.
 ```
 
+## Separate standing of the partial-property postulate
+
+The current v3 postulate says:
+
+```text
+Every domain exposes some properties of Platonic energy.
+No domain exposes all properties of Platonic energy.
+```
+
+This adversary does **not** directly falsify that weaker existential claim. The report itself finds accounting analogues for several properties used in the v3 composite. Failure of the name/identity `energy` does not prove absence of every partial property.
+
+Standing here: **UNRESOLVED**. A future falsifier must target the partial-property proposition itself rather than reuse the failure of the `energy` name.
+
 ## Standing
 
 ```text
-v3 structural root through Time: SURVIVED
-v2-derived operational layer: SURVIVED with prior placement refinements
-Energy as universal axiom: FALSIFIED
-"every domain exposes Platonic energy": FALSIFIED
+tested v2->v3 synthesis: FALSIFIED
+Thing / State / Relate / Scalar / Transformation / Time: SURVIVED at stated scopes
+Vector: SURVIVED only as state-altering transaction effect inferred from scalar changes
+Boundary / Simplex / Tensor / Emerge: UNRESOLVED at selected accounting scale
+Energy as universal cross-domain ontology/name: FALSIFIED
+"every domain exposes some properties of Platonic energy": UNRESOLVED
 accounting balance as universal law: REJECTED / domain-owned
-refined synthesis: SURVIVED this independent adversary
+post-result refined candidate: PROPOSED, not the preregistered outcome
 ```
 
 ## hmmm
 
-Whether the project name **Meta Energy Theory** should remain historical/scope-setting or be changed to reflect the more general structure/action substrate is unresolved. Naming does not get to repair ontology.
+Whether the project name **Meta Energy Theory** remains historical/scope-setting or changes with a future canon rotation is unresolved. Naming does not repair ontology.
 
-One independent adversary is enough to falsify a universal claim; it is not enough to establish that the refined synthesis is complete.
+One independent adversary can falsify the tested universal `energy` mapping. It does not establish that the surviving/refined structure is complete, nor does it settle the weaker partial-property postulate.
