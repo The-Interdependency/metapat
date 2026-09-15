@@ -121,7 +121,7 @@ MODULE_KINDS = frozenset(
         "vector",
         "transformation",
         "time",
-        "energy",
+        "domain-qualification",
         "registration",
         "observer",
         "question",
@@ -148,135 +148,144 @@ def _tuple_of_strings(name: str, values: Iterable[str], *, allow_empty: bool = T
 
 
 def _require_string(data: Mapping[str, Any], name: str) -> str:
-    value = data[name]
-    if not isinstance(value, str):
-        raise ValueError(f"{name} must be a string")
+    value = data.get(name)
+    if not isinstance(value, str) or not value.strip():
+        raise ValueError(f"{name} must be a non-empty string")
     return value
 
 
 def _require_string_sequence(data: Mapping[str, Any], name: str) -> tuple[str, ...]:
-    value = data[name]
+    value = data.get(name)
     if not isinstance(value, (list, tuple)):
         raise ValueError(f"{name} must be an array of strings")
     return _tuple_of_strings(name, value)
 
 
-def _canonical_payload(data: Mapping[str, Any]) -> bytes:
-    return json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
+def _canonical_payload(payload: Mapping[str, Any]) -> str:
+    return json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
 
 
-def _digest_payload(data: Mapping[str, Any]) -> str:
-    return hashlib.sha256(_canonical_payload(data)).hexdigest()
+def _digest_payload(payload: Mapping[str, Any]) -> str:
+    return hashlib.sha256(_canonical_payload(payload).encode("utf-8")).hexdigest()
 
 
 @dataclass(frozen=True, slots=True)
 class MetapatModuleEnvelope:
-    """Immutable semantic-authority record for external adapters and consumers."""
-
     module_id: str
     module_kind: str
-    source_statement_refs: tuple[str, ...]
-    source_statements: tuple[str, ...]
+    statements: tuple[str, ...]
     constraints: tuple[str, ...]
     permitted_interpretations: tuple[str, ...]
-    unresolved_constraints: tuple[str, ...]
-    canon_version: str = CANON_VERSION
-    canon_digest: str = ""
+    source_refs: tuple[str, ...]
+    source_statements: tuple[str, ...]
+    unresolved_constraints: tuple[str, ...] = ()
     schema_id: str = MODULE_ENVELOPE_SCHEMA_ID
     schema_version: str = MODULE_ENVELOPE_SCHEMA_VERSION
+    canon_version: str = CANON_VERSION
+    canon_digest: str = ""
     provenance_digest: str = ""
 
     def __post_init__(self) -> None:
-        if not isinstance(self.module_id, str) or not self.module_id.strip():
-            raise ValueError("module_id must be a non-empty string")
-        if not isinstance(self.module_kind, str) or self.module_kind not in MODULE_KINDS:
-            raise ValueError(
-                f"unsupported module_kind {self.module_kind!r}; expected one of {sorted(MODULE_KINDS)!r}"
-            )
         if self.schema_id != MODULE_ENVELOPE_SCHEMA_ID:
             raise ValueError(f"unsupported schema_id {self.schema_id!r}")
         if self.schema_version != MODULE_ENVELOPE_SCHEMA_VERSION:
             raise ValueError(f"unsupported schema_version {self.schema_version!r}")
+        if not isinstance(self.module_id, str) or not self.module_id.strip():
+            raise ValueError("module_id must be a non-empty string")
+        if self.module_kind not in MODULE_KINDS:
+            raise ValueError(
+                f"unsupported module_kind {self.module_kind!r}; expected one of {sorted(MODULE_KINDS)!r}"
+            )
+        statements = _tuple_of_strings("statements", self.statements, allow_empty=False)
+        constraints = _tuple_of_strings("constraints", self.constraints)
+        permitted_interpretations = _tuple_of_strings(
+            "permitted_interpretations", self.permitted_interpretations
+        )
+        source_refs = _tuple_of_strings("source_refs", self.source_refs, allow_empty=False)
+        source_statements = _tuple_of_strings(
+            "source_statements", self.source_statements, allow_empty=False
+        )
+        unresolved_constraints = _tuple_of_strings(
+            "unresolved_constraints", self.unresolved_constraints
+        )
+        if len(source_refs) != len(source_statements):
+            raise ValueError("source_refs and source_statements must have the same length")
         if not isinstance(self.canon_version, str) or not self.canon_version.strip():
             raise ValueError("canon_version must be a non-empty string")
-
-        refs = _tuple_of_strings("source_statement_refs", self.source_statement_refs, allow_empty=False)
-        statements = _tuple_of_strings("source_statements", self.source_statements, allow_empty=False)
-        if len(refs) != len(statements):
-            raise ValueError("source_statement_refs and source_statements must have equal length")
-        constraints = _tuple_of_strings("constraints", self.constraints)
-        permitted = _tuple_of_strings("permitted_interpretations", self.permitted_interpretations)
-        if not constraints and not permitted:
-            raise ValueError("at least one constraint or permitted interpretation is required")
-        unresolved = _tuple_of_strings("unresolved_constraints", self.unresolved_constraints)
-
-        object.__setattr__(self, "source_statement_refs", refs)
-        object.__setattr__(self, "source_statements", statements)
+        expected_canon_digest = self.canon_digest or canon_digest()
+        if not isinstance(expected_canon_digest, str) or not expected_canon_digest.strip():
+            raise ValueError("canon_digest must be a non-empty string")
+        object.__setattr__(self, "statements", statements)
         object.__setattr__(self, "constraints", constraints)
-        object.__setattr__(self, "permitted_interpretations", permitted)
-        object.__setattr__(self, "unresolved_constraints", unresolved)
-
-        digest = self.canon_digest or canon_digest()
-        if not isinstance(digest, str):
-            raise ValueError("canon_digest must be a string")
-        if len(digest) != 64 or any(character not in "0123456789abcdef" for character in digest.lower()):
-            raise ValueError("canon_digest must be a lowercase hexadecimal SHA-256 digest")
-        object.__setattr__(self, "canon_digest", digest.lower())
-
-        expected = _digest_payload(self._provenance_fields())
+        object.__setattr__(self, "permitted_interpretations", permitted_interpretations)
+        object.__setattr__(self, "source_refs", source_refs)
+        object.__setattr__(self, "source_statements", source_statements)
+        object.__setattr__(self, "unresolved_constraints", unresolved_constraints)
+        object.__setattr__(self, "canon_digest", expected_canon_digest)
+        expected = _digest_payload(self._payload())
         if self.provenance_digest and self.provenance_digest != expected:
-            raise ValueError("provenance_digest does not match envelope contents")
+            raise ValueError("provenance_digest mismatch")
         object.__setattr__(self, "provenance_digest", expected)
 
-    def _provenance_fields(self) -> dict[str, Any]:
+    def _payload(self) -> dict[str, Any]:
         return {
             "schema_id": self.schema_id,
             "schema_version": self.schema_version,
-            "module_id": self.module_id,
-            "module_kind": self.module_kind,
             "canon_version": self.canon_version,
             "canon_digest": self.canon_digest,
-            "source_statement_refs": list(self.source_statement_refs),
-            "source_statements": list(self.source_statements),
+            "module_id": self.module_id,
+            "module_kind": self.module_kind,
+            "statements": list(self.statements),
             "constraints": list(self.constraints),
             "permitted_interpretations": list(self.permitted_interpretations),
+            "source_refs": list(self.source_refs),
+            "source_statements": list(self.source_statements),
             "unresolved_constraints": list(self.unresolved_constraints),
         }
 
     def to_dict(self) -> dict[str, Any]:
-        data = self._provenance_fields()
-        data["provenance_digest"] = self.provenance_digest
-        return data
+        return {**self._payload(), "provenance_digest": self.provenance_digest}
 
     def to_json(self) -> str:
-        return _canonical_payload(self.to_dict()).decode("utf-8")
+        return _canonical_payload(self.to_dict())
 
     @classmethod
     def from_dict(cls, data: Mapping[str, Any]) -> "MetapatModuleEnvelope":
         if not isinstance(data, Mapping):
             raise ValueError("module envelope must be a mapping")
-        expected_fields = {
-            "schema_id", "schema_version", "module_id", "module_kind", "canon_version",
-            "canon_digest", "source_statement_refs", "source_statements", "constraints",
-            "permitted_interpretations", "unresolved_constraints", "provenance_digest",
+        expected = {
+            "schema_id",
+            "schema_version",
+            "canon_version",
+            "canon_digest",
+            "module_id",
+            "module_kind",
+            "statements",
+            "constraints",
+            "permitted_interpretations",
+            "source_refs",
+            "source_statements",
+            "unresolved_constraints",
+            "provenance_digest",
         }
-        unknown = set(data) - expected_fields
-        missing = expected_fields - set(data)
+        unknown = set(data) - expected
+        missing = expected - set(data)
         if unknown:
-            raise ValueError(f"unknown envelope fields: {sorted(unknown)!r}")
+            raise ValueError(f"unknown module envelope fields: {sorted(unknown)!r}")
         if missing:
-            raise ValueError(f"missing envelope fields: {sorted(missing)!r}")
+            raise ValueError(f"missing module envelope fields: {sorted(missing)!r}")
         return cls(
             schema_id=_require_string(data, "schema_id"),
             schema_version=_require_string(data, "schema_version"),
-            module_id=_require_string(data, "module_id"),
-            module_kind=_require_string(data, "module_kind"),
             canon_version=_require_string(data, "canon_version"),
             canon_digest=_require_string(data, "canon_digest"),
-            source_statement_refs=_require_string_sequence(data, "source_statement_refs"),
-            source_statements=_require_string_sequence(data, "source_statements"),
+            module_id=_require_string(data, "module_id"),
+            module_kind=_require_string(data, "module_kind"),
+            statements=_require_string_sequence(data, "statements"),
             constraints=_require_string_sequence(data, "constraints"),
             permitted_interpretations=_require_string_sequence(data, "permitted_interpretations"),
+            source_refs=_require_string_sequence(data, "source_refs"),
+            source_statements=_require_string_sequence(data, "source_statements"),
             unresolved_constraints=_require_string_sequence(data, "unresolved_constraints"),
             provenance_digest=_require_string(data, "provenance_digest"),
         )
@@ -295,52 +304,57 @@ def build_module_envelope(
     *,
     module_id: str,
     module_kind: str,
-    source_statement_refs: Iterable[str],
+    statements: Iterable[str],
+    constraints: Iterable[str],
+    permitted_interpretations: Iterable[str],
+    source_refs: Iterable[str],
     source_statements: Iterable[str],
-    constraints: Iterable[str] = (),
-    permitted_interpretations: Iterable[str] = (),
     unresolved_constraints: Iterable[str] = (),
-    canon_version: str = CANON_VERSION,
-    canon_identity: str | None = None,
 ) -> MetapatModuleEnvelope:
+    """Build a canon-bound envelope from explicit semantic inputs."""
+
     return MetapatModuleEnvelope(
         module_id=module_id,
         module_kind=module_kind,
-        source_statement_refs=tuple(source_statement_refs),
-        source_statements=tuple(source_statements),
+        statements=tuple(statements),
         constraints=tuple(constraints),
         permitted_interpretations=tuple(permitted_interpretations),
+        source_refs=tuple(source_refs),
+        source_statements=tuple(source_statements),
         unresolved_constraints=tuple(unresolved_constraints),
-        canon_version=canon_version,
-        canon_digest=canon_identity or canon_digest(),
+        canon_version=CANON_VERSION,
+        canon_digest=canon_digest(),
     )
 
 
 def root_spine_module_envelope() -> MetapatModuleEnvelope:
-    refs = (
-        "AXIOMS.md#1-thing::statement-1",
-        "AXIOMS.md#2-boundary::statement-1",
-        "AXIOMS.md#3-state::statement-1",
-        "AXIOMS.md#4-simplex::statement-1",
-        "AXIOMS.md#5-tensor::statement-1",
-    )
+    """Return the canonical root-spine semantic envelope."""
+
     return build_module_envelope(
         module_id="metapat.root_spine",
         module_kind="canon-module",
-        source_statement_refs=refs,
-        source_statements=ROOT_SPINE,
+        statements=ROOT_SPINE,
         constraints=(
             "Preserve source statement order and exact text.",
             "Do not let a consuming domain redefine METAPAT root terms.",
             "Do not treat semantic labels as calculated EDCM measurements.",
-            "Do not transfer UCNS theorem status into METAPAT ontology claims.",
+            "Do not transfer theorem or formal-proof status from UCNS.",
         ),
         permitted_interpretations=(
-            "Use the statements as semantic authority and external provenance constraints.",
-            "Bind adaptations and consumer epochs to canon_digest and provenance_digest.",
+            "Use the root spine as semantic authority and provenance.",
+            "Represent this authority in UCNS only through explicit adapter rules.",
+            "Measure source evidence in EDCM without replacing METAPAT definitions.",
         ),
+        source_refs=(
+            "AXIOMS.md#1-thing::statement-1",
+            "AXIOMS.md#2-boundary::statement-1",
+            "AXIOMS.md#3-state::statement-1",
+            "AXIOMS.md#4-simplex::statement-1",
+            "AXIOMS.md#5-tensor::statement-1",
+        ),
+        source_statements=ROOT_SPINE,
         unresolved_constraints=(
-            "hmmm: semantic mappings beyond external provenance and explicitly authorized constitutive-simultaneous forks remain unresolved.",
+            "hmmm: no additional root primitives are presumed complete; later domains may add, split, refine, or falsify them.",
         ),
     )
 
