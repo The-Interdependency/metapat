@@ -9,10 +9,10 @@ jobs:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
+      - uses: actions/checkout@v7.0.1
         with:
           ref: canon/v4-domain-qualified-energy
-      - uses: actions/setup-python@a0853c24544627f65ddf259abe73b1d18a591444
+      - uses: actions/setup-python@v7.0.0
         with:
           python-version: '3.12'
       - name: Migrate exact v4 consumers
@@ -29,7 +29,6 @@ jobs:
                   raise SystemExit(f'unexpected occurrence count in {path}: {old!r} => {s.count(old)} != {count}')
               p.write_text(s.replace(old, new), encoding='utf-8')
 
-          # Generator outputs and application epochs.
           for path in ('tools/generate_catalog.py',):
               replace(path, 'root-spine-envelope-v3', 'root-spine-envelope-v4')
               replace(path, 'semantic-module-catalog-v3', 'semantic-module-catalog-v4')
@@ -43,7 +42,6 @@ jobs:
           replace('src/metapat/affixiation_harmonics.py', 'canonical semantic catalog v2', 'canonical semantic catalog v4')
           replace('src/metapat/affixiation_harmonics.py', 'affixiation-harmonics-application-v2', 'affixiation-harmonics-application-v3')
 
-          # Human-facing current-epoch docs. Historical release/synthesis records are intentionally untouched.
           replace('docs/application-modules.md', 'quantum-magnetism-application-v3', 'quantum-magnetism-application-v4')
           replace('docs/application-modules.md', 'three-phase-electromagnetic-pipe-v3', 'three-phase-electromagnetic-pipe-v4')
           replace('docs/application-modules.md', 'current v3 bindings', 'current v4 bindings')
@@ -53,7 +51,6 @@ jobs:
           replace('docs/semantic-module-catalog.md', 'root-spine-envelope-v3.json', 'root-spine-envelope-v4.json')
           replace('docs/semantic-module-catalog.md', 'semantic-module-catalog-v3.json', 'semantic-module-catalog-v4.json')
 
-          # README: current doctrine/epochs only.
           replace('README.md',
               'METAPAT is the canonical semantic authority for Meta Energy Theory. It reconstructs Platonic energy from structures and actions exposed across domains without allowing any one domain to own the root.\n\nEvery domain exposes some properties of Platonic energy. No domain exposes all of them.',
               'METAPAT is the canonical semantic authority for Meta Energy Theory. It compares structures and actions independently exposed across domains without allowing any one domain to own the root or transfer its vocabulary by resemblance alone.\n\nDifferent domains may expose common structures and actions. Domain-specific names, mechanisms, evidence standards, and conservation laws remain domain-owned unless the target domain independently licenses them.')
@@ -67,7 +64,6 @@ jobs:
           replace('README.md', 'quantum-magnetism-application-v3', 'quantum-magnetism-application-v4')
           replace('README.md', 'Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v3 identities.', 'Consumers pinned to any prior canon/catalog must fail closed until explicitly migrated to v4 identities.')
 
-          # Agent-facing current doctrine.
           replace('AGENTS.md', 'Preserve exact v3 canon', 'Preserve exact v4 canon')
           replace('AGENTS.md',
               'Canon v3 derives energy from prior structure and action rather than assuming energy-state as primitive. Every domain exposes some properties of Platonic energy; no domain exposes all. Catalog v3 makes the current root, axiom, postulate, theorem, and theory surfaces addressable without transferring domain, measurement, theorem, or UCNS validity.',
@@ -84,7 +80,6 @@ jobs:
           replace('AGENTS.md', '- Every domain exposes some properties of Platonic energy; no domain exposes all.', '- Different domains may independently expose common structures/actions; resemblance alone transfers no domain-specific name or mechanism.')
           replace('AGENTS.md', 'Catalog v3 makes current doctrine addressable', 'Catalog v4 makes current doctrine addressable')
 
-          # Compliance surface.
           replace('COMPLIANCE.md', 'Date: 2026-09-13', 'Date: 2026-09-15')
           replace('COMPLIANCE.md', 'root-spine-envelope-v3.json', 'root-spine-envelope-v4.json')
           replace('COMPLIANCE.md', 'semantic-module-catalog-v3.json', 'semantic-module-catalog-v4.json')
@@ -100,14 +95,12 @@ jobs:
               'Every domain exposes some properties of Platonic energy. No domain exposes all.\n\nA candidate shared structure/action survives only while independent domain comparisons fail to add, split, refine, or falsify it. Similarity alone is insufficient; domain-specific implementation must be removed before transfer is claimed.',
               'Different domains may independently expose common structures and actions. A candidate survives only while independent domain comparisons fail to add, split, refine, or falsify it. Similarity alone is insufficient; domain-specific implementation and vocabulary must be removed before structural transfer is claimed, and domain terms require independent target-domain license.')
 
-          # Claims ledger: current identifiers/status claims only.
           replace('docs/claims-ledger.md', 'exact importable v3 canon', 'exact importable v4 canon')
           replace('docs/claims-ledger.md', '`energy_is_derived`', '`domain_term_is_qualified`')
           replace('docs/claims-ledger.md', 'Vector, state, transformation, and time are all required by the encoded condition.', 'A domain term is accepted only when the applicable domain independently licenses it; structural similarity alone is insufficient.')
           replace('docs/claims-ledger.md', 'metapat-canon-v3', 'metapat-canon-v4')
           replace('docs/claims-ledger.md', 'metapat-semantic-catalog-v3', 'metapat-semantic-catalog-v4')
 
-          # Current CI/test fixture names and package version expectations.
           for path in ('.github/workflows/ci.yml', 'tests/test_catalog.py', 'tests/test_envelope.py', 'tests/test_packaging.py', 'tests/test_quantum_magnetism.py', 'tests/test_electromagnetic_pipe.py'):
               p = Path(path)
               if not p.exists():
@@ -122,10 +115,8 @@ jobs:
               s = s.replace('quantum-magnetism-application-v3', 'quantum-magnetism-application-v4')
               s = s.replace('three-phase-electromagnetic-pipe-application-v3', 'three-phase-electromagnetic-pipe-application-v4')
               s = s.replace('== "0.7.0"', '== "0.8.0"')
-              s = s.replace('== "metapat-canon-v3"', '== "metapat-canon-v4"')
               p.write_text(s, encoding='utf-8')
 
-          # Remove superseded generated v3 fixtures; generators will produce v4.
           for name in (
               'src/metapat/fixtures/root-spine-envelope-v3.json',
               'src/metapat/fixtures/semantic-module-catalog-v3.json',
