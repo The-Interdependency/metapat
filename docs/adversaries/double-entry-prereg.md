@@ -2,7 +2,7 @@
 
 Status: **FROZEN TEST PLAN / not canon**
 
-Target under test: `docs/v2-v3-synthesis.md` on `main`.
+Target under test: `docs/v2-v3-synthesis.md` at exact METAPAT commit `a1724645b3fc5d246cf8b7a3f8200c2ca3aa61f5`, Git blob `1a2db847197d40112fc29ca4ed11ffa4bc74bf0c`.
 
 Independent domain: double-entry bookkeeping / financial reporting.
 
@@ -10,7 +10,15 @@ Selection reason: a formal non-physical domain with explicit entities, reporting
 
 ## Source boundary
 
-Primary authority for domain concepts: IFRS Conceptual Framework for Financial Reporting. Supporting mechanics source: standard double-entry bookkeeping definitions for accounts, debit/credit entries, balances, and the accounting equation.
+Primary authority for domain concepts:
+
+- IFRS Foundation, *Conceptual Framework for Financial Reporting*, revised March 2018: <https://www.ifrs.org/issued-standards/list-of-standards/conceptual-framework/>. The evidence used here is bounded to CF 3.10–3.14 (reporting entity and its boundary), CF 4.1–4.2 (financial-statement elements/economic resources and claims), CF 5.1–5.7 (recognition and its linkage of statements), and CF 6.1–6.4 (measurement and measurement bases).
+
+Supporting mechanics source:
+
+- Mitchell Franklin, Patty Graybeal, and Dixon Cooper, OpenStax, *Principles of Accounting, Volume 1: Financial Accounting*, published April 11, 2019, §3.1 “Double-Entry Bookkeeping”: <https://openstax.org/books/principles-financial-accounting/pages/3-1-describe-principles-assumptions-and-concepts-of-accounting-and-their-relationship-to-financial-statements>. This is the bounded source for the mechanics claims that a transaction changes at least two accounts, includes at least one debit and one credit, and has equal total debits and credits.
+
+These identities are a post-freeze provenance addendum only. They do not alter the frozen tests, allowed outcomes, or rescue rules below.
 
 No accounting concept may be redefined to make METAPAT fit.
 
