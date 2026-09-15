@@ -14,12 +14,12 @@ Derived from: root restraint; Postulates 1, 2, and 6; Theorem 8.
 
 ### Claim
 
-Every domain may reveal part of Platonic energy without owning the root.
+Different domains may independently expose common structures and actions without transferring domain identity, names, mechanisms, evidence standards, or conservation laws.
 
 ### Working question
 
 ```text
-What transfers after the domain-specific implementation is removed?
+What transfers after the domain-specific implementation and vocabulary are removed?
 ```
 
 ## Theory 1: Thing-Boundary-State Construction
@@ -106,18 +106,20 @@ Time is sequential transformation.
 What transformations occur in sequence?
 ```
 
-## Theory 7: Derived Energy
+## Theory 7: Domain Qualification
 
 Derived from: Axiom 12; Theorem 7.
 
 ### Claim
 
-Energy is composite: vectors altering state through transformation across time.
+A recurring structure does not inherit a domain term merely because the structure is similar.
+
+Energy is one domain-qualified realization where the applicable domain independently licenses energy; METAPAT does not call every vector-mediated state transformation energy.
 
 ### Working question
 
 ```text
-What vectors alter what states through which transformations across what sequence?
+Which structure recurs, and which names or mechanisms remain owned by the source domain?
 ```
 
 ## Theory 8: Emergence
@@ -174,10 +176,12 @@ Independent domain implementations may expose the same candidate structure or ac
 
 The candidate survives only while later domains fail to falsify, split, or refine it.
 
+A shared structure does not transfer a source-domain name or mechanism into another domain without independent domain evidence.
+
 ### Working question
 
 ```text
-Does this domain require a new primitive, split an existing one, refine one, or falsify one?
+Does this domain require a new primitive, split an existing one, refine one, falsify one, or reject a transferred name?
 ```
 
 ## Theory Index
@@ -190,7 +194,7 @@ Does this domain require a new primitive, split an existing one, refine one, or 
 4. State Measurement
 5. Transformation
 6. Time
-7. Derived Energy
+7. Domain Qualification
 8. Emergence
 9. Registration and Observer Roles
 10. Questions as Unresolved Structure
@@ -200,3 +204,5 @@ Does this domain require a new primitive, split an existing one, refine one, or 
 ## hmmm
 
 The theory layer is intentionally open. Completeness is never presumed.
+
+The project name `Meta Energy Theory` remains historical/scope-setting unless and until naming itself is separately ratified; it does not grant `energy` universal semantic authority.
