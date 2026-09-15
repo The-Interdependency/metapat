@@ -42,6 +42,7 @@ from pathlib import Path
 
 import metapat
 from metapat.affixiation_harmonics import (
+    AFFIXIATION_HARMONICS_APPLICATION_VERSION,
     AFFIXIATION_HARMONICS_BINDING_SPECS,
     affixiation_harmonics_application_module,
 )
@@ -90,6 +91,8 @@ def test_authority_firewall_is_explicit() -> None:
 
 def test_application_remains_unpromoted() -> None:
     application = affixiation_harmonics_application_module()
+    assert AFFIXIATION_HARMONICS_APPLICATION_VERSION == "affixiation-harmonics-application-v4"
+    assert application.application_version == AFFIXIATION_HARMONICS_APPLICATION_VERSION
     assert application.claim_status == "CROSS-DOMAIN-HYPOTHESIS"
     assert application.root_impact == "none"
     assert application.catalog_version == metapat.CATALOG_VERSION
