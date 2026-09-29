@@ -26,6 +26,18 @@ METAPAT owns the spine vocabulary and this license. EPAC owns the typed join-ter
 | `metapat.axiom.11.time` | transformation-sequence | EPAC may order transformation records sequentially without treating structural scale order as physical time. |
 | `metapat.axiom.12.domain_qualification` | domain-customs | Every transferred spine role remains paired with an EPAC domain name; structural recurrence alone transfers no chemical, physical, energetic, or UCNS meaning. |
 
+## EPAC scale map
+
+| Scale | EPAC-qualified name |
+|---|---|
+| `S0` | subatomic slot |
+| `S1` | atomic |
+| `S2` | join/arity |
+| `S3` | embed |
+| `S4` | electronic state |
+| `S5` | EPAC energy readout |
+| `S6` | ensemble |
+
 ## EPAC domain statements
 
 An EPAC join term stores named ordered slots, explicit holes and leftovers, a positive window k, exact origin state, and provenance; omission is not a representation of zero.

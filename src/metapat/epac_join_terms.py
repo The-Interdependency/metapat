@@ -233,6 +233,13 @@ def _catalog_binding_rows() -> tuple[str, ...]:
     )
 
 
+def _scale_rows() -> tuple[str, ...]:
+    return tuple(
+        f"| `{scale.split(maxsplit=1)[0]}` | {scale.split(maxsplit=1)[1]} |"
+        for scale in SELECTED_SCALES
+    )
+
+
 def _source_pairs() -> tuple[tuple[str, str], ...]:
     pairs: list[tuple[str, str]] = [
         ("application-identity", "Status: **CROSS-DOMAIN-HYPOTHESIS / EPAC semantic license**"),
@@ -243,6 +250,7 @@ def _source_pairs() -> tuple[tuple[str, str], ...]:
         ),
     ]
     pairs.extend(("catalog-bindings", row) for row in _catalog_binding_rows())
+    pairs.extend(("epac-scale-map", row) for row in _scale_rows())
     pairs.extend(("epac-domain-statements", statement) for statement in DOMAIN_STATEMENTS)
     pairs.extend(("recursive-question-form", line) for line in SHARED_QUESTION_FORM)
     pairs.extend(("transfers", f"- {statement}") for statement in TRANSFERS)
