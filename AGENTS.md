@@ -215,7 +215,7 @@ python -m pytest -q
 python tools/check_contract_graph.py
 python tools/generate_catalog.py --check
 python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"
-python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py
+python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_epac_join_terms.py tests/test_electromagnetic_pipe.py
 python tools/generate_application_fixtures.py --check
 python -m pytest -q tests/test_ucns_phi.py
 python tools/generate_msdmd.py --check
