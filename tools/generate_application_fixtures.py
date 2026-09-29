@@ -16,7 +16,7 @@
 #   tests: tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_epac_join_terms
 #   rollout: CI compliance gate and explicit regeneration command
 #   rollback: restore prior generated fixtures only with constructor and digest evidence attached
-#   requires: metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application
+#   requires: metapat_quantum_magnetism_application, metapat_epac_join_terms_application, metapat_electromagnetic_pipe_application
 #   since: 2026-07-21
 #   unresolved: future application fixtures require separate constructors and evidence classification
 # === END MODULE_BUILD ===

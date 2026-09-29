@@ -24,7 +24,7 @@
 # === DEPENDENCIES ===
 # id: metapat_package_dependency_edges
 #   summary: base exports depend on canon, catalog, application and engineering schemas, relations, envelopes, checks, flow declarations, Phi policy, and a lazy optional UCNS adapter
-#   imports: metapat.canon, metapat.catalog, metapat.application, metapat.quantum_magnetism, metapat.electromagnetic_pipe, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
+#   imports: metapat.canon, metapat.catalog, metapat.application, metapat.quantum_magnetism, metapat.epac_join_terms, metapat.electromagnetic_pipe, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
 #   external_optional: ucns
 #   provides: metapat_package_exports
 #   class: runtime
