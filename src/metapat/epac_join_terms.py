@@ -1,4 +1,9 @@
-"""Catalog-bound EPAC multi-origin join-term application."""
+"""Catalog-bound EPAC multi-origin join-term application.
+
+Usage: construct ``epac_join_terms_application_module()`` and validate its source
+with ``metapat.assert_application_sources_match(Path("."), application)``.
+The bindings constrain downstream evidence; they do not execute EPAC joins.
+"""
 
 # === MODULE_BUILD ===
 # id: metapat_epac_join_terms_application
@@ -84,6 +89,26 @@
 #   given: the packaged EPAC join-terms application fixture is inspected
 #   then: its bytes equal the deterministic live constructor serialization plus one trailing newline
 #   class: evidence
+#
+# id: metapat_epac_join_terms_state_readout_distinction
+#   given: state and scalar roles are inspected
+#   then: metricable origin properties remain distinct from separately identified property readouts
+#   class: boundary_contract
+#
+# id: metapat_epac_join_terms_bearing_not_vector
+#   given: static inferred bearing is inspected
+#   then: no Vector catalog binding licenses a readout as a state-altering operation
+#   class: boundary_contract
+#
+# id: metapat_epac_join_terms_transformation_result
+#   given: the Transformation role is inspected
+#   then: the binding requires evidenced before/after property change and distinguishes it from its join action
+#   class: boundary_contract
+#
+# id: metapat_epac_join_terms_time_occurrence
+#   given: the Time role is inspected
+#   then: at least two transformations must occur sequentially and record ordering alone is insufficient
+#   class: boundary_contract
 # === END CONTRACTS ===
 
 from __future__ import annotations
@@ -117,7 +142,7 @@ EPAC_JOIN_TERMS_BINDING_SPECS = (
     (
         "metapat.axiom.3.state",
         "origin-state",
-        "EPAC uses State for domain-qualified phase and capacity metrics at a declared origin.",
+        "EPAC uses State for domain-qualified phase and capacity as metricable properties of a declared origin; stored property values are not scalar observations.",
     ),
     (
         "metapat.axiom.4.simplex",
@@ -140,24 +165,19 @@ EPAC_JOIN_TERMS_BINDING_SPECS = (
         "EPAC may store join(O(S_n)) as a new identity O(S_{n+1}) while retaining its ordered constituent identities and provenance.",
     ),
     (
-        "metapat.axiom.8.vector",
-        "inferred-bearing",
-        "EPAC uses the Vector role only for bearing inferred from declared scalar measurements; it is not a stored free-arrow collection.",
-    ),
-    (
         "metapat.axiom.9.scalar",
         "state-metric",
-        "EPAC phase, capacity, and any occupancy readout are exact domain-qualified scalar measurements rather than transferred physical quantities.",
+        "EPAC uses Scalar for separately identified phase, capacity, slot-facing, and occupancy metrics or readouts of named state properties; a readout names its origin, measured property, and measurement rule and is not the state itself.",
     ),
     (
         "metapat.axiom.10.transformation",
         "join-transformation",
-        "EPAC records a declared join as a transformation that produces a new origin state and preserves source and target identity.",
+        "EPAC uses Transformation only for the resulting before/after change of a named state property of an identified thing caused by a declared join action; the action, a new origin identity, or different values at unrelated origins alone are not that result.",
     ),
     (
         "metapat.axiom.11.time",
         "transformation-sequence",
-        "EPAC may order transformation records sequentially without treating structural scale order as physical time.",
+        "EPAC uses Time only when evidence establishes that at least two resulting state changes actually occurred sequentially; registration may preserve that sequence, but sorting records, sequence numbers, and structural scale order cannot create it or establish physical time.",
     ),
     (
         "metapat.axiom.12.domain_qualification",
@@ -197,12 +217,13 @@ SHARED_QUESTION_FORM = (
     "-> complete S0-through-S6 relational structure",
 )
 TRANSFERS = (
-    "The spine roles Thing, Boundary, State, Simplex, Tensor, Scalar, Vector, Transformation, and Time may label their declared EPAC semantic counterparts.",
+    "The spine roles Thing, Boundary, State, Simplex, Tensor, and Scalar may label their declared EPAC counterparts; Transformation and Time require their stated result and occurrence evidence, and this application grants no Vector binding.",
     "A bounded lower-scale whole may participate in an authored adjacent-scale relation and the joined whole may receive a new identity.",
-    "Ordered constituent identity, explicit holes and leftovers, state metrics, and provenance may remain addressable across recursive construction.",
+    "Ordered constituent identity, explicit holes and leftovers, state properties, separately identified readouts, and provenance may remain addressable across recursive construction.",
     "Exact deterministic serialization and replay may test whether an EPAC implementation preserves the licensed distinctions.",
 )
 DOES_NOT_TRANSFER = (
+    "Static bearing inferred from slot-facing signs remains an EPAC readout; no Vector role is licensed without a separately established state-altering operation and measured resulting change.",
     "This license does not transfer a UCNS coordinate, phase law, topology, theorem status, gonol identity, or implementation into EPAC.",
     "EPAC phase is not chemistry phase, and visible or lifted coordinates acquire no physical meaning merely because they are stored.",
     "S5 naming does not establish energy coupling, conservation, entropy, force, field, or empirical physical validity.",
@@ -213,11 +234,14 @@ DOES_NOT_TRANSFER = (
 WORKING_QUESTION = "Can an EPAC-owned constructor preserve a typed, ordered, provenance-bearing S0-through-S6 join tree such that every stored field has both a METAPAT spine role and an EPAC domain name, while bags remain explicitly non-structural sidecars?"
 EVIDENCE_BOUNDARY = "METAPAT owns this exact semantic license and its catalog bindings. EPAC owns the schema, constructor, equality, serialization, replay, and domain evidence. UCNS retains any UCNS law and EDCM retains measurement authority. Passing deterministic tests establishes contract conformance only, not chemical, physical, empirical, or production validity."
 EVIDENCE_REQUIREMENTS = (
-    "The EPAC schema must represent every scale S0 through S6, a new identity at each recursive join, named ordered slots, positive k, explicit holes and leftovers, exact state metrics, and provenance.",
+    "The EPAC schema must represent every scale S0 through S6, a new identity at each recursive join, named ordered slots, positive k, explicit holes and leftovers, exact state properties, separately identified readouts, and provenance.",
     "Closed-schema parsing must reject a bag presented as a tree, missing scales, inferred skip-scale joins, omitted holes, duplicate identities, unlicensed fields, and malformed provenance.",
     "Join-isomorphism tests must distinguish two trees with the same counts but different typed ordered structure and must keep visible and lifted records distinct.",
     "A deterministic public fixture and replay receipt must bind the exact METAPAT application identity and permit independent recovery without private construction state.",
     "Existing EPAC molecular-shape falsification must remain unchanged; subsequent comparisons may compare S3 tree to S3 tree only.",
+    "State and scalar evidence must identify the origin and metricable property separately from each readout and its measurement rule; storing a phase or capacity value does not establish observation.",
+    "Transformation evidence must identify the affected thing, named property, before and after states, resulting difference, and the join action responsible; an action record or new identity alone is insufficient.",
+    "Time evidence must establish occurrence order for at least two evidenced transformations independently of record sorting, serialization, scale labels, or assigned sequence numbers; simultaneous or unordered changes do not qualify.",
 )
 UNRESOLVED = (
     "hmmm: Whether the typed multi-origin representation supports a useful native private operation that its public projection cannot efficiently reproduce remains unestablished.",

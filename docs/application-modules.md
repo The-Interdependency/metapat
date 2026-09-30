@@ -115,7 +115,7 @@ metapat/fixtures/quantum-magnetism-application-v4.json
 application: metapat.application.epac_join_terms
 version: epac-join-terms-application-v4
 status: CROSS-DOMAIN-HYPOTHESIS
-catalog bindings: 13
+catalog bindings: 12
 root impact: none
 ```
 

@@ -54,6 +54,30 @@
 #   call: self::test_fixture_generator_matches_packaged_bytes
 #   mutates: filesystem_read
 #   cleanup: none
+#
+# id: check_epac_join_terms_state_readout_distinction
+#   proves: metapat_epac_join_terms_state_readout_distinction
+#   call: self::test_state_readout_distinction
+#   mutates: none
+#   cleanup: none
+#
+# id: check_epac_join_terms_bearing_not_vector
+#   proves: metapat_epac_join_terms_bearing_not_vector
+#   call: self::test_bearing_not_vector
+#   mutates: none
+#   cleanup: none
+#
+# id: check_epac_join_terms_transformation_result
+#   proves: metapat_epac_join_terms_transformation_result
+#   call: self::test_transformation_result
+#   mutates: none
+#   cleanup: none
+#
+# id: check_epac_join_terms_time_occurrence
+#   proves: metapat_epac_join_terms_time_occurrence
+#   call: self::test_time_occurrence
+#   mutates: none
+#   cleanup: none
 # === END CHECKS ===
 
 from importlib.resources import files
@@ -72,8 +96,8 @@ def test_application_bindings_match_catalog() -> None:
     catalog = metapat.canonical_semantic_catalog()
     application = epac_join_terms_application_module(catalog)
     metapat.validate_application_against_catalog(application, catalog)
-    assert len(application.catalog_bindings) == len(EPAC_JOIN_TERMS_BINDING_SPECS) == 13
-    assert len({binding.module_id for binding in application.catalog_bindings}) == 13
+    assert len(application.catalog_bindings) == len(EPAC_JOIN_TERMS_BINDING_SPECS) == 12
+    assert len({binding.module_id for binding in application.catalog_bindings}) == 12
     assert all(len(binding.module_digest) == 64 for binding in application.catalog_bindings)
 
 
@@ -154,3 +178,50 @@ def test_fixture_generator_matches_packaged_bytes() -> None:
     fixture = files("metapat").joinpath("fixtures/epac-join-terms-application-v4.json")
     assert fixture.is_file()
     assert fixture.read_text(encoding="utf-8") == render_epac_join_terms_fixture()
+
+
+def _statement(role: str) -> str:
+    return next(
+        binding.application_statement
+        for binding in epac_join_terms_application_module().catalog_bindings
+        if binding.application_role == role
+    )
+
+
+def test_state_readout_distinction() -> None:
+    state = _statement("origin-state")
+    scalar = _statement("state-metric")
+    assert "metricable properties" in state
+    assert "not scalar observations" in state
+    assert "separately identified" in scalar
+    assert "origin, measured property, and measurement rule" in scalar
+    assert "not the state itself" in scalar
+    assert "phase and capacity metrics" not in state
+
+
+def test_bearing_not_vector() -> None:
+    application = epac_join_terms_application_module()
+    assert all(binding.module_id != "metapat.axiom.8.vector"
+               and binding.application_role != "inferred-bearing"
+               for binding in application.catalog_bindings)
+    assert any("Static bearing" in item and "no Vector role is licensed" in item
+               for item in application.does_not_transfer)
+    assert "grants no Vector binding" in application.transfers[0]
+
+
+def test_transformation_result() -> None:
+    statement = _statement("join-transformation")
+    assert "resulting before/after change" in statement
+    assert "named state property of an identified thing" in statement
+    assert "caused by a declared join action" in statement
+    assert "different values at unrelated origins alone are not that result" in statement
+    assert any("affected thing, named property, before and after states, resulting difference"
+               in item for item in epac_join_terms_application_module().evidence_requirements)
+
+
+def test_time_occurrence() -> None:
+    statement = _statement("transformation-sequence")
+    assert "at least two resulting state changes actually occurred sequentially" in statement
+    assert "sorting records, sequence numbers, and structural scale order cannot create it" in statement
+    assert any("simultaneous or unordered changes do not qualify" in item
+               for item in epac_join_terms_application_module().evidence_requirements)
