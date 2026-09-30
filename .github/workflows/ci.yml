@@ -57,7 +57,7 @@ jobs:
       - name: Verify catalog source references against exact canon sections
         run: python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"
       - name: Verify catalog-bound application contracts
-        run: python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py
+        run: python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_epac_join_terms.py tests/test_electromagnetic_pipe.py
       - name: Verify packaged application fixtures
         run: python tools/generate_application_fixtures.py --check
       - name: Verify application catalog and source bindings
@@ -68,6 +68,7 @@ jobs:
           catalog = metapat.canonical_semantic_catalog()
           applications = (
               metapat.quantum_magnetism_application_module(catalog),
+              metapat.epac_join_terms_application_module(catalog),
               metapat.electromagnetic_pipe_application_module(catalog),
           )
           for application in applications:
@@ -197,6 +198,7 @@ jobs:
           root_fixture = files("metapat").joinpath("fixtures/root-spine-envelope-v4.json")
           catalog_fixture = files("metapat").joinpath("fixtures/semantic-module-catalog-v4.json")
           application_fixture = files("metapat").joinpath("fixtures/quantum-magnetism-application-v4.json")
+          epac_fixture = files("metapat").joinpath("fixtures/epac-join-terms-application-v4.json")
           pipe_fixture = files("metapat").joinpath("fixtures/three-phase-electromagnetic-pipe-v4.json")
           envelope = metapat.root_spine_module_envelope()
           catalog = metapat.canonical_semantic_catalog()
@@ -206,6 +208,7 @@ jobs:
           assert catalog_fixture.read_text(encoding="utf-8").strip() == catalog.to_json()
           assert application_fixture.read_text(encoding="utf-8").strip() == application.to_json()
           assert pipe_fixture.read_text(encoding="utf-8").strip() == pipe_design.to_json()
+          assert epac_fixture.read_text(encoding="utf-8").strip() == metapat.epac_join_terms_application_module(catalog).to_json()
           assert not hasattr(metapat, "UCNSObject")
           print(f"metapat {metapat.__version__} wheel smoke passed")
           PY

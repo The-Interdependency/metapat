@@ -109,6 +109,30 @@ Packaged fixture:
 metapat/fixtures/quantum-magnetism-application-v4.json
 ```
 
+## EPAC join-terms semantic license
+
+```text
+application: metapat.application.epac_join_terms
+version: epac-join-terms-application-v4
+status: CROSS-DOMAIN-HYPOTHESIS
+catalog bindings: 12
+root impact: none
+```
+
+This application licenses exact spine roles for an EPAC-owned typed S0-through-S6 join tree. METAPAT supplies the vocabulary boundary; EPAC owns the schema, constructor, equality, serialization, replay, and domain evidence. A formula bag, shared count, or geometric resemblance cannot substitute for an authored join or establish ancestry. The application transfers no UCNS law, chemistry-phase meaning, physical-energy claim, or implementation validity.
+
+Human-readable source:
+
+```text
+docs/applications/epac-join-terms.md
+```
+
+Packaged fixture:
+
+```text
+metapat/fixtures/epac-join-terms-application-v4.json
+```
+
 ## Electromagnetic-pipe vertical slice
 
 The engineering application is separately bound as `EMPIRICAL-FRONTIER`. Its exact design identity and source bindings do not establish claimed electromagnetic, materials, thermal, insulation, mechanical, or fault performance; those remain answerable to engineering evidence.
@@ -126,7 +150,7 @@ python tools/generate_application_fixtures.py
 python tools/generate_application_fixtures.py --check
 python tools/generate_msdmd.py --check
 python tools/check_contract_graph.py
-python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py
+python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_epac_join_terms.py tests/test_electromagnetic_pipe.py
 ```
 
 Generated application fixtures must not be edited by hand.

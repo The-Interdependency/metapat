@@ -20,8 +20,9 @@ If a repo-local skill conflicts with upstream `skill-lib`, upstream governs the 
 | Semantic catalog tests | `python -m pytest -q tests/test_catalog.py tests/test_relations.py` | 40 modules, 43 declared relations, strict identity, bounded status, exact sources, no inferred constitutive meaning |
 | Canon semantic fixtures | `python tools/generate_catalog.py --check` | `root-spine-envelope-v4.json` and `semantic-module-catalog-v4.json` are current |
 | Catalog source integrity | `python -c "from pathlib import Path; import metapat; metapat.assert_catalog_complete(); metapat.assert_catalog_sources_match(Path('.'))"` | every module and relation resolves to exact canon text |
-| Application tests | `python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_electromagnetic_pipe.py` | catalog bindings, source integrity, evidence firewalls, and fixture identity pass |
+| Application tests | `python -m pytest -q tests/test_application.py tests/test_quantum_magnetism.py tests/test_epac_join_terms.py tests/test_electromagnetic_pipe.py` | catalog bindings, source integrity, evidence firewalls, and fixture identity pass |
 | Application fixtures | `python tools/generate_application_fixtures.py --check` | packaged v4 application fixtures are current |
+| Application source integrity | CI application catalog/source step, including `epac_join_terms_application_module` | every application resolves to its exact catalog identities and source statements |
 | Canon contracts | `python -m unittest discover -s tests` | pass |
 | Full base suite | `python -m pytest -q` | pass; actual-UCNS tests may skip only when optional dependency is absent |
 | Explicit Phi policy | `python -m pytest -q tests/test_ucns_phi.py` | explicit-only constitutive authorization and no status transfer pass |
@@ -81,6 +82,12 @@ Every module and relation carries exact source provenance, bounded status, unres
 Application-module wire schema `2.0.0` binds domain applications to exact v4 catalog identities without changing canon and rejects the pre-v4 `1.0.0` parser epoch.
 
 Quantum magnetism remains `CROSS-DOMAIN-HYPOTHESIS`; the electromagnetic-pipe application remains `EMPIRICAL-FRONTIER`. Their evidence remains answerable to their physical domains.
+
+EPAC join terms remain `CROSS-DOMAIN-HYPOTHESIS`. Their twelve bindings keep
+origin properties separate from scalar readouts, omit Vector for static bearing,
+and require resulting property change and actual sequential occurrence before
+licensing Transformation and Time. These are consumer evidence obligations;
+declaration/source checks do not establish downstream execution.
 
 Application records keep these validity/transfer fields false unless independently established:
 

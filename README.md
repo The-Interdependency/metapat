@@ -95,6 +95,7 @@ python -m pytest -q
 python tools/check_contract_graph.py
 python tools/generate_catalog.py --check
 python tools/generate_application_fixtures.py --check
+python -m pytest -q tests/test_epac_join_terms.py
 python tools/generate_msdmd.py --check
 python -m build
 python -m twine check dist/*

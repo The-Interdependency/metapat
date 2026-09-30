@@ -6,17 +6,17 @@
 #   module_kind: schema
 #   summary: re-exports byte-complete canon identity, the semantic catalog, strict catalog-bound applications and engineering records, immutable envelopes and relations, deterministic checks, explicit UCNS Phi authority, and the optional actual-UCNS adapter
 #   owner: The Interdependency
-#   public_surface: __version__, canon identity, semantic catalog and relations, application schemas, quantum-magnetism application, electromagnetic-pipe design, MetapatModuleEnvelope, UCNSPhiPolicy, UCNSForkAuthorization, actual-UCNS adapter
+#   public_surface: __version__, canon identity, semantic catalog and relations, application schemas, quantum-magnetism application, EPAC join-terms application, electromagnetic-pipe design, MetapatModuleEnvelope, UCNSPhiPolicy, UCNSForkAuthorization, actual-UCNS adapter
 #   internal_surface: none
 #   auth_boundary: none
 #   storage_boundary: read-only canon and fixture verification plus serialization only
 #   network_boundary: none
 #   user_data_boundary: none
 #   admin_only: false
-#   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
+#   tests: tests.test_contracts, tests.test_envelope, tests.test_catalog, tests.test_relations, tests.test_application, tests.test_quantum_magnetism, tests.test_epac_join_terms, tests.test_electromagnetic_pipe, tests.test_canon_integrity, tests.test_ucns_phi, tests.test_ucns_bridge, tests.test_packaging
 #   rollout: importable_package version 0.8.0
 #   rollback: restore only with the matching canon epoch
-#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_electromagnetic_pipe_application, metapat_validation_contracts, metapat_ucns_phi_policy, optional metapat_ucns_adapter
+#   requires: metapat_canon_core, metapat_module_envelope, metapat_semantic_relations, metapat_semantic_catalog, metapat_application_module_schema, metapat_quantum_magnetism_application, metapat_epac_join_terms_application, metapat_electromagnetic_pipe_application, metapat_validation_contracts, metapat_ucns_phi_policy, optional metapat_ucns_adapter
 #   since: 2026-07-21
 #   unresolved: downstream consumers must bind module and fork authorizations to exact application and UCNS topology identities
 # === END MODULE_BUILD ===
@@ -24,7 +24,7 @@
 # === DEPENDENCIES ===
 # id: metapat_package_dependency_edges
 #   summary: base exports depend on canon, catalog, application and engineering schemas, relations, envelopes, checks, flow declarations, Phi policy, and a lazy optional UCNS adapter
-#   imports: metapat.canon, metapat.catalog, metapat.application, metapat.quantum_magnetism, metapat.electromagnetic_pipe, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
+#   imports: metapat.canon, metapat.catalog, metapat.application, metapat.quantum_magnetism, metapat.epac_join_terms, metapat.electromagnetic_pipe, metapat.relations, metapat.envelope, metapat.flow_plan, metapat.validation, metapat.ucns_phi, metapat.ucns
 #   external_optional: ucns
 #   provides: metapat_package_exports
 #   class: runtime
@@ -133,6 +133,12 @@ from .electromagnetic_pipe import (
     electromagnetic_pipe_design,
     electromagnetic_pipe_design_digest,
 )
+from .epac_join_terms import (
+    EPAC_JOIN_TERMS_APPLICATION_VERSION,
+    EPAC_JOIN_TERMS_BINDING_SPECS,
+    epac_join_terms_application_digest,
+    epac_join_terms_application_module,
+)
 from .envelope import (
     MODULE_ENVELOPE_SCHEMA_ID,
     MODULE_ENVELOPE_SCHEMA_VERSION,
@@ -228,6 +234,8 @@ __all__ = [
     "DOCTRINE_CLASSES",
     "DOMAIN_QUALIFICATION_DEFINITION",
     "EDCM_SIDE_STATUS",
+    "EPAC_JOIN_TERMS_APPLICATION_VERSION",
+    "EPAC_JOIN_TERMS_BINDING_SPECS",
     "ENERGY_THEORY_QUESTION",
     "EXPECTED_MODULE_COUNT",
     "EXPECTED_MODULE_COUNTS",
@@ -300,6 +308,8 @@ __all__ = [
     "electromagnetic_pipe_application_module",
     "electromagnetic_pipe_design",
     "electromagnetic_pipe_design_digest",
+    "epac_join_terms_application_digest",
+    "epac_join_terms_application_module",
     "git_blob_sha1",
     "observed_canon_file_blobs",
     "primitive_extension",
