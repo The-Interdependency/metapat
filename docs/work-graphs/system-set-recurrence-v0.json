@@ -1,11 +1,11 @@
 {
   "schema": "the-interdependency.stack-manifest",
   "version": "1.0.0",
-  "work_graph_sha256": "224558d2284cede59dbf53c966a91150b0da31410beb77da538150ae89825d4a",
+  "work_graph_sha256": "480ca9219282da63aef948f32f593f1920490b52439f0323a4228d4350b1bd6b",
   "repositories": [
     {
       "repository": "The-Interdependency/metapat",
-      "commit": "102e07ae2bfd837c91ff79fe70630e4e71469647",
+      "commit": "1c0f255fffb87de8b11eb0fa16d0b8a986555eb1",
       "authority": "cross-domain semantic recurrence adjudication",
       "relation": "adjudicates independently supplied structural evidence without semantic transfer"
     },
@@ -17,7 +17,7 @@
     },
     {
       "repository": "The-Interdependency/stack",
-      "commit": "47ded7dc839c7d2ea41b8c1dc9437cc0ba03ee19",
+      "commit": "6026728693c7d7f6045afbb1c53b3c1cdba13123",
       "authority": "current Stack-forged English semantic trajectory implementation",
       "relation": "constructs ordered provenance-bearing system-set trajectory candidates"
     },

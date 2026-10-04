@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "producer": {
     "repository": "The-Interdependency/stack",
-    "commit": "47ded7dc839c7d2ea41b8c1dc9437cc0ba03ee19",
+    "commit": "6026728693c7d7f6045afbb1c53b3c1cdba13123",
     "module_path": "research/english-gonol/english_gonol/system_set_trajectory.py",
     "module_sha256": "62ba0b8ac30b5ec13781344ea2996622ece8af8c226a59eb4f676aaa4c50c388"
   },
