@@ -171,24 +171,11 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
-      - name: Read the immutable Stack producer identity
-        id: producer
-        run: |
-          python - <<'PY'
-          import json, os, re
-          graph = json.load(open('docs/work-graphs/system-set-recurrence-v0.json'))
-          matches = [row for row in graph['repositories'] if row['repository'] == 'The-Interdependency/stack']
-          assert len(matches) == 1
-          commit = matches[0]['commit']
-          assert re.fullmatch(r'[0-9a-f]{40}', commit)
-          with open(os.environ['GITHUB_OUTPUT'], 'a') as output:
-              output.write(f'commit={commit}\n')
-          PY
       - name: Check out the exact Stack producer
         uses: actions/checkout@v7.0.1
         with:
           repository: The-Interdependency/stack
-          ref: ${{ steps.producer.outputs.commit }}
+          ref: 6026728693c7d7f6045afbb1c53b3c1cdba13123
           path: .stack-producer
           persist-credentials: false
       - uses: actions/setup-python@v7.0.0
