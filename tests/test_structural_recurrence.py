@@ -1,3 +1,41 @@
+# === CHECKS ===
+# id: check_recurrence_homologous
+#   proves: recurrence_homology_preserves_distinct_paths
+#   call: self::test_distinct_complete_recurrence_is_homologous_without_proof
+#   mutates: none
+#   cleanup: none
+#
+# id: check_recurrence_same_structure_proof
+#   proves: recurrence_same_structure_requires_proof
+#   call: self::test_same_structure_requires_explicit_equivalence_proof
+#   mutates: none
+#   cleanup: none
+#
+# id: check_recurrence_shared_ancestry
+#   proves: recurrence_homology_preserves_distinct_paths
+#   call: self::test_shared_ancestry_reduces_independence_not_recurrence
+#   mutates: none
+#   cleanup: none
+#
+# id: check_recurrence_partial_analogy
+#   proves: recurrence_no_semantic_transfer
+#   call: self::test_partial_invariants_are_analogous
+#   mutates: none
+#   cleanup: none
+#
+# id: check_recurrence_unresolved
+#   proves: recurrence_unresolved_fails_closed
+#   call: self::test_unknown_mapping_or_replay_fails_closed
+#   mutates: none
+#   cleanup: none
+#
+# id: check_recurrence_failed_replay
+#   proves: recurrence_no_semantic_transfer
+#   call: self::test_failed_replay_is_divergent
+#   mutates: none
+#   cleanup: none
+# === END CHECKS ===
+
 from metapat.structural_recurrence import RecurrenceEvidence, adjudicate_recurrence
 
 
