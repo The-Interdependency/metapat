@@ -3,6 +3,8 @@
 This module classifies evidence supplied by domain/geometry producers. It does
 not compute UCNS geometry, transfer domain semantics, or promote recurrence to
 truth. Usage: construct RecurrenceEvidence and call adjudicate_recurrence().
+Direct RecurrenceDecision construction must carry the same mapping, replay,
+ancestry, and unresolved evidence; its outcome must reproduce adjudication.
 """
 
 # === MODULE_BUILD ===
@@ -47,6 +49,14 @@ truth. Usage: construct RecurrenceEvidence and call adjudicate_recurrence().
 #   given: recurrence adjudication is requested
 #   then: evidence must bind the exact current METAPAT catalog plus domain-qualification and cross-domain-reconstruction modules
 #   class: provenance_contract
+# id: recurrence_domains_distinct
+#   given: a cross-domain recurrence record is constructed
+#   then: the source and target domain identifiers are distinct
+#   class: boundary_contract
+# id: recurrence_decision_evidence_coherent
+#   given: a decision is constructed directly or through adjudication
+#   then: immutable validated evidence reproduces its outcome and independence with every no-transfer flag exactly false
+#   class: safety
 # === END CONTRACTS ===
 
 from __future__ import annotations
@@ -63,6 +73,14 @@ RECURRENCE_OUTCOMES = frozenset({
     "DIVERGENT",
     "HMMM",
 })
+
+
+def _identifiers(value: object, name: str) -> tuple[str, ...]:
+    if not isinstance(value, (list, tuple)):
+        raise ValueError(f"{name} must be a list or tuple of identifiers")
+    if any(not isinstance(item, str) or not item.strip() for item in value):
+        raise ValueError(f"{name} must contain non-empty strings")
+    return tuple(value)
 
 
 @dataclass(frozen=True, slots=True)
@@ -93,19 +111,19 @@ class RecurrenceEvidence:
             value = getattr(self, name)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{name} must be a non-empty string")
-        object.__setattr__(self, "declared_invariants", tuple(self.declared_invariants))
-        object.__setattr__(self, "preserved_invariants", tuple(self.preserved_invariants))
-        object.__setattr__(self, "catalog_module_ids", tuple(self.catalog_module_ids))
-        object.__setattr__(self, "shared_ancestry", tuple(self.shared_ancestry))
-        object.__setattr__(self, "unresolved", tuple(self.unresolved))
+        if self.source_domain == self.target_domain:
+            raise ValueError("cross-domain recurrence requires distinct domains")
+        for name in (
+            "declared_invariants", "preserved_invariants", "catalog_module_ids",
+            "shared_ancestry", "unresolved",
+        ):
+            object.__setattr__(self, name, _identifiers(getattr(self, name), name))
         if not self.declared_invariants:
             raise ValueError("at least one declared invariant is required")
-        if any(not isinstance(x, str) or not x.strip() for x in self.declared_invariants):
-            raise ValueError("declared invariants must be non-empty strings")
-        if any(not isinstance(x, str) or not x.strip() for x in self.preserved_invariants):
-            raise ValueError("preserved invariants must be non-empty strings")
-        if len(set(self.declared_invariants)) != len(self.declared_invariants):
-            raise ValueError("declared invariants must be unique")
+        for name in ("declared_invariants", "preserved_invariants", "catalog_module_ids"):
+            values = getattr(self, name)
+            if len(set(values)) != len(values):
+                raise ValueError(f"{name} must be unique")
         if not set(self.preserved_invariants).issubset(self.declared_invariants):
             raise ValueError("preserved invariants must be declared")
         if type(self.mapping_complete) not in (bool, type(None)):
@@ -129,6 +147,8 @@ class RecurrenceEvidence:
             raise ValueError("recurrence evidence catalog version mismatch")
         if self.catalog_digest != catalog.catalog_digest:
             raise ValueError("recurrence evidence catalog digest mismatch")
+        if not set(self.catalog_module_ids).issubset({module.module_id for module in catalog.modules}):
+            raise ValueError("recurrence evidence contains unknown catalog module bindings")
         if not required_modules.issubset(set(self.catalog_module_ids)):
             raise ValueError("recurrence evidence missing required catalog module bindings")
 
@@ -166,20 +186,31 @@ class RecurrenceDecision:
     semantic_transfer: bool = False
     proof_status_transfer: bool = False
     measurement_status_transfer: bool = False
+    mapping_complete: Optional[bool] = None
+    replay_passed: Optional[bool] = None
+    ancestry_resolved: bool = False
+    unresolved: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         if self.outcome not in RECURRENCE_OUTCOMES:
             raise ValueError("unsupported recurrence outcome")
-        if self.independent not in (True, False, None):
+        if type(self.independent) not in (bool, type(None)):
             raise ValueError("independent must be bool or None")
         for name in ("semantic_transfer", "proof_status_transfer", "measurement_status_transfer"):
             if getattr(self, name) is not False:
                 raise ValueError(f"{name} must remain false")
+        evidence = RecurrenceEvidence(**{
+            name: getattr(self, name) for name in RecurrenceEvidence.__dataclass_fields__
+        })
+        if self.outcome != _outcome(evidence):
+            raise ValueError("outcome does not match the supplied recurrence evidence")
+        if self.independent is not evidence.independent:
+            raise ValueError("independent does not match the supplied ancestry evidence")
+        for name in RecurrenceEvidence.__dataclass_fields__:
+            object.__setattr__(self, name, getattr(evidence, name))
 
 
-def adjudicate_recurrence(evidence: RecurrenceEvidence) -> RecurrenceDecision:
-    """Classify recurrence while preserving domain and evidence boundaries."""
-
+def _outcome(evidence: RecurrenceEvidence) -> str:
     unresolved = (
         bool(evidence.unresolved)
         or evidence.mapping_complete is None
@@ -187,25 +218,27 @@ def adjudicate_recurrence(evidence: RecurrenceEvidence) -> RecurrenceDecision:
         or evidence.independent is None
     )
     if unresolved:
-        outcome = "HMMM"
+        return "HMMM"
     elif not evidence.mapping_complete or not evidence.replay_passed:
-        outcome = "DIVERGENT"
+        return "DIVERGENT"
     else:
         declared = set(evidence.declared_invariants)
         preserved = set(evidence.preserved_invariants)
         if preserved == declared:
-            outcome = (
-                "SAME_STRUCTURE"
-                if evidence.equivalence_proof_id is not None
-                else "HOMOLOGOUS"
-            )
+            if evidence.equivalence_proof_id is not None:
+                return "SAME_STRUCTURE"
+            return "HOMOLOGOUS" if evidence.paths_distinct else "HMMM"
         elif preserved:
-            outcome = "ANALOGOUS"
+            return "ANALOGOUS"
         else:
-            outcome = "DIVERGENT"
+            return "DIVERGENT"
+
+
+def adjudicate_recurrence(evidence: RecurrenceEvidence) -> RecurrenceDecision:
+    """Classify supplied evidence; a proof identifier is not proof verification."""
 
     return RecurrenceDecision(
-        outcome=outcome,
+        outcome=_outcome(evidence),
         independent=evidence.independent,
         source_domain=evidence.source_domain,
         target_domain=evidence.target_domain,
@@ -220,6 +253,10 @@ def adjudicate_recurrence(evidence: RecurrenceEvidence) -> RecurrenceDecision:
         preserved_invariants=evidence.preserved_invariants,
         shared_ancestry=evidence.shared_ancestry,
         equivalence_proof_id=evidence.equivalence_proof_id,
+        mapping_complete=evidence.mapping_complete,
+        replay_passed=evidence.replay_passed,
+        ancestry_resolved=evidence.ancestry_resolved,
+        unresolved=evidence.unresolved,
     )
 
 

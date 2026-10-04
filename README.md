@@ -235,6 +235,7 @@ audit reconciles the graph without importing code.
 - `GLOSSARY.md` — current term definitions.
 - `docs/claims-ledger.md` — public claim classification.
 - `docs/semantic-module-catalog.md` — catalog contract and limits.
+- `docs/structural-recurrence.md` — provisional recurrence API, exact producer replay, and no-transfer requirements.
 - `docs/application-modules.md` — application schema and evidence firewall.
 - `UCNS_IMPLEMENTATION.md` — actual adapter scope and limits.
 - `docs/ucns-phi-policy.md` — explicit constitutive-fork authority and limits.
