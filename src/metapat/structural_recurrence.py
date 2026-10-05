@@ -16,7 +16,7 @@ ancestry, and unresolved evidence; its outcome must reproduce adjudication.
 #   public_surface: RECURRENCE_OUTCOMES, RecurrenceEvidence, RecurrenceDecision, adjudicate_recurrence
 #   internal_surface: canonical serialization and validation
 #   auth_boundary: none
-#   storage_boundary: serialization-only
+#   storage_boundary: none
 #   network_boundary: none
 #   user_data_boundary: none
 #   admin_only: false
@@ -111,6 +111,8 @@ class RecurrenceEvidence:
             value = getattr(self, name)
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{name} must be a non-empty string")
+            if name in {"source_domain", "target_domain"} and value != value.strip():
+                raise ValueError(f"{name} must not contain surrounding whitespace")
         if self.source_domain == self.target_domain:
             raise ValueError("cross-domain recurrence requires distinct domains")
         for name in (
