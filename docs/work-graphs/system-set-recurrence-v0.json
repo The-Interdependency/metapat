@@ -1,11 +1,11 @@
 {
   "schema": "the-interdependency.stack-manifest",
   "version": "1.0.0",
-  "work_graph_sha256": "480ca9219282da63aef948f32f593f1920490b52439f0323a4228d4350b1bd6b",
+  "work_graph_sha256": "e3e95a8b11aa00600058b2bc46cae0116d149ec41e34866a269baec355c6f74b",
   "repositories": [
     {
       "repository": "The-Interdependency/metapat",
-      "commit": "1c0f255fffb87de8b11eb0fa16d0b8a986555eb1",
+      "commit": "689a517de2dce0d55dfbce445c6435c829a581b1",
       "authority": "cross-domain semantic recurrence adjudication",
       "relation": "adjudicates independently supplied structural evidence without semantic transfer"
     },
