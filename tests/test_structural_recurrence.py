@@ -199,6 +199,15 @@ def test_same_domain_evidence_and_decisions_are_rejected():
         with pytest.raises(ValueError, match="distinct domains"):
             replace(decision, target_domain=decision.source_domain)
 
+    for field, value in (
+        ("source_domain", " psychohistory"),
+        ("source_domain", "psychohistory "),
+        ("target_domain", " ps-fauna"),
+        ("target_domain", "ps-fauna "),
+    ):
+        with pytest.raises(ValueError, match="surrounding whitespace"):
+            evidence(**{field: value})
+
 
 def test_direct_decisions_cannot_bypass_evidence_guards():
     homologous = adjudicate_recurrence(evidence())
