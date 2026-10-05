@@ -1,0 +1,133 @@
+{
+  "schema": "metapat.stack-recurrence-fixture",
+  "version": "1.0.0",
+  "producer": {
+    "repository": "The-Interdependency/stack",
+    "commit": "6026728693c7d7f6045afbb1c53b3c1cdba13123",
+    "module_path": "research/english-gonol/english_gonol/system_set_trajectory.py",
+    "module_sha256": "62ba0b8ac30b5ec13781344ea2996622ece8af8c226a59eb4f676aaa4c50c388"
+  },
+  "standing": "synthetic producer-compatibility fixture; no UCNS comparison or recurrence result",
+  "inputs": [
+    {
+      "construct_id": "fixture:construct:a",
+      "origin_id": "fixture:origin:a",
+      "path_id": "fixture:path:a",
+      "steps": [
+        {
+          "axis_id": "fixture:a",
+          "relation_id": "fixture:relates",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        }
+      ],
+      "provenance_ids": [
+        "fixture:synthetic"
+      ],
+      "unresolved": [
+        "UCNS comparison evidence has not been supplied"
+      ]
+    },
+    {
+      "construct_id": "fixture:construct:b",
+      "origin_id": "fixture:origin:b",
+      "path_id": "fixture:path:b",
+      "steps": [
+        {
+          "axis_id": "fixture:a",
+          "relation_id": "fixture:relates",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        }
+      ],
+      "provenance_ids": [
+        "fixture:synthetic"
+      ],
+      "unresolved": [
+        "UCNS comparison evidence has not been supplied"
+      ]
+    }
+  ],
+  "outputs": [
+    {
+      "schema": "english-gonol.system-set-trajectory",
+      "version": "0.1.0",
+      "construct_id": "fixture:construct:a",
+      "origin_id": "fixture:origin:a",
+      "path_id": "fixture:path:a",
+      "steps": [
+        {
+          "axis_id": "fixture:a",
+          "relation_id": "fixture:relates",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        }
+      ],
+      "provenance_ids": [
+        "fixture:synthetic"
+      ],
+      "unresolved": [
+        "UCNS comparison evidence has not been supplied"
+      ],
+      "structure_id": "5f9ab9dc12a0a5c990117126700e1d031379759d257a555a8f1cf6492ded1531"
+    },
+    {
+      "schema": "english-gonol.system-set-trajectory",
+      "version": "0.1.0",
+      "construct_id": "fixture:construct:b",
+      "origin_id": "fixture:origin:b",
+      "path_id": "fixture:path:b",
+      "steps": [
+        {
+          "axis_id": "fixture:a",
+          "relation_id": "fixture:relates",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        },
+        {
+          "axis_id": "fixture:b",
+          "relation_id": "fixture:recurs",
+          "target_axis_id": "fixture:b"
+        }
+      ],
+      "provenance_ids": [
+        "fixture:synthetic"
+      ],
+      "unresolved": [
+        "UCNS comparison evidence has not been supplied"
+      ],
+      "structure_id": "b86b365b92d9e23af0a9e233c222572ad12b1277f3242f876b57d61ae38ec7a3"
+    }
+  ]
+}
