@@ -80,7 +80,10 @@ def render_collection(root: Path) -> str:
     with tempfile.TemporaryDirectory(prefix="metapat-msdmd-") as directory:
         stage = Path(directory)
         _stage_inputs(root, stage)
-        collection = collector.collect(
+        # collect() emits schema 2 (native facts, revision objects, no
+        # source_commit); this compact projection consumes the schema-1
+        # block-only shape, which the collector supports as collect_legacy().
+        collection = collector.collect_legacy(
             stage,
             REPOSITORY,
             source_commit=SKILL_LIB_PIN,
