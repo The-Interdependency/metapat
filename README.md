@@ -6,6 +6,28 @@ METAPAT is the canonical semantic authority for Meta Energy Theory. It compares 
 
 Different domains may expose common structures and actions. Domain-specific names, mechanisms, evidence standards, and conservation laws remain domain-owned unless the target domain independently licenses them.
 
+## Research abstract
+
+Description dated 2026-10-14; published 2026-10-18. This is a research description, not a new verification, release, or promotion of claim status.
+
+### METAPAT: Recursive Structure and Cross-Domain Reconstruction
+
+**METAPAT—Meta Energy Theory: Axioms, Postulates, Theorems, and Theories—is an experimental semantic framework for identifying structures and actions independently recoverable across different domains.** It organizes root stipulations, definitions, revisable postulates, internal derivations, and application hypotheses into distinct evidentiary layers. Its central question is what survives comparison across domains without importing one domain’s vocabulary, mechanisms, or authority into another.
+
+The framework begins with **thing, boundary, and state**. A simplex is a thing with boundary and state; related simplexes produce a tensor. That tensor may participate as a whole and, with boundary and state, become a simplex within a further construction. This recursive organization distinguishes a participant’s internal construction from its participation at another scale. State denotes a measurable property rather than its measurement; scalar denotes a state metric; vector denotes state-altering action inferred through scalar measurement; transformation denotes the resulting change; and time denotes sequential transformation. These are framework-specific definitions, not automatic inheritances from mathematical or physical terminology.
+
+Its comparative method examines independently reconstructed candidates, removes domain-specific implementation, and tests the relations that remain. Recurrence supports a candidate shared structure without establishing identical meaning, mechanism, or universal applicability. An accounting adversary provides a consequential example: it falsified the universal application of the name *energy* to the abstract state-change composite while leaving several deeper correspondences unresolved. The current formulation consequently requires each domain to justify its own use of that term. New domains may add, split, refine, or falsify candidate structures rather than merely supply confirming examples.
+
+The software implementation provides version-bound semantic catalogs, provenance-preserving application records, and a provisional recurrence classifier distinguishing structural equivalence, homology, analogy, divergence, and unresolved evidence. Decisions retain reconstruction origins, paths, declared invariants, replay status, and evidence identities. These mechanisms make semantic commitments and evidentiary boundaries inspectable; the classifier does not itself verify the mathematical proofs referenced by its inputs.
+
+METAPAT’s proposed contribution is a **revisable account of recursive organization coupled to a disciplined method for cross-domain comparison**. In application, it identifies consequential distinctions and questions; UCNS supplies geometric representation, while EDCM operationalizes measurement. This division permits conceptual, mathematical, and empirical development to inform one another without substituting one kind of evidence for another.
+
+**hmmm:** The adequacy of the primitive set, the breadth of independently demonstrated recurrence, and the framework’s explanatory value across real domains remain open to testing. Internal consistency and executable contracts establish narrower results than universal validity.
+
+**Usage guidance:** Read this abstract for the research question and intended contribution. Use the scope, evidence, commands, and limitations in the rest of this README before relying on the work; retain the unresolved conditions above when quoting the description.
+
+Public repository context: [Domain restraint](https://github.com/The-Interdependency/metapat/blob/8abffcd7766069fc835872974de31b086c6af337/DOMAIN_RESTRAINT.md) · [Provisional structural recurrence](https://github.com/The-Interdependency/metapat/blob/8abffcd7766069fc835872974de31b086c6af337/docs/structural-recurrence.md).
+
 ## Root spine
 
 ```text
