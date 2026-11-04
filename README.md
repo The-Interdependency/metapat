@@ -81,6 +81,10 @@ A new domain may:
 
 Completeness is never presumed.
 
+The illustrated proposal [When status crosses a domain boundary](docs/graphics/domain-status-transfer/README.md)
+explains one case in which a verified mapping carries an invariant and its proof.
+It proposes a clarification without changing canon or the recurrence classifier.
+
 ## Architecture
 
 Authority flow:
