@@ -17,6 +17,12 @@ EMPIRICAL-FRONTIER
 RETRACTED_OR_SUPERSEDED
 ```
 
+### Reading the statuses
+
+![Eight claim-status categories, not a confidence ranking or promotion path. Root stipulations, definitions, working postulates and internal derivations describe doctrine; implemented contracts check encoded conditions; applications require their own evidence; superseded claims remain historical.](graphics/claims-status-map.svg)
+
+Use the graphic to locate a kind of claim, then read its exact statement and boundary in the tables below. These illustrations summarize this ledger; they do not add claims, status transitions, or canon relations. [Graphic sources and maintenance guidance](graphics/README.md).
+
 ## Current canon
 
 | Statement/surface | Status | Boundary |
@@ -55,6 +61,10 @@ Energy is therefore domain-qualified in v4. METAPAT does not call every state tr
 
 The double-entry bookkeeping adversary is evidence about the tested v2→v3 synthesis, not a new canon source.
 
+![The tested synthesis is UNRESOLVED and did not survive; universal Energy naming is FALSIFIED. Supported mappings survive only at stated scopes, while Boundary, Simplex, Tensor, Emerge, the complete frozen sequence and invariant tests, and the weaker historical partial-property claim remain UNRESOLVED.](graphics/claims-adversary-standing.svg)
+
+Read this summary alongside the [preregistration](adversaries/double-entry-prereg.md) and [full result](adversaries/double-entry-result.md). Adversary outcomes are separate from the claim-status vocabulary above.
+
 | Surface | Standing | Boundary |
 |---|---|---|
 | Tested v2→v3 synthesis | UNRESOLVED; did not survive | The universal Energy mapping failed, but the frozen taxonomy reserves whole-synthesis `FALSIFIED` for a failed root claim and the material root mappings remain unresolved. |
@@ -79,6 +89,10 @@ The double-entry bookkeeping adversary is evidence about the tested v2→v3 synt
 | `domain_term_is_qualified` | INTERNAL-DERIVATION + IMPLEMENTED-CONTRACT | The applicable domain explicitly licenses the term; structural similarity alone is ignored as authorization. | That the domain license itself is empirically valid or that similarity establishes semantics. |
 
 ## Implemented architecture contracts
+
+![Exact canon sources bind to the semantic catalog, and applications bind to catalog identities. These are provenance dependencies, not proof transfers. Domain evidence, UCNS geometry and proof status, and EDCM measurements retain separate authority.](graphics/claims-evidence-boundaries.svg)
+
+Follow the arrows only as source/identity dependencies. The diagram is not the catalog's declared derivation graph, an execution pipeline, or a claim that application binding validates a domain. The [semantic catalog](semantic-module-catalog.md) and [application modules](application-modules.md) document the exact bindings.
 
 | Surface | Status | Contract |
 |---|---|---|

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1170" viewBox="0 0 1200 1170" role="img" aria-labelledby="title desc">
+  <title id="title">Double-entry adversary: bounded outcomes</title>
+  <desc id="desc">Summary of the ledger independent adversary standing. The tested v2-to-v3 synthesis is unresolved and did not survive. Universal Energy naming is falsified. Thing, State, Relate, Scalar, Transformation and Time mappings survived at stated scopes; Vector survived only at bounded operational scope. Boundary, Simplex, Tensor and Emerge mappings, the complete frozen sequence and invariant tests, and the weaker historical partial-property claim remain unresolved. The weaker claim was withdrawn in v4, not falsified by this adversary.</desc>
+  <!-- Usage: embed in docs/claims-ledger.md. Editable SVG source; see graphics/README.md for source mapping and review guidance. -->
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M 0 0 L 8 5 L 0 10" fill="none" stroke="#6ec8d4" stroke-width="1.5"/></marker></defs>
+  <rect width="1200" height="1170" rx="24" fill="#070b16"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+<text x="48" y="47" font-size="18" fill="#6ec8d4" font-weight="700">METAPAT / INDEPENDENT ADVERSARY</text>
+<text x="48" y="98" font-size="38" fill="#edf2ff" font-weight="700">Different claims, different outcomes</text>
+<text x="48" y="137" font-size="23" fill="#b6c2d9" font-weight="400">Double-entry bookkeeping tested the v2→v3 synthesis. It is not a new canon source.</text>
+<rect x="48" y="177" width="1104" height="135" rx="14" fill="#282518" stroke="#e4c187"/>
+<text x="72" y="216" font-size="19" fill="#e4c187" font-weight="700">TESTED SYNTHESIS</text>
+<text x="72" y="255" font-size="30" fill="#edf2ff" font-weight="700">UNRESOLVED · did not survive</text>
+<text x="72" y="288" font-size="22" fill="#b6c2d9" font-weight="400">Whole-synthesis FALSIFIED requires a failed root claim under the frozen taxonomy.</text>
+<rect x="48" y="336" width="1104" height="123" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="355" width="192" height="35" rx="7" fill="#070b16" stroke="#f2a5aa"/>
+<text x="81" y="380" font-size="21" fill="#f2a5aa" font-weight="700" font-family="monospace">FALSIFIED</text>
+<text x="284" y="370" font-size="24" fill="#edf2ff" font-weight="700">Universal Energy naming</text>
+<text x="284" y="404" font-size="21" fill="#b6c2d9" font-weight="400">Accounting does not independently license</text>
+<text x="284" y="431" font-size="21" fill="#b6c2d9" font-weight="400">energy for the abstract state-change composite.</text>
+<rect x="48" y="471" width="1104" height="123" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="490" width="192" height="35" rx="7" fill="#070b16" stroke="#8dd5b1"/>
+<text x="81" y="515" font-size="21" fill="#8dd5b1" font-weight="700" font-family="monospace">SURVIVED</text>
+<text x="284" y="505" font-size="24" fill="#edf2ff" font-weight="700">Thing · State · Relate · Scalar</text>
+<text x="284" y="534" font-size="24" fill="#edf2ff" font-weight="700">Transformation · Time</text>
+<text x="284" y="568" font-size="21" fill="#b6c2d9" font-weight="400">At the stated mapping scopes; not universal proof.</text>
+<rect x="48" y="606" width="1104" height="113" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="625" width="192" height="35" rx="7" fill="#070b16" stroke="#8dd5b1"/>
+<text x="81" y="650" font-size="21" fill="#8dd5b1" font-weight="700" font-family="monospace">SURVIVED</text>
+<text x="284" y="640" font-size="24" fill="#edf2ff" font-weight="700">Vector</text>
+<text x="284" y="674" font-size="21" fill="#b6c2d9" font-weight="400">Bounded state-altering transaction effect</text>
+<text x="284" y="701" font-size="21" fill="#b6c2d9" font-weight="400">inferred from scalar change; notation is not authority.</text>
+<rect x="48" y="731" width="1104" height="113" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="750" width="192" height="35" rx="7" fill="#070b16" stroke="#e4c187"/>
+<text x="81" y="775" font-size="21" fill="#e4c187" font-weight="700" font-family="monospace">UNRESOLVED</text>
+<text x="284" y="765" font-size="24" fill="#edf2ff" font-weight="700">Boundary · Simplex · Tensor · Emerge</text>
+<text x="284" y="799" font-size="21" fill="#b6c2d9" font-weight="400">Exact required relations are not established</text>
+<text x="284" y="826" font-size="21" fill="#b6c2d9" font-weight="400">at the selected accounting scale.</text>
+<rect x="48" y="856" width="1104" height="113" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="875" width="192" height="35" rx="7" fill="#070b16" stroke="#e4c187"/>
+<text x="81" y="900" font-size="21" fill="#e4c187" font-weight="700" font-family="monospace">UNRESOLVED</text>
+<text x="284" y="890" font-size="24" fill="#edf2ff" font-weight="700">Complete frozen sequence / invariant tests</text>
+<text x="284" y="924" font-size="21" fill="#b6c2d9" font-weight="400">Ledger-structure test is not established.</text>
+<text x="284" y="951" font-size="21" fill="#b6c2d9" font-weight="400">Accounting-equation evaluation is absent.</text>
+<rect x="48" y="981" width="1104" height="123" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="68" y="1000" width="192" height="35" rx="7" fill="#070b16" stroke="#e4c187"/>
+<text x="81" y="1025" font-size="21" fill="#e4c187" font-weight="700" font-family="monospace">UNRESOLVED</text>
+<text x="284" y="1015" font-size="24" fill="#edf2ff" font-weight="700">Historical partial-property claim</text>
+<text x="284" y="1049" font-size="21" fill="#b6c2d9" font-weight="400">“Every domain exposes some properties of Platonic energy.”</text>
+<text x="284" y="1076" font-size="21" fill="#b6c2d9" font-weight="400">Withdrawn in v4; not falsified by this adversary.</text>
+<text x="48" y="1144" font-size="22" fill="#b6c2d9" font-weight="400">Read the preregistered scope and exact boundaries before interpreting any outcome.</text>
+</g>
+</svg>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="895" viewBox="0 0 1200 895" role="img" aria-labelledby="title desc">
+  <title id="title">Provenance does not transfer proof</title>
+  <desc id="desc">The exact canon sources are bound to the semantic catalog, and applications bind to catalog identities. Those arrows represent source and identity dependencies only. Contract checks establish encoded conditions and provenance, not external truth. Domain evidence, UCNS geometry and proof status, and EDCM measurement retain their separate authority. No evidence or proof-status transfer is drawn.</desc>
+  <!-- Usage: embed in docs/claims-ledger.md. Editable SVG source; see graphics/README.md for source mapping and review guidance. -->
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M 0 0 L 8 5 L 0 10" fill="none" stroke="#6ec8d4" stroke-width="1.5"/></marker></defs>
+  <rect width="1200" height="895" rx="24" fill="#070b16"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+<text x="48" y="47" font-size="18" fill="#6ec8d4" font-weight="700">METAPAT / EVIDENCE BOUNDARIES</text>
+<text x="48" y="98" font-size="38" fill="#edf2ff" font-weight="700">A binding is not a validation</text>
+<text x="48" y="137" font-size="23" fill="#b6c2d9" font-weight="400">Arrows below mean exact source or identity dependency, never transfer of proof.</text>
+<text x="48" y="190" font-size="19" fill="#6ec8d4" font-weight="700">SEMANTIC PROVENANCE</text>
+<text x="660" y="190" font-size="19" fill="#e4c187" font-weight="700">SEPARATE EVIDENCE AUTHORITIES</text>
+<rect x="48" y="213" width="516" height="127" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="72" y="251" font-size="28" fill="#edf2ff" font-weight="700">Canon sources</text>
+<text x="72" y="286" font-size="23" fill="#b6c2d9" font-weight="400">Exact doctrine text and canon identity.</text>
+<path d="M306 340 L306 389" fill="none" stroke="#6ec8d4" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="327" y="373" font-size="19" fill="#6ec8d4" font-weight="400">source binding</text>
+<rect x="48" y="405" width="516" height="127" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="72" y="443" font-size="28" fill="#edf2ff" font-weight="700">Semantic catalog</text>
+<text x="72" y="478" font-size="22" fill="#b6c2d9" font-weight="400">Module identities and declared ancestry.</text>
+<text x="72" y="507" font-size="22" fill="#b6c2d9" font-weight="400">No inferred edges or transferred status.</text>
+<path d="M306 532 L306 581" fill="none" stroke="#6ec8d4" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="327" y="565" font-size="19" fill="#6ec8d4" font-weight="400">catalog binding</text>
+<rect x="48" y="597" width="516" height="145" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="72" y="635" font-size="28" fill="#edf2ff" font-weight="700">Domain application records</text>
+<text x="72" y="670" font-size="22" fill="#b6c2d9" font-weight="400">Exact provenance and evidence boundaries.</text>
+<text x="72" y="700" font-size="22" fill="#b6c2d9" font-weight="400">Application claims keep their own status.</text>
+<path d="M610 211 L610 743" fill="none" stroke="#34435d" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="660" y="213" width="492" height="151" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="684" y="253" font-size="28" fill="#e4c187" font-weight="700">Domain evidence</text>
+<text x="684" y="293" font-size="23" fill="#b6c2d9" font-weight="400">Owns domain terms, physical adequacy</text>
+<text x="684" y="325" font-size="23" fill="#b6c2d9" font-weight="400">and application validation.</text>
+<rect x="660" y="389" width="492" height="151" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="684" y="429" font-size="28" fill="#e4c187" font-weight="700">Actual UCNS</text>
+<text x="684" y="469" font-size="23" fill="#b6c2d9" font-weight="400">Owns representation / geometry</text>
+<text x="684" y="501" font-size="23" fill="#b6c2d9" font-weight="400">and its theorem or proof status.</text>
+<rect x="660" y="565" width="492" height="151" rx="14" fill="#111a2b" stroke="#34435d"/>
+<text x="684" y="605" font-size="28" fill="#e4c187" font-weight="700">EDCM</text>
+<text x="684" y="645" font-size="23" fill="#b6c2d9" font-weight="400">Owns measurement.</text>
+<text x="684" y="677" font-size="23" fill="#b6c2d9" font-weight="400">Semantic labels are not measured values.</text>
+<rect x="48" y="779" width="1104" height="80" rx="14" fill="#172b30" stroke="#6ec8d4"/>
+<text x="70" y="811" font-size="20" fill="#6ec8d4" font-weight="700" font-family="monospace">IMPLEMENTED-CONTRACT</text>
+<text x="70" y="842" font-size="22" fill="#edf2ff" font-weight="400">Checks encoded conditions and provenance. Does not establish external truth or formal proof.</text>
+</g>
+</svg>

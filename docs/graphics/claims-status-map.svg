@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1000" viewBox="0 0 1200 1000" role="img" aria-labelledby="title desc">
+  <title id="title">METAPAT claim-status map</title>
+  <desc id="desc">Eight claim-status categories, not a confidence ranking or promotion path. Root stipulations, definitions, working postulates and internal derivations describe doctrine. Implemented contracts check encoded conditions. Cross-domain hypotheses and empirical frontiers require their own evidence. Retracted or superseded claims remain historical. See the ledger tables for exact statements and boundaries.</desc>
+  <!-- Usage: embed in docs/claims-ledger.md. Editable SVG source; see graphics/README.md for source mapping and review guidance. -->
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M 0 0 L 8 5 L 0 10" fill="none" stroke="#6ec8d4" stroke-width="1.5"/></marker></defs>
+  <rect width="1200" height="1000" rx="24" fill="#070b16"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+<text x="48" y="47" font-size="18" fill="#6ec8d4" font-weight="700">METAPAT / CLAIMS LEDGER</text>
+<text x="48" y="98" font-size="38" fill="#edf2ff" font-weight="700">What kind of claim is this?</text>
+<text x="48" y="137" font-size="23" fill="#b6c2d9" font-weight="400">Status describes the claim. It is not a ladder of certainty.</text>
+<rect x="48" y="177" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="48" y="177" width="5" height="171" rx="2" fill="#6ec8d4" stroke="#6ec8d4"/>
+<text x="70" y="213" font-size="21" fill="#6ec8d4" font-weight="700" font-family="monospace">ROOT-STIPULATION</text>
+<text x="70" y="252" font-size="23" fill="#edf2ff" font-weight="400">Root construction.</text>
+<text x="70" y="292" font-size="21" fill="#b6c2d9" font-weight="400">Thing · Boundary · State · Simplex</text>
+<rect x="612" y="177" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="612" y="177" width="5" height="171" rx="2" fill="#6ec8d4" stroke="#6ec8d4"/>
+<text x="634" y="213" font-size="21" fill="#6ec8d4" font-weight="700" font-family="monospace">DEFINITION</text>
+<text x="634" y="252" font-size="23" fill="#edf2ff" font-weight="400">Meaning and domain-qualification rules.</text>
+<text x="634" y="292" font-size="21" fill="#b6c2d9" font-weight="400">Scalar measures state; it is not state.</text>
+<rect x="48" y="366" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="48" y="366" width="5" height="171" rx="2" fill="#baacf4" stroke="#baacf4"/>
+<text x="70" y="402" font-size="21" fill="#baacf4" font-weight="700" font-family="monospace">WORKING-POSTULATE</text>
+<text x="70" y="441" font-size="23" fill="#edf2ff" font-weight="400">Revisable working commitments.</text>
+<text x="70" y="481" font-size="21" fill="#b6c2d9" font-weight="400">Seven postulates; no silent axiom rewrite.</text>
+<rect x="612" y="366" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="612" y="366" width="5" height="171" rx="2" fill="#baacf4" stroke="#baacf4"/>
+<text x="634" y="402" font-size="21" fill="#baacf4" font-weight="700" font-family="monospace">INTERNAL-DERIVATION</text>
+<text x="634" y="441" font-size="23" fill="#edf2ff" font-weight="400">Reductions within the construction.</text>
+<text x="634" y="481" font-size="21" fill="#b6c2d9" font-weight="400">Eight theorems · twelve theories</text>
+<text x="634" y="510" font-size="21" fill="#b6c2d9" font-weight="400">Not external proof.</text>
+<rect x="48" y="555" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="48" y="555" width="5" height="171" rx="2" fill="#8dd5b1" stroke="#8dd5b1"/>
+<text x="70" y="591" font-size="21" fill="#8dd5b1" font-weight="700" font-family="monospace">IMPLEMENTED-CONTRACT</text>
+<text x="70" y="630" font-size="23" fill="#edf2ff" font-weight="400">Checks of encoded conditions or identity.</text>
+<text x="70" y="670" font-size="21" fill="#b6c2d9" font-weight="400">Passing checks do not establish</text>
+<text x="70" y="699" font-size="21" fill="#b6c2d9" font-weight="400">empirical truth or formal proof.</text>
+<rect x="612" y="555" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="612" y="555" width="5" height="171" rx="2" fill="#e4c187" stroke="#e4c187"/>
+<text x="634" y="591" font-size="21" fill="#e4c187" font-weight="700" font-family="monospace">CROSS-DOMAIN-HYPOTHESIS</text>
+<text x="634" y="630" font-size="23" fill="#edf2ff" font-weight="400">A proposed use in another domain.</text>
+<text x="634" y="670" font-size="21" fill="#b6c2d9" font-weight="400">Application binding does not confer</text>
+<text x="634" y="699" font-size="21" fill="#b6c2d9" font-weight="400">root, theorem or measurement status.</text>
+<rect x="48" y="744" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="48" y="744" width="5" height="171" rx="2" fill="#e4c187" stroke="#e4c187"/>
+<text x="70" y="780" font-size="21" fill="#e4c187" font-weight="700" font-family="monospace">EMPIRICAL-FRONTIER</text>
+<text x="70" y="819" font-size="23" fill="#edf2ff" font-weight="400">A claim still requiring domain evidence.</text>
+<text x="70" y="859" font-size="21" fill="#b6c2d9" font-weight="400">Physical performance and measured values</text>
+<text x="70" y="888" font-size="21" fill="#b6c2d9" font-weight="400">remain answerable to their own evidence.</text>
+<rect x="612" y="744" width="540" height="171" rx="14" fill="#111a2b" stroke="#34435d"/>
+<rect x="612" y="744" width="5" height="171" rx="2" fill="#f2a5aa" stroke="#f2a5aa"/>
+<text x="634" y="780" font-size="21" fill="#f2a5aa" font-weight="700" font-family="monospace">RETRACTED_OR_SUPERSEDED</text>
+<text x="634" y="819" font-size="23" fill="#edf2ff" font-weight="400">Historical or replaced doctrine.</text>
+<text x="634" y="859" font-size="21" fill="#b6c2d9" font-weight="400">Withdrawal is not automatically falsification.</text>
+<text x="634" y="888" font-size="21" fill="#b6c2d9" font-weight="400">Keep the replacement and prior scope visible.</text>
+<path d="M48 946 L1152 946" fill="none" stroke="#34435d" stroke-width="2"/>
+<text x="48" y="979" font-size="22" fill="#b6c2d9" font-weight="400">Read each statement together with its boundary; the tables remain the full ledger.</text>
+</g>
+</svg>
