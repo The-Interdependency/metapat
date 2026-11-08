@@ -26,6 +26,14 @@ From a document in `docs/`, embed an asset with a relative path:
 | `claims-adversary-standing.svg` | Ledger **Independent adversary standing**, the [preregistration](../adversaries/double-entry-prereg.md), and the [result](../adversaries/double-entry-result.md). Preserve bounded survival, unresolved tests, and the distinction between universal naming and the weaker withdrawn proposition. |
 | `claims-evidence-boundaries.svg` | Ledger **Implemented architecture contracts**, [semantic catalog](../semantic-module-catalog.md), [application modules](../application-modules.md), and [compliance authority boundaries](../../COMPLIANCE.md). The only arrows show source/identity dependencies, not the 43 catalog derivation edges, execution order, or proof transfer. |
 
+## Domain status transfer card
+
+[When status crosses a domain boundary](domain-status-transfer/README.md) is a
+proposed clarification of Chapter Zero, with a formal invariant-transport argument,
+the current recurrence-classifier boundary, and pinned source references. Its PNG,
+vector PDF, optional renderer, and rebuild instructions live together in that
+directory. It changes no canon or runtime transfer flags.
+
 ## Maintenance and verification
 
 Edit the SVG source directly with a text or vector editor. No generator or new
