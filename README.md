@@ -28,6 +28,8 @@ METAPAT’s proposed contribution is a **revisable account of recursive organiza
 
 Public repository context: [Domain restraint](https://github.com/The-Interdependency/metapat/blob/8abffcd7766069fc835872974de31b086c6af337/DOMAIN_RESTRAINT.md) · [Provisional structural recurrence](https://github.com/The-Interdependency/metapat/blob/8abffcd7766069fc835872974de31b086c6af337/docs/structural-recurrence.md).
 
+[Human, meal, and waste](examples/meal-boundaries.md) tests whether a change of system boundary preserves the history of a shared material transfer.
+
 ## Root spine
 
 ```text
